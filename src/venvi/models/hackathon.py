@@ -1,8 +1,7 @@
 from datetime import datetime
-from typing import List, Optional
 from uuid import UUID
 
-from sqlmodel import Field, SQLModel, JSON, Column, DateTime
+from sqlmodel import JSON, Column, DateTime, Field, SQLModel
 
 
 class Hackathon(SQLModel, table=True):
@@ -12,8 +11,8 @@ class Hackathon(SQLModel, table=True):
     country_code: str
     date_start: datetime = Field(sa_column=Column(DateTime(timezone=True)))
     date_end: datetime = Field(sa_column=Column(DateTime(timezone=True)))
-    topics: List[str] = Field(sa_column=Column(JSON))
-    notes: Optional[str] = None
+    topics: list[str] = Field(sa_column=Column(JSON))
+    notes: str | None = None
     url: str
     status: str
     is_new: bool = False

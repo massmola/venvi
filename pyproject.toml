@@ -47,7 +47,7 @@ select = [
     "C4", # flake8-comprehensions
     "UP", # pyupgrade
 ]
-ignore = []
+ignore = ["B008"]  # Function calls in defaults (needed for FastAPI Depends)
 
 [tool.ruff.format]
 quote-style = "double"

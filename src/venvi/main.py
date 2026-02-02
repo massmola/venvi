@@ -1,11 +1,13 @@
 from contextlib import asynccontextmanager
 from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from venvi.api.routers import hackathons
 from venvi.core.db import init_db
 from venvi.web.router import router as web_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

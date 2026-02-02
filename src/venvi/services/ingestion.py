@@ -1,6 +1,6 @@
 import httpx
-from sqlmodel import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlmodel import select
 from venvi.models.hackathon import Hackathon
 
 EURO_HACKATHONS_API = "https://euro-hackathons.vercel.app/api/hackathons"
@@ -16,7 +16,7 @@ async def fetch_euro_hackathons() -> list[dict]:
 async def sync_hackathons(session: AsyncSession) -> int:
     raw_hackathons = await fetch_euro_hackathons()
     count = 0
-    
+
     for raw in raw_hackathons:
         # Check if already exists
         statement = select(Hackathon).where(Hackathon.id == raw["id"])
@@ -29,13 +29,13 @@ async def sync_hackathons(session: AsyncSession) -> int:
             update_data = updated_instance.model_dump(exclude_unset=True)
             for key, value in update_data.items():
                 if hasattr(existing, key):
-                     setattr(existing, key, value)
+                    setattr(existing, key, value)
             session.add(existing)
         else:
             # Create new
             hackathon = Hackathon.model_validate(raw)
             session.add(hackathon)
             count += 1
-    
+
     await session.commit()
     return count
