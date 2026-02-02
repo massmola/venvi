@@ -39,6 +39,7 @@ site/
 
 # Project specific
 .tmp/
+.pg_data/
 database.db
 *.db
 *.sqlite3

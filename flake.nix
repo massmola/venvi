@@ -18,6 +18,8 @@
             poetry
             postgresql
             zlib
+            gcc
+            pkg-config
           ];
 
           shellHook = ''
