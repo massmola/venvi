@@ -26,8 +26,8 @@ async def get_hackathons_partial(
     session: AsyncSession = Depends(get_session)
 ):
     query = select(Hackathon).order_by(Hackathon.date_start)
-    result = await session.exec(query)
-    hackathons: Sequence[Hackathon] = result.all()
+    result = await session.execute(query)
+    hackathons: Sequence[Hackathon] = result.scalars().all()
     
     return templates.TemplateResponse(
         "partials/hackathon_list.html", 
