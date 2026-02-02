@@ -23,8 +23,14 @@ theme:
 
 plugins:
   - search
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
 
 nav:
   - Home: index.md
   - Guide:
     - Guidelines: guidelines.md
+  - API Reference: api_reference.md

@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
+
 from venvi.core.db import get_session
 from venvi.models.hackathon import Hackathon
 

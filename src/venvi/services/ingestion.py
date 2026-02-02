@@ -1,6 +1,7 @@
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
+
 from venvi.models.hackathon import Hackathon
 
 EURO_HACKATHONS_API = "https://euro-hackathons.vercel.app/api/hackathons"

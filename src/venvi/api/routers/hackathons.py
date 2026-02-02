@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
+
 from venvi.core.db import get_session
 from venvi.models.hackathon import Hackathon
 from venvi.services.ingestion import sync_hackathons
