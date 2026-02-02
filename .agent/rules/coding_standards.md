@@ -10,20 +10,21 @@ description: Enforce coding standards, type safety, and build integrity.
 
 ## 2. Green Build Policy ("Green Build or Bust")
 - You may not consider a task complete until the build passes locally.
-- A "Green Build" means:
+- A "Green Build" means all checks in the `pre-push` hook pass:
     1. `poetry run ruff format .` (Formatting)
-    2. `poetry run ruff check .` (Linting)
-    3. `poetry run mypy .` (Type Checking)
-    4. `poetry run pytest` (Testing)
+    2. `poetry run ruff check . --fix` (Linting)
+    3. `poetry run mypy .` (Type Checking - Strict Mode)
+    4. `poetry run pytest` (Testing - Must maintain 100% coverage)
 
 ## 3. Documentation
-- Public modules, classes, and functions must have docstrings.
-- Docstrings should follow the Google Style Guide.
-- Updates to code logic must include updates to relevant documentation (README, guides).
+- **Docstrings**: Public modules, classes, and functions must have Google Style docstrings.
+- **Autogen**: This project uses `mkdocstrings`. Any new module must be added to `docs/api_reference.md` using the `::: module.name` directive.
+- **Guides**: Updates to code logic must include updates to relevant documentation (`README.md`, `docs/`, `walkthrough.md`).
 
 ## 4. Testing
-- All new logic must be satisfied by a unit test.
-- Do not mock database models if you can use a test database fixture (preferred for SQLModel).
+- **100% Coverage**: Every line of code must be covered by tests. Verify with `pytest-cov`.
+- **Exhaustive Cases**: Include negative tests (error paths), filter edge cases, and core utility verification.
+- **No Mocks for DB**: Do not mock database models if you can use a test database fixture (preferred for SQLModel).
 ## 5. Asynchronous Sessions (SQLModel/SQLAlchemy)
 - When using `AsyncSession`, always use `await session.execute(query)` followed by `result.scalars().all()` (or `.first()`, etc.).
 - The `.exec()` method is for synchronous sessions and must not be used with `AsyncSession`.
