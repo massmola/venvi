@@ -1,12 +1,13 @@
 ---
+trigger: always_on
 description: Enforce the use of the defined technology stack.
 ---
+
 # Technology Stack Rules
 
 All code changes must adhere to the following technology choices. Do not introduce new libraries or frameworks without explicit user approval.
 
 ## Backend
-- **Language**: Python 3.12+
 - **Framework**: FastAPI
 - **ORM**: SQLModel (SQLAlchemy + Pydantic)
 - **Database**: PostgreSQL (via SQLModel)
