@@ -5,6 +5,13 @@ from sqlmodel import JSON, Column, DateTime, Field, SQLModel
 
 
 class Hackathon(SQLModel, table=True):
+    """
+    Represents a hackathon event in the EU.
+
+    This model stores core information about hackathons aggregated from various sources,
+    including their location, dates, topics, and status.
+    """
+
     id: UUID = Field(primary_key=True)
     name: str
     city: str

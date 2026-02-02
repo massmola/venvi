@@ -1,3 +1,6 @@
+"""
+Web routes for rendering the application's HTML interface.
+"""
 from collections.abc import Sequence
 from pathlib import Path
 
@@ -12,13 +15,21 @@ from venvi.models.hackathon import Hackathon
 router = APIRouter()
 
 # Path to the templates directory: src/venvi/templates
-# This file is in: src/venvi/web/router.py
 BASE_DIR = Path(__file__).resolve().parent.parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 
 @router.get("/", include_in_schema=False)
 async def index(request: Request):
+    """
+    Renders the main application homepage.
+
+    Args:
+        request: The Starlette request object.
+
+    Returns:
+        TemplateResponse: The rendered index.html template.
+    """
     return templates.TemplateResponse(request, "index.html")
 
 
@@ -26,6 +37,16 @@ async def index(request: Request):
 async def get_hackathons_partial(
     request: Request, session: AsyncSession = Depends(get_session)
 ):
+    """
+    Renders the hackathon list partial for dynamic HTMX updates.
+
+    Args:
+        request: The Starlette request object.
+        session: The asynchronous database session.
+
+    Returns:
+        TemplateResponse: The rendered partials/hackathon_list.html template.
+    """
     query = select(Hackathon).order_by(Hackathon.date_start)
     result = await session.execute(query)
     hackathons: Sequence[Hackathon] = result.scalars().all()
