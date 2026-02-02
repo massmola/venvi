@@ -1,6 +1,9 @@
 """
 Services for aggregating and synchronizing hackathon data from external providers.
 """
+
+from typing import Any
+
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
@@ -10,7 +13,9 @@ from venvi.models.hackathon import Hackathon
 EURO_HACKATHONS_API = "https://euro-hackathons.vercel.app/api/hackathons"
 
 
-async def fetch_euro_hackathons() -> list[dict]:
+
+
+async def fetch_euro_hackathons() -> list[dict[str, Any]]:
     """
     Fetches upcoming hackathons from the Euro Hackathons API.
 

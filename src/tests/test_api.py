@@ -108,3 +108,57 @@ async def test_sync_endpoint_failure(
         response = await client.post("/hackathons/sync")
         assert response.status_code == 500
         assert "Database Connection Error" in response.json()["detail"]
+
+
+@pytest.mark.asyncio
+async def test_read_hackathons_filter_taken(
+    client: AsyncClient, session: AsyncSession
+) -> None:
+    """Test filtering hackathons by taken status."""
+    h1 = Hackathon(
+        id="11111111-1111-1111-1111-111111111111", name="Taken H", city="C", country_code="CC", 
+        date_start=datetime.now(UTC), date_end=datetime.now(UTC), topics=[], url="u", status="upt", taken=True
+    )
+    h2 = Hackathon(
+        id="22222222-2222-2222-2222-222222222222", name="Free H", city="C", country_code="CC", 
+        date_start=datetime.now(UTC), date_end=datetime.now(UTC), topics=[], url="u", status="upt", taken=False
+    )
+    session.add_all([h1, h2])
+    await session.commit()
+
+    response = await client.get("/hackathons/", params={"taken": "true"})
+    assert len(response.json()) == 1
+    assert response.json()[0]["id"] == "11111111-1111-1111-1111-111111111111"
+
+    response = await client.get("/hackathons/", params={"taken": "false"})
+    assert len(response.json()) == 1
+    assert response.json()[0]["id"] == "22222222-2222-2222-2222-222222222222"
+
+
+@pytest.mark.asyncio
+async def test_toggle_hackathon_taken(
+    client: AsyncClient, session: AsyncSession
+) -> None:
+    """Test toggling hackathon taken status."""
+    h = Hackathon(
+        id="33333333-3333-3333-3333-333333333333", name="H", city="C", country_code="CC", 
+        date_start=datetime.now(UTC), date_end=datetime.now(UTC), topics=[], url="u", status="upt", taken=False
+    )
+    session.add(h)
+    await session.commit()
+
+    response = await client.patch(f"/hackathons/{h.id}/taken", params={"taken": "true"})
+    assert response.status_code == 200
+    assert response.json()["taken"] is True
+
+    await session.refresh(h)
+    assert h.taken is True
+
+
+@pytest.mark.asyncio
+async def test_toggle_hackathon_not_found(
+    client: AsyncClient, session: AsyncSession
+) -> None:
+    """Test toggling non-existent hackathon."""
+    response = await client.patch("/hackathons/00000000-0000-0000-0000-000000000000/taken", params={"taken": "true"})
+    assert response.status_code == 404

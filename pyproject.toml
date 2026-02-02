@@ -21,7 +21,6 @@ python-multipart = "^0.0.6"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 mypy = "^1.8.0"
-ruff = "^0.1.0"
 mkdocs-material = "^9.5.0"
 pytest-asyncio = "^0.23.0"
 aiosqlite = "^0.19.0"
@@ -56,6 +55,9 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+
+[tool.coverage.run]
+concurrency = ["greenlet", "thread"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=src --cov-report=term-missing"

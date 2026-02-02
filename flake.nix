@@ -2,7 +2,7 @@
   description = "Venvi Development Environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     utils.url = "github:numtide/flake-utils";
   };
 
@@ -20,6 +20,7 @@
             zlib
             gcc
             pkg-config
+            ruff
           ];
 
           shellHook = ''
