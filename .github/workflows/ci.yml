@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Check Formatting (Ruff)
+        run: nix develop --command poetry run ruff format --check .
+
+      - name: Lint (Ruff)
+        run: nix develop --command poetry run ruff check .
+
+      - name: Type Check (Mypy)
+        run: nix develop --command poetry run mypy .
+
+      - name: Setup Database
+        run: |
+          nix develop --command bash scripts/init_db.sh
+          # Wait a bit for Postgres to be ready
+          sleep 5
+
+      - name: Run Tests (Pytest)
+        run: nix develop --command poetry run pytest
