@@ -18,7 +18,7 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 @router.get("/", include_in_schema=False)
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html")
 
 @router.get("/partials/hackathons", include_in_schema=False)
 async def get_hackathons_partial(
@@ -30,6 +30,7 @@ async def get_hackathons_partial(
     hackathons: Sequence[Hackathon] = result.scalars().all()
     
     return templates.TemplateResponse(
+        request, 
         "partials/hackathon_list.html", 
-        {"request": request, "hackathons": hackathons}
+        {"hackathons": hackathons}
     )
