@@ -52,7 +52,8 @@ def map_odh_event(raw: dict) -> ODHEvent:
     Returns:
         ODHEvent: The mapped model instance.
     """
-    # Defensive programming for handling optional fields and language selection (prefer 'en', fallback to 'it'/'de')
+    # Defensive programming for handling optional fields and language selection
+    # (prefer 'en', fallback to 'it'/'de')
 
     def get_start_date(raw_event: dict) -> datetime:
         # Assuming EventDate is a list and we take the first one or the main DateBegin

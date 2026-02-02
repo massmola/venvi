@@ -90,8 +90,9 @@ def test_map_odh_event_edge_cases() -> None:
     # Case 1: Minimal data to trigger fallbacks
     raw: dict = {"Detail": {}}  # No Id, No DateBegin, No Title in detail
     event = map_odh_event(raw)
-    
-    # Should generate ID from title (which defaults to "Untitled Event") + DateBegin (defaults to None->None/Now)
+
+    # Should generate ID from title (which defaults to "Untitled Event")
+    # + DateBegin (defaults to None->None/Now)
     # Actually code says: raw_id = str(hash(title + str(raw.get("DateBegin"))))
     assert event.id is not None
     assert event.title == "Untitled Event"
@@ -101,7 +102,7 @@ def test_map_odh_event_edge_cases() -> None:
     # Case 2: ID from Mapping
     raw_mapping = {
         "Detail": {"en": {"Title": "Mapped ID"}},
-        "Mapping": {"some_source": {"rid": "mapped-id-123"}}
+        "Mapping": {"some_source": {"rid": "mapped-id-123"}},
     }
     event_mapped = map_odh_event(raw_mapping)
     assert event_mapped.id == "mapped-id-123"
@@ -113,15 +114,21 @@ def test_map_odh_event_edge_cases() -> None:
         # No DateBegin/End
     }
     event_dates = map_odh_event(raw_dates)
-    assert event_dates.date_start is not None # Should be now()
+    assert event_dates.date_start is not None  # Should be now()
 
 
 @pytest.mark.asyncio
 async def test_sync_odh_events_update_existing() -> None:
     mock_session = AsyncMock(spec=AsyncSession)
-    
+
     # Simulate existing event found
-    existing_event = ODHEvent(id="test-event-1", title="Old Title", is_new=False, date_start=datetime.now(), date_end=datetime.now())
+    existing_event = ODHEvent(
+        id="test-event-1",
+        title="Old Title",
+        is_new=False,
+        date_start=datetime.now(),
+        date_end=datetime.now(),
+    )
     mock_result = MagicMock()
     mock_result.scalar_one_or_none.return_value = existing_event
     mock_session.execute.return_value = mock_result
@@ -129,22 +136,22 @@ async def test_sync_odh_events_update_existing() -> None:
     with patch("httpx.AsyncClient") as MockClient:
         mock_instance = MockClient.return_value
         mock_instance.__aenter__.return_value = mock_instance
-        
+
         # Return same ID but new title
         new_data = MOCK_ODH_RESPONSE.copy()
         new_data["Items"][0]["Detail"]["en"]["Title"] = "New Title"
-        
+
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = new_data
         mock_instance.get = AsyncMock(return_value=mock_response)
 
         await sync_odh_events(mock_session)
-        
+
         # Verify title was updated on existing object
         assert existing_event.title == "New Title"
         # Verify is_new was NOT updated (should stay False)
         assert existing_event.is_new is False
-        
+
         # Verify session.add was called with existing object
         mock_session.add.assert_called_with(existing_event)

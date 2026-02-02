@@ -116,12 +116,28 @@ async def test_read_hackathons_filter_taken(
 ) -> None:
     """Test filtering hackathons by taken status."""
     h1 = Hackathon(
-        id="11111111-1111-1111-1111-111111111111", name="Taken H", city="C", country_code="CC", 
-        date_start=datetime.now(UTC), date_end=datetime.now(UTC), topics=[], url="u", status="upt", taken=True
+        id="11111111-1111-1111-1111-111111111111",
+        name="Taken H",
+        city="C",
+        country_code="CC",
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
+        topics=[],
+        url="u",
+        status="upt",
+        taken=True,
     )
     h2 = Hackathon(
-        id="22222222-2222-2222-2222-222222222222", name="Free H", city="C", country_code="CC", 
-        date_start=datetime.now(UTC), date_end=datetime.now(UTC), topics=[], url="u", status="upt", taken=False
+        id="22222222-2222-2222-2222-222222222222",
+        name="Free H",
+        city="C",
+        country_code="CC",
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
+        topics=[],
+        url="u",
+        status="upt",
+        taken=False,
     )
     session.add_all([h1, h2])
     await session.commit()
@@ -141,8 +157,16 @@ async def test_toggle_hackathon_taken(
 ) -> None:
     """Test toggling hackathon taken status."""
     h = Hackathon(
-        id="33333333-3333-3333-3333-333333333333", name="H", city="C", country_code="CC", 
-        date_start=datetime.now(UTC), date_end=datetime.now(UTC), topics=[], url="u", status="upt", taken=False
+        id="33333333-3333-3333-3333-333333333333",
+        name="H",
+        city="C",
+        country_code="CC",
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
+        topics=[],
+        url="u",
+        status="upt",
+        taken=False,
     )
     session.add(h)
     await session.commit()
@@ -160,5 +184,8 @@ async def test_toggle_hackathon_not_found(
     client: AsyncClient, session: AsyncSession
 ) -> None:
     """Test toggling non-existent hackathon."""
-    response = await client.patch("/hackathons/00000000-0000-0000-0000-000000000000/taken", params={"taken": "true"})
+    response = await client.patch(
+        "/hackathons/00000000-0000-0000-0000-000000000000/taken",
+        params={"taken": "true"},
+    )
     assert response.status_code == 404

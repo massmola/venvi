@@ -31,8 +31,9 @@ async def test_read_odh_events_empty(
     client: AsyncClient, session: AsyncSession
 ) -> None:
     """Test reading ODH events when DB is empty."""
-    # Ensure DB is empty (fixture creates fresh DB but session might persist if not careful,
-    # but based on conftest it should be isolated per test if using in-memory)
+    # Ensure DB is empty (fixture creates fresh DB but session might persist
+    # if not careful, but based on conftest it should be isolated per test
+    # if using in-memory)
     # Actually conftest uses session fixture.
 
     response = await client.get("/events/odh")
@@ -95,10 +96,26 @@ async def test_read_odh_events_existing(
 
 
 @pytest.mark.asyncio
-async def test_read_odh_events_filter_taken(client: AsyncClient, session: AsyncSession) -> None:
+async def test_read_odh_events_filter_taken(
+    client: AsyncClient, session: AsyncSession
+) -> None:
     """Test filtering ODH events by taken status."""
-    e1 = ODHEvent(id="e1", title="Taken", taken=True, is_new=True, date_start=datetime.now(UTC), date_end=datetime.now(UTC))
-    e2 = ODHEvent(id="e2", title="Free", taken=False, is_new=True, date_start=datetime.now(UTC), date_end=datetime.now(UTC))
+    e1 = ODHEvent(
+        id="e1",
+        title="Taken",
+        taken=True,
+        is_new=True,
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
+    )
+    e2 = ODHEvent(
+        id="e2",
+        title="Free",
+        taken=False,
+        is_new=True,
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
+    )
     session.add_all([e1, e2])
     await session.commit()
 
@@ -118,39 +135,60 @@ async def test_read_odh_events_filter_taken(client: AsyncClient, session: AsyncS
 
 
 @pytest.mark.asyncio
-async def test_toggle_odh_event_taken(client: AsyncClient, session: AsyncSession) -> None:
+async def test_toggle_odh_event_taken(
+    client: AsyncClient, session: AsyncSession
+) -> None:
     """Test toggling the taken status of an ODH event."""
-    event = ODHEvent(id="toggle-test", title="Toggle", taken=False, is_new=True, date_start=datetime.now(UTC), date_end=datetime.now(UTC))
+    event = ODHEvent(
+        id="toggle-test",
+        title="Toggle",
+        taken=False,
+        is_new=True,
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
+    )
     session.add(event)
     await session.commit()
 
     # Toggle to True
-    response = await client.patch(f"/events/odh/{event.id}/taken", params={"taken": "true"})
+    response = await client.patch(
+        f"/events/odh/{event.id}/taken", params={"taken": "true"}
+    )
     assert response.status_code == 200
     assert response.json()["taken"] is True
-    
+
     # Verify persistence
     await session.refresh(event)
     assert event.taken is True
 
     # Toggle to False
-    response = await client.patch(f"/events/odh/{event.id}/taken", params={"taken": "false"})
+    response = await client.patch(
+        f"/events/odh/{event.id}/taken", params={"taken": "false"}
+    )
     assert response.status_code == 200
     assert response.json()["taken"] is False
 
 
 @pytest.mark.asyncio
-async def test_toggle_odh_event_not_found(client: AsyncClient, session: AsyncSession) -> None:
+async def test_toggle_odh_event_not_found(
+    client: AsyncClient, session: AsyncSession
+) -> None:
     """Test toggling a non-existent event."""
-    response = await client.patch("/events/odh/non-existent/taken", params={"taken": "true"})
+    response = await client.patch(
+        "/events/odh/non-existent/taken", params={"taken": "true"}
+    )
     assert response.status_code == 404
     assert response.json()["detail"] == "Event not found"
 
 
 @pytest.mark.asyncio
-async def test_sync_odh_events_error(client: AsyncClient, session: AsyncSession) -> None:
+async def test_sync_odh_events_error(
+    client: AsyncClient, session: AsyncSession
+) -> None:
     """Test error handling in sync endpoint."""
-    with patch("venvi.api.routers.events.sync_odh_events", side_effect=Exception("Sync Failed")):
+    with patch(
+        "venvi.api.routers.events.sync_odh_events", side_effect=Exception("Sync Failed")
+    ):
         response = await client.post("/events/odh/sync")
         assert response.status_code == 500
         assert "Sync Failed" in response.json()["detail"]

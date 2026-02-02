@@ -13,8 +13,6 @@ from venvi.models.hackathon import Hackathon
 EURO_HACKATHONS_API = "https://euro-hackathons.vercel.app/api/hackathons"
 
 
-
-
 async def fetch_euro_hackathons() -> list[dict[str, Any]]:
     """
     Fetches upcoming hackathons from the Euro Hackathons API.
