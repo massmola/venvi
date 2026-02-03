@@ -28,7 +28,7 @@ async def test_init_db() -> None:
                 return inspect(connection).get_table_names()
 
             tables = await conn.run_sync(check_tables)
-            assert "hackathon" in tables
+            assert "event" in tables
 
 
 @pytest.mark.asyncio

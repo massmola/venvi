@@ -1,0 +1,53 @@
+{% for event in events %}
+<div
+    class="bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-brand-500/30 transition-all group">
+    {% if event.image_url %}
+    <div class="h-48 overflow-hidden">
+        <img src="{{ event.image_url }}" alt="{{ event.title }}"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    </div>
+    {% endif %}
+
+    <div class="p-6 text-left">
+        <div class="flex justify-between items-start mb-4">
+            <span
+                class="px-2 py-1 bg-brand-500/10 text-brand-400 text-xs font-semibold rounded uppercase tracking-wider">
+                {{ event.category }}
+            </span>
+            <span class="text-slate-500 text-xs">
+                {{ event.source_name }}
+            </span>
+        </div>
+
+        <h3 class="text-xl font-bold mb-2 group-hover:text-brand-400 transition-colors">
+            {{ event.title }}
+        </h3>
+
+        <div class="flex items-center text-slate-400 text-sm mb-4">
+            <span class="mr-4">📍 {{ event.location }}</span>
+            <span>📅 {{ event.date_start.strftime('%b %d, %Y') }}</span>
+        </div>
+
+        {% if event.description %}
+        <p class="text-slate-400 text-sm line-clamp-3 mb-6">
+            {{ event.description }}
+        </p>
+        {% endif %}
+
+        <div class="flex gap-2 mb-6">
+            {% for topic in event.topics %}
+            <span class="px-2 py-1 bg-white/5 text-slate-300 text-xs rounded">#{{ topic }}</span>
+            {% endfor %}
+        </div>
+
+        <a href="{{ event.url }}" target="_blank"
+            class="block w-full text-center py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold transition-all">
+            View Details
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="col-span-full text-center py-20 bg-white/5 rounded-3xl border border-dashed border-white/10">
+    <p class="text-slate-400">No events found. Try syncing to fetch the latest data.</p>
+</div>
+{% endfor %}

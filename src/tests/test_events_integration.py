@@ -4,11 +4,10 @@ from unittest.mock import patch
 import pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
-from venvi.models.odh_event import ODHEvent
+from venvi.models.event import Event
 
 # Mock Data for Sync
 MOCK_ODH_API_DATA = {
-    "TotalResults": 1,
     "Items": [
         {
             "Id": "integration-test-event-1",
@@ -27,68 +26,64 @@ MOCK_ODH_API_DATA = {
 
 
 @pytest.mark.asyncio
-async def test_read_odh_events_empty(
-    client: AsyncClient, session: AsyncSession
-) -> None:
-    """Test reading ODH events when DB is empty."""
-    # Ensure DB is empty (fixture creates fresh DB but session might persist
-    # if not careful, but based on conftest it should be isolated per test
-    # if using in-memory)
-    # Actually conftest uses session fixture.
-
-    response = await client.get("/events/odh")
+async def test_read_events_empty(client: AsyncClient, session: AsyncSession) -> None:
+    """Test reading events when DB is empty."""
+    response = await client.get("/events/")
     assert response.status_code == 200
     assert response.json() == []
 
 
 @pytest.mark.asyncio
-async def test_sync_odh_events_integration(
+async def test_sync_events_integration(
     client: AsyncClient, session: AsyncSession
 ) -> None:
-    """Test full sync flow with mocked external API but real DB persistence."""
+    """Test full sync flow with mocked providers."""
 
-    # Mock the external API call in services.odh.fetch_odh_events
-    # We mock 'httpx.AsyncClient.get' essentially, or simpler: mock fetch_odh_events
-
-    with patch("venvi.services.odh.fetch_odh_events") as mock_fetch:
-        # fetch_odh_events returns list[dict]
+    with (
+        patch("venvi.services.providers.odh.ODHProvider.fetch_events") as mock_fetch,
+        patch(
+            "venvi.services.providers.euro_hackathons.EuroHackathonsProvider.fetch_events"
+        ) as mock_fetch_hack,
+    ):
         mock_fetch.return_value = MOCK_ODH_API_DATA["Items"]
+        mock_fetch_hack.return_value = []
 
         # Trigger Sync
-        response = await client.post("/events/odh/sync")
+        response = await client.post("/events/sync")
         assert response.status_code == 200
         data = response.json()
         assert data["message"] == "Sync complete"
-        assert data["new_items"] == 1
+        assert data["total"] == 1
 
         # Verify persistence via API
-        list_response = await client.get("/events/odh")
+        list_response = await client.get("/events/")
         assert list_response.status_code == 200
         events = list_response.json()
         assert len(events) == 1
         assert events[0]["title"] == "Integration Event"
         assert events[0]["location"] == "Integration City"
-        assert events[0]["id"] == "integration-test-event-1"
+        assert events[0]["source_name"] == "odh"
 
 
 @pytest.mark.asyncio
-async def test_read_odh_events_existing(
-    client: AsyncClient, session: AsyncSession
-) -> None:
-    """Test reading pre-inserted ODH events."""
-    event = ODHEvent(
+async def test_read_events_existing(client: AsyncClient, session: AsyncSession) -> None:
+    """Test reading pre-inserted events."""
+    event = Event(
         id="pre-existing-1",
         title="Existing Event",
         description="Description",
         date_start=datetime(2026, 1, 1, 10, 0, 0, tzinfo=UTC),
         date_end=datetime(2026, 1, 1, 12, 0, 0, tzinfo=UTC),
         location="Existing City",
+        url="https://test.com",
+        source_name="test",
+        source_id="1",
         is_new=True,
     )
     session.add(event)
     await session.commit()
 
-    response = await client.get("/events/odh")
+    response = await client.get("/events/")
     assert response.status_code == 200
     events = response.json()
     assert len(events) == 1
@@ -96,13 +91,11 @@ async def test_read_odh_events_existing(
 
 
 @pytest.mark.asyncio
-async def test_sync_odh_events_error(
-    client: AsyncClient, session: AsyncSession
-) -> None:
+async def test_sync_events_error(client: AsyncClient, session: AsyncSession) -> None:
     """Test error handling in sync endpoint."""
     with patch(
-        "venvi.api.routers.events.sync_odh_events", side_effect=Exception("Sync Failed")
+        "venvi.api.routers.events.sync_all_events", side_effect=Exception("Sync Failed")
     ):
-        response = await client.post("/events/odh/sync")
+        response = await client.post("/events/sync")
         assert response.status_code == 500
         assert "Sync Failed" in response.json()["detail"]

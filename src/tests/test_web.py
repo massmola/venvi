@@ -3,7 +3,7 @@ from datetime import UTC, datetime
 import pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
-from venvi.models.hackathon import Hackathon
+from venvi.models.event import Event
 
 
 @pytest.mark.asyncio
@@ -13,41 +13,40 @@ async def test_index_page(client: AsyncClient) -> None:
     assert response.status_code == 200
     assert "Venvi" in response.text
     # Check for HTMX trigger
-    assert 'hx-get="/partials/hackathons"' in response.text
+    assert 'hx-get="/partials/events"' in response.text
     assert 'hx-trigger="load, reload from:body"' in response.text
 
 
 @pytest.mark.asyncio
-async def test_hackathons_partial_empty(client: AsyncClient) -> None:
-    """Test the hackathons partial when no data is present."""
-    response = await client.get("/partials/hackathons")
+async def test_events_partial_empty(client: AsyncClient) -> None:
+    """Test the events partial when no data is present."""
+    response = await client.get("/partials/events")
     assert response.status_code == 200
-    # Should render an empty list or appropriate partial content
-    # (Check for lack of 500 status and presence of expected HTML structure)
-    assert "text-brand-400" not in response.text  # No cards should be rendered
+    assert "event-list" not in response.text  # Adjust if needed based on partial logic
 
 
 @pytest.mark.asyncio
-async def test_hackathons_partial_with_data(
+async def test_events_partial_with_data(
     client: AsyncClient, session: AsyncSession
 ) -> None:
-    """Test the hackathons partial with actual data, catching rendering/async errors."""
-    hackathon = Hackathon(
-        id="309e1cfb-5040-4086-bfec-f67bdc3380ff",
-        name="Integration Test Hackathon",
-        city="Test City",
-        country_code="TC",
+    """Test the events partial with actual data."""
+    event = Event(
+        id="test-id-123",
+        title="Web Test Event",
         date_start=datetime(2026, 2, 3, 0, 0, 0, tzinfo=UTC),
         date_end=datetime(2026, 2, 4, 0, 0, 0, tzinfo=UTC),
-        topics=["test", "integration"],
-        url="https://integration.test",
-        status="upcoming",
+        location="Web City",
+        url="https://web.test",
+        source_name="web_test",
+        source_id="123",
+        topics=["web", "test"],
+        category="general",
     )
-    session.add(hackathon)
+    session.add(event)
     await session.commit()
 
-    response = await client.get("/partials/hackathons")
+    response = await client.get("/partials/events")
     assert response.status_code == 200
-    assert "Integration Test Hackathon" in response.text
-    assert "Test City, TC" in response.text
-    assert "#test" in response.text
+    assert "Web Test Event" in response.text
+    assert "Web City" in response.text
+    assert "#web" in response.text

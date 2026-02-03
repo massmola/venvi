@@ -3,12 +3,12 @@ from datetime import UTC, datetime
 import pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
-from venvi.models.hackathon import Hackathon
+from venvi.models.event import Event
 
 
 @pytest.mark.asyncio
-async def test_read_hackathons_empty(client: AsyncClient) -> None:
-    response = await client.get("/hackathons/")
+async def test_read_events_empty(client: AsyncClient) -> None:
+    response = await client.get("/events/")
     assert response.status_code == 200
     assert response.json() == []
 
@@ -17,81 +17,81 @@ async def test_read_hackathons_empty(client: AsyncClient) -> None:
 async def test_sync_endpoint_mocked(client: AsyncClient, session: AsyncSession) -> None:
     from unittest.mock import patch
 
-    with patch("venvi.services.ingestion.fetch_euro_hackathons", return_value=[]):
-        response = await client.post("/hackathons/sync")
+    with patch("venvi.services.ingestion.sync_all_events", return_value={"test": 0}):
+        response = await client.post("/events/sync")
         assert response.status_code == 200
-        assert response.json() == {"message": "Sync complete", "new_items": 0}
+        assert response.json()["message"] == "Sync complete"
 
 
 @pytest.mark.asyncio
-async def test_create_and_read_hackathon(
+async def test_create_and_read_event(
     client: AsyncClient, session: AsyncSession
 ) -> None:
-    hackathon = Hackathon(
-        id="209e1cfb-5040-4086-bfec-f67bdc3380ff",
-        name="API Test Hackathon",
-        city="API City",
-        country_code="AC",
+    event = Event(
+        id="test-event-id",
+        title="API Test Event",
         date_start=datetime(2026, 2, 3, 0, 0, 0, tzinfo=UTC),
         date_end=datetime(2026, 2, 4, 0, 0, 0, tzinfo=UTC),
-        topics=[],
+        location="API City",
         url="https://api.test",
-        status="upcoming",
+        source_name="test_source",
+        source_id="original_id",
+        category="hackathon",
     )
-    session.add(hackathon)
+    session.add(event)
     await session.commit()
 
-    response = await client.get("/hackathons/")
+    response = await client.get("/events/")
     assert response.status_code == 200
     data = response.json()
     assert len(data) == 1
-    assert data[0]["name"] == "API Test Hackathon"
+    assert data[0]["title"] == "API Test Event"
 
 
 @pytest.mark.asyncio
-async def test_read_hackathons_filtering(
+async def test_read_events_filtering(
     client: AsyncClient, session: AsyncSession
 ) -> None:
-    """Test filtering hackathons by status."""
-    h1 = Hackathon(
-        id="a09e1cfb-5040-4086-bfec-f67bdc3380ff",
-        name="Upcoming Hack",
-        city="City A",
-        country_code="AA",
+    """Test filtering events by category and source."""
+    e1 = Event(
+        id="event-1",
+        title="Hackathon Event",
         date_start=datetime(2026, 2, 3, 0, 0, 0, tzinfo=UTC),
         date_end=datetime(2026, 2, 4, 0, 0, 0, tzinfo=UTC),
-        topics=[],
+        location="City A",
         url="https://a.test",
-        status="upcoming",
+        category="hackathon",
+        source_name="source_a",
+        source_id="1",
     )
-    h2 = Hackathon(
-        id="b09e1cfb-5040-4086-bfec-f67bdc3380ff",
-        name="Past Hack",
-        city="City B",
-        country_code="BB",
-        date_start=datetime(2025, 2, 3, 0, 0, 0, tzinfo=UTC),
-        date_end=datetime(2025, 2, 4, 0, 0, 0, tzinfo=UTC),
-        topics=[],
+    e2 = Event(
+        id="event-2",
+        title="Other Event",
+        date_start=datetime(2026, 2, 3, 0, 0, 0, tzinfo=UTC),
+        date_end=datetime(2026, 2, 4, 0, 0, 0, tzinfo=UTC),
+        location="City B",
         url="https://b.test",
-        status="past",
+        category="general",
+        source_name="source_b",
+        source_id="2",
     )
-    session.add(h1)
-    session.add(h2)
+    session.add(e1)
+    session.add(e2)
     await session.commit()
 
-    # Test filtering for upcoming
-    response = await client.get("/hackathons/", params={"status": "upcoming"})
+    # Test filtering for hackathon
+    response = await client.get("/events/", params={"category": "hackathon"})
     assert response.status_code == 200
     data = response.json()
     assert len(data) == 1
-    assert data[0]["name"] == "Upcoming Hack"
+    assert data[0]["title"] == "Hackathon Event"
 
-    # Test filtering for past
-    response = await client.get("/hackathons/", params={"status": "past"})
+    # Test filtering for source_b
+    response = await client.get("/events/", params={"source": "source_b"})
     assert response.status_code == 200
     data = response.json()
     assert len(data) == 1
-    assert data[0]["name"] == "Past Hack"
+    assert data[0]["title"] == "Other Event"
 
 
 @pytest.mark.asyncio
@@ -102,9 +102,9 @@ async def test_sync_endpoint_failure(
     from unittest.mock import patch
 
     with patch(
-        "venvi.api.routers.hackathons.sync_hackathons",
+        "venvi.api.routers.events.sync_all_events",
         side_effect=Exception("Database Connection Error"),
     ):
-        response = await client.post("/hackathons/sync")
+        response = await client.post("/events/sync")
         assert response.status_code == 500
         assert "Database Connection Error" in response.json()["detail"]

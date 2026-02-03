@@ -11,7 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
 
 from venvi.core.db import get_session
-from venvi.models.hackathon import Hackathon
+from venvi.models.event import Event
 
 router = APIRouter()
 
@@ -34,24 +34,24 @@ async def index(request: Request) -> Response:
     return templates.TemplateResponse(request, "index.html")
 
 
-@router.get("/partials/hackathons", include_in_schema=False)
-async def get_hackathons_partial(
+@router.get("/partials/events", include_in_schema=False)
+async def get_events_partial(
     request: Request, session: AsyncSession = Depends(get_session)
 ) -> Response:
     """
-    Renders the hackathon list partial for dynamic HTMX updates.
+    Renders the event list partial for dynamic HTMX updates.
 
     Args:
         request: The Starlette request object.
         session: The asynchronous database session.
 
     Returns:
-        TemplateResponse: The rendered partials/hackathon_list.html template.
+        TemplateResponse: The rendered partials/event_list.html template.
     """
-    query = select(Hackathon).order_by(Hackathon.date_start.asc())
+    query = select(Event).order_by(Event.date_start.asc())
     result = await session.execute(query)
-    hackathons: Sequence[Hackathon] = result.scalars().all()
+    events: Sequence[Event] = result.scalars().all()
 
     return templates.TemplateResponse(
-        request, "partials/hackathon_list.html", {"hackathons": hackathons}
+        request, "partials/event_list.html", {"events": events}
     )

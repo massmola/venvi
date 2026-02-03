@@ -5,7 +5,6 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 import venvi.api.routers.events
-from venvi.api.routers import hackathons
 from venvi.core.db import init_db
 from venvi.web.router import router as web_router
 
@@ -17,8 +16,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Venvi - Euro Hackathons",
-    description="Weekend trip suggestion turned Hackathon Aggregator",
+    title="Venvi - EU Event Suggestion Platform",
+    description="Discover and sync events from multiple sources",
     version="0.1.0",
     lifespan=lifespan,
 )
@@ -29,5 +28,4 @@ app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="stat
 
 # Include Routers
 app.include_router(web_router)
-app.include_router(hackathons.router)
 app.include_router(venvi.api.routers.events.router)

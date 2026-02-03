@@ -21,10 +21,7 @@
     </p>
 
     <div class="flex gap-4">
-        <button
-            hx-post="/hackathons/sync"
-            hx-swap="none"
-            hx-on::after-request="htmx.trigger('#hackathon-list', 'load')"
+        <button hx-post="/events/sync" hx-swap="none" hx-on::after-request="htmx.trigger('#event-list', 'load')"
             class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/20">
             Sync & Refresh
         </button>
@@ -36,11 +33,8 @@
 </div>
 
 <!-- HTMX loaded content -->
-<div id="hackathon-list" 
-     hx-get="/partials/hackathons" 
-     hx-trigger="load, reload from:body" 
-     hx-swap="innerHTML"
-     class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div id="event-list" hx-get="/partials/events" hx-trigger="load, reload from:body" hx-swap="innerHTML"
+    class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Server will render items here -->
     <div class="col-span-full text-center text-slate-500">
         Loading top events...
