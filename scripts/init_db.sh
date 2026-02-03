@@ -26,7 +26,7 @@ fi
 
 # 3. Create User and Database
 # Use -h /tmp to connect via the unix socket we just configured
-if ! psql -h /tmp template1 -c '\du' | grep -q 'postgres'; then
+if ! psql -h /tmp template1 -tAc "SELECT 1 FROM pg_roles WHERE rolname='postgres'" | grep -q '1'; then
     echo " -> Creating superuser 'postgres'..."
     createuser -h /tmp -s postgres
     # Set password
@@ -35,7 +35,7 @@ else
     echo " -> User 'postgres' exists."
 fi
 
-if ! psql -h /tmp -lqt | cut -d \| -f 1 | grep -qw venvi; then
+if ! psql -h /tmp template1 -tAc "SELECT 1 FROM pg_database WHERE datname='venvi'" | grep -q '1'; then
     echo " -> Creating database 'venvi'..."
     createdb -h /tmp -O postgres venvi
 else

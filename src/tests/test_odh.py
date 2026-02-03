@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import UTC, datetime
+from typing import Any, cast
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
@@ -88,7 +89,7 @@ def test_map_odh_event_edge_cases() -> None:
     from venvi.services.odh import map_odh_event
 
     # Case 1: Minimal data to trigger fallbacks
-    raw: dict = {"Detail": {}}  # No Id, No DateBegin, No Title in detail
+    raw: dict[str, Any] = {"Detail": {}}  # No Id, No DateBegin, No Title in detail
     event = map_odh_event(raw)
 
     # Should generate ID from title (which defaults to "Untitled Event")
@@ -126,8 +127,8 @@ async def test_sync_odh_events_update_existing() -> None:
         id="test-event-1",
         title="Old Title",
         is_new=False,
-        date_start=datetime.now(),
-        date_end=datetime.now(),
+        date_start=datetime.now(UTC),
+        date_end=datetime.now(UTC),
     )
     mock_result = MagicMock()
     mock_result.scalar_one_or_none.return_value = existing_event
@@ -138,7 +139,7 @@ async def test_sync_odh_events_update_existing() -> None:
         mock_instance.__aenter__.return_value = mock_instance
 
         # Return same ID but new title
-        new_data = MOCK_ODH_RESPONSE.copy()
+        new_data = cast(dict[str, Any], MOCK_ODH_RESPONSE.copy())
         new_data["Items"][0]["Detail"]["en"]["Title"] = "New Title"
 
         mock_response = MagicMock()
