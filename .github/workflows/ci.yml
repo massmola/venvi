@@ -17,6 +17,9 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
+      - name: Install Dependencies
+        run: nix develop --command poetry install
+
       - name: Check Formatting (Ruff)
         run: nix develop --command poetry run ruff format --check .
 

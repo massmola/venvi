@@ -21,6 +21,7 @@
             gcc
             pkg-config
             ruff
+            mypy
           ];
 
           shellHook = ''

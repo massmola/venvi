@@ -23,4 +23,3 @@ class Hackathon(SQLModel, table=True):
     url: str
     status: str
     is_new: bool = False
-    taken: bool = False

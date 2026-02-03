@@ -17,4 +17,3 @@ class ODHEvent(SQLModel, table=True):
     image_url: str | None = None
     source_url: str | None = None
     is_new: bool = True
-    taken: bool = False

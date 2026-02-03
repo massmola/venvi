@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "venvi"
 version = "0.1.0"
-description = "EU Hackathon Aggregator and Suggestion Platform."
+description = "EU Event Suggestion Platform."
 authors = ["Venvi Team"]
 readme = "README.md"
 packages = [{include = "venvi", from = "src"}]
