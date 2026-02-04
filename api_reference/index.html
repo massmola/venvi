@@ -425,10 +425,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.models.hackathon" class="md-nav__link">
+  <a href="#venvi.models.event" class="md-nav__link">
     <span class="md-ellipsis">
       
-        hackathon
+        event
       
     </span>
   </a>
@@ -436,32 +436,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.models.hackathon.Hackathon" class="md-nav__link">
+  <a href="#venvi.models.event.Event" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hackathon
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.models.odh_event" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        odh_event
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.models.odh_event.ODHEvent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ODHEvent
+        Event
       
     </span>
   </a>
@@ -491,10 +469,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.ingestion.fetch_euro_hackathons" class="md-nav__link">
+  <a href="#venvi.services.ingestion.sync_all_events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fetch_euro_hackathons
+        sync_all_events
       
     </span>
   </a>
@@ -502,18 +480,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.ingestion.sync_hackathons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sync_hackathons
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.services.odh" class="md-nav__link">
+  <a href="#venvi.services.providers.odh" class="md-nav__link">
     <span class="md-ellipsis">
       
         odh
@@ -524,10 +491,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.odh.fetch_odh_events" class="md-nav__link">
+  <a href="#venvi.services.providers.euro_hackathons" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fetch_odh_events
+        euro_hackathons
       
     </span>
   </a>
@@ -535,10 +502,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.odh.map_odh_event" class="md-nav__link">
+  <a href="#venvi.services.providers.base" class="md-nav__link">
     <span class="md-ellipsis">
       
-        map_odh_event
+        base
       
     </span>
   </a>
@@ -546,13 +513,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.odh.sync_odh_events" class="md-nav__link">
+  <a href="#venvi.services.providers.base.BaseEventProvider" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sync_odh_events
+        BaseEventProvider
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="BaseEventProvider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.source_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        source_name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.fetch_events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fetch_events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.map_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        map_event
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.sync_events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sync_events
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -561,50 +578,6 @@
     <span class="md-ellipsis">
       
         Routers (API)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hackathons
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons.read_hackathons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        read_hackathons
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons.sync_data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sync_data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons.toggle_hackathon_taken" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        toggle_hackathon_taken
       
     </span>
   </a>
@@ -623,10 +596,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.api.routers.events.read_odh_events" class="md-nav__link">
+  <a href="#venvi.api.routers.events.read_events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        read_odh_events
+        read_events
       
     </span>
   </a>
@@ -634,21 +607,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.api.routers.events.sync_odh_data" class="md-nav__link">
+  <a href="#venvi.api.routers.events.sync_events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sync_odh_data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.events.toggle_odh_event_taken" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        toggle_odh_event_taken
+        sync_events
       
     </span>
   </a>
@@ -678,10 +640,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.web.router.get_hackathons_partial" class="md-nav__link">
+  <a href="#venvi.web.router.get_events_partial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        get_hackathons_partial
+        get_events_partial
       
     </span>
   </a>
@@ -745,10 +707,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.models.hackathon" class="md-nav__link">
+  <a href="#venvi.models.event" class="md-nav__link">
     <span class="md-ellipsis">
       
-        hackathon
+        event
       
     </span>
   </a>
@@ -756,32 +718,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.models.hackathon.Hackathon" class="md-nav__link">
+  <a href="#venvi.models.event.Event" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hackathon
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.models.odh_event" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        odh_event
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.models.odh_event.ODHEvent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ODHEvent
+        Event
       
     </span>
   </a>
@@ -811,10 +751,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.ingestion.fetch_euro_hackathons" class="md-nav__link">
+  <a href="#venvi.services.ingestion.sync_all_events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fetch_euro_hackathons
+        sync_all_events
       
     </span>
   </a>
@@ -822,18 +762,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.ingestion.sync_hackathons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sync_hackathons
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.services.odh" class="md-nav__link">
+  <a href="#venvi.services.providers.odh" class="md-nav__link">
     <span class="md-ellipsis">
       
         odh
@@ -844,10 +773,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.odh.fetch_odh_events" class="md-nav__link">
+  <a href="#venvi.services.providers.euro_hackathons" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fetch_odh_events
+        euro_hackathons
       
     </span>
   </a>
@@ -855,10 +784,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.odh.map_odh_event" class="md-nav__link">
+  <a href="#venvi.services.providers.base" class="md-nav__link">
     <span class="md-ellipsis">
       
-        map_odh_event
+        base
       
     </span>
   </a>
@@ -866,13 +795,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.services.odh.sync_odh_events" class="md-nav__link">
+  <a href="#venvi.services.providers.base.BaseEventProvider" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sync_odh_events
+        BaseEventProvider
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="BaseEventProvider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.source_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        source_name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.fetch_events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fetch_events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.map_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        map_event
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venvi.services.providers.base.BaseEventProvider.sync_events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sync_events
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -881,50 +860,6 @@
     <span class="md-ellipsis">
       
         Routers (API)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hackathons
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons.read_hackathons" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        read_hackathons
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons.sync_data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sync_data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.hackathons.toggle_hackathon_taken" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        toggle_hackathon_taken
       
     </span>
   </a>
@@ -943,10 +878,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.api.routers.events.read_odh_events" class="md-nav__link">
+  <a href="#venvi.api.routers.events.read_events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        read_odh_events
+        read_events
       
     </span>
   </a>
@@ -954,21 +889,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.api.routers.events.sync_odh_data" class="md-nav__link">
+  <a href="#venvi.api.routers.events.sync_events" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sync_odh_data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#venvi.api.routers.events.toggle_odh_event_taken" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        toggle_odh_event_taken
+        sync_events
       
     </span>
   </a>
@@ -998,10 +922,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#venvi.web.router.get_hackathons_partial" class="md-nav__link">
+  <a href="#venvi.web.router.get_events_partial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        get_hackathons_partial
+        get_events_partial
       
     </span>
   </a>
@@ -1045,7 +969,7 @@
 
 
 
-<a id="venvi.models.hackathon"></a>
+<a id="venvi.models.event"></a>
     <div class="doc doc-contents first">
 
 
@@ -1068,8 +992,8 @@
 
 
 
-<h2 id="venvi.models.hackathon.Hackathon" class="doc doc-heading">
-            <code>Hackathon</code>
+<h2 id="venvi.models.event.Event" class="doc doc-heading">
+            <code>Event</code>
 
 
 </h2>
@@ -1080,9 +1004,7 @@
               Bases: <code><span title="sqlmodel.SQLModel">SQLModel</span></code></p>
 
 
-        <p>Represents a hackathon event in the EU.</p>
-<p>This model stores core information about hackathons aggregated from various sources,
-including their location, dates, topics, and status.</p>
+        <p>A unified model representing an event from any source.</p>
 
 
 
@@ -1090,8 +1012,9 @@ including their location, dates, topics, and status.</p>
 
 
               <details class="quote">
-                <summary>Source code in <code>src/venvi/models/hackathon.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+                <summary>Source code in <code>src/venvi/models/event.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+<span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
@@ -1107,126 +1030,9 @@ including their location, dates, topics, and status.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Hackathon</span><span class="p">(</span><span class="n">SQLModel</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">(</span><span class="n">SQLModel</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Represents a hackathon event in the EU.</span>
-
-<span class="sd">    This model stores core information about hackathons aggregated from various sources,</span>
-<span class="sd">    including their location, dates, topics, and status.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">id</span><span class="p">:</span> <span class="n">UUID</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">city</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">country_code</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">date_start</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
-    <span class="n">date_end</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
-    <span class="n">topics</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">JSON</span><span class="p">))</span>
-    <span class="n">notes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">status</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">is_new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">taken</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="venvi.models.odh_event"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="venvi.models.odh_event.ODHEvent" class="doc doc-heading">
-            <code>ODHEvent</code>
-
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="sqlmodel.SQLModel">SQLModel</span></code></p>
-
-
-        <p>Represents an event from the South Tyrol Open Data Hub.</p>
-
-
-
-
-
-
-              <details class="quote">
-                <summary>Source code in <code>src/venvi/models/odh_event.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ODHEvent</span><span class="p">(</span><span class="n">SQLModel</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Represents an event from the South Tyrol Open Data Hub.</span>
+<span class="sd">    A unified model representing an event from any source.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1235,10 +1041,13 @@ including their location, dates, topics, and status.</p>
     <span class="n">date_start</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
     <span class="n">date_end</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
     <span class="n">location</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">source_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">source_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">topics</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[],</span> <span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">JSON</span><span class="p">))</span>
+    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;general&quot;</span>
     <span class="n">is_new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">taken</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -1279,8 +1088,6 @@ including their location, dates, topics, and status.</p>
 <a id="venvi.services.ingestion"></a>
     <div class="doc doc-contents first">
 
-        <p>Services for aggregating and synchronizing hackathon data from external providers.</p>
-
 
 
 
@@ -1301,8 +1108,8 @@ including their location, dates, topics, and status.</p>
 <div class="doc doc-object doc-function">
 
 
-<h2 id="venvi.services.ingestion.fetch_euro_hackathons" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fetch_euro_hackathons</span><span class="p">()</span></code>
+<h2 id="venvi.services.ingestion.sync_all_events" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">sync_all_events</span><span class="p">(</span><span class="n">session</span><span class="p">)</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-async"><code>async</code></small>
@@ -1313,106 +1120,7 @@ including their location, dates, topics, and status.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Fetches upcoming hackathons from the Euro Hackathons API.</p>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>list[dict]: A list of raw hackathon data dictionaries.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="httpx.HTTPStatusError">HTTPStatusError</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the API request fails.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/services/ingestion.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_euro_hackathons</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fetches upcoming hackathons from the Euro Hackathons API.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list[dict]: A list of raw hackathon data dictionaries.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        httpx.HTTPStatusError: If the API request fails.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">EURO_HACKATHONS_API</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;upcoming&quot;</span><span class="p">})</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">[])</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.services.ingestion.sync_hackathons" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">sync_hackathons</span><span class="p">(</span><span class="n">session</span><span class="p">)</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Synchronizes the local database with the Euro Hackathons API.</p>
-<p>New items are created, and existing items are updated if their data has changed.</p>
+        <p>Synchronizes events from all registered providers.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -1456,12 +1164,12 @@ including their location, dates, topics, and status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>int</code></td>            <td>
-                  <code><span title="int">int</span></code>
+<td><code>dict</code></td>            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="int">int</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The number of new hackathons added.</p>
+                <p>A mapping of provider source names to the count of new events added.</p>
               </div>
             </td>
           </tr>
@@ -1470,7 +1178,185 @@ including their location, dates, topics, and status.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/venvi/services/ingestion.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_all_events</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Synchronizes events from all registered providers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        session: The asynchronous database session.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A mapping of provider source names to the count of new events added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">provider</span> <span class="ow">in</span> <span class="n">PROVIDERS</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider</span><span class="o">.</span><span class="n">sync_events</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">provider</span><span class="o">.</span><span class="n">source_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="venvi.services.providers.odh"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="venvi.services.providers.euro_hackathons"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="venvi.services.providers.base"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="venvi.services.providers.base.BaseEventProvider" class="doc doc-heading">
+            <code>BaseEventProvider</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+
+        <p>Abstract base class for event providers.</p>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/venvi/services/providers/base.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
@@ -1497,79 +1383,59 @@ including their location, dates, topics, and status.</p>
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_hackathons</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseEventProvider</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Synchronizes the local database with the Euro Hackathons API.</span>
-
-<span class="sd">    New items are created, and existing items are updated if their data has changed.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        int: The number of new hackathons added.</span>
+<span class="sd">    Abstract base class for event providers.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">raw_hackathons</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch_euro_hackathons</span><span class="p">()</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">raw_hackathons</span><span class="p">:</span>
-        <span class="c1"># Check if already exists</span>
-        <span class="n">statement</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Hackathon</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Hackathon</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">raw</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
-        <span class="n">existing</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span>
+    <span class="nd">@property</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">source_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The identifier for this source (e.g., &#39;euro_hackathons&#39;).&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
 
-        <span class="k">if</span> <span class="n">existing</span><span class="p">:</span>
-            <span class="c1"># Update fields if necessary</span>
-            <span class="n">updated_instance</span> <span class="o">=</span> <span class="n">Hackathon</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-            <span class="n">update_data</span> <span class="o">=</span> <span class="n">updated_instance</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">update_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">existing</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="n">existing</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-            <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">existing</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># Create new</span>
-            <span class="n">hackathon</span> <span class="o">=</span> <span class="n">Hackathon</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-            <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hackathon</span><span class="p">)</span>
-            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fetch raw event data from the source.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
 
-    <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">count</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">map_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Event</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map raw data to the unified Event model.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fetch, map, and synchronize events with the database.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span>
+
+        <span class="n">raw_events</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch_events</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">raw_events</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_event</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+            <span class="c1"># Ensure source info is set</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">source_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_name</span>
+
+            <span class="c1"># Check if exists</span>
+            <span class="n">statement</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+            <span class="n">existing</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">existing</span><span class="p">:</span>
+                <span class="c1"># Update fields</span>
+                <span class="n">update_data</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">update_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;is_new&quot;</span><span class="p">:</span>  <span class="c1"># Don&#39;t overwrite is_new flag</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="n">existing</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">existing</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">count</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="venvi.services.odh"></a>
-    <div class="doc doc-contents first">
-
-        <p>Services for fetching and synchronizing events from the South Tyrol Open Data Hub.</p>
-
-
-
-
-
+              </details>
 
 
 
@@ -1581,118 +1447,115 @@ including their location, dates, topics, and status.</p>
 
 
 
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="venvi.services.providers.base.BaseEventProvider.source_name" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">source_name</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The identifier for this source (e.g., 'euro_hackathons').</p>
+    </div>
+
+</div>
+
 
 
 <div class="doc doc-object doc-function">
 
 
-<h2 id="venvi.services.odh.fetch_odh_events" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fetch_odh_events</span><span class="p">(</span><span class="n">page_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span></code>
+<h3 id="venvi.services.providers.base.BaseEventProvider.fetch_events" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">fetch_events</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch raw event data from the source.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src/venvi/services/providers/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetch raw event data from the source.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="venvi.services.providers.base.BaseEventProvider.map_event" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">map_event</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Map raw data to the unified Event model.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src/venvi/services/providers/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">map_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Event</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map raw data to the unified Event model.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="venvi.services.providers.base.BaseEventProvider.sync_events" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">sync_events</span><span class="p">(</span><span class="n">session</span><span class="p">)</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-async"><code>async</code></small>
   </span>
 
-</h2>
+</h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Fetches events from the Open Data Hub API.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>page_size</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of events to fetch.</p>
-              </div>
-            </td>
-            <td>
-                  <code>20</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>list[dict]: A list of raw event data dictionaries.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="httpx.HTTPStatusError">HTTPStatusError</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the API request fails.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Fetch, map, and synchronize events with the database.</p>
 
             <details class="quote">
-              <summary>Source code in <code>src/venvi/services/odh.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
+              <summary>Source code in <code>src/venvi/services/providers/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
@@ -1704,410 +1567,37 @@ including their location, dates, topics, and status.</p>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_odh_events</span><span class="p">(</span><span class="n">page_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fetches events from the Open Data Hub API.</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetch, map, and synchronize events with the database.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        page_size: Number of events to fetch.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list[dict]: A list of raw event data dictionaries.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        httpx.HTTPStatusError: If the API request fails.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;pagenumber&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;pagesize&quot;</span><span class="p">:</span> <span class="n">page_size</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="c1"># We might want to filter by date or other parameters in the future.</span>
-    <span class="c1"># The current goal is basic integration.</span>
-
-    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ODH_API_URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Items&quot;</span><span class="p">,</span> <span class="p">[])</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.services.odh.map_odh_event" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">map_odh_event</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span></code>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Maps raw ODH event data to the ODHEvent model.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>raw</code>
-            </td>
-            <td>
-                  <code><span title="dict">dict</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Dictionary containing raw event data from ODH.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>ODHEvent</code></td>            <td>
-                  <code><a class="autorefs autorefs-internal" title="ODHEvent (venvi.models.odh_event.ODHEvent)" href="#venvi.models.odh_event.ODHEvent">ODHEvent</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The mapped model instance.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/services/odh.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">map_odh_event</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ODHEvent</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Maps raw ODH event data to the ODHEvent model.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        raw: Dictionary containing raw event data from ODH.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        ODHEvent: The mapped model instance.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Defensive programming for handling optional fields and language selection</span>
-    <span class="c1"># (prefer &#39;en&#39;, fallback to &#39;it&#39;/&#39;de&#39;)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_start_date</span><span class="p">(</span><span class="n">raw_event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-        <span class="c1"># Assuming EventDate is a list and we take the first one or the main DateBegin</span>
-        <span class="c1"># The structure is a bit complex, let&#39;s try to find the best date</span>
-        <span class="c1"># Check &#39;DateBegin&#39; first</span>
-        <span class="k">if</span> <span class="n">raw_event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DateBegin&quot;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">raw_event</span><span class="p">[</span><span class="s2">&quot;DateBegin&quot;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>  <span class="c1"># Fallback, should not happen for valid events</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_end_date</span><span class="p">(</span><span class="n">raw_event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">raw_event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DateEnd&quot;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">raw_event</span><span class="p">[</span><span class="s2">&quot;DateEnd&quot;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">get_start_date</span><span class="p">(</span><span class="n">raw_event</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_localized_string</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="c1"># Try to find the key in language dictionaries</span>
-        <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;it&quot;</span><span class="p">,</span> <span class="s2">&quot;de&quot;</span><span class="p">]:</span>
-            <span class="n">lang_data</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lang_data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-                <span class="n">val</span> <span class="o">=</span> <span class="n">lang_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">val</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">val</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="n">details</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Detail&quot;</span><span class="p">,</span> <span class="p">{})</span>
-
-    <span class="n">title</span> <span class="o">=</span> <span class="n">get_localized_string</span><span class="p">(</span><span class="n">details</span><span class="p">,</span> <span class="s2">&quot;Title&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;Untitled Event&quot;</span>
-    <span class="c1"># Description is often in &#39;BaseText&#39; or &#39;IntroText&#39;</span>
-    <span class="n">description</span> <span class="o">=</span> <span class="n">get_localized_string</span><span class="p">(</span><span class="n">details</span><span class="p">,</span> <span class="s2">&quot;BaseText&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">get_localized_string</span><span class="p">(</span>
-        <span class="n">details</span><span class="p">,</span> <span class="s2">&quot;IntroText&quot;</span>
-    <span class="p">)</span>
-
-    <span class="c1"># Location</span>
-    <span class="n">location_info</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ContactInfos&quot;</span><span class="p">,</span> <span class="p">{})</span>
-    <span class="c1"># Just take city from contact info if available, or LocationInfo</span>
-    <span class="c1"># The structure saw earlier had &#39;ContactInfos&#39; with &#39;en&#39;, &#39;it&#39;, etc.</span>
-    <span class="n">contact_en</span> <span class="o">=</span> <span class="n">location_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="p">{})</span>
-    <span class="n">city</span> <span class="o">=</span> <span class="n">contact_en</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;City&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;Unknown Location&quot;</span>
-
-    <span class="c1"># Image</span>
-    <span class="n">image_url</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">gallery</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ImageGallery&quot;</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">if</span> <span class="n">gallery</span><span class="p">:</span>
-        <span class="n">image_url</span> <span class="o">=</span> <span class="n">gallery</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ImageUrl&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Try to resolve or generate an ID</span>
-    <span class="n">raw_id</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Id&quot;</span><span class="p">)</span>
-
-    <span class="n">raw_id</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Id&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_id</span><span class="p">:</span>
-        <span class="c1"># try to find it in mapping</span>
-        <span class="n">mapping</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Mapping&quot;</span><span class="p">,</span> <span class="p">{})</span>
-        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="k">if</span> <span class="s2">&quot;rid&quot;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
-                <span class="n">raw_id</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="s2">&quot;rid&quot;</span><span class="p">]</span>
-                <span class="k">break</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_id</span><span class="p">:</span>
-        <span class="c1"># Last resort fallback</span>
-        <span class="n">raw_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DateBegin&quot;</span><span class="p">))))</span>
-
-    <span class="k">return</span> <span class="n">ODHEvent</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="n">raw_id</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
-        <span class="n">date_start</span><span class="o">=</span><span class="n">get_start_date</span><span class="p">(</span><span class="n">raw</span><span class="p">),</span>
-        <span class="n">date_end</span><span class="o">=</span><span class="n">get_end_date</span><span class="p">(</span><span class="n">raw</span><span class="p">),</span>
-        <span class="n">location</span><span class="o">=</span><span class="n">city</span><span class="p">,</span>
-        <span class="n">image_url</span><span class="o">=</span><span class="n">image_url</span><span class="p">,</span>
-        <span class="n">source_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Detail link might be constructed</span>
-        <span class="n">is_new</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.services.odh.sync_odh_events" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">sync_odh_events</span><span class="p">(</span><span class="n">session</span><span class="p">)</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Synchronizes the local database with the Open Data Hub API.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>session</code>
-            </td>
-            <td>
-                  <code><span title="sqlalchemy.ext.asyncio.AsyncSession">AsyncSession</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The asynchronous database session.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>int</code></td>            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The number of new events added.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/services/odh.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_odh_events</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Synchronizes the local database with the Open Data Hub API.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        int: The number of new events added.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">raw_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch_odh_events</span><span class="p">()</span>
+    <span class="n">raw_events</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch_events</span><span class="p">()</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">raw_events</span><span class="p">:</span>
-        <span class="n">event</span> <span class="o">=</span> <span class="n">map_odh_event</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_event</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="c1"># Ensure source info is set</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">source_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_name</span>
 
         <span class="c1"># Check if exists</span>
-        <span class="n">statement</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">ODHEvent</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ODHEvent</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">statement</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
         <span class="n">existing</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span>
 
@@ -2136,458 +1626,8 @@ including their location, dates, topics, and status.</p>
 
     </div>
 
-</div><h2 id="routers-api">Routers (API)</h2>
-
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="venvi.api.routers.hackathons"></a>
-    <div class="doc doc-contents first">
-
-        <p>API endpoints for managing and viewing hackathon data.</p>
-
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.api.routers.hackathons.read_hackathons" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">read_hackathons</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">taken</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Retrieves a list of hackathons from the database.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>status</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional filter by hackathon status (e.g., 'upcoming', 'past').</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>taken</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional filter by 'taken' status.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>session</code>
-            </td>
-            <td>
-                  <code><span title="sqlalchemy.ext.asyncio.AsyncSession">AsyncSession</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The asynchronous database session.</p>
-              </div>
-            </td>
-            <td>
-                  <code><span title="fastapi.Depends">Depends</span>(<span title="venvi.core.db.get_session">get_session</span>)</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>list[Hackathon]: A list of hackathon objects.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/api/routers/hackathons.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="n">Hackathon</span><span class="p">])</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_hackathons</span><span class="p">(</span>
-    <span class="n">status</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">taken</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">),</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves a list of hackathons from the database.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        status: Optional filter by hackathon status (e.g., &#39;upcoming&#39;, &#39;past&#39;).</span>
-<span class="sd">        taken: Optional filter by &#39;taken&#39; status.</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list[Hackathon]: A list of hackathon objects.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Hackathon</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Hackathon</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">status</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">taken</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Hackathon</span><span class="o">.</span><span class="n">taken</span> <span class="o">==</span> <span class="n">taken</span><span class="p">)</span>
-
-    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
 </div>
 
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.api.routers.hackathons.sync_data" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">sync_data</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Triggers an on-demand synchronization with external data sources.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>session</code>
-            </td>
-            <td>
-                  <code><span title="sqlalchemy.ext.asyncio.AsyncSession">AsyncSession</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The asynchronous database session.</p>
-              </div>
-            </td>
-            <td>
-                  <code><span title="fastapi.Depends">Depends</span>(<span title="venvi.core.db.get_session">get_session</span>)</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A status message and the count of new items added.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="fastapi.HTTPException">HTTPException</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the synchronization process fails.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/api/routers/hackathons.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/sync&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_data</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Triggers an on-demand synchronization with external data sources.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        dict: A status message and the count of new items added.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        HTTPException: If the synchronization process fails.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sync_hackathons</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Sync complete&quot;</span><span class="p">,</span> <span class="s2">&quot;new_items&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">}</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.api.routers.hackathons.toggle_hackathon_taken" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">toggle_hackathon_taken</span><span class="p">(</span><span class="n">hackathon_id</span><span class="p">,</span> <span class="n">taken</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Updates the 'taken' status of a hackathon.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>hackathon_id</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The UUID of the hackathon.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>taken</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The new taken status.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/api/routers/hackathons.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{hackathon_id}</span><span class="s2">/taken&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Hackathon</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">toggle_hackathon_taken</span><span class="p">(</span>
-    <span class="n">hackathon_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">taken</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Updates the &#39;taken&#39; status of a hackathon.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        hackathon_id: The UUID of the hackathon.</span>
-<span class="sd">        taken: The new taken status.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Note: hackathon_id is a string in URL but UUID in model.</span>
-    <span class="c1"># SQLAlchemy/SQLModel should handle coercion if passed as string to get(),</span>
-    <span class="c1"># but let&#39;s be safe or rely on FastAPI validation if we typed it as UUID.</span>
-    <span class="c1"># The models/hackathon.py defines id as UUID.</span>
-
-    <span class="c1"># We need to import UUID if we want to cast, or let sqlmodel handle it.</span>
-    <span class="c1"># session.get usually works with string for UUID pk but let&#39;s just pass it.</span>
-
-    <span class="n">hackathon</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Hackathon</span><span class="p">,</span> <span class="n">hackathon_id</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">hackathon</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Hackathon not found&quot;</span><span class="p">)</span>
-
-    <span class="n">hackathon</span><span class="o">.</span><span class="n">taken</span> <span class="o">=</span> <span class="n">taken</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hackathon</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-    <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">hackathon</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">hackathon</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
 
 
 
@@ -2595,7 +1635,8 @@ including their location, dates, topics, and status.</p>
 
     </div>
 
-</div>
+</div><h2 id="routers-api">Routers (API)</h2>
+
 
 <div class="doc doc-object doc-module">
 
@@ -2604,8 +1645,6 @@ including their location, dates, topics, and status.</p>
 <a id="venvi.api.routers.events"></a>
     <div class="doc doc-contents first">
 
-        <p>API endpoints for managing and viewing events from multiple sources.</p>
-
 
 
 
@@ -2626,8 +1665,8 @@ including their location, dates, topics, and status.</p>
 <div class="doc doc-object doc-function">
 
 
-<h2 id="venvi.api.routers.events.read_odh_events" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">read_odh_events</span><span class="p">(</span><span class="n">taken</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
+<h2 id="venvi.api.routers.events.read_events" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">read_events</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-async"><code>async</code></small>
@@ -2638,80 +1677,15 @@ including their location, dates, topics, and status.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Retrieves a list of South Tyrol Open Data Hub events from the database.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>taken</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional filter by 'taken' status.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>session</code>
-            </td>
-            <td>
-                  <code><span title="sqlalchemy.ext.asyncio.AsyncSession">AsyncSession</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The asynchronous database session.</p>
-              </div>
-            </td>
-            <td>
-                  <code><span title="fastapi.Depends">Depends</span>(<span title="venvi.core.db.get_session">get_session</span>)</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>list[ODHEvent]: A list of ODH event objects.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Retrieves a list of events from the database.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/venvi/api/routers/events.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
@@ -2723,32 +1697,20 @@ including their location, dates, topics, and status.</p>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/odh&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="n">ODHEvent</span><span class="p">])</span>
-<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/odh&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="n">ODHEvent</span><span class="p">])</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_odh_events</span><span class="p">(</span>
-    <span class="n">taken</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">])</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_events</span><span class="p">(</span>
+    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">),</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves a list of South Tyrol Open Data Hub events from the database.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        taken: Optional filter by &#39;taken&#39; status.</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list[ODHEvent]: A list of ODH event objects.</span>
+<span class="sd">    Retrieves a list of events from the database.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">ODHEvent</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">taken</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ODHEvent</span><span class="o">.</span><span class="n">taken</span> <span class="o">==</span> <span class="n">taken</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">date_start</span><span class="o">.</span><span class="n">asc</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">category</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">category</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">source</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">source_name</span> <span class="o">==</span> <span class="n">source</span><span class="p">)</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -2761,8 +1723,8 @@ including their location, dates, topics, and status.</p>
 <div class="doc doc-object doc-function">
 
 
-<h2 id="venvi.api.routers.events.sync_odh_data" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">sync_odh_data</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
+<h2 id="venvi.api.routers.events.sync_events" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">sync_events</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-async"><code>async</code></small>
@@ -2773,309 +1735,31 @@ including their location, dates, topics, and status.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Triggers an on-demand synchronization with South Tyrol Open Data Hub.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>session</code>
-            </td>
-            <td>
-                  <code><span title="sqlalchemy.ext.asyncio.AsyncSession">AsyncSession</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The asynchronous database session.</p>
-              </div>
-            </td>
-            <td>
-                  <code><span title="fastapi.Depends">Depends</span>(<span title="venvi.core.db.get_session">get_session</span>)</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>dict</code></td>            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A status message and the count of new items added.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="fastapi.HTTPException">HTTPException</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the synchronization process fails.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Triggers an on-demand synchronization with all event providers.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/venvi/api/routers/events.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/odh/sync&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_odh_data</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/sync&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_events</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Triggers an on-demand synchronization with South Tyrol Open Data Hub.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        dict: A status message and the count of new items added.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        HTTPException: If the synchronization process fails.</span>
+<span class="sd">    Triggers an on-demand synchronization with all event providers.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sync_odh_events</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Sync complete&quot;</span><span class="p">,</span> <span class="s2">&quot;new_items&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">}</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sync_all_events</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+        <span class="n">total_new</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Sync complete&quot;</span><span class="p">,</span> <span class="s2">&quot;new_items&quot;</span><span class="p">:</span> <span class="n">results</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total_new</span><span class="p">}</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="venvi.api.routers.events.toggle_odh_event_taken" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">toggle_odh_event_taken</span><span class="p">(</span><span class="n">event_id</span><span class="p">,</span> <span class="n">taken</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Updates the 'taken' status of an ODH event.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>event_id</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The ID of the event.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>taken</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The new taken status.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>session</code>
-            </td>
-            <td>
-                  <code><span title="sqlalchemy.ext.asyncio.AsyncSession">AsyncSession</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The asynchronous database session.</p>
-              </div>
-            </td>
-            <td>
-                  <code><span title="fastapi.Depends">Depends</span>(<span title="venvi.core.db.get_session">get_session</span>)</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>ODHEvent</code></td>            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The updated event.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="fastapi.HTTPException">HTTPException</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the event is not found.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/venvi/api/routers/events.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/odh/</span><span class="si">{event_id}</span><span class="s2">/taken&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">ODHEvent</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">toggle_odh_event_taken</span><span class="p">(</span>
-    <span class="n">event_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">taken</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Updates the &#39;taken&#39; status of an ODH event.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        event_id: The ID of the event.</span>
-<span class="sd">        taken: The new taken status.</span>
-<span class="sd">        session: The asynchronous database session.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        ODHEvent: The updated event.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        HTTPException: If the event is not found.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ODHEvent</span><span class="p">,</span> <span class="n">event_id</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Event not found&quot;</span><span class="p">)</span>
-
-    <span class="n">event</span><span class="o">.</span><span class="n">taken</span> <span class="o">=</span> <span class="n">taken</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-    <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">event</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3120,8 +1804,8 @@ including their location, dates, topics, and status.</p>
 <div class="doc doc-object doc-function">
 
 
-<h2 id="venvi.web.router.get_hackathons_partial" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">get_hackathons_partial</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
+<h2 id="venvi.web.router.get_events_partial" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_events_partial</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">))</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-async"><code>async</code></small>
@@ -3132,7 +1816,7 @@ including their location, dates, topics, and status.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Renders the hackathon list partial for dynamic HTMX updates.</p>
+        <p>Renders the event list partial for dynamic HTMX updates.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3197,7 +1881,7 @@ including their location, dates, topics, and status.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The rendered partials/hackathon_list.html template.</p>
+                <p>The rendered partials/event_list.html template.</p>
               </div>
             </td>
           </tr>
@@ -3226,26 +1910,26 @@ including their location, dates, topics, and status.</p>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/partials/hackathons&quot;</span><span class="p">,</span> <span class="n">include_in_schema</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_hackathons_partial</span><span class="p">(</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/partials/events&quot;</span><span class="p">,</span> <span class="n">include_in_schema</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_events_partial</span><span class="p">(</span>
     <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Renders the hackathon list partial for dynamic HTMX updates.</span>
+<span class="sd">    Renders the event list partial for dynamic HTMX updates.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        request: The Starlette request object.</span>
 <span class="sd">        session: The asynchronous database session.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        TemplateResponse: The rendered partials/hackathon_list.html template.</span>
+<span class="sd">        TemplateResponse: The rendered partials/event_list.html template.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Hackathon</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">Hackathon</span><span class="o">.</span><span class="n">date_start</span><span class="o">.</span><span class="n">asc</span><span class="p">())</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">date_start</span><span class="o">.</span><span class="n">asc</span><span class="p">())</span>
     <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-    <span class="n">hackathons</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Hackathon</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">events</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
-        <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;partials/hackathon_list.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;hackathons&quot;</span><span class="p">:</span> <span class="n">hackathons</span><span class="p">}</span>
+        <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;partials/event_list.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;events&quot;</span><span class="p">:</span> <span class="n">events</span><span class="p">}</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
