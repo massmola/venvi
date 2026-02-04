@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from venvi.models.event import Event
 
 

@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Any
 
 import httpx
+
 from venvi.models.event import Event
 from venvi.services.providers.base import BaseEventProvider
 

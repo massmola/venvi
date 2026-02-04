@@ -6,6 +6,9 @@ authors = ["Venvi Team"]
 readme = "README.md"
 packages = [{include = "venvi", from = "src"}]
 
+[tool.poetry.scripts]
+validate = "scripts.validate:main"
+
 [tool.poetry.dependencies]
 python = "^3.12"
 fastapi = "^0.109.0"
