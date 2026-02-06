@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Venvi Validation Script
 # Runs all quality checks for the Go/PocketBase project
 
