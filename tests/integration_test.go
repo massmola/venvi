@@ -25,7 +25,7 @@ func TestIntegration(t *testing.T) {
 
 	// 1. Verify Schema and ID Constraints (Direct DB tests)
 	t.Run("DatabaseLogic", func(t *testing.T) {
-		testApp, err := tests.NewTestApp("pb_data")
+		testApp, err := createTestApp(t)
 		require.NoError(t, err)
 		defer testApp.Cleanup()
 
@@ -88,7 +88,10 @@ func TestIntegration(t *testing.T) {
 				`"healthy"`,
 			},
 			TestAppFactory: func(t testing.TB) *tests.TestApp {
-				app, _ := tests.NewTestApp("pb_data")
+				app, err := createTestApp(t)
+				if err != nil {
+					t.Fatalf("failed to create test app: %v", err)
+				}
 				return app
 			},
 			BeforeTestFunc: func(t testing.TB, app *tests.TestApp, e *core.ServeEvent) {
@@ -105,7 +108,10 @@ func TestIntegration(t *testing.T) {
 			ExpectedStatus:  http.StatusOK,
 			ExpectedContent: []string{`[`}, // Expect a JSON array
 			TestAppFactory: func(t testing.TB) *tests.TestApp {
-				app, _ := tests.NewTestApp("pb_data")
+				app, err := createTestApp(t)
+				if err != nil {
+					t.Fatalf("failed to create test app: %v", err)
+				}
 				return app
 			},
 			BeforeTestFunc: func(t testing.TB, app *tests.TestApp, e *core.ServeEvent) {
@@ -128,7 +134,10 @@ func TestIntegration(t *testing.T) {
 				"<title>", // Basic check for HTML
 			},
 			TestAppFactory: func(t testing.TB) *tests.TestApp {
-				app, _ := tests.NewTestApp("pb_data")
+				app, err := createTestApp(t)
+				if err != nil {
+					t.Fatalf("failed to create test app: %v", err)
+				}
 				return app
 			},
 			BeforeTestFunc: func(t testing.TB, app *tests.TestApp, e *core.ServeEvent) {
@@ -143,4 +152,51 @@ func TestIntegration(t *testing.T) {
 	for _, scenario := range scenarios {
 		scenario.Test(t)
 	}
+}
+
+// createTestApp creates a new test app instance.
+// If "pb_data" exists in the root, it uses it (preserving data).
+// If not, it initializes a fresh app and applies the minimal "events" schema.
+func createTestApp(t testing.TB) (*tests.TestApp, error) {
+	// We assume CWD is the project root (set in TestIntegration)
+	dataDir := "pb_data"
+	if _, err := os.Stat(dataDir); os.IsNotExist(err) {
+		dataDir = "" // Triggers empty temporary data dir in NewTestApp
+	}
+
+	app, err := tests.NewTestApp(dataDir)
+	if err != nil {
+		return nil, err
+	}
+
+	// If using fresh data (dataDir == ""), we need to create the schema
+	if dataDir == "" {
+		// Create 'events' collection
+		collection := core.NewBaseCollection("events")
+		collection.Fields.Add(
+			&core.TextField{Name: "title", Required: true},
+			&core.TextField{Name: "description", Required: false},
+			&core.DateField{Name: "date_start", Required: true},
+			&core.DateField{Name: "date_end", Required: true},
+			&core.TextField{Name: "location", Required: false},
+			&core.URLField{Name: "url", Required: true},
+			&core.URLField{Name: "image_url", Required: false},
+			&core.TextField{Name: "source_name", Required: true},
+			&core.TextField{Name: "source_id", Required: true},
+			&core.JSONField{Name: "topics", Required: false},
+			&core.TextField{Name: "category", Required: true},
+			&core.BoolField{Name: "is_new", Required: false},
+			&core.NumberField{Name: "latitude", Required: false},
+			&core.NumberField{Name: "longitude", Required: false},
+		)
+		// Public read access
+		collection.ListRule = types.Pointer("")
+		collection.ViewRule = types.Pointer("")
+
+		if err := app.Save(collection); err != nil {
+			return nil, err
+		}
+	}
+
+	return app, nil
 }
