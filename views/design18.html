@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Belle Époque</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Parisienne&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --mucha-peach: #fec5bb;
+            --mucha-cream: #fcd5ce;
+            --mucha-sage: #81b29a;
+            --mucha-olive: #556b2f;
+            --mucha-ink: #3d405b;
+            --mucha-gold: #e29578;
+        }
+
+        body {
+            background-color: var(--mucha-ink);
+            /* Framing color */
+            color: var(--mucha-ink);
+            font-family: 'Goudy Bookletter 1911', serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .font-script {
+            font-family: 'Parisienne', cursive;
+        }
+
+        /* Lithograph effect: Flat colors + Outlines */
+        .litho-card {
+            background-color: var(--mucha-cream);
+            border: 3px solid var(--mucha-ink);
+            box-shadow: 0 0 0 10px #f4f1de, 0 0 30px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* The iconic Mucha Circular Halo */
+        .halo-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            z-index: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+        }
+
+        .halo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 2px solid var(--mucha-ink);
+            background: linear-gradient(to top, var(--mucha-peach) 0%, white 100%);
+            position: relative;
+            z-index: 0;
+        }
+
+        .halo::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            border: 1px dotted var(--mucha-ink);
+        }
+
+        .halo-decor {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at center, transparent 65%, var(--mucha-gold) 66%, var(--mucha-gold) 70%, transparent 71%);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        /* Decorative Ribbons/Hair */
+        .ribbon {
+            position: absolute;
+            border: 2px solid var(--mucha-ink);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* Typography Box */
+        .text-box {
+            position: relative;
+            z-index: 20;
+            background: rgba(255, 249, 240, 0.9);
+            border-top: 2px solid var(--mucha-ink);
+            border-bottom: 2px solid var(--mucha-ink);
+            padding: 20px;
+            margin-top: 200px;
+            /* Space for the artwork/halo */
+            text-align: center;
+        }
+
+        .text-box::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            border-top: 1px solid var(--mucha-olive);
+            border-bottom: 1px solid var(--mucha-olive);
+        }
+
+        .btn-litho {
+            background: var(--mucha-olive);
+            color: white;
+            padding: 8px 24px;
+            border: 2px solid var(--mucha-ink);
+            font-family: 'Goudy Bookletter 1911';
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .btn-litho:hover {
+            background: var(--mucha-ink);
+            color: var(--mucha-cream);
+        }
+
+        .corner-flower {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--mucha-peach);
+            border: 1px solid var(--mucha-ink);
+            border-radius: 50% 50% 0 50%;
+            z-index: 30;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="litho-card">
+
+        <!-- Corners -->
+        <div class="corner-flower top-4 left-4 rotate-45"></div>
+        <div class="corner-flower top-4 right-4 rotate-[135deg]"></div>
+        <div class="corner-flower bottom-4 left-4 rotate-[-45deg]"></div>
+        <div class="corner-flower bottom-4 right-4 rotate-[-135deg]"></div>
+
+        <!-- Upper Graphic Section -->
+        <div class="halo-container">
+            <div class="halo">
+                <div class="halo-decor"></div>
+                <!-- Abstract Female Figure Placeholder (Hair curves) -->
+                <div
+                    class="ribbon w-64 h-64 border-t-0 border-r-0 border-l-[3px] border-b-[3px] rounded-[40%] top-10 left-[-20px] rotate-12 border-[#d68c45]">
+                </div>
+                <div
+                    class="ribbon w-64 h-64 border-t-0 border-l-0 border-r-[3px] border-b-[3px] rounded-[40%] top-10 right-[-20px] -rotate-12 border-[#d68c45]">
+                </div>
+
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center z-10">
+                    <span class="font-script text-6xl text-[#3d405b]">Venvi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="text-box relative">
+
+            <div class="py-4">
+                <h1 class="text-3xl font-bold uppercase tracking-widest mb-2 text-[#556b2f]">Program of Events</h1>
+                <div class="w-16 h-1 bg-[#e29578] mx-auto mb-4"></div>
+
+                <p class="mb-6 text-lg px-8 leading-relaxed italic text-[#3d405b]">
+                    "An exquisite gathering of minds for the purpose of celebration and discovery."
+                </p>
+
+                <ul class="text-left max-w-xs mx-auto space-y-4 mb-8">
+                    <li class="flex justify-between border-b border-dotted border-[#3d405b]">
+                        <span>Théâtre de la Ville</span>
+                        <span class="font-bold">20h00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-dotted border-[#3d405b]">
+                        <span>Le Grand Salon</span>
+                        <span class="font-bold">22h00</span>
+                    </li>
+                </ul>
+
+                <button class="btn-litho">Réservez</button>
+            </div>
+
+            <!-- Bottom decorative curve -->
+            <div
+                class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-48 h-12 border-2 border-[#3d405b] rounded-b-full bg-[#fcd5ce] -z-10">
+            </div>
+        </div>
+
+        <div
+            class="h-20 bg-[#f4f1de] bg-[url('data:image/svg+xml,%3Csvg%20width=%2720%27%20height=%2720%27%20viewBox=%270%200%2020%2020%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Ccircle%20cx=%272%27%20cy=%272%27%20r=%271%27%20fill=%27%2381b29a%27/%3E%3C/svg%3E')] opacity-30">
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -43,6 +43,279 @@ func RegisterWebRoutes(se *core.ServeEvent, registry *template.Registry) {
 		return e.HTML(http.StatusOK, html)
 	})
 
+	// Design 1: Neon/Cyberpunk
+	se.Router.GET("/design/1", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design1.html",
+		).Render(map[string]any{
+			"title": "Venvi - Cyberpunk",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 2: Minimal/Swiss
+	se.Router.GET("/design/2", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design2.html",
+		).Render(map[string]any{
+			"title": "Venvi - Minimal",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 3: Organic/Nature
+	se.Router.GET("/design/3", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design3.html",
+		).Render(map[string]any{
+			"title": "Venvi - Organic",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 4: Brutalist
+	se.Router.GET("/design/4", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design4.html",
+		).Render(map[string]any{
+			"title": "Venvi - Brutalist",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 5: Luxury/Glassmorphism
+	se.Router.GET("/design/5", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design5.html",
+		).Render(map[string]any{
+			"title": "Venvi - Luxury",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 6: Pixel Art
+	se.Router.GET("/design/6", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design6.html",
+		).Render(map[string]any{
+			"title": "Venvi - Pixel Art",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 7: Papercut
+	se.Router.GET("/design/7", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design7.html",
+		).Render(map[string]any{
+			"title": "Venvi - Papercut",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 8: Art Nouveau
+	se.Router.GET("/design/8", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design8.html",
+		).Render(map[string]any{
+			"title": "Venvi - Art Nouveau",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 9: Art Deco
+	se.Router.GET("/design/9", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design9.html",
+		).Render(map[string]any{
+			"title": "Venvi - Art Deco",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 10: Pointillism
+	se.Router.GET("/design/10", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design10.html",
+		).Render(map[string]any{
+			"title": "Venvi - Pointillism",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 11: Neumorphism (Restored)
+	se.Router.GET("/design/11", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design11.html",
+		).Render(map[string]any{
+			"title": "Venvi - Soft UI",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 12: Papercut Monochrome
+	se.Router.GET("/design/12", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design12.html",
+		).Render(map[string]any{
+			"title": "Venvi - Papercut Mono",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 13: Papercut Vibrant
+	se.Router.GET("/design/13", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design13.html",
+		).Render(map[string]any{
+			"title": "Venvi - Papercut Vibrant",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 14: Papercut Noir
+	se.Router.GET("/design/14", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design14.html",
+		).Render(map[string]any{
+			"title": "Venvi - Papercut Noir",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 15: Cardstock (Middleground)
+	se.Router.GET("/design/15", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design15.html",
+		).Render(map[string]any{
+			"title": "Venvi - Cardstock",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 16: Golden Age (Klimt)
+	se.Router.GET("/design/16", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design16.html",
+		).Render(map[string]any{
+			"title": "Venvi - Klimt",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 17: Metro (Ironwork)
+	se.Router.GET("/design/17", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design17.html",
+		).Render(map[string]any{
+			"title": "Venvi - Metro",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 18: La Belle Époque (Poster)
+	se.Router.GET("/design/18", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design18.html",
+		).Render(map[string]any{
+			"title": "Venvi - Belle Époque",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 19: Tiffany (Stained Glass)
+	se.Router.GET("/design/19", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design19.html",
+		).Render(map[string]any{
+			"title": "Venvi - Tiffany",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 20: Whiplash (Botanical)
+	se.Router.GET("/design/20", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design20.html",
+		).Render(map[string]any{
+			"title": "Venvi - Whiplash",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 21: High-Def Papercut
+	se.Router.GET("/design/21", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design21.html",
+		).Render(map[string]any{
+			"title": "Venvi - High-Def Papercut",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
 	// HTMX partial for event list
 	se.Router.GET("/partials/events", func(e *core.RequestEvent) error {
 		app := e.App

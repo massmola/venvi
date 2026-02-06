@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Papercut Vibrant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matisse-blue: #004aad;
+            --matisse-red: #ff3c38;
+            --matisse-yellow: #ffd23f;
+            --matisse-green: #06d6a0;
+            --matisse-cream: #fff9e6;
+        }
+
+        body {
+            background-color: var(--matisse-cream);
+            color: var(--matisse-blue);
+            font-family: 'Chewy', cursive;
+            overflow-x: hidden;
+        }
+
+        .font-loud {
+            font-family: 'Bangers', cursive;
+        }
+
+        /* Rough Cut Effect */
+        .rough-cut {
+            clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 96%);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+        }
+
+        .rough-cut:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
+
+        /* Torn Edge generator simulation */
+        .torn-paper {
+            background-color: white;
+            position: relative;
+            padding: 2rem;
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.1));
+        }
+
+        .torn-paper::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: inherit;
+            mask-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 L0 10 Q5 0 10 10 T20 10 T30 10 T40 10 T50 10 T60 10 T70 10 T80 10 T90 10 T100 10 L100 20 Z' fill='black'/%3E%3C/svg%3E");
+            mask-size: 20px 100%;
+        }
+
+        .torn-paper::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: inherit;
+            mask-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L0 10 Q5 20 10 10 T20 10 T30 10 T40 10 T50 10 T60 10 T70 10 T80 10 T90 10 T100 10 L100 0 Z' fill='black'/%3E%3C/svg%3E");
+            mask-size: 20px 100%;
+        }
+
+        .blob {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            }
+
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+        }
+
+        .scrap {
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-10 px-4 relative">
+
+    <!-- Chaotic Background Scraps -->
+    <div class="scrap top-10 left-10 w-64 h-64 bg-[#ff3c38] rounded-full opacity-80 mix-blend-multiply"
+        style="clip-path: circle(45% at 50% 50%);"></div>
+    <div class="scrap bottom-20 right-10 w-80 h-80 bg-[#ffd23f] rounded-full opacity-80 mix-blend-multiply blob"></div>
+    <div
+        class="scrap top-40 right-40 w-48 h-96 bg-[#06d6a0] transform rotate-12 opacity-80 mix-blend-multiply rough-cut">
+    </div>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mb-16 relative">
+        <div class="bg-white p-4 transform -rotate-3 rough-cut border-4 border-[#004aad]">
+            <h1 class="font-loud text-5xl tracking-wider text-[#004aad]">VENVI_ART</h1>
+        </div>
+        <div
+            class="bg-[#ff3c38] text-white p-3 transform rotate-2 rough-cut rounded-lg cursor-pointer hover:scale-110 transition-transform">
+            <span class="text-2xl">Menu</span>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+
+        <!-- Hero Card -->
+        <div class="md:col-span-8 bg-white p-8 rough-cut relative transform rotate-1">
+            <div
+                class="absolute -top-4 -right-4 w-16 h-16 bg-[#ffd23f] rounded-full flex items-center justify-center font-bold shadow-md z-1">
+                NEW!
+            </div>
+
+            <h2 class="font-loud text-5xl mb-4 text-[#ff3c38]">Hackathon <br>Summer Camp</h2>
+            <p class="text-xl leading-snug mb-6 text-gray-700">
+                Join us for a week of messy code and crafting beautiful software.
+                Bring your own scissors.
+            </p>
+
+            <div class="aspect-video bg-[#004aad] rounded-sm transform -rotate-1 p-2">
+                <div class="w-full h-full bg-[#87ceeb] relative overflow-hidden group">
+                    <!-- Animated Sun -->
+                    <div class="absolute top-4 right-4 w-12 h-12 bg-[#ffd23f] rounded-full animate-bounce"></div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1/3 bg-[#06d6a0] transform skew-y-3 origin-bottom-left">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar / Sticker Column -->
+        <div class="md:col-span-4 flex flex-col gap-8 mt-12 md:mt-0">
+
+            <div class="bg-[#ffd23f] p-6 rough-cut transform rotate-3 text-[#004aad]">
+                <h3 class="font-loud text-3xl mb-2">Upcoming</h3>
+                <ul class="text-lg space-y-2 list-disc list-inside marker:text-[#ff3c38]">
+                    <li>Paris UX Meetup</li>
+                    <li>Berlin Codejam</li>
+                    <li>London Design Wk</li>
+                </ul>
+            </div>
+
+            <div class="bg-[#06d6a0] p-6 rough-cut transform -rotate-2 text-white">
+                <h3 class="font-loud text-3xl mb-2">Stats</h3>
+                <div class="text-4xl font-bold">1,240 <br><span class="text-lg font-normal">Artists Joined</span></div>
+            </div>
+
+            <div
+                class="bg-white p-4 transform rotate-1 border-dashed border-4 border-[#004aad] text-center cursor-pointer hover:bg-[#004aad] hover:text-white transition-colors">
+                <span class="text-2xl">Join Now &rarr;</span>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="mt-20 text-center font-loud text-[#004aad] text-xl opacity-50">
+        Handcrafted with CSS & Love
+    </footer>
+
+</body>
+
+</html>

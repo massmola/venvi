@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Cardstock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cardstock Palette: Muted but distinct forms */
+            --cs-bg: #e6e8e6;
+            --cs-slate: #475569;
+            --cs-terracotta: #e07a5f;
+            --cs-sage: #81b29a;
+            --cs-mustard: #f2cc8f;
+            --cs-cream: #f4f1de;
+
+            /* Realistic deep shadows */
+            --shadow-depth-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            --shadow-depth-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            --shadow-depth-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            --shadow-depth-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        body {
+            background-color: var(--cs-bg);
+            color: var(--cs-slate);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(var(--cs-slate) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+
+        /* Card Class - The core building block */
+        .card-layer {
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+            position: relative;
+        }
+
+        .card-white {
+            background-color: white;
+        }
+
+        .card-terra {
+            background-color: var(--cs-terracotta);
+            color: white;
+        }
+
+        .card-sage {
+            background-color: var(--cs-sage);
+            color: white;
+        }
+
+        .card-mustard {
+            background-color: var(--cs-mustard);
+            color: var(--cs-slate);
+        }
+
+        .card-slate {
+            background-color: var(--cs-slate);
+            color: white;
+        }
+
+        .depth-1 {
+            box-shadow: var(--shadow-depth-1);
+        }
+
+        .depth-2 {
+            box-shadow: var(--shadow-depth-2);
+        }
+
+        .depth-3 {
+            box-shadow: var(--shadow-depth-3);
+            z-index: 10;
+        }
+
+        .depth-4 {
+            box-shadow: var(--shadow-depth-4);
+            z-index: 20;
+        }
+
+        .card-layer:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+            z-index: 30;
+        }
+
+        /* Precision Cutouts */
+        .notch-tr {
+            clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%);
+        }
+
+        .tab-top {
+            clip-path: polygon(0% 100%, 0% 20%, 10% 0%, 30% 0%, 40% 20%, 100% 20%, 100% 100%);
+        }
+
+        /* Fold effect */
+        .fold {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-10 px-4 flex flex-col items-center justify-center">
+
+    <!-- Background Elements (Distant Layers) -->
+    <div class="fixed top-20 left-10 w-32 h-32 card-sage rounded-full opacity-50 depth-1 -z-10"></div>
+    <div class="fixed bottom-10 right-10 w-64 h-64 card-mustard rounded-full opacity-50 depth-1 -z-10"></div>
+
+    <header class="mb-12 relative z-10 text-center">
+        <div class="inline-block p-6 card-white depth-2 rounded-lg transform -rotate-2">
+            <h1 class="text-4xl font-bold tracking-tight text-[#475569]">Venvi.deck</h1>
+            <div class="h-1 w-full card-terracotta mt-2 rounded-full"></div>
+        </div>
+    </header>
+
+    <main class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-8 perspective-1000">
+
+        <!-- Sidebar Navigation (Stacked Cards) -->
+        <div class="md:col-span-3 space-y-4">
+            <div class="p-4 card-slate depth-2 rounded-md cursor-pointer flex items-center justify-between">
+                <span>Explore</span>
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+            <div
+                class="p-4 card-white depth-1 rounded-md cursor-pointer flex items-center justify-between hover:bg-slate-50">
+                <span>Saved</span>
+            </div>
+            <div
+                class="p-4 card-white depth-1 rounded-md cursor-pointer flex items-center justify-between hover:bg-slate-50">
+                <span>Tickets</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="md:col-span-6 relative">
+            <!-- Underlay Card -->
+            <div class="absolute inset-0 bg-gray-200 rounded-xl transform translate-x-3 translate-y-3 -z-10"></div>
+
+            <!-- Main Featured Card -->
+            <div class="bg-white p-0 rounded-xl depth-3 h-full overflow-hidden flex flex-col notch-tr">
+                <div class="h-48 card-terracotta relative p-6 flex flex-col justify-end">
+                    <!-- Overlaid Circle -->
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full"></div>
+                    <div class="absolute top-4 right-4 text-xs font-bold uppercase tracking-widest opacity-80">Featured
+                    </div>
+
+                    <h2 class="text-3xl font-bold text-white mb-1">Stockholm<br>Design Week</h2>
+                </div>
+
+                <div class="p-8 flex-grow">
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        A rigorous exhibition of Scandinavian functionalism.
+                        Precision, utility, and beauty in every artifact.
+                    </p>
+
+                    <div class="flex gap-3">
+                        <span class="px-3 py-1 bg-gray-100 rounded text-xs font-bold text-gray-500 uppercase">Feb
+                            03</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 rounded text-xs font-bold text-gray-500 uppercase">Design</span>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-gray-50 border-t border-gray-100 text-right">
+                    <button
+                        class="px-6 py-2 card-slate rounded-full text-sm font-bold shadow-lg hover:bg-gray-800 transition-colors">
+                        Reserve Slot
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Col (Widgets) -->
+        <div class="md:col-span-3 space-y-8 flex flex-col">
+
+            <!-- Calendar Widget -->
+            <div class="card-sage p-6 rounded-xl depth-2 text-center relative overflow-hidden">
+                <div class="absolute -left-4 top-1/2 w-8 h-8 bg-white rounded-full opacity-20"></div>
+                <h3 class="text-5xl font-bold mb-1">12</h3>
+                <p class="text-sm font-medium opacity-90 uppercase tracking-widest">October</p>
+            </div>
+
+            <!-- Notification Stack -->
+            <div class="relative h-32">
+                <div
+                    class="absolute top-0 left-0 w-full p-4 card-white depth-1 rounded-lg transform scale-90 -translate-y-4 opacity-70 z-0">
+                </div>
+                <div
+                    class="absolute top-0 left-0 w-full p-4 card-white depth-2 rounded-lg transform scale-95 -translate-y-2 opacity-90 z-10">
+                </div>
+                <div
+                    class="absolute top-0 left-0 w-full p-4 card-mustard depth-3 rounded-lg z-20 flex flex-col justify-center h-full">
+                    <span class="text-xs font-bold uppercase opacity-60 mb-1">Reminder</span>
+                    <p class="font-bold leading-tight">Workshop starts in 2 hours.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

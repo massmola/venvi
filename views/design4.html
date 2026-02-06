@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENVI - RAW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Work+Sans:wght@700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #EAEAEA;
+            --color-primary: #0000FF;
+            --color-accent: #FFFF00;
+            --color-text: #000000;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .brutal-border {
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px #000;
+        }
+
+        .brutal-border:active {
+            box-shadow: 2px 2px 0px #000;
+            transform: translate(4px, 4px);
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 0;
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .glitch-title {
+            text-shadow: 4px 4px 0px var(--color-accent);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between">
+
+    <header class="p-6 border-b-4 border-black flex justify-between items-center bg-white sticky top-0 z-50">
+        <div class="text-4xl font-black tracking-tighter bg-black text-white px-4 py-1 skew-x-[-10deg]">
+            VENVI_
+        </div>
+        <nav>
+            <ul class="flex gap-6 font-bold text-lg">
+                <li class="hover:bg-yellow-300 px-2 cursor-pointer transition-colors">> EVENTS</li>
+                <li class="hover:bg-yellow-300 px-2 cursor-pointer transition-colors">> ACCOUNT</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="marquee-container my-8">
+        <div class="marquee-content">
+            TRIP. CODE. SLEEP. REPEAT. // FIND YOUR TRIBE. // HACKATHONS ACROSS EUROPE. // CHEAP FLIGHTS. // GOOD VIBES.
+            // TRIP. CODE. SLEEP. REPEAT. // FIND YOUR TRIBE. // HACKATHONS ACROSS EUROPE. // CHEAP FLIGHTS. // GOOD
+            VIBES. //
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+
+        <div class="bg-white p-8 border-4 border-black shadow-[12px_12px_0px_#000]">
+            <h1 class="text-6xl md:text-8xl font-black font-['Work_Sans'] leading-[0.8] mb-8 glitch-title">
+                DONT<br>STAY<br>HOME
+            </h1>
+            <p class="text-xl mb-8 font-bold max-w-md bg-yellow-300 inline-block p-2">
+                Student budget travel recommendations for people who build things.
+            </p>
+
+            <div class="flex flex-col gap-4">
+                <input type="text" placeholder="ENTER CITY..."
+                    class="w-full bg-gray-100 border-2 border-black p-4 text-xl focus:outline-none focus:bg-yellow-100 placeholder-black font-bold">
+                <button
+                    class="w-full py-4 text-2xl font-black bg-[#0000FF] text-white border-2 border-black hover:bg-black transition-colors brutal-border">
+                    SEARCH_NOW();
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6">
+            <!-- Brutalist Card 1 -->
+            <div class="bg-[#FF5C5C] border-4 border-black p-6 relative group overflow-hidden">
+                <div class="absolute top-2 right-2 px-2 bg-black text-white font-bold text-xs">HOT</div>
+                <h3 class="text-3xl font-black mb-2 uppercase">Tech_Summit_24</h3>
+                <p class="font-bold text-sm bg-white inline-block px-1 border border-black mb-4">BERLIN</p>
+                <div
+                    class="w-full h-32 bg-black opacity-20 mb-4 group-hover:scale-110 transition-transform duration-200">
+                </div>
+                <button
+                    class="float-right bg-white border-2 border-black px-4 py-2 font-bold hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_#000]">
+                    VIEW ->
+                </button>
+            </div>
+
+            <!-- Brutalist Card 2 -->
+            <div class="bg-[#5CFF95] border-4 border-black p-6 relative group overflow-hidden">
+                <h3 class="text-3xl font-black mb-2 uppercase">Design.Week</h3>
+                <p class="font-bold text-sm bg-white inline-block px-1 border border-black mb-4">MILAN</p>
+                <div
+                    class="w-full h-32 bg-black opacity-20 mb-4 group-hover:scale-110 transition-transform duration-200">
+                </div>
+                <button
+                    class="float-right bg-white border-2 border-black px-4 py-2 font-bold hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_#000]">
+                    VIEW ->
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-black text-white p-8 font-mono text-center border-t-4 border-yellow-300">
+        <h2 class="text-4xl font-bold mb-4">VENVI CORP.</h2>
+        <p class="uppercase text-xs text-gray-400">Copyright 2024. All rights reserved. Do not copy.</p>
+    </footer>
+
+</body>
+
+</html>

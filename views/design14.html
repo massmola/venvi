@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Papercut Noir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --noir-black: #050505;
+            --noir-layer-1: #1a1a1a;
+            --noir-layer-2: #2d2d2d;
+            --noir-layer-3: #404040;
+            --noir-light: #ffeb3b;
+            /* Backlight color */
+            --noir-text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--noir-black);
+            color: var(--noir-text);
+            font-family: 'Special Elite', cursive;
+            overflow-x: hidden;
+        }
+
+        .font-spooky {
+            font-family: 'Creepster', cursive;
+            letter-spacing: 2px;
+        }
+
+        /* Shadow Box Layers */
+        .shadow-box-layer {
+            background-color: var(--noir-layer-1);
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+        }
+
+        .backlit {
+            box-shadow: 0 0 20px rgba(255, 235, 59, 0.1),
+                inset 0 0 40px rgba(0, 0, 0, 0.9);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+        }
+
+        /* Silhouette Cutouts */
+        .silhouette {
+            background-color: black;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+            transition: transform 0.5s ease;
+        }
+
+        .silhouette:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 5px rgba(255, 235, 59, 0.4));
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.9) 100%);
+            z-index: 100;
+        }
+
+        /* Layer depth simulation z-index and scale */
+        .depth-1 {
+            z-index: 10;
+            transform: scale(1);
+        }
+
+        .depth-2 {
+            z-index: 20;
+            transform: scale(0.95);
+            opacity: 0.9;
+        }
+
+        .depth-3 {
+            z-index: 30;
+            transform: scale(0.9);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="vignette"></div>
+
+    <!-- Main Shadow Box Container -->
+    <main
+        class="w-full max-w-4xl bg-[#111] p-12 relative overflow-hidden border-8 border-[#333] shadow-2xl rounded-lg backlit">
+
+        <!-- Background Moon -->
+        <div
+            class="absolute top-10 right-20 w-32 h-32 rounded-full bg-[#ffeb3b] opacity-80 blur-sm shadow-[0_0_60px_#ffeb3b]">
+        </div>
+
+        <!-- Layer 3 (Background Trees/City) -->
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-[#222] z-10 clip-city"></div>
+        <style>
+            .clip-city {
+                clip-path: polygon(0% 100%, 10% 40%, 15% 60%, 20% 30%, 25% 50%, 30% 20%, 40% 50%, 50% 10%, 60% 40%, 70% 20%, 80% 60%, 90% 30%, 100% 100%);
+            }
+        </style>
+
+        <!-- Layer 2 (Midground Hills) -->
+        <div class="absolute bottom-0 left-0 w-full h-1/4 bg-[#111] z-20 rounded-tr-[50%] opacity-90"></div>
+
+        <!-- Foreground Content -->
+        <div class="relative z-30 text-center">
+            <h1 class="font-spooky text-6xl md:text-8xl text-white mb-2 glow-text tracking-widest">VENVI<br>NOIR</h1>
+            <p
+                class="text-sm tracking-[0.5em] uppercase text-gray-500 mb-12 border-b border-gray-700 inline-block pb-2">
+                The Dark Side of Events</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+
+                <!-- Card 1 -->
+                <div
+                    class="bg-black border border-gray-800 p-6 relative group cursor-pointer hover:border-gray-500 transition-colors">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-500 rounded-full"></div>
+                    <div class="text-xs text-[#ffeb3b] mb-2 uppercase">Mystery</div>
+                    <h3 class="font-bold text-xl mb-4 text-white">Secret Cinema</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        An undisclosed location. A cult classic film. Wear black.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-black border border-gray-800 p-6 relative group cursor-pointer hover:border-gray-500 transition-colors">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-500 rounded-full"></div>
+                    <div class="text-xs text-[#ffeb3b] mb-2 uppercase">Nightlife</div>
+                    <h3 class="font-bold text-xl mb-4 text-white">Underground</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Deep house in an abandoned station.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-black border border-gray-800 p-6 relative group cursor-pointer hover:border-gray-500 transition-colors">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-500 rounded-full"></div>
+                    <div class="text-xs text-[#ffeb3b] mb-2 uppercase">Thriller</div>
+                    <h3 class="font-bold text-xl mb-4 text-white">Escape Room</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Can you solve the murder before midnight?
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mt-12">
+                <button
+                    class="bg-[#ffeb3b] text-black px-8 py-3 font-bold hover:bg-white hover:shadow-[0_0_20px_white] transition-all duration-300 font-spooky text-xl tracking-wider">
+                    ENTER THE SHADOWS
+                </button>
+            </div>
+        </div>
+
+        <!-- Foreground Silhouette (Cat/Detective) -->
+        <div class="absolute bottom-0 right-10 z-40 w-32 h-32 bg-black silhouette"
+            style="clip-path: polygon(20% 100%, 20% 60%, 30% 50%, 40% 60%, 40% 100%);"></div>
+        <!-- Simple polygon cat shape placeholder -->
+
+    </main>
+
+</body>
+
+</html>

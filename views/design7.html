@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Papercut</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --paper-bg: #fdfbf7;
+            --paper-1: #e4e5e7;
+            --paper-2: #d1d5db;
+            --paper-accent-1: #ffb7b2;
+            --paper-accent-2: #b5ead7;
+            --paper-shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5 2.24 5 5' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            color: #4b5563;
+            font-family: 'Patrick Hand', cursive;
+            overflow-x: hidden;
+        }
+
+        .paper-layer {
+            background-color: white;
+            box-shadow: 8px 8px 24px var(--paper-shadow);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .paper-layer:hover {
+            transform: translateY(-2px) rotate(0.5deg);
+            box-shadow: 12px 12px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .cutout {
+            /* jagged edge simulation could go here, or complex clip-path */
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%,
+                    95% 98%, 90% 100%, 85% 98%, 80% 100%, 75% 98%, 70% 100%, 65% 98%, 60% 100%, 55% 98%, 50% 100%,
+                    45% 98%, 40% 100%, 35% 98%, 30% 100%, 25% 98%, 20% 100%, 15% 98%, 10% 100%, 5% 98%, 0% 100%);
+        }
+
+        .torn-edge {
+            mask-image: url("data:image/svg+xml,%3Csvg width='200' height='20' viewBox='0 0 200 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L200 0 L200 15 Q190 20 180 15 T160 15 T140 15 T120 15 T100 15 T80 15 T60 15 T40 15 T20 15 T0 15 Z' fill='black'/%3E%3C/svg%3E");
+            mask-size: 50px 100%;
+            mask-repeat: repeat-x;
+        }
+
+        .marker-font {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        /* Organic Rotation Utility */
+        .rot-1 {
+            transform: rotate(1deg);
+        }
+
+        .rot-2 {
+            transform: rotate(2deg);
+        }
+
+        .rot-n1 {
+            transform: rotate(-1deg);
+        }
+
+        .rot-n2 {
+            transform: rotate(-2deg);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-10 px-4 md:px-0">
+
+    <!-- Background Layers (Hills) -->
+    <div
+        class="fixed bottom-0 left-0 w-full h-1/3 bg-[#b5ead7] rounded-tr-[50%] rounded-tl-[30%] -z-20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+    </div>
+    <div
+        class="fixed bottom-0 right-0 w-3/4 h-1/4 bg-[#e2f0cb] rounded-tl-[80%] -z-10 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+    </div>
+    <div class="fixed top-20 right-20 w-32 h-32 bg-[#ffdac1] rounded-full -z-30 shadow-lg opacity-80"></div>
+
+    <main class="max-w-4xl mx-auto relative z-10">
+
+        <!-- Header Note -->
+        <div class="paper-layer bg-[#fff1e6] p-8 max-w-lg mx-auto mb-16 rot-n1 relative">
+            <!-- Washi Tape -->
+            <div
+                class="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-[#ffb7b2] opacity-80 transform -rotate-2 shadow-sm">
+            </div>
+
+            <h1 class="marker-font text-5xl text-[#6d6875] text-center mb-4 leading-relaxed">
+                Venvi<br>
+                <span class="text-3xl text-[#b5838d]">Scrapbook</span>
+            </h1>
+            <p class="text-center text-xl text-gray-600 font-bold">
+                Collecting moments & events across Europe.
+            </p>
+        </div>
+
+        <!-- Scrapbook Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
+
+            <!-- Card 1 -->
+            <div class="paper-layer p-6 bg-white rot-2 relative group cursor-pointer">
+                <!-- Pin -->
+                <div
+                    class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-red-400 shadow-md border-2 border-white z-20">
+                </div>
+
+                <div
+                    class="aspect-video bg-gray-100 mb-4 overflow-hidden rounded-sm border-4 border-white shadow-inner relative">
+                    <div class="absolute inset-0 flex items-center justify-center text-gray-300 font-bold text-2xl">
+                        PHOTO</div>
+                </div>
+
+                <h2
+                    class="marker-font text-2xl text-[#6d6875] mb-2 transform group-hover:scale-105 transition-transform origin-left">
+                    Hackathon 2024</h2>
+                <p class="mb-4 text-lg leading-snug">
+                    Found this cool coding event in Berlin! We should totally go.
+                </p>
+                <div
+                    class="text-sm font-bold text-[#b5838d] border-t-2 border-dashed border-gray-300 pt-2 flex justify-between">
+                    <span>Oct 12-14</span>
+                    <span>Berlin, DE</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="paper-layer p-6 bg-white rot-n2 mt-12 md:mt-0 relative group cursor-pointer">
+                <!-- Washi Tape -->
+                <div class="absolute -top-3 left-10 w-24 h-6 bg-[#b5ead7] opacity-80 transform rotate-2 shadow-sm z-20">
+                </div>
+
+                <div
+                    class="aspect-video bg-gray-100 mb-4 overflow-hidden rounded-sm border-4 border-white shadow-inner relative">
+                    <div class="absolute inset-0 flex items-center justify-center text-gray-300 font-bold text-2xl">
+                        TICKET</div>
+                </div>
+
+                <h2
+                    class="marker-font text-2xl text-[#6d6875] mb-2 transform group-hover:scale-105 transition-transform origin-left">
+                    Light Art Festival</h2>
+                <p class="mb-4 text-lg leading-snug">
+                    The city is going to be lit up at night. Looks magical.
+                </p>
+                <div
+                    class="text-sm font-bold text-[#b5838d] border-t-2 border-dashed border-gray-300 pt-2 flex justify-between">
+                    <span>Nov 05</span>
+                    <span>Lyon, FR</span>
+                </div>
+            </div>
+
+            <!-- Search Note -->
+            <div class="md:col-span-2 flex justify-center mt-8">
+                <div class="paper-layer bg-yellow-100 p-6 rot-1 relative">
+                    <h3 class="marker-font text-xl mb-4">Find New Memories:</h3>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Start typing..."
+                            class="bg-transparent border-b-2 border-gray-400 outline-none w-64 placeholder-gray-400 font-bold text-lg focus:border-[#b5838d]">
+                        <button class="marker-font text-lg text-[#b5838d] hover:text-[#6d6875]">Search</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

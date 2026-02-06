@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - High-Def Papercut</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --paper-base: #f0f0f0;
+            --paper-white: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.12);
+            /* Visible border */
+
+            /* High-Def Shadows: Sharper, more defined */
+            --shadow-hd-1: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-hd-2: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+            --shadow-hd-3: 0 16px 32px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: #e5e5e5;
+            color: #222;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+
+            /* 1. HEAVY LINEN TEXTURE */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        .serif-font {
+            font-family: 'Bodoni Moda', serif;
+        }
+
+        /* 2. DEFINED LAYERS WITH BORDERS */
+        .layer {
+            background-color: var(--paper-white);
+            /* Internal texture */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.08'/%3E%3C/svg%3E");
+
+            /* The Border Enhancement */
+            border: 1px solid var(--border-color);
+
+            box-shadow: var(--shadow-hd-2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .layer:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hd-3);
+            border-color: rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        /* 3. PHYSICAL CUTOUTS (Inset Shadow) */
+        .cutout-well {
+            background-color: #e0e0e0;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15), inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* 4. PAPER STACK EFFECT */
+        .stack-effect {
+            position: relative;
+        }
+
+        .stack-effect::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-hd-1);
+            z-index: -1;
+        }
+
+        .stack-effect::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-hd-1);
+            z-index: -2;
+        }
+
+        /* Button styling */
+        .btn-physical {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 12px 32px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-hd-1);
+            transition: all 0.2s;
+        }
+
+        .btn-physical:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-20 px-8 flex justify-center">
+
+    <main class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-12">
+
+        <!-- Header Card -->
+        <div class="md:col-span-12 layer p-16 text-center stack-effect bg-white">
+            <h1 class="serif-font text-7xl mb-4 italic text-gray-900">Atelier</h1>
+            <div class="w-24 h-px bg-gray-400 mx-auto mb-4"></div>
+            <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-semibold">High Definition Paper Stock</p>
+        </div>
+
+        <!-- Left Col -->
+        <div class="md:col-span-5 space-y-8">
+            <div class="layer p-8">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-dashed border-gray-300">
+                    <span class="font-bold text-gray-400 text-xs uppercase">Collection</span>
+                    <span class="serif-font text-xl">The Drafts</span>
+                </div>
+
+                <p class="leading-relaxed text-gray-600 mb-8 border-l-2 border-gray-200 pl-4">
+                    Every edge is defined. Every texture is felt.
+                    A return to the physical weight of design.
+                </p>
+
+                <button class="btn-physical w-full hover:bg-gray-50">View Catalog</button>
+            </div>
+
+            <!-- Cutout Feature -->
+            <div class="layer p-8 bg-white flex items-center justify-center aspect-square">
+                <div class="w-48 h-48 rounded-full cutout-well flex items-center justify-center relative">
+                    <!-- Inner raised circle -->
+                    <div
+                        class="w-32 h-32 rounded-full bg-white layer flex items-center justify-center shadow-lg border border-gray-200">
+                        <span class="serif-font text-4xl">21</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Col -->
+        <div class="md:col-span-7 space-y-8">
+            <div class="layer p-10 h-full flex flex-col justify-center">
+                <h2 class="serif-font text-5xl mb-8">Tactile<br>Precision</h2>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 border border-gray-200 bg-gray-50">
+                        <span class="block text-2xl font-bold mb-1">100%</span>
+                        <span class="text-xs text-gray-500 uppercase">Cotton Rag</span>
+                    </div>
+                    <div class="p-6 border border-gray-200 bg-gray-50">
+                        <span class="block text-2xl font-bold mb-1">300</span>
+                        <span class="text-xs text-gray-500 uppercase">GSM Weight</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full border border-gray-300 bg-white shadow-sm"></div>
+                        <div>
+                            <p class="font-bold text-sm">Texture Definition</p>
+                            <p class="text-xs text-gray-400">High Contrast Linen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
