@@ -32,6 +32,7 @@ COPY --from=builder /app/venvi /app/venvi
 # Copy static assets and migrations
 COPY --from=builder /app/pb_public /app/pb_public
 COPY --from=builder /app/pb_migrations /app/pb_migrations
+COPY --from=builder /app/views /app/views
 
 # Create data directory for SQLite
 RUN mkdir /app/pb_data
