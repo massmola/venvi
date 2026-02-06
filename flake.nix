@@ -23,6 +23,9 @@
             gcc
             pkg-config
 
+            # Node.js for Playwright & Frontend tooling
+            nodejs_20
+
             # SQLite (for PocketBase)
             sqlite
           ];

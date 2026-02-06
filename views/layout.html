@@ -60,9 +60,28 @@
                 <!-- Auth UI -->
                 <div id="auth-container" class="flex gap-3 ml-4 border-l border-white/10 pl-4 items-center">
                     <span id="user-name" class="hidden text-sm text-brand-200"></span>
-                    <button id="login-btn"
-                        class="text-xs font-medium bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors"
-                        onclick="startLogin()">Login</button>
+                    <div id="login-container" class="relative">
+                        <button id="login-btn"
+                            class="text-xs font-medium bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                            onclick="startLogin()">
+                            <span id="login-text">Login</span>
+                            <div id="login-spinner" class="hidden">
+                                <svg class="animate-spin h-3 w-3 text-white" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </button>
+                        <!-- Notifications -->
+                        <div id="auth-notification"
+                            class="hidden absolute top-full right-0 mt-2 w-64 p-3 bg-slate-800 border border-white/10 rounded-xl shadow-2xl z-50 text-xs animate-in slide-in-from-top-2 duration-200">
+                            <p id="notification-msg" class="text-slate-300"></p>
+                        </div>
+                    </div>
                     <button id="logout-btn"
                         class="hidden text-xs font-medium text-slate-400 hover:text-white transition-colors"
                         onclick="logout()">Logout</button>
@@ -104,20 +123,44 @@
             }
         }
 
+        function showAuthNotification(msg, duration = 5000) {
+            const container = document.getElementById('auth-notification');
+            const msgEl = document.getElementById('notification-msg');
+            msgEl.textContent = msg;
+            container.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.add('hidden');
+            }, duration);
+        }
+
         async function startLogin() {
+            const loginBtn = document.getElementById('login-btn');
+            const loginText = document.getElementById('login-text');
+            const loginSpinner = document.getElementById('login-spinner');
+
             try {
+                loginBtn.disabled = true;
+                loginText.textContent = 'Preparing...';
+                loginSpinner.classList.remove('hidden');
+
                 const methods = await pb.collection('users').listAuthMethods();
                 const provider = methods.authProviders[0];
                 if (!provider) {
-                    alert('No OAuth2 providers configured. Please configure them in PocketBase Admin UI.');
+                    showAuthNotification('No OAuth2 providers configured. Please check the Admin UI.');
+                    loginBtn.disabled = false;
+                    loginText.textContent = 'Login';
+                    loginSpinner.classList.add('hidden');
                     return;
                 }
+
+                loginText.textContent = 'Authorizing...';
 
                 // Start OAuth flow
                 const authData = await pb.collection('users').authWithOAuth2({ provider: provider.name });
 
                 // Capture location if possible
                 if (pb.authStore.isValid) {
+                    loginText.textContent = 'Updating Location...';
                     navigator.geolocation.getCurrentPosition(async (pos) => {
                         try {
                             await pb.collection('users').update(pb.authStore.model.id, {
@@ -136,6 +179,10 @@
                 }
             } catch (err) {
                 console.error("Login failed", err);
+                showAuthNotification('Login failed: ' + (err.message || 'Unknown error'));
+                loginBtn.disabled = false;
+                loginText.textContent = 'Login';
+                loginSpinner.classList.add('hidden');
             }
         }
 
@@ -150,18 +197,24 @@
         // Auto-update location if logged in
         if (pb.authStore.isValid) {
             navigator.geolocation.getCurrentPosition(async (pos) => {
-                const user = pb.authStore.model;
-                // Update implementation
-                await pb.collection('users').update(user.id, {
-                    latitude: pos.coords.latitude,
-                    longitude: pos.coords.longitude
-                });
+                try {
+                    const user = pb.authStore.model;
+                    // Update implementation
+                    await pb.collection('users').update(user.id, {
+                        latitude: pos.coords.latitude,
+                        longitude: pos.coords.longitude
+                    });
 
-                // Trigger HTMX reload for event list if present
-                const list = document.getElementById('event-list');
-                if (list) {
-                    htmx.trigger(list, 'reload');
+                    // Trigger HTMX reload for event list if present
+                    const list = document.getElementById('event-list');
+                    if (list) {
+                        htmx.trigger(list, 'reload');
+                    }
+                } catch (e) {
+                    console.error("Auto location update failed", e);
                 }
+            }, (err) => {
+                console.log("Auto location update denied/failed", err);
             });
         }
     </script>
