@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  venvi:
+    # Use the image built by GitHub Actions
+    image: ghcr.io/massmola/venvi:latest
+    # Fallback: build locally if needed
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - venvi_data:/app/pb_data
+    restart: unless-stopped
+
+volumes:
+  venvi_data:

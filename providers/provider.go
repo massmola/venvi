@@ -26,6 +26,8 @@ type Event struct {
 	Topics      []string  `json:"topics"`
 	Category    string    `json:"category"`
 	IsNew       bool      `json:"is_new"`
+	Latitude    float64   `json:"latitude"`
+	Longitude   float64   `json:"longitude"`
 }
 
 // EventProvider defines the interface that all event sources must implement.

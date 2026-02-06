@@ -134,5 +134,7 @@ func (p *EuroHackathonsProvider) MapEvent(raw RawEvent) *Event {
 		Topics:      topics,
 		Category:    "hackathon",
 		IsNew:       true,
+		Latitude:    0.0,
+		Longitude:   0.0,
 	}
 }

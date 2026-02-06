@@ -144,6 +144,20 @@ func (p *ODHProvider) MapEvent(raw RawEvent) *Event {
 		}
 	}
 
+	// Extract GPS coordinates
+	var lat, long float64
+	if gpsInfo, ok := raw["GpsInfo"].([]any); ok && len(gpsInfo) > 0 {
+		if firstGps, ok := gpsInfo[0].(map[string]any); ok {
+			lat, _ = firstGps["Latitude"].(float64)
+			long, _ = firstGps["Longitude"].(float64)
+		}
+	}
+	// Fallback to top-level latitude/longitude if available
+	if lat == 0 && long == 0 {
+		lat, _ = raw["Latitude"].(float64)
+		long, _ = raw["Longitude"].(float64)
+	}
+
 	return &Event{
 		ID:          rawID,
 		Title:       title,
@@ -158,5 +172,7 @@ func (p *ODHProvider) MapEvent(raw RawEvent) *Event {
 		Topics:      []string{},
 		Category:    "general",
 		IsNew:       true,
+		Latitude:    lat,
+		Longitude:   long,
 	}
 }
