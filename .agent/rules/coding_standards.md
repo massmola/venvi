@@ -1,35 +1,39 @@
 ---
-description: Enforce coding standards, type safety, and build integrity.
+trigger: always_on
+description: Enforce Go coding standards for the project.
 ---
-# Coding Standards & Integrity
 
-## 1. Type Safety ("If it's not typed, it doesn't exist")
-- All functions and methods must have type hints for arguments and return values.
-- `Any` is strictly forbidden unless absolutely necessary and accompanied by a comment explaining why.
-- Mypy **strict mode** must pass without errors.
+# Go Coding Standards
 
-## 2. Green Build Policy ("Green Build or Bust")
-- You may not consider a task complete until the build passes locally.
-- A "Green Build" means all checks in the `pre-push` hook pass:
-    1. `poetry run ruff format .` (Formatting)
-    2. `poetry run ruff check . --fix` (Linting)
-    3. `poetry run mypy .` (Type Checking - Strict Mode)
-    4. `poetry run pytest` (Testing - Must maintain 100% coverage)
+All Go code in this project must follow these standards.
 
-## 3. Documentation
-- **Docstrings**: Public modules, classes, and functions must have Google Style docstrings.
-- **Autogen**: This project uses `mkdocstrings`. Any new module must be added to `docs/api_reference.md` using the `::: module.name` directive.
-- **Guides**: Updates to code logic must include updates to relevant documentation (`README.md`, `docs/`, `walkthrough.md`).
+## Formatting & Style
+- **Formatter**: All code MUST be formatted with `gofmt` or `goimports`.
+- **Naming**: Follow Go conventions (MixedCaps for exported, mixedCaps for unexported).
+- **Imports**: Group imports in standard order: stdlib, external, internal.
 
-## 4. Testing
-- **100% Coverage**: Every line of code must be covered by tests. Verify with `pytest-cov`.
-- **Exhaustive Cases**: Include negative tests (error paths), filter edge cases, and core utility verification.
-- **No Mocks for DB**: Do not mock database models if you can use a test database fixture (preferred for SQLModel).
-## 5. Asynchronous Sessions (SQLModel/SQLAlchemy)
-- When using `AsyncSession`, always use `await session.execute(query)` followed by `result.scalars().all()` (or `.first()`, etc.).
-- The `.exec()` method is for synchronous sessions and must not be used with `AsyncSession`.
+## Documentation
+- **Package Comments**: Every package must have a doc comment starting with "Package <name>".
+- **Exported Identifiers**: All exported functions, types, and constants must have doc comments.
+- **Comments Style**: Use complete sentences starting with the identifier name.
 
-## 6. Web & HTMX Integrity
-- **HTMX Triggers**: Dynamic UI components using HTMX must have explicit triggers (`hx-trigger`) and swap strategies (`hx-swap`).
-- **Partial Templates**: Every HTMX load target must have a corresponding partial template in `src/venvi/templates/partials/`.
-- **Integration Testing**: All web routes and partials must be covered by integration tests in `src/tests/test_web.py` to catch `TemplateNotFound` or rendering errors.
+Example:
+```go
+// FetchEvents retrieves raw event data from the external API.
+func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
+```
+
+## Error Handling
+- **Wrap Errors**: Use `fmt.Errorf("context: %w", err)` for error wrapping.
+- **No Panic**: Never use `panic` in library code; return errors instead.
+- **Handle Errors**: Never ignore errors with `_`.
+
+## Testing
+- **Table-Driven Tests**: Prefer table-driven tests for multiple cases.
+- **Testify**: Use `github.com/stretchr/testify` for assertions.
+- **Naming**: Test functions must be named `Test<FunctionName>_<Scenario>`.
+
+## Project-Specific
+- **Providers**: New data sources must implement the `EventProvider` interface.
+- **Routes**: Register routes in `routes/web.go` or `routes/api.go`.
+- **Templates**: Use Go `html/template` in `views/` directory.

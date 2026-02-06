@@ -1,34 +1,99 @@
-# Venvi
+# Venvi - EU Event Suggestion Platform
 
-EU Hackathon Aggregator and Suggestion Platform.
+A PocketBase-powered event aggregator that discovers hackathons, meetups, and cultural events across Europe.
+
+## Features
+
+- 🔄 **Multi-source Aggregation**: Pulls events from Open Data Hub and Euro Hackathons
+- 🚀 **Single Executable**: Built with PocketBase for easy deployment
+- 🎨 **HTMX Frontend**: Dynamic, server-rendered UI with minimal JavaScript
+- 📅 **Scheduled Sync**: Automatic event updates every 6 hours
+- 🔌 **Extensible**: Easy to add new event providers
 
 ## Quick Start
 
-This project uses **Nix** to provide a reproducible development environment.
+### Prerequisites
 
-1.  **Enter the Development Environment**:
-    ```bash
-    nix develop
-    ```
-2.  **Initialize the Database**:
-    ```bash
-    bash scripts/init_db.sh
-    ```
-3.  **Run the Application**:
-    ```bash
-    poetry run uvicorn venvi.main:app --reload
-    ```
-4.  **Run Tests**:
-    ```bash
-    poetry run pytest
-    ```
+- [Nix](https://nixos.org/download.html) (recommended) OR Go 1.24+
 
-## Documentation
-
-Full project documentation is available in the `docs/` directory and can be served locally:
+### Development
 
 ```bash
-poetry run mkdocs serve
+# Enter development environment
+nix develop
+
+# Build the application
+go build -o venvi .
+
+# Run the server
+./venvi serve --http=localhost:8090
 ```
 
-See [Guidelines](docs/guidelines.md) for coding standards and CI/CD requirements.
+### First Run
+
+1. Open http://localhost:8090/_/ to access the admin panel
+2. Create your admin account
+3. The `events` collection will be created automatically
+4. Visit http://localhost:8090/ to see the frontend
+5. Click "Sync & Refresh" to fetch events
+
+## Project Structure
+
+```
+venvi/
+├── main.go              # Application entry point
+├── providers/           # Event data source implementations
+│   ├── provider.go      # Base interface
+│   ├── odh.go           # Open Data Hub provider
+│   ├── euro_hackathons.go
+│   └── sync.go          # Sync orchestrator
+├── routes/              # HTTP route handlers
+│   ├── web.go           # HTMX/web routes
+│   └── api.go           # JSON API routes
+├── views/               # Go html/templates
+│   ├── layout.html
+│   ├── index.html
+│   └── partials/
+├── pb_public/           # Static assets
+├── pb_migrations/       # Database migrations
+└── scripts/
+    └── validate.sh      # Verification script
+```
+
+## API Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/` | Homepage with HTMX |
+| GET | `/partials/events` | Event list partial |
+| GET | `/api/venvi/events` | List events (JSON) |
+| GET | `/api/venvi/events?category=hackathon` | Filter by category |
+| GET | `/api/venvi/events?source=odh` | Filter by source |
+| POST | `/api/venvi/sync` | Trigger manual sync |
+| GET | `/api/venvi/health` | Health check |
+
+## Adding a New Provider
+
+1. Create `providers/new_source.go` implementing `EventProvider`
+2. Add to `Providers` slice in `providers/sync.go`
+3. Run tests: `go test ./providers/...`
+
+## Development Commands
+
+```bash
+# Format code
+go fmt ./...
+
+# Run linter
+golangci-lint run
+
+# Run tests
+go test -v -cover ./...
+
+# Full validation
+./scripts/validate.sh
+```
+
+## License
+
+MIT

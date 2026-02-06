@@ -1,0 +1,41 @@
+{{define "title"}}Venvi - Discover European Events{{end}}
+
+{{define "content"}}
+<div class="flex flex-col items-center justify-center py-20 text-center">
+    <div
+        class="mb-6 inline-flex items-center rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-sm text-brand-400">
+        <span>🚀 The Event Aggregator</span>
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+        Discover <span class="bg-gradient-to-r from-brand-500 to-purple-500 bg-clip-text text-transparent">Events</span>
+        <br>
+        Across Europe.
+    </h1>
+
+    <p class="text-lg text-slate-400 max-w-2xl mb-10">
+        Find the best hackathons, meetups, and cultural events.
+        Plan your next adventure around code and culture.
+    </p>
+
+    <div class="flex gap-4">
+        <button hx-post="/api/venvi/sync" hx-swap="none" hx-on::after-request="htmx.trigger('#event-list', 'load')"
+            class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/20">
+            Sync & Refresh
+        </button>
+        <a href="/_/"
+            class="border border-white/10 hover:bg-white/5 text-white px-8 py-3 rounded-xl font-semibold transition-all">
+            Admin Panel
+        </a>
+    </div>
+</div>
+
+<!-- HTMX loaded content -->
+<div id="event-list" hx-get="/partials/events" hx-trigger="load, reload from:body" hx-swap="innerHTML"
+    class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Server will render items here -->
+    <div class="col-span-full text-center text-slate-500">
+        Loading top events...
+    </div>
+</div>
+{{end}}

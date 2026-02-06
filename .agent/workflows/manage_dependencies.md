@@ -1,32 +1,55 @@
 ---
-description: Safely add or remove dependencies using Poetry.
+description: Safely add or remove dependencies using Go Modules.
 ---
 # Manage Dependencies Workflow
 
+// turbo-all
+
 ## Adding a Dependency
 
-1. **Identify Package**: Determine the package name and version (if specific).
-
-2. **Add Package**:
+1. **Enter Nix Environment**:
    ```bash
-   poetry add <package_name>
+   nix develop
    ```
-   *For dev tools (like linters), use:* `poetry add -D <package_name>`
 
-3. **Verify Installation**:
-   Check `pyproject.toml` to see if it was added.
+2. **Add the dependency**:
+   ```bash
+   go get github.com/example/package@latest
+   ```
 
-4. **Update Lockfile**:
-   This happens automatically with `poetry add`.
+3. **Tidy modules**:
+   ```bash
+   go mod tidy
+   ```
+
+4. **Verify build**:
+   ```bash
+   go build ./...
+   ```
 
 ## Removing a Dependency
 
-1. **Remove Package**:
+1. **Remove imports** from all Go files that use the package.
+
+2. **Tidy modules** to remove unused dependencies:
    ```bash
-   poetry remove <package_name>
+   go mod tidy
    ```
 
-2. **Clean Environment**:
+3. **Verify build**:
    ```bash
-   poetry install --sync
+   go build ./...
+   ```
+
+## Updating Dependencies
+
+1. **Update a specific package**:
+   ```bash
+   go get github.com/example/package@latest
+   ```
+
+2. **Update all dependencies**:
+   ```bash
+   go get -u ./...
+   go mod tidy
    ```

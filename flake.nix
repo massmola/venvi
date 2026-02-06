@@ -2,7 +2,7 @@
   description = "Venvi Development Environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
   };
 
@@ -14,20 +14,23 @@
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            python312
-            poetry
-            postgresql
-            zlib
+            # Go toolchain
+            go
+            gopls
+            golangci-lint
+
+            # Build tools
             gcc
             pkg-config
-            ruff
-            mypy
+
+            # SQLite (for PocketBase)
+            sqlite
           ];
 
           shellHook = ''
-            export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc pkgs.postgresql pkgs.zlib ]}
-            export POETRY_VIRTUALENVS_IN_PROJECT=true
-            export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+            export GOPATH=$HOME/go
+            export PATH=$GOPATH/bin:$PATH
+            echo "Venvi PocketBase development environment loaded"
           '';
         };
       }
