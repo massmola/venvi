@@ -28,4 +28,7 @@ result
 Thumbs.db
 
 # Secret files
-.env
+# JavaScript
+node_modules/
+.npm/
+.playwright/
