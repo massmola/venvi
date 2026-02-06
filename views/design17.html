@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Metro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Sorts+Mill+Goudy:ital@0;1&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --metro-verdigris: #43cea2;
+            --metro-iron: #2c3e50;
+            --metro-amber: #f39c12;
+            --metro-glass: rgba(255, 255, 255, 0.9);
+            --metro-bg: #e8f6f3;
+        }
+
+        body {
+            background-color: var(--metro-bg);
+            color: var(--metro-iron);
+            font-family: 'Sorts Mill Goudy', serif;
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Forum', cursive;
+        }
+
+        /* Guimard Ironwork Simulation */
+        .iron-frame {
+            border: 4px solid var(--metro-iron);
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            background: var(--metro-glass);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .iron-accent {
+            position: absolute;
+            background: var(--metro-iron);
+            border-radius: 50%;
+        }
+
+        /* The iconic Metro entrance "stalks" */
+        .stalk-l {
+            position: absolute;
+            bottom: -50px;
+            left: -10px;
+            width: 20px;
+            height: 120%;
+            background: var(--metro-iron);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .stalk-r {
+            position: absolute;
+            bottom: -50px;
+            right: -10px;
+            width: 20px;
+            height: 120%;
+            background: var(--metro-iron);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .lamp {
+            width: 40px;
+            height: 60px;
+            background: radial-gradient(circle, #f1c40f 0%, #e67e22 100%);
+            border-radius: 50% 50% 10% 10%;
+            border: 2px solid var(--metro-iron);
+            box-shadow: 0 0 20px #f1c40f;
+            position: absolute;
+            top: -50px;
+        }
+
+        /* Decorative "S" curves via SVG */
+        .wrought-iron {
+            mask-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q25 0 50 10 T100 10' fill='none' stroke='black' stroke-width='4'/%3E%3C/svg%3E");
+            background-color: var(--metro-iron);
+            width: 100%;
+            height: 20px;
+        }
+
+        .signage {
+            background: var(--metro-verdigris);
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-family: 'Forum', cursive;
+            letter-spacing: 2px;
+            border: 2px solid var(--metro-iron);
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-20 px-4 flex flex-col items-center">
+
+    <!-- Paris Metro Entrance Structure -->
+    <main class="w-full max-w-2xl relative mt-20">
+
+        <!-- Iron Supports -->
+        <div class="stalk-l"></div>
+        <div class="stalk-r"></div>
+
+        <!-- Lamps -->
+        <div class="lamp -left-8 animate-pulse"></div>
+        <div class="lamp -right-8 animate-pulse" style="animation-delay: 1s;"></div>
+
+        <!-- Main 'Glass' Canopy Content -->
+        <div class="iron-frame p-10 pt-16 relative">
+
+            <!-- Top Arch Decoration -->
+            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-64 h-20 flex items-center justify-center z-10">
+                <div class="signage text-2xl">METROPOLITAIN</div>
+            </div>
+
+            <!-- "Fan" decoration behind sign -->
+            <div
+                class="absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-40 border-t-4 border-l-4 border-r-4 border-[#2c3e50] rounded-t-full -z-10 bg-white/50 blur-sm">
+            </div>
+
+            <div class="text-center mb-10">
+                <h1 class="heading-font text-5xl mb-2 text-[#43cea2]">Venvi</h1>
+                <div
+                    class="w-full h-4 bg-[url('data:image/svg+xml,%3Csvg%20width=%2720%27%20height=%2710%27%20viewBox=%270%200%2020%2010%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d=%27M0%205%20Q5%200%2010%205%20T20%205%27%20fill=%27none%27%20stroke=%27%2343cea2%27%20stroke-width=%272%27/%3E%3C/svg%3E')] opacity-50 mb-4">
+                </div>
+                <p class="text-lg italic text-gray-500">Direction: Future Events</p>
+            </div>
+
+            <!-- List of "Stops" -->
+            <ul class="space-y-6 relative z-10">
+                <li class="flex items-center group cursor-pointer">
+                    <div
+                        class="w-4 h-4 rounded-full border-2 border-[#2c3e50] bg-white group-hover:bg-[#43cea2] transition-colors mr-4 relative">
+                        <div class="absolute top-4 left-1.5 w-0.5 h-16 bg-[#2c3e50] opacity-30"></div>
+                    </div>
+                    <div>
+                        <span
+                            class="heading-font text-xl font-bold block group-hover:text-[#43cea2] transition-colors">Station:
+                            Arts et Métiers</span>
+                        <span class="text-sm text-gray-400">Exhibition of Industrial Design</span>
+                    </div>
+                    <div class="ml-auto text-sm font-bold text-[#f39c12]">3 min</div>
+                </li>
+
+                <li class="flex items-center group cursor-pointer pt-6">
+                    <div
+                        class="w-4 h-4 rounded-full border-2 border-[#2c3e50] bg-white group-hover:bg-[#43cea2] transition-colors mr-4 relative">
+                        <div class="absolute top-4 left-1.5 w-0.5 h-16 bg-[#2c3e50] opacity-30"></div>
+                    </div>
+                    <div>
+                        <span
+                            class="heading-font text-xl font-bold block group-hover:text-[#43cea2] transition-colors">Station:
+                            Palais Royal</span>
+                        <span class="text-sm text-gray-400">Grand Gala Night</span>
+                    </div>
+                    <div class="ml-auto text-sm font-bold text-[#f39c12]">10 min</div>
+                </li>
+
+                <li class="flex items-center group cursor-pointer pt-6">
+                    <div
+                        class="w-4 h-4 rounded-full border-2 border-[#2c3e50] bg-white group-hover:bg-[#43cea2] transition-colors mr-4">
+                    </div>
+                    <div>
+                        <span
+                            class="heading-font text-xl font-bold block group-hover:text-[#43cea2] transition-colors">Terminus:
+                            Venvi HQ</span>
+                        <span class="text-sm text-gray-400">Global Aggregator</span>
+                    </div>
+                    <div class="ml-auto text-sm font-bold text-[#f39c12]">Arrived</div>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="w-full h-8 bg-[#2c3e50] rounded-b-lg shadow-xl relative top-[-1px]"></div>
+    </main>
+
+</body>
+
+</html>

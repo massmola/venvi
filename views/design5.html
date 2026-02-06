@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi . Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        .font-luxury {
+            font-family: 'Cinzel', serif;
+        }
+
+        .font-body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 10%, #2c3e50, #000000);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .gold-text {
+            background: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #fff;
+        }
+
+        .gold-border {
+            border-image: linear-gradient(to bottom, #cfc09f, #ffecb3, #3a2c0f) 1;
+        }
+
+        .parallax-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -50px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-300 font-body overflow-x-hidden selection:bg-amber-900 selection:text-white">
+
+    <!-- Ambient Background Lighting -->
+    <div class="parallax-orb w-96 h-96 bg-blue-900/20 top-0 left-0"></div>
+    <div class="parallax-orb w-[500px] h-[500px] bg-amber-900/10 bottom-0 right-0" style="animation-delay: -5s"></div>
+
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="font-luxury text-2xl tracking-[0.2em] text-white">VENVI</div>
+            <div class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.25em] font-light">
+                <a href="#" class="hover:text-amber-200 transition-colors duration-500">Curated</a>
+                <a href="#" class="hover:text-amber-200 transition-colors duration-500">Concierge</a>
+                <a href="#" class="hover:text-amber-200 transition-colors duration-500">Membership</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+            <div class="lg:col-span-5 space-y-10 z-10">
+                <div>
+                    <span
+                        class="inline-block py-1 px-3 border border-white/20 text-[10px] uppercase tracking-[0.3em] mb-6 text-amber-100/70">
+                        Exclusive Access
+                    </span>
+                    <h1 class="font-luxury text-5xl md:text-7xl leading-tight text-white mb-6">
+                        The Art of <br>
+                        <span class="italic text-white/90">Escape</span>
+                    </h1>
+                    <div class="h-px w-24 bg-gradient-to-r from-amber-200/50 to-transparent mb-8"></div>
+                    <p class="font-light text-lg leading-relaxed text-gray-400 max-w-sm">
+                        Venvi curates ephemeral experiences for the discerning traveler.
+                        Discover technology and culture in Europe's most exclusive venues.
+                    </p>
+                </div>
+
+                <div class="flex gap-6">
+                    <button
+                        class="px-8 py-4 glass-card hover:bg-white/10 transition-all duration-500 uppercase tracking-[0.2em] text-xs text-white border border-white/20">
+                        Explore Collection
+                    </button>
+                    <button
+                        class="px-8 py-4 uppercase tracking-[0.2em] text-xs text-amber-200 hover:text-white transition-colors duration-500">
+                        Inquire
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 relative">
+                <!-- Main Glass Card -->
+                <div
+                    class="glass-card p-2 rounded-sm relative z-20 transform hover:scale-[1.01] transition-transform duration-1000 ease-out">
+                    <div class="relative overflow-hidden aspect-[16/9]">
+                        <div class="absolute inset-0 bg-black/40 z-10 hover:bg-black/20 transition-colors duration-700">
+                        </div>
+                        <!-- Placeholder for luxury visual -->
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center">
+                            <span class="font-luxury text-4xl text-white/10">VISUAL</span>
+                        </div>
+
+                        <div class="absolute bottom-8 left-8 z-20">
+                            <div class="font-luxury text-3xl text-white mb-1">Paris Fashion Week</div>
+                            <div class="text-xs uppercase tracking-widest text-amber-200/80">Premium Access • Oct 2024
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decorative elements behind -->
+                <div
+                    class="absolute -top-10 -right-10 w-64 h-64 glass-card -z-10 rounded-full opacity-60 animate-pulse">
+                </div>
+            </div>
+
+            <!-- Feature Strip -->
+            <div class="col-span-12 mt-20 border-t border-white/5 pt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group cursor-pointer">
+                    <div
+                        class="h-px w-full bg-white/10 mb-4 group-hover:bg-amber-200/50 transition-colors duration-700">
+                    </div>
+                    <h3 class="font-luxury text-xl text-white mb-2">Bespoke<br>Itineraries</h3>
+                    <p class="text-sm font-light text-gray-500 group-hover:text-gray-400 transition-colors">Tailored
+                        specifically to your circle's interests and available timeframes.</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div
+                        class="h-px w-full bg-white/10 mb-4 group-hover:bg-amber-200/50 transition-colors duration-700">
+                    </div>
+                    <h3 class="font-luxury text-xl text-white mb-2">Private<br>Access</h3>
+                    <p class="text-sm font-light text-gray-500 group-hover:text-gray-400 transition-colors">Entry to
+                        hackathons and galas typically closed to the general public.</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div
+                        class="h-px w-full bg-white/10 mb-4 group-hover:bg-amber-200/50 transition-colors duration-700">
+                    </div>
+                    <h3 class="font-luxury text-xl text-white mb-2">Concierge<br>Support</h3>
+                    <p class="text-sm font-light text-gray-500 group-hover:text-gray-400 transition-colors">24/7
+                        assistance for logistics, bookings, and unscripted requests.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+
+</html>

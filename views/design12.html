@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Papercut Mono</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,900&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --paper-base: #fdfdfd;
+            --paper-white: #ffffff;
+            /* Deeper, more dramatic shadows for "high relief" look */
+            --paper-shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --paper-shadow-2: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            --paper-shadow-3: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            background-color: var(--paper-base);
+            color: #333;
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+            /* 1. PAPER TEXTURE: Subtle noise grain */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 2. LAYERS WITH TEXTURE */
+        .layer {
+            background-color: var(--paper-white);
+            /* Apply texture to every layer for realism */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            box-shadow: var(--paper-shadow-2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .layer:hover {
+            transform: translateY(-4px) scale(1.005);
+            box-shadow: var(--paper-shadow-3);
+            z-index: 10;
+        }
+
+        /* 3. LASER CUT PATTERNS */
+        .laser-cut-lattice {
+            /* Intricate geometric cutout mask */
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 41%), linear-gradient(to right, black 2px, transparent 2px), linear-gradient(to bottom, black 2px, transparent 2px);
+            -webkit-mask-size: 20px 20px;
+            background-color: #f0f0f0;
+            /* Show "through" to this color */
+            pointer-events: none;
+        }
+
+        .laser-cut-floral {
+            /* Floral pattern simulation */
+            mask-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C 10 10 30 0 40 10 C 30 20 50 30 40 40 C 30 30 10 40 0 30 C 10 20 -10 10 0 0 C 10 10 30 10 20 20' fill='black'/%3E%3C/svg%3E");
+            mask-size: 40px 40px;
+            background-color: transparent;
+            border: 20px solid white;
+            /* The "paper" remaining */
+            opacity: 0.8;
+        }
+
+        /* 4. DEBOSSED TYPOGRAPHY */
+        .debossed-text {
+            color: transparent;
+            background-color: #eee;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(255, 255, 255, 0.8);
+            font-weight: 900;
+        }
+
+        /* 5. COMPLEX SHADOW STACKING */
+        /* Simulates multiple sheets of paper stacked with offsets */
+        .paper-stack::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: -1;
+            box-shadow: var(--paper-shadow-1);
+            border-radius: inherit;
+        }
+
+        .paper-stack::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: -2;
+            box-shadow: var(--paper-shadow-1);
+            opacity: 0.8;
+            border-radius: inherit;
+        }
+
+        .floating-fab {
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-20 px-4 md:px-0 flex flex-col items-center">
+
+    <!-- Background Sculptural Elements -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-white rounded-full opacity-60 blur-3xl -z-10"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] bg-white rounded-full opacity-60 blur-3xl -z-10">
+    </div>
+
+    <header class="text-center mb-24 relative z-10 p-12 layer rounded-sm max-w-2xl w-full paper-stack">
+        <!-- Laser Cut Detail on Header -->
+        <div class="absolute top-0 left-0 w-full h-4 opacity-30"
+            style="background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.1) 5px, rgba(0,0,0,0.1) 6px);">
+        </div>
+
+        <h1 class="serif-font text-8xl text-gray-800 tracking-tighter italic mix-blend-multiply opacity-90">Venvi</h1>
+        <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mt-4 font-bold">Paper Architecture &bull; V2</p>
+
+        <!-- Debossed year -->
+        <div
+            class="absolute -right-6 -bottom-6 text-9xl leading-none debossed-text opacity-20 serif-font -rotate-12 pointer-events-none">
+            26
+        </div>
+    </header>
+
+    <main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+        <!-- Left Col: The Lattice Card -->
+        <div class="lg:col-span-5 space-y-12">
+            <div class="layer p-0 bg-white relative overflow-hidden h-[500px] group">
+                <!-- The "Lattice" Screen -->
+                <div
+                    class="absolute inset-4 border border-gray-100 z-10 flex flex-col justify-end p-8 transition-transform group-hover:scale-95 duration-500">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Exhibition</span>
+                    <h2 class="serif-font text-5xl text-gray-800 leading-none">White<br>Noise</h2>
+                </div>
+
+                <!-- Layer behind lattice -->
+                <div class="absolute inset-0 bg-gray-50">
+                    <!-- Laser Cut Pattern Mask -->
+                    <div class="w-full h-full opacity-20"
+                        style="background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 10px 10px;">
+                    </div>
+
+                    <!-- Moving shadow simulation -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full shadow-[0_0_100px_rgba(0,0,0,0.1)] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-8 text-center text-gray-400 text-sm font-light italic">
+                “Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take
+                away.”
+            </div>
+        </div>
+
+        <!-- Right Col: The Stack -->
+        <div class="lg:col-span-7 space-y-16 mt-12">
+
+            <!-- Article Card -->
+            <div class="layer p-12 paper-stack relative">
+                <div
+                    class="absolute -top-8 -left-8 text-[12rem] serif-font text-gray-50 opacity-50 select-none z-0 leading-none">
+                    “</div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
+                        <span class="text-xs font-bold uppercase text-gray-400">Featured</span>
+                        <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                    </div>
+                    <h3 class="serif-font text-4xl mb-6 text-gray-700">The Geometry<br>of Shadows</h3>
+                    <p class="text-gray-500 leading-relaxed font-light text-lg">
+                        Explorations in depth, texture, and light.
+                        How pure form defines space without the need for hue.
+                    </p>
+
+                    <div class="mt-8 flex justify-end">
+                        <button
+                            class="w-16 h-16 rounded-full bg-white floating-fab flex items-center justify-center text-gray-800 hover:scale-110 transition-transform">
+                            <span class="text-2xl font-light">&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Grid (Cutouts) -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Cutout 1 -->
+                <div class="aspect-[3/4] layer relative flex items-center justify-center p-6 group">
+                    <div class="absolute inset-6 border border-gray-200 opacity-50"></div>
+                    <div class="w-full h-full bg-white shadow-inner flex items-center justify-center">
+                        <div
+                            class="w-16 h-16 rounded-full border border-gray-100 shadow-[inset_0_4px_8px_rgba(0,0,0,0.05)]">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cutout 2 -->
+                <div class="aspect-[3/4] layer relative flex items-center justify-center p-6 mt-12">
+                    <div class="text-6xl text-gray-100 serif-font font-bold">02</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

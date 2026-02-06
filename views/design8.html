@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Art Nouveau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Sorts+Mill+Goudy:ital@0;1&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --nouveau-olive: #556B2F;
+            --nouveau-gold: #D4AF37;
+            --nouveau-cream: #F5F5DC;
+            --nouveau-pink: #d8a69e;
+            --nouveau-dark: #2F4F4F;
+        }
+
+        body {
+            background-color: var(--nouveau-cream);
+            color: var(--nouveau-dark);
+            font-family: 'Sorts Mill Goudy', serif;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23556B2F' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .font-decorative {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .frame {
+            border: 2px solid var(--nouveau-gold);
+            position: relative;
+            padding: 2rem;
+            margin: 2rem;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .frame::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--nouveau-olive);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .corner-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-image: radial-gradient(circle at center, var(--nouveau-gold) 2px, transparent 2px),
+                radial-gradient(circle at center, var(--nouveau-olive) 1px, transparent 1px);
+            background-size: 100% 100%, 20px 20px;
+            opacity: 0.5;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+            mask-image: linear-gradient(135deg, black 40%, transparent 40%);
+        }
+
+        .top-right {
+            top: 0;
+            right: 0;
+            mask-image: linear-gradient(-135deg, black 40%, transparent 40%);
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            mask-image: linear-gradient(45deg, black 40%, transparent 40%);
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            mask-image: linear-gradient(-45deg, black 40%, transparent 40%);
+        }
+
+        .image-mask {
+            border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+            border: 4px double var(--nouveau-gold);
+        }
+
+        .drop-cap {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            margin-right: 8px;
+            color: var(--nouveau-olive);
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .btn-elegant {
+            background: transparent;
+            border: 1px solid var(--nouveau-olive);
+            padding: 10px 30px;
+            font-family: 'Cinzel Decorative';
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-elegant:hover {
+            background: var(--nouveau-olive);
+            color: var(--nouveau-cream);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-10 flex flex-col items-center">
+
+    <nav class="mb-10 text-center">
+        <h1 class="font-decorative text-5xl md:text-7xl text-[#556B2F] drop-shadow-sm mb-2">Venvi</h1>
+        <div class="h-px w-32 bg-[#D4AF37] mx-auto mb-1"></div>
+        <p class="uppercase tracking-[0.3em] text-xs font-bold text-[#D4AF37]">L'Esprit Nouveau</p>
+    </nav>
+
+    <main class="max-w-4xl w-full px-4">
+
+        <div class="frame">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration top-right"></div>
+            <div class="corner-decoration bottom-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+                <!-- Text Content -->
+                <div>
+                    <h2 class="font-decorative text-4xl mb-6 text-[#2F4F4F]">The Season of<br>Discovery</h2>
+                    <p class="text-xl leading-relaxed mb-6 text-justify">
+                        <span class="drop-cap">W</span>elcome to a curated collection of Europe's most exquisite
+                        gatherings.
+                        We invite you to step away from the mundane and immerse yourself in environments rich with
+                        creativity and intellectual fervor.
+                    </p>
+                    <div class="flex justify-center md:justify-start">
+                        <button class="btn-elegant">Entrer</button>
+                    </div>
+                </div>
+
+                <!-- Image / Visual -->
+                <div class="relative flex justify-center">
+                    <!-- Ornamental Halo -->
+                    <div
+                        class="absolute -top-10 -z-10 w-64 h-64 border border-[#e8dcb5] rounded-full scale-150 opacity-50">
+                    </div>
+                    <div
+                        class="absolute -top-6 -z-10 w-64 h-64 border border-[#e8dcb5] rounded-full scale-125 opacity-70">
+                    </div>
+
+                    <div
+                        class="w-64 h-80 bg-[#d8a69e] image-mask flex items-center justify-center overflow-hidden shadow-xl relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#556B2F] to-transparent opacity-30 mix-blend-multiply">
+                        </div>
+                        <span class="font-decorative text-4xl text-white/50 z-10">MUSE</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Directory Section -->
+        <div class="mt-16 text-center">
+            <h3 class="font-decorative text-2xl text-[#556B2F] mb-8">~ Le Catalogue ~</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 border border-[#e8dcb5] hover:border-[#D4AF37] transition-colors cursor-pointer group">
+                    <div
+                        class="w-12 h-12 mx-auto mb-4 border border-[#556B2F] rounded-full flex items-center justify-center text-xl text-[#556B2F] group-hover:bg-[#556B2F] group-hover:text-white transition-colors">
+                        I</div>
+                    <h4 class="font-bold text-lg mb-2">Arts & Crafts</h4>
+                    <p class="text-sm italic text-gray-500">Exhibitions</p>
+                </div>
+
+                <div class="p-6 border border-[#e8dcb5] hover:border-[#D4AF37] transition-colors cursor-pointer group">
+                    <div
+                        class="w-12 h-12 mx-auto mb-4 border border-[#556B2F] rounded-full flex items-center justify-center text-xl text-[#556B2F] group-hover:bg-[#556B2F] group-hover:text-white transition-colors">
+                        II</div>
+                    <h4 class="font-bold text-lg mb-2">Technical</h4>
+                    <p class="text-sm italic text-gray-500">Symposiums</p>
+                </div>
+
+                <div class="p-6 border border-[#e8dcb5] hover:border-[#D4AF37] transition-colors cursor-pointer group">
+                    <div
+                        class="w-12 h-12 mx-auto mb-4 border border-[#556B2F] rounded-full flex items-center justify-center text-xl text-[#556B2F] group-hover:bg-[#556B2F] group-hover:text-white transition-colors">
+                        III</div>
+                    <h4 class="font-bold text-lg mb-2">Society</h4>
+                    <p class="text-sm italic text-gray-500">Galas</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
