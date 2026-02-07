@@ -1,0 +1,13 @@
+[
+    {
+        "id": 12345,
+        "date": "2026-02-14T18:00:00",
+        "link": "https://drinbz.it/event/sample",
+        "title": {
+            "rendered": "Valentine's Party &#8211; Live Music"
+        },
+        "content": {
+            "rendered": "<p>Join us for a lovely evening.</p>"
+        }
+    }
+]
