@@ -16,6 +16,10 @@ import (
 var Providers = []EventProvider{
 	NewODHProvider(),
 	NewEuroHackathonsProvider(),
+	NewDrinbzProvider(),
+	NewNOIProvider(),
+	NewUnibzProvider(),
+	NewMuseionProvider(),
 }
 
 // SyncStats contains statistics about a sync operation.
