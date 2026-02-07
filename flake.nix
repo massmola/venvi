@@ -26,6 +26,9 @@
             # Node.js for Playwright & Frontend tooling
             nodejs_20
 
+            # CI/CD & Deployment
+            github-cli
+
             # SQLite (for PocketBase)
             sqlite
           ];
