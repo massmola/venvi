@@ -32,3 +32,6 @@ Thumbs.db
 node_modules/
 .npm/
 .playwright/
+
+# Agent Interaction Data
+.agent_data/

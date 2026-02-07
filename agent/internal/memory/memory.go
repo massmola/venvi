@@ -1,0 +1,125 @@
+package memory
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+)
+
+// Skill represents a learned capability or lesson.
+type Skill struct {
+	ID        string    `json:"id"`
+	Topic     string    `json:"topic"`
+	Content   string    `json:"content"`
+	Tags      []string  `json:"tags"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
+// Store manages the persistence of skills.
+type Store struct {
+	DataDir string
+}
+
+// NewStore creates a new memory store.
+func NewStore(dataDir string) *Store {
+	return &Store{DataDir: dataDir}
+}
+
+// getFilePath returns the path to the memory file.
+func (s *Store) getFilePath() string {
+	return filepath.Join(s.DataDir, "memory.json")
+}
+
+// Load retrieves all skills from storage.
+func (s *Store) Load() ([]Skill, error) {
+	path := s.getFilePath()
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		return []Skill{}, nil
+	}
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read memory file: %w", err)
+	}
+
+	var skills []Skill
+	if len(data) == 0 {
+		return []Skill{}, nil
+	}
+
+	if err := json.Unmarshal(data, &skills); err != nil {
+		return nil, fmt.Errorf("failed to parse memory file: %w", err)
+	}
+
+	return skills, nil
+}
+
+// Save persists a new skill to storage.
+func (s *Store) Save(skill Skill) error {
+	skills, err := s.Load()
+	if err != nil {
+		return err
+	}
+
+	// Simple ID generation if not provided
+	if skill.ID == "" {
+		skill.ID = fmt.Sprintf("%d", time.Now().UnixNano())
+	}
+	if skill.CreatedAt.IsZero() {
+		skill.CreatedAt = time.Now()
+	}
+
+	skills = append(skills, skill)
+
+	data, err := json.MarshalIndent(skills, "", "  ")
+	if err != nil {
+		return fmt.Errorf("failed to marshal skills: %w", err)
+	}
+
+	// Ensure directory exists
+	if err := os.MkdirAll(s.DataDir, 0755); err != nil {
+		return fmt.Errorf("failed to create data directory: %w", err)
+	}
+
+	if err := os.WriteFile(s.getFilePath(), data, 0644); err != nil {
+		return fmt.Errorf("failed to write memory file: %w", err)
+	}
+
+	return nil
+}
+
+// Search finds skills matching the query (case-insensitive substring in Topic, Content, or Tags).
+func (s *Store) Search(query string) ([]Skill, error) {
+	skills, err := s.Load()
+	if err != nil {
+		return nil, err
+	}
+
+	var results []Skill
+	query = strings.ToLower(query)
+
+	for _, skill := range skills {
+		match := false
+		if strings.Contains(strings.ToLower(skill.Topic), query) {
+			match = true
+		} else if strings.Contains(strings.ToLower(skill.Content), query) {
+			match = true
+		} else {
+			for _, tag := range skill.Tags {
+				if strings.Contains(strings.ToLower(tag), query) {
+					match = true
+					break
+				}
+			}
+		}
+
+		if match {
+			results = append(results, skill)
+		}
+	}
+
+	return results, nil
+}
