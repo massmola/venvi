@@ -1,8 +1,6 @@
 package migrations
 
 import (
-	"encoding/json"
-
 	"github.com/pocketbase/pocketbase/core"
 	m "github.com/pocketbase/pocketbase/migrations"
 )
@@ -15,13 +13,7 @@ func init() {
 		}
 
 		// update collection data
-		if err := json.Unmarshal([]byte(`{
-			"oauth2": {
-				"enabled": true
-			}
-		}`), &collection); err != nil {
-			return err
-		}
+		collection.OAuth2.Enabled = true
 
 		return app.Save(collection)
 	}, func(app core.App) error {
@@ -31,13 +23,7 @@ func init() {
 		}
 
 		// update collection data
-		if err := json.Unmarshal([]byte(`{
-			"oauth2": {
-				"enabled": false
-			}
-		}`), &collection); err != nil {
-			return err
-		}
+		collection.OAuth2.Enabled = false
 
 		return app.Save(collection)
 	})
