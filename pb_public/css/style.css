@@ -152,7 +152,7 @@ a {
     left: 4px;
     right: -4px;
     bottom: -4px;
-    background: white;
+    background: var(--paper-white, white);
     border: 1px solid var(--border-color);
     z-index: -1;
     box-shadow: var(--shadow-1);
@@ -164,7 +164,7 @@ a {
     --paper-white: #262626;
     --text-heading: #efefef;
     --text-body: #a3a3a3;
-    --text-muted: #a3a3a3;
+    --text-muted: #787878;
     --border-color: rgba(255, 255, 255, 0.1);
 
     /* Dark Mode Linen Texture */
@@ -199,4 +199,5 @@ a {
 
 .dark .input-well:focus {
     background-color: #2a2a2a;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.4);
 }

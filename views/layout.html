@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
 
 <head>
     <meta charset="UTF-8">
@@ -105,7 +110,10 @@
     <!-- Footer -->
     <footer
         class="border-t border-black/5 dark:border-white/5 py-8 text-center text-[var(--text-muted)] text-sm bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
-        <p>&copy; 2024 Venvi. Powered by PocketBase.</p>
+        <p>&copy; <span id="year"></span> Venvi. Powered by PocketBase.</p>
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </footer>
 
     <script>
