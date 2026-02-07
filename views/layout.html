@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{block "title" .}}Venvi{{end}}</title>
 
-    <!-- Fonts -->
+    <!-- Fonts (Design 23: Quicksand + Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Venvi Design 23 Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
 
     <!-- Tailwind CSS (Dev Mode) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,7 +24,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Quicksand', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -35,6 +41,7 @@
         }
     </script>
 
+
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 
@@ -44,25 +51,24 @@
     {{block "head" .}}{{end}}
 </head>
 
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+<body class="min-h-screen flex flex-col font-sans">
 
     <!-- Navbar -->
-    <nav class="border-b border-white/10 backdrop-blur-md bg-slate-900/80 sticky top-0 z-50">
+    <nav class="border-b border-black/10 backdrop-blur-md bg-white/80 sticky top-0 z-50">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/"
-                class="text-2xl font-bold bg-gradient-to-r from-brand-500 to-purple-500 bg-clip-text text-transparent">
+            <a href="/" class="text-2xl font-bold font-heading text-brand-600">
                 Venvi
             </a>
-            <div class="flex gap-4 items-center">
-                <a href="/" class="hover:text-brand-400 transition-colors">Home</a>
-                <a href="/_/" class="hover:text-brand-400 transition-colors">Admin</a>
+            <div class="flex gap-4 items-center text-slate-700">
+                <a href="/" class="hover:text-brand-600 transition-colors font-medium">Home</a>
+                <a href="/_/" class="hover:text-brand-600 transition-colors font-medium">Admin</a>
 
                 <!-- Auth UI -->
-                <div id="auth-container" class="flex gap-3 ml-4 border-l border-white/10 pl-4 items-center">
-                    <span id="user-name" class="hidden text-sm text-brand-200"></span>
+                <div id="auth-container" class="flex gap-3 ml-4 border-l border-black/10 pl-4 items-center">
+                    <span id="user-name" class="hidden text-sm text-brand-600 font-bold"></span>
                     <div id="login-container" class="relative">
                         <button id="login-btn"
-                            class="text-xs font-medium bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="text-xs font-bold leading-none bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-sm transition-all flex items-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed shadow-sm border border-black"
                             onclick="startLogin()">
                             <span id="login-text">Login</span>
                             <div id="login-spinner" class="hidden">
@@ -78,12 +84,12 @@
                         </button>
                         <!-- Notifications -->
                         <div id="auth-notification"
-                            class="hidden absolute top-full right-0 mt-2 w-64 p-3 bg-slate-800 border border-white/10 rounded-xl shadow-2xl z-50 text-xs animate-in slide-in-from-top-2 duration-200">
-                            <p id="notification-msg" class="text-slate-300"></p>
+                            class="hidden absolute top-full right-0 mt-2 w-64 p-3 bg-white border border-gray-200 rounded shadow-xl z-50 text-xs animate-in slide-in-from-top-2 duration-200">
+                            <p id="notification-msg" class="text-gray-700"></p>
                         </div>
                     </div>
                     <button id="logout-btn"
-                        class="hidden text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                        class="hidden text-xs font-bold text-gray-500 hover:text-red-600 transition-colors"
                         onclick="logout()">Logout</button>
                 </div>
             </div>
@@ -96,7 +102,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 py-6 text-center text-slate-500 text-sm">
+    <footer class="border-t border-black/5 py-8 text-center text-slate-400 text-sm bg-white/50 backdrop-blur-sm">
         <p>&copy; 2024 Venvi. Powered by PocketBase.</p>
     </footer>
 
