@@ -3,28 +3,34 @@
 {{define "content"}}
 <div class="flex flex-col items-center justify-center py-20 text-center">
     <div
-        class="mb-6 inline-flex items-center rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-sm text-brand-400">
+        class="mb-6 inline-flex items-center bg-white dark:bg-neutral-800 border border-black/5 shadow-sm px-4 py-1 text-sm text-brand-600 font-bold tracking-wide rounded-sm">
         <span>🚀 The Event Aggregator</span>
     </div>
 
-    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-        Discover <span class="bg-gradient-to-r from-brand-500 to-purple-500 bg-clip-text text-transparent">Events</span>
+    <h1 class="text-5xl md:text-7xl mb-6 text-[var(--text-heading)] leading-tight">
+        Discover Events
         <br>
-        Across Europe.
+        <span class="text-brand-600 relative inline-block">
+            Across Europe.
+            <!-- Underline decoration for emphasis -->
+            <svg class="absolute w-full h-3 -bottom-1 left-0 text-brand-200/50 -z-10" viewBox="0 0 100 10"
+                preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
+            </svg>
+        </span>
     </h1>
 
-    <p class="text-lg text-slate-400 max-w-2xl mb-10">
+    <p class="text-xl text-[var(--text-body)] max-w-2xl mb-12 font-medium">
         Find the best hackathons, meetups, and cultural events.
         Plan your next adventure around code and culture.
     </p>
 
     <div class="flex gap-4">
         <button hx-post="/api/venvi/sync" hx-swap="none" hx-on::after-request="htmx.trigger('#event-list', 'load')"
-            class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/20">
+            class="btn btn-primary text-base">
             Sync & Refresh
         </button>
-        <a href="/_/"
-            class="border border-white/10 hover:bg-white/5 text-white px-8 py-3 rounded-xl font-semibold transition-all">
+        <a href="/_/" class="btn text-base hover:bg-gray-50 dark:hover:bg-neutral-800">
             Admin Panel
         </a>
     </div>
@@ -34,7 +40,7 @@
 <div id="event-list" hx-get="/partials/events" hx-trigger="load, reload from:body" hx-swap="innerHTML"
     class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Server will render items here -->
-    <div class="col-span-full text-center text-slate-500">
+    <div class="col-span-full text-center text-gray-400 py-12">
         Loading top events...
     </div>
 </div>
