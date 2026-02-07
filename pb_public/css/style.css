@@ -1,10 +1,13 @@
 /* Venvi - Papercut + Quicksand Design System */
 :root {
+    /* Linen Texture Variable */
+    --bg-linen: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.15'/%3E%3C/svg%3E");
+
     --paper-bg: #e5e5e5;
     --paper-white: #ffffff;
     --text-heading: #1a1a1a;
     --text-body: #4a4a4a;
-    --text-muted: #888888;
+    --text-muted: #737373;
     --text-brand: #0284c7;
     /* Brand 600 from original */
 
@@ -24,7 +27,7 @@ body {
     overflow-x: hidden;
 
     /* Linen Texture */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.15'/%3E%3C/svg%3E");
+    background-image: var(--bg-linen);
 }
 
 h1,
@@ -54,7 +57,7 @@ a {
     position: relative;
 
     /* Subtle Texture Overlay on Cards */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.08'/%3E%3C/svg%3E");
+    background-image: var(--bg-linen);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -114,14 +117,17 @@ a {
     font-family: 'Inter', sans-serif;
     color: var(--text-heading);
     outline: none;
-    transition: background 0.2s;
+    transition: background 0.2s, box-shadow 0.2s;
     border-radius: 2px;
 }
 
 .input-well:focus {
     background-color: #ffffff;
     border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: var(--shadow-1);
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+    /* Focus Ring */
+    outline: 2px solid var(--text-brand);
+    outline-offset: -1px;
 }
 
 /* UTILITY CLASSES */
@@ -158,8 +164,11 @@ a {
     --paper-white: #262626;
     --text-heading: #efefef;
     --text-body: #a3a3a3;
-    --text-muted: #525252;
+    --text-muted: #a3a3a3;
     --border-color: rgba(255, 255, 255, 0.1);
+
+    /* Dark Mode Linen Texture */
+    --bg-linen-dark: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.05'/%3E%3C/svg%3E");
 
     /* Shadows adjusted for dark mode (using glows/deeper blacks) */
     --shadow-1: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -171,7 +180,7 @@ a {
 .dark body,
 .dark .card {
     /* Slightly different linen texture for dark mode */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image: var(--bg-linen-dark);
 }
 
 .dark .btn-primary {

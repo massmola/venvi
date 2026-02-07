@@ -43,10 +43,10 @@
 
 
     <!-- HTMX -->
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="/static/js/lib/htmx.min.js"></script>
 
     <!-- PocketBase SDK -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.21.3/pocketbase.umd.min.js"></script>
+    <script src="/static/js/lib/pocketbase.umd.min.js"></script>
 
     {{block "head" .}}{{end}}
 </head>
@@ -54,7 +54,8 @@
 <body class="min-h-screen flex flex-col font-sans">
 
     <!-- Navbar -->
-    <nav class="border-b border-black/10 backdrop-blur-md bg-white/80 sticky top-0 z-50">
+    <nav
+        class="border-b border-black/10 dark:border-white/10 backdrop-blur-md bg-white/80 dark:bg-neutral-900/80 sticky top-0 z-50">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <a href="/" class="text-2xl font-bold font-heading text-brand-600">
                 Venvi
@@ -84,7 +85,7 @@
                         </button>
                         <!-- Notifications -->
                         <div id="auth-notification"
-                            class="hidden absolute top-full right-0 mt-2 w-64 p-3 bg-white border border-gray-200 rounded shadow-xl z-50 text-xs animate-in slide-in-from-top-2 duration-200">
+                            class="hidden absolute top-full right-0 mt-2 w-64 p-3 bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded shadow-xl z-50 text-xs animate-in slide-in-from-top-2 duration-200">
                             <p id="notification-msg" class="text-gray-700"></p>
                         </div>
                     </div>
@@ -103,7 +104,7 @@
 
     <!-- Footer -->
     <footer
-        class="border-t border-black/5 py-8 text-center text-[var(--text-muted)] text-sm bg-white/50 backdrop-blur-sm">
+        class="border-t border-black/5 dark:border-white/5 py-8 text-center text-[var(--text-muted)] text-sm bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
         <p>&copy; 2024 Venvi. Powered by PocketBase.</p>
     </footer>
 
