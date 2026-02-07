@@ -316,6 +316,32 @@ func RegisterWebRoutes(se *core.ServeEvent, registry *template.Registry) {
 		return e.HTML(http.StatusOK, html)
 	})
 
+	// Design 22: Friendly Font Showcase
+	se.Router.GET("/design/22", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design22.html",
+		).Render(map[string]any{
+			"title": "Venvi - Friendly Fonts",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
+	// Design 23: Style Reference (Papercut + Quicksand)
+	se.Router.GET("/design/23", func(e *core.RequestEvent) error {
+		html, err := registry.LoadFiles(
+			"views/design23.html",
+		).Render(map[string]any{
+			"title": "Venvi - Style Reference",
+		})
+		if err != nil {
+			return e.InternalServerError("Template error", err)
+		}
+		return e.HTML(http.StatusOK, html)
+	})
+
 	// HTMX partial for event list
 	se.Router.GET("/partials/events", func(e *core.RequestEvent) error {
 		app := e.App

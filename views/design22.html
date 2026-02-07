@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venvi - Refined Friendly Fonts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Inter:wght@400;700&family=Nunito:wght@400;700&family=Varela+Round&family=Montserrat:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --paper-base: #f0f0f0;
+            --paper-white: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.12);
+            --shadow-hd-1: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-hd-2: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+            --shadow-hd-3: 0 16px 32px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: #e5e5e5;
+            color: #222;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        .layer {
+            background-color: var(--paper-white);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linen'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linen)' opacity='0.08'/%3E%3C/svg%3E");
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-hd-2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .layer:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hd-3);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .font-quicksand {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-nunito {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .font-varela {
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-plus-jakarta {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-physical {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            font-weight: 600;
+            box-shadow: var(--shadow-hd-1);
+            transition: all 0.2s;
+        }
+
+        .btn-physical:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        .badge-ref {
+            background: #222;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-20 px-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-20 text-center">
+            <h1 class="font-quicksand text-5xl font-bold text-gray-900 mb-4 text-center">Refined Typography</h1>
+            <p class="text-gray-500 font-inter text-lg">Comparing Rounded vs. Geometric Friendly Fonts</p>
+        </header>
+
+        <!-- SECTION 1: THE ROUNDED LOOK -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="font-quicksand text-2xl font-bold">The Rounded Family</h2>
+                <span class="h-px bg-gray-300 flex-grow"></span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reference: Quicksand -->
+                <div class="layer p-8 border-t-4 border-t-black">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="badge-ref">Reference</span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase">Soft & Bubbly</span>
+                    </div>
+                    <h3 class="font-quicksand text-4xl mb-6 font-bold">Quicksand</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-inter">Your favorite choice. Max roundness, very
+                        approachable, feels modern but extremely soft.</p>
+                    <button class="btn-physical font-quicksand w-full text-sm">Select Original</button>
+                </div>
+
+                <!-- Similar 1: Nunito -->
+                <div class="layer p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase">Similar Choice</span>
+                    </div>
+                    <h3 class="font-nunito text-4xl mb-6 font-bold">Nunito</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-inter">Slightly more "pro" than Quicksand but still very
+                        rounded. It's used by major brands to feel friendly but serious.</p>
+                    <button class="btn-physical font-nunito w-full text-sm">Select Nunito</button>
+                </div>
+
+                <!-- Similar 2: Varela Round -->
+                <div class="layer p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase">Similar Choice</span>
+                    </div>
+                    <h3 class="font-varela text-4xl mb-6">Varela</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-inter">Extremely clean and simple. It's like a rounder
+                        version of a classic sans-serif. Very tidy.</p>
+                    <button class="btn-physical font-varela w-full text-sm">Select Varela</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: THE GEOMETRIC LOOK -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="font-inter text-2xl font-bold">The Geometric Family</h2>
+                <span class="h-px bg-gray-300 flex-grow"></span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reference: Inter -->
+                <div class="layer p-8 border-t-4 border-t-black">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="badge-ref">Reference</span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase">Clean & Pro</span>
+                    </div>
+                    <h3 class="font-inter text-4xl mb-6 font-bold">Inter</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-inter">The font from the description. Precision meets
+                        approachability. It feels like high-end tech.</p>
+                    <button class="btn-physical font-inter w-full text-sm font-bold">Select Original</button>
+                </div>
+
+                <!-- Similar 1: Plus Jakarta Sans -->
+                <div class="layer p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase">Similar Choice</span>
+                    </div>
+                    <h3 class="font-plus-jakarta text-4xl mb-6 font-bold">Jakarta</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-plus-jakarta">The trendiest font in tech right now. It has
+                        a beautiful, wide geometry that feels premium and fresh.</p>
+                    <button class="btn-physical font-plus-jakarta w-full text-sm font-bold">Select Jakarta</button>
+                </div>
+
+                <!-- Similar 2: Montserrat -->
+                <div class="layer p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase">Similar Choice</span>
+                    </div>
+                    <h3 class="font-montserrat text-4xl mb-6 font-bold">Montserrat</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-montserrat">Very bold and circular. It feels like a
+                        high-end designer shop. It's friendly but authoritative.</p>
+                    <button class="btn-physical font-montserrat w-full text-sm font-bold">Select Montserrat</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layer p-12 bg-white flex flex-col items-center text-center">
+            <h3 class="font-plus-jakarta text-5xl mb-6 font-bold">The Final Choice</h3>
+            <p class="max-w-2xl text-gray-500 mb-10 font-inter">
+                If you combine a <strong>Rounded heading</strong> (like Quicksand) with a <strong>Geometric
+                    body</strong> (like Jakarta or Inter), you get the perfect balance of "Friendly" and "Premium."
+            </p>
+            <div class="flex gap-4">
+                <button class="btn-physical font-quicksand px-8 py-4">Our Recommendation</button>
+                <button class="btn-physical bg-black text-white px-8 py-4 border-black font-plus-jakarta">Done with
+                    Selection</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
