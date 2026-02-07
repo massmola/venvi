@@ -1,0 +1,24 @@
+{
+    "TotalResults": 1,
+    "Items": [
+        {
+            "Id": "noi-123",
+            "Detail": {
+                "en": {
+                    "Title": "NOI Techpark Summit",
+                    "BaseText": "Innovation starts here."
+                },
+                "it": {
+                    "Title": "NOI Techpark Summit IT"
+                }
+            },
+            "DateBegin": "2026-03-01T09:00:00",
+            "DateEnd": "2026-03-01T17:00:00",
+            "ImageGallery": [
+                {
+                    "ImageUrl": "https://noi.bz.it/image.jpg"
+                }
+            ]
+        }
+    ]
+}
