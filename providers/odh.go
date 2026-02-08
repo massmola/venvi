@@ -31,8 +31,8 @@ func (p *ODHProvider) SourceName() string {
 	return "odh"
 }
 
-// odhResponse represents the API response structure from Open Data Hub.
-type odhResponse struct {
+// ODHResponse represents the API response structure from Open Data Hub.
+type ODHResponse struct {
 	TotalResults int              `json:"TotalResults"`
 	Items        []map[string]any `json:"Items"`
 }
@@ -59,7 +59,7 @@ func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
 	}
 
-	var result odhResponse
+	var result ODHResponse
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return nil, fmt.Errorf("decoding response: %w", err)
 	}

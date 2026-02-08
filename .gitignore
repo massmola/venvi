@@ -18,6 +18,8 @@ server.log
 .tmp/
 *.db
 *.sqlite3
+debug_*.json
+debug_*.html
 
 # Nix
 .direnv/

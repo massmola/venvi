@@ -84,8 +84,13 @@ func (s *Store) Save(skill Skill) error {
 		return fmt.Errorf("failed to create data directory: %w", err)
 	}
 
-	if err := os.WriteFile(s.getFilePath(), data, 0644); err != nil {
-		return fmt.Errorf("failed to write memory file: %w", err)
+	tmpPath := s.getFilePath() + ".tmp"
+	if err := os.WriteFile(tmpPath, data, 0644); err != nil {
+		return fmt.Errorf("failed to write temp memory file: %w", err)
+	}
+
+	if err := os.Rename(tmpPath, s.getFilePath()); err != nil {
+		return fmt.Errorf("failed to rename memory file: %w", err)
 	}
 
 	return nil

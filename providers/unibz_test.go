@@ -37,3 +37,18 @@ func TestUnibzProvider_FetchEvents(t *testing.T) {
 	assert.Contains(t, mapped.Title, "Infosession: GenNext 2026")
 	assert.Equal(t, "unibz", mapped.SourceName)
 }
+
+func TestUnibzProvider_FetchEvents_Empty(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("<html><body></body></html>"))
+	}))
+	defer server.Close()
+
+	p := NewUnibzProvider()
+	p.BaseURL = server.URL + "/en/events/"
+
+	events, err := p.FetchEvents(context.Background())
+	require.NoError(t, err)
+	assert.Empty(t, events)
+}

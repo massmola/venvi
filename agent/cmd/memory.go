@@ -19,7 +19,7 @@ var addCmd = &cobra.Command{
 	Use:   "add [topic] [content] [tags...]",
 	Short: "Add a new skill or lesson",
 	Args:  cobra.MinimumNArgs(2),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		topic := args[0]
 		content := args[1]
 		tags := args[2:]
@@ -32,11 +32,11 @@ var addCmd = &cobra.Command{
 		}
 
 		if err := store.Save(skill); err != nil {
-			fmt.Printf("Error saving memory: %v\n", err)
-			return
+			return fmt.Errorf("error saving memory: %w", err)
 		}
 
-		fmt.Printf("Memory added: %s\n", topic)
+		cmd.Printf("Memory added: %s\n", topic)
+		return nil
 	},
 }
 
@@ -44,27 +44,27 @@ var searchCmd = &cobra.Command{
 	Use:   "search [query]",
 	Short: "Search for skills or lessons",
 	Args:  cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		query := args[0]
 		store := memory.NewStore(".agent_data")
 
 		results, err := store.Search(query)
 		if err != nil {
-			fmt.Printf("Error searching memory: %v\n", err)
-			return
+			return fmt.Errorf("error searching memory: %w", err)
 		}
 
 		if len(results) == 0 {
-			fmt.Println("No matching memories found.")
-			return
+			cmd.Println("No matching memories found.")
+			return nil
 		}
 
-		fmt.Printf("Found %d memories:\n", len(results))
+		cmd.Printf("Found %d memories:\n", len(results))
 		for _, skill := range results {
-			fmt.Printf("\n--- [%s] %s ---\n", skill.CreatedAt.Format(time.RFC3339), skill.Topic)
-			fmt.Printf("Tags: %s\n", strings.Join(skill.Tags, ", "))
-			fmt.Printf("Content:\n%s\n", skill.Content)
+			cmd.Printf("\n--- [%s] %s ---\n", skill.CreatedAt.Format(time.RFC3339), skill.Topic)
+			cmd.Printf("Tags: %s\n", strings.Join(skill.Tags, ", "))
+			cmd.Printf("Content:\n%s\n", skill.Content)
 		}
+		return nil
 	},
 }
 

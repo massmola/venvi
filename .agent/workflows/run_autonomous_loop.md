@@ -73,6 +73,9 @@ This workflow describes how to run the self-improving agent loop using the `venv
 # 3. Work... (Agent does stuff)
 ./venvi-agent log append "fix-login-bug" "Agent" "Updated user variable"
 
+# 4. Checkpoint (Auto-Commit)
+./venvi-agent commit "Fixed login bug"
+
 # 4. Reflect
 ./venvi-agent prompt critic "fix-login-bug"
 # Agent says: "We forgot to hash the password."

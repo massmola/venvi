@@ -12,31 +12,29 @@ var commitCmd = &cobra.Command{
 	Use:   "commit [message]",
 	Short: "Auto-commit changes with an 'agent:' prefix",
 	Args:  cobra.MinimumNArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		message := strings.Join(args, " ")
 
 		changed, err := git.HasChanges()
 		if err != nil {
-			fmt.Printf("Error checking git status: %v\n", err)
-			return
+			return fmt.Errorf("error checking git status: %w", err)
 		}
 
 		if !changed {
-			fmt.Println("No changes to commit.")
-			return
+			cmd.Println("No changes to commit.")
+			return nil
 		}
 
 		if err := git.StageAll(); err != nil {
-			fmt.Printf("Error staging changes: %v\n", err)
-			return
+			return fmt.Errorf("error staging changes: %w", err)
 		}
 
-		if err := git.Commit(message); err != nil {
-			fmt.Printf("Error committing changes: %v\n", err)
-			return
+		if err := git.Commit("agent: " + message); err != nil {
+			return fmt.Errorf("error committing changes: %w", err)
 		}
 
-		fmt.Printf("Committed changes with message: agent: %s\n", message)
+		cmd.Printf("Committed changes with message: agent: %s\n", message)
+		return nil
 	},
 }
 

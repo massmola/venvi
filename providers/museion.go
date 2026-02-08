@@ -2,8 +2,10 @@ package providers
 
 import (
 	"context"
+	"crypto/sha256"
 	"fmt"
 	"net/http"
+	"path"
 	"strings"
 	"time"
 
@@ -59,7 +61,10 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 			return
 		}
 
-		link, _ := s.Attr("href")
+		link, exists := s.Find("a").Attr("href")
+		if !exists || link == "" {
+			return
+		}
 		if !strings.HasPrefix(link, "http") {
 			link = "https://www.museion.it" + link
 		}
@@ -83,19 +88,24 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 }
 
 func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
-	title := fmt.Sprintf("%v", raw["title"])
-	link := fmt.Sprintf("%v", raw["link"])
-	image := fmt.Sprintf("%v", raw["image"])
-	meta := fmt.Sprintf("%v", raw["meta"])
+	title, _ := raw["title"].(string)
+	link, _ := raw["link"].(string)
+	image, _ := raw["image"].(string)
+	meta, _ := raw["meta"].(string)
 
 	// Generate ID
-	id := fmt.Sprintf("museion-%d", time.Now().UnixNano())
-	if link != "" {
-		parts := strings.Split(link, "/")
-		if len(parts) > 0 {
-			id = parts[len(parts)-1]
-		}
+	// Generate ID
+	var id string
+	normalizedLink := strings.TrimRight(link, "/")
+	if normalizedLink != "" {
+		id = path.Base(normalizedLink)
 	}
+	// Fallback if ID is empty or invalid path
+	if id == "" || id == "." || id == "/" {
+		hash := sha256.Sum256([]byte(link))
+		id = fmt.Sprintf("%x", hash[:8])
+	}
+	id = "museion-" + id
 
 	// Attempt to parse date from meta (e.g. "10.02.2026 | Event")
 	// Simple heuristic
