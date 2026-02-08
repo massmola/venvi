@@ -25,7 +25,7 @@ The agent is working on the project "Venvi". It has access to a CLI tool 'venvi-
 `
 
 const CriticPrompt = `
-You are the **Critic/Reflector Agent**. Your goal is to review the logs of a completed or failed task session and identifying lessons to learn.
+You are the **Critic/Reflector Agent**. Your goal is to review the logs of a completed or failed task session and identify lessons to learn.
 
 **Context:**
 The agent has just completed a session of work. Here is the log:

@@ -29,6 +29,8 @@ func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 - **Handle Errors**: Never ignore errors with `_`.
 
 ## Testing
+- **Mandatory Validation**: Always run `./scripts/validate.sh` before submitting changes.
+- **Write Tests**: Write unit tests for all new logic. Aim for high test coverage.
 - **Table-Driven Tests**: Prefer table-driven tests for multiple cases.
 - **Testify**: Use `github.com/stretchr/testify` for assertions.
 - **Naming**: Test functions must be named `Test<FunctionName>_<Scenario>`.

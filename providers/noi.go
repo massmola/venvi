@@ -55,20 +55,12 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
 	}
 
-	// odhResponse is unexported in odh.go. We should probably export it or redefine it.
-	// For now redefining to be safe.
-	type odhResponseLocal struct {
-		TotalResults int              `json:"TotalResults"`
-		Items        []map[string]any `json:"Items"`
-	}
-
-	var localResult odhResponseLocal
+	var localResult ODHResponse
 	if err := json.NewDecoder(resp.Body).Decode(&localResult); err != nil {
 		return nil, fmt.Errorf("decoding response: %w", err)
 	}
 
 	events := make([]RawEvent, 0, len(localResult.Items))
-	fmt.Printf("NOI: fetched %d items pre-filter\n", len(localResult.Items))
 	for _, item := range localResult.Items {
 		// Filter: Check if "NOI" or "Volta" appears in Title or Location
 		match := false
@@ -165,9 +157,12 @@ func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 	}
 
 	// Dates parsing logic...
+	// Dates parsing logic...
 	dateStart := time.Now()
 	if dateStr, ok := raw["DateBegin"].(string); ok && dateStr != "" {
 		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
+			dateStart = parsed
+		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
 			dateStart = parsed
 		}
 	}
@@ -175,6 +170,8 @@ func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 	dateEnd := time.Now()
 	if dateStr, ok := raw["DateEnd"].(string); ok && dateStr != "" {
 		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
+			dateEnd = parsed
+		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
 			dateEnd = parsed
 		}
 	}
