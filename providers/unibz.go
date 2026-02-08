@@ -67,27 +67,49 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	// Allow me to verify the selector via a quick view_content_chunk if I had the ID, but I don't.
 	// I'll write the code to be adaptable or use a broad selector.
 
-	doc.Find("main ul li").Each(func(i int, s *goquery.Selection) {
-		title := strings.TrimSpace(s.Find("h3, h4, a").First().Text())
+	fmt.Printf("Unibz: parsing HTML, doc length %d\n", len(doc.Text()))
+	count := 0
+	doc.Find(".mediaItem").Each(func(i int, s *goquery.Selection) {
+		count++
+		title := strings.TrimSpace(s.Find(".mediaItem_title a").Text())
 		if title == "" {
 			return
 		}
 
-		link, _ := s.Find("a").Attr("href")
+		link, _ := s.Find(".mediaItem_title a").Attr("href")
 		if !strings.HasPrefix(link, "http") {
 			link = "https://guide.unibz.it" + link
 		}
 
-		dateStr := strings.TrimSpace(s.Find("time, .date").Text())
+		// Date format: "10 Feb 2026 16:00-17:00"
+		// Selector: .mediaItem_content > div (first child) or .u-fw-bold
+		dateStrRaw := strings.TrimSpace(s.Find(".mediaItem_content .u-fw-bold").First().Text())
+		// Parse date. Example: "10 Feb 2026 16:00-17:00"
+		// We need to extract the date part "10 Feb 2026" and time "16:00"
+		// Standard layout "02 Jan 2006 15:04"
+
+		// Simple logic to extract date+time string
+		parts := strings.Split(dateStrRaw, " ")
+		var dateStr string
+		if len(parts) >= 4 {
+			// date part: "10 Feb 2026"
+			// time part: "16:00-17:00" -> take "16:00"
+			datePart := strings.Join(parts[:3], " ")
+			timePart := strings.Split(parts[3], "-")[0] // "16:00"
+			dateStr = datePart + " " + timePart
+		} else {
+			dateStr = dateStrRaw // Fallback
+		}
 
 		raw := map[string]any{
 			"title":       title,
 			"link":        link,
 			"date_str":    dateStr,
-			"description": strings.TrimSpace(s.Find("p").Text()),
+			"description": strings.TrimSpace(s.Find(".mediaItem_content .typography").Text()),
 		}
 		events = append(events, RawEvent(raw))
 	})
+	fmt.Printf("Unibz: found %d items\n", count)
 
 	return events, nil
 }
@@ -107,14 +129,22 @@ func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
 		}
 	}
 
+	// Parse date "02 Jan 2006 15:04"
+	dateStr := fmt.Sprintf("%v", raw["date_str"])
+	dateStart, err := time.Parse("02 Jan 2006 15:04", dateStr)
+	if err != nil {
+		dateStart = time.Now() // Fallback
+	}
+
 	return &Event{
 		ID:          id,
 		Title:       title,
 		Description: description,
-		DateStart:   time.Now(), // Placeholder, needs parsing logic
-		DateEnd:     time.Now().Add(1 * time.Hour),
+		DateStart:   dateStart,
+		DateEnd:     dateStart.Add(2 * time.Hour),
 		Location:    "unibz Bolzano",
 		URL:         link,
+		Category:    "Education",
 		SourceName:  p.SourceName(),
 		SourceID:    id,
 		IsNew:       true,

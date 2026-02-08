@@ -69,6 +69,7 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	}
 
 	events := make([]RawEvent, 0, len(posts))
+	fmt.Printf("Drinbz: fetched %d posts\n", len(posts))
 	for _, post := range posts {
 		// Convert struct to map for RawEvent interface
 		// In a real scenario we might just use the struct directly if the interface allowed it,
@@ -103,13 +104,14 @@ func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 	title = strings.ReplaceAll(title, "&#8217;", "'")
 
 	return &Event{
-		ID:          id,
+		// Let PocketBase generate ID
 		Title:       title,
 		Description: content, // This contains HTML, might need stripping in future
 		DateStart:   dateStart,
 		DateEnd:     dateStart.Add(2 * time.Hour), // Default duration
 		Location:    "Bolzano",                    // Default
 		URL:         link,
+		Category:    "Other", // Make sure category is set
 		SourceName:  p.SourceName(),
 		SourceID:    id,
 		IsNew:       true,
