@@ -68,18 +68,54 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	}
 
 	events := make([]RawEvent, 0, len(localResult.Items))
+	fmt.Printf("NOI: fetched %d items pre-filter\n", len(localResult.Items))
 	for _, item := range localResult.Items {
-		// Simple in-memory filter for NOI
-		// We check if "NOI" appears in the title or location
+		// Filter: Check if "NOI" or "Volta" appears in Title or Location
 		match := false
+
+		hasNOI := func(s string) bool {
+			s = strings.ToUpper(s)
+			return strings.Contains(s, "NOI") || strings.Contains(s, "VOLTA") || strings.Contains(s, "TECHPARK")
+		}
 
 		// Check Title (multilingual)
 		if details, ok := item["Detail"].(map[string]any); ok {
 			for _, lang := range []string{"en", "it", "de"} {
 				if langData, ok := details[lang].(map[string]any); ok {
-					if title, ok := langData["Title"].(string); ok && strings.Contains(strings.ToUpper(title), "NOI") {
+					if title, ok := langData["Title"].(string); ok && hasNOI(title) {
 						match = true
 						break
+					}
+				}
+			}
+		}
+
+		// Check Location
+		if !match {
+			if locInfo, ok := item["LocationInfo"].(map[string]any); ok {
+				// Check District/Municipality names if available
+				if district, ok := locInfo["DistrictInfo"].(map[string]any); ok {
+					if nameMap, ok := district["Name"].(map[string]any); ok {
+						for _, lang := range []string{"en", "it", "de"} {
+							if name, ok := nameMap[lang].(string); ok && hasNOI(name) {
+								match = true
+								break
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Also check if any ContactInfo address contains Volta/NOI
+		if !match {
+			if contacts, ok := item["ContactInfos"].(map[string]any); ok {
+				for _, lang := range []string{"en", "it", "de"} {
+					if contact, ok := contacts[lang].(map[string]any); ok {
+						if addr, ok := contact["Address"].(string); ok && hasNOI(addr) {
+							match = true
+							break
+						}
 					}
 				}
 			}

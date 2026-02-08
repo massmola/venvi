@@ -5,13 +5,13 @@ go 1.24.0
 toolchain go1.24.13
 
 require (
+	github.com/PuerkitoBio/goquery v1.11.0
 	github.com/pocketbase/pocketbase v0.36.2
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.4.0
 )
 
 require (
-	github.com/PuerkitoBio/goquery v1.11.0 // indirect
 	github.com/andybalholm/cascadia v1.3.3 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/davecgh/go-spew v1.1.0 // indirect
