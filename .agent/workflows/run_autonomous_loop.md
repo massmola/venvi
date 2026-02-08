@@ -41,7 +41,14 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ./venvi-agent log append "session-id" "Agent" "Executed step 1: <details>"
 ```
 
-### 5. Reflection (Critic)
+### 5. Checkpoint (Auto-Commit)
+**Action**: Save progress after a successful task.
+**Command**:
+```bash
+./venvi-agent commit "Implemented login validation"
+```
+
+### 6. Reflection (Critic)
 **Action**: When the task is done (or failed), run the Critic.
 **Command**:
 ```bash
