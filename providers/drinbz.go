@@ -102,7 +102,7 @@ func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 	dateStart, err := time.Parse("2006-01-02T15:04:05", dateStr)
 	if err != nil {
 		log.Printf("Drinbz: failed to parse date %q: %v\n", dateStr, err)
-		return nil
+		dateStart = time.Now()
 	}
 
 	// Clean HTML from title (simple replacement)
@@ -120,5 +120,6 @@ func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 		SourceName:  p.SourceName(),
 		SourceID:    id,
 		IsNew:       true,
+		Topics:      []string{},
 	}
 }
