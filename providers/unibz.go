@@ -98,19 +98,20 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 }
 
 func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
-	title := fmt.Sprintf("%v", raw["title"])
-	link := fmt.Sprintf("%v", raw["link"])
-	description := fmt.Sprintf("%v", raw["description"])
+	title, _ := raw["title"].(string)
+	link, _ := raw["link"].(string)
+	description, _ := raw["description"].(string)
 
 	// Generate ID from link hash or title
-	id := fmt.Sprintf("unibz-%d", time.Now().UnixNano())
+	idBase := fmt.Sprintf("%d", time.Now().UnixNano())
 	if link != "" {
 		normalizedLink := strings.TrimRight(link, "/")
 		base := path.Base(normalizedLink)
 		if base != "" && base != "." && base != "/" {
-			id = base
+			idBase = base
 		}
 	}
+	id := "unibz-" + idBase
 
 	dateStart, _ := raw["dateStart"].(time.Time)
 	dateEnd, _ := raw["dateEnd"].(time.Time)

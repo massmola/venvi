@@ -16,7 +16,7 @@ var memoryCmd = &cobra.Command{
 }
 
 var addCmd = &cobra.Command{
-	Use:   "add [topic] [content] [tags...]",
+	Use:   "add <topic> <content> [tags...]",
 	Short: "Add a new skill or lesson",
 	Args:  cobra.MinimumNArgs(2),
 	RunE: func(cmd *cobra.Command, args []string) error {
@@ -41,7 +41,7 @@ var addCmd = &cobra.Command{
 }
 
 var searchCmd = &cobra.Command{
-	Use:   "search [query]",
+	Use:   "search <query>",
 	Short: "Search for skills or lessons",
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

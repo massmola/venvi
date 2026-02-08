@@ -132,5 +132,6 @@ func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 		SourceID:    id,
 		IsNew:       true,
 		Category:    "Art & Culture",
+		Topics:      []string{},
 	}
 }

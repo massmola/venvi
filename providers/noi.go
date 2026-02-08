@@ -2,6 +2,7 @@ package providers
 
 import (
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -153,7 +154,10 @@ func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 
 	rawID, _ := raw["Id"].(string)
 	if rawID == "" {
-		rawID = fmt.Sprintf("%d", time.Now().UnixNano())
+		// Use deterministic hash of title + date if ID is missing
+		data := fmt.Sprintf("%s|%v", title, raw["DateBegin"])
+		hash := sha256.Sum256([]byte(data))
+		rawID = fmt.Sprintf("%x", hash[:16])
 	}
 
 	// Dates parsing logic...
