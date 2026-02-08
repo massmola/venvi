@@ -98,7 +98,6 @@ func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 	dateStr := fmt.Sprintf("%v", raw["date"])
 
 	// Parse date from WP format "2023-10-27T10:00:00"
-	// Parse date from WP format "2023-10-27T10:00:00"
 	dateStart, err := time.Parse("2006-01-02T15:04:05", dateStr)
 	if err != nil {
 		log.Printf("Drinbz: failed to parse date %q: %v\n", dateStr, err)

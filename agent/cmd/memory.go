@@ -9,6 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const defaultDataDir = ".agent_data"
+
 var memoryCmd = &cobra.Command{
 	Use:   "memory",
 	Short: "Manage agent memory (skills and lessons)",
@@ -24,7 +26,7 @@ var addCmd = &cobra.Command{
 		content := args[1]
 		tags := args[2:]
 
-		store := memory.NewStore(".agent_data")
+		store := memory.NewStore(defaultDataDir)
 		skill := memory.Skill{
 			Topic:   topic,
 			Content: content,
@@ -46,7 +48,7 @@ var searchCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		query := args[0]
-		store := memory.NewStore(".agent_data")
+		store := memory.NewStore(defaultDataDir)
 
 		results, err := store.Search(query)
 		if err != nil {

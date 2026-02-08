@@ -36,8 +36,11 @@ func (s *Store) getFilePath() string {
 // Load retrieves all skills from storage.
 func (s *Store) Load() ([]Skill, error) {
 	path := s.getFilePath()
-	if _, err := os.Stat(path); os.IsNotExist(err) {
+	_, err := os.Stat(path)
+	if os.IsNotExist(err) {
 		return []Skill{}, nil
+	} else if err != nil {
+		return nil, fmt.Errorf("failed to stat memory file: %w", err)
 	}
 
 	data, err := os.ReadFile(path)
@@ -90,6 +93,7 @@ func (s *Store) Save(skill Skill) error {
 	}
 
 	if err := os.Rename(tmpPath, s.getFilePath()); err != nil {
+		_ = os.Remove(tmpPath)
 		return fmt.Errorf("failed to rename memory file: %w", err)
 	}
 

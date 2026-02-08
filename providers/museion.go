@@ -94,7 +94,6 @@ func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 	meta, _ := raw["meta"].(string)
 
 	// Generate ID
-	// Generate ID
 	var id string
 	normalizedLink := strings.TrimRight(link, "/")
 	if normalizedLink != "" {
