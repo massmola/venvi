@@ -17,7 +17,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```bash
 ./venvi-agent prompt orchestrator "YOUR_GOAL_HERE"
 ```
-**Step**: Copy the prompt output and paste it into the IDE agent chat to generate a "Ralph Wiggum" task list.
+**Step**: Copy the prompt output and paste it into the IDE agent chat. The Orchestrator will generate a "Ralph Wiggum" task list with **mandatory verification steps**.
 
 ### 2. Session Start
 **Action**: Start a log for this task.
@@ -32,17 +32,18 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```bash
 ./venvi-agent memory search "keywords"
 ```
-**Step**: Read any relevant skills/lessons found.
+**Step**: Read any relevant skills/lessons found. Specifically look for **Rules** or **Skills** that failed previously.
 
-### 4. Action (The Loop)
+### 4. Action (The Loop with Verification)
 **Action**: Execute the micro-tasks from Step 1.
+**Rule**: Perform verification after **every** significant change.
 **Logging**: After major steps, log the action.
 ```bash
 ./venvi-agent log append "session-id" "Agent" "Executed step 1: <details>"
 ```
 
 ### 5. Checkpoint (Auto-Commit)
-**Action**: Save progress after a successful task.
+**Action**: Save progress after a successful task and **passing tests**.
 **Command**:
 ```bash
 ./venvi-agent commit "Implemented login validation"
@@ -56,7 +57,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```
 **Step**: 
 1. Copy the output prompt (which includes the logs) to the IDE agent.
-2. The agent will analyze and suggest a "Lesson Learned".
+2. The agent will analyze errors and suggest **Systematic Improvements** to Rules, Skills, or Workflows.
 3. **Save** the lesson:
 ```bash
 ./venvi-agent memory add "Topic" "Content" "tag1" "tag2"
