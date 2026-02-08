@@ -3,6 +3,7 @@ package providers
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 	"path"
 	"strings"
@@ -93,6 +94,11 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		}
 		events = append(events, RawEvent(raw))
 	})
+
+	if len(events) == 0 {
+		// Scrapers are fragile, log when potential structure change occurs.
+		log.Printf("Warning: Unibz scraper found 0 events at %s (check for DOM structure changes)", p.BaseURL)
+	}
 
 	return events, nil
 }

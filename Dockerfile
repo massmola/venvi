@@ -18,7 +18,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o venvi main.go
 
 # Run stage
-FROM alpine:3.21
+FROM alpine:3.23
 
 RUN apk add --no-cache \
     ca-certificates \
