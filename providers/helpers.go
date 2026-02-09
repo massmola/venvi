@@ -2,6 +2,7 @@ package providers
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"time"
 )
@@ -122,7 +123,7 @@ func buildEventFromRaw(raw RawEvent, sourceName, defaultLocation, defaultURL str
 		// (handled by parseDates returning time.Now() alongside the error)
 		// Note: We use raw["Id"] for context if available
 		rawID, _ := raw["Id"].(string)
-		println("Warning: failed to parse dates for event " + rawID + " from " + sourceName + ": " + err.Error())
+		log.Printf("Warning: failed to parse dates for event %s from %s: %v", rawID, sourceName, err)
 	}
 
 	location := extractLocation(raw)

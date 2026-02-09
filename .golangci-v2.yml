@@ -2,6 +2,7 @@ run:
   timeout: 5m
 
 # Explicitly set configuration version to avoid "unsupported version" errors
+version: 2
 
 
 
