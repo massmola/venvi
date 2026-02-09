@@ -18,11 +18,11 @@ if ! command -v go &> /dev/null; then
 fi
 
 echo ""
-echo "[1/4] Running go fmt..."
+echo "[1/6] Running go fmt..."
 go fmt ./...
 echo "✓ Format check passed"
 
-echo "[2/4] Running golangci-lint..."
+echo "[2/6] Running golangci-lint..."
 if command -v golangci-lint &> /dev/null; then
     golangci-lint run ./...
     echo "✓ Lint check passed"
