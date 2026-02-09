@@ -1,3 +1,4 @@
+// Package memory provides persistent storage for agent skills and lessons.
 package memory
 
 import (

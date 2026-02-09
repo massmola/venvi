@@ -1,3 +1,4 @@
+// Package cmd contains the CLI commands for the autonomous agent.
 package cmd
 
 import (

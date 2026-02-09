@@ -22,22 +22,22 @@ var promptCmd = &cobra.Command{
 		switch role {
 		case "orchestrator":
 			if len(args) < 2 {
-				fmt.Fprintln(os.Stdout, "Usage: agent prompt orchestrator <goal>")
+				_, _ = fmt.Fprintln(os.Stdout, "Usage: agent prompt orchestrator <goal>")
 				return
 			}
 			goal := strings.Join(args[1:], " ")
-			fmt.Fprintln(os.Stdout, prompts.GetOrchestratorPrompt(goal))
+			_, _ = fmt.Fprintln(os.Stdout, prompts.GetOrchestratorPrompt(goal))
 
 		case "critic":
 			if len(args) < 2 {
-				fmt.Fprintln(os.Stdout, "Usage: agent prompt critic <session_id>")
+				_, _ = fmt.Fprintln(os.Stdout, "Usage: agent prompt critic <session_id>")
 				return
 			}
 			sessionID := args[1]
 			logger := log.NewLogger(".agent_data")
 			session, err := logger.GetSession(sessionID)
 			if err != nil {
-				fmt.Fprintf(os.Stdout, "Error retrieving session logs: %v\n", err)
+				_, _ = fmt.Fprintf(os.Stdout, "Error retrieving session logs: %v\n", err)
 				return
 			}
 
@@ -47,10 +47,10 @@ var promptCmd = &cobra.Command{
 				logContent.WriteString("[" + entry.Role + "] " + entry.Timestamp.Format("15:04:05") + ": " + entry.Content + "\n")
 			}
 
-			fmt.Fprintln(os.Stdout, prompts.GetCriticPrompt(logContent.String()))
+			_, _ = fmt.Fprintln(os.Stdout, prompts.GetCriticPrompt(logContent.String()))
 
 		default:
-			fmt.Fprintf(os.Stdout, "Unknown role: %s. Valid roles: orchestrator, critic\n", role)
+			_, _ = fmt.Fprintf(os.Stdout, "Unknown role: %s. Valid roles: orchestrator, critic\n", role)
 		}
 	},
 }
