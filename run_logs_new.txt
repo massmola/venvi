@@ -1,0 +1,742 @@
+validate	Set up job	﻿2026-02-09T02:00:33.8737216Z Current runner version: '2.331.0'
+validate	Set up job	2026-02-09T02:00:33.8762391Z ##[group]Runner Image Provisioner
+validate	Set up job	2026-02-09T02:00:33.8763306Z Hosted Compute Agent
+validate	Set up job	2026-02-09T02:00:33.8763866Z Version: 20260123.484
+validate	Set up job	2026-02-09T02:00:33.8764489Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+validate	Set up job	2026-02-09T02:00:33.8765179Z Build Date: 2026-01-23T19:41:17Z
+validate	Set up job	2026-02-09T02:00:33.8765922Z Worker ID: {719b1478-1cb9-4ca3-a86c-e23118eb86db}
+validate	Set up job	2026-02-09T02:00:33.8766582Z Azure Region: eastus2
+validate	Set up job	2026-02-09T02:00:33.8767134Z ##[endgroup]
+validate	Set up job	2026-02-09T02:00:33.8768848Z ##[group]Operating System
+validate	Set up job	2026-02-09T02:00:33.8769492Z Ubuntu
+validate	Set up job	2026-02-09T02:00:33.8770005Z 24.04.3
+validate	Set up job	2026-02-09T02:00:33.8770545Z LTS
+validate	Set up job	2026-02-09T02:00:33.8771023Z ##[endgroup]
+validate	Set up job	2026-02-09T02:00:33.8771493Z ##[group]Runner Image
+validate	Set up job	2026-02-09T02:00:33.8772114Z Image: ubuntu-24.04
+validate	Set up job	2026-02-09T02:00:33.8772600Z Version: 20260201.15.1
+validate	Set up job	2026-02-09T02:00:33.8773641Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+validate	Set up job	2026-02-09T02:00:33.8775273Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+validate	Set up job	2026-02-09T02:00:33.8776183Z ##[endgroup]
+validate	Set up job	2026-02-09T02:00:33.8777282Z ##[group]GITHUB_TOKEN Permissions
+validate	Set up job	2026-02-09T02:00:33.8779881Z Contents: read
+validate	Set up job	2026-02-09T02:00:33.8780538Z Metadata: read
+validate	Set up job	2026-02-09T02:00:33.8781093Z Packages: read
+validate	Set up job	2026-02-09T02:00:33.8781567Z ##[endgroup]
+validate	Set up job	2026-02-09T02:00:33.8783616Z Secret source: Actions
+validate	Set up job	2026-02-09T02:00:33.8784628Z Prepare workflow directory
+validate	Set up job	2026-02-09T02:00:33.9113608Z Prepare all required actions
+validate	Set up job	2026-02-09T02:00:33.9150995Z Getting action download info
+validate	Set up job	2026-02-09T02:00:34.2382650Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+validate	Set up job	2026-02-09T02:00:34.3192538Z Download action repository 'cachix/install-nix-action@v30' (SHA:08dcb3a5e62fa31e2da3d490afc4176ef55ecd72)
+validate	Set up job	2026-02-09T02:00:34.5912832Z Complete job name: validate
+validate	Run actions/checkout@v4	﻿2026-02-09T02:00:34.6563746Z ##[group]Run actions/checkout@v4
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6564521Z with:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6564929Z   repository: massmola/venvi
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6565554Z   token: ***
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6565933Z   ssh-strict: true
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6566323Z   ssh-user: git
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6566706Z   persist-credentials: true
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6567146Z   clean: true
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6567534Z   sparse-checkout-cone-mode: true
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6568256Z   fetch-depth: 1
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6568638Z   fetch-tags: false
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6569039Z   show-progress: true
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6569425Z   lfs: false
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6569791Z   submodules: false
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6570187Z   set-safe-directory: true
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.6570803Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7638367Z Syncing repository: massmola/venvi
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7640126Z ##[group]Getting Git version info
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7640736Z Working directory is '/home/runner/work/venvi/venvi'
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7641596Z [command]/usr/bin/git version
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7705384Z git version 2.52.0
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7730477Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7745076Z Temporarily overriding HOME='/home/runner/work/_temp/42a45071-0ead-4e92-90a9-61f95e6bfbb9' before making global git config changes
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7747260Z Adding repository directory to the temporary git global config as a safe directory
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7751578Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/venvi/venvi
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7790395Z Deleting the contents of '/home/runner/work/venvi/venvi'
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7794270Z ##[group]Initializing the repository
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7798935Z [command]/usr/bin/git init /home/runner/work/venvi/venvi
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7898776Z hint: Using 'master' as the name for the initial branch. This default branch name
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7900017Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7901175Z hint: to use in all of your new repositories, which will suppress this warning,
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7902334Z hint: call:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7903213Z hint:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7904150Z hint: 	git config --global init.defaultBranch <name>
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7905059Z hint:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7905887Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7907276Z hint: 'development'. The just-created branch can be renamed via this command:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7908607Z hint:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7909207Z hint: 	git branch -m <name>
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7909882Z hint:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7910796Z hint: Disable this message with "git config set advice.defaultBranchName false"
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7912268Z Initialized empty Git repository in /home/runner/work/venvi/venvi/.git/
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7915386Z [command]/usr/bin/git remote add origin https://github.com/massmola/venvi
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7949829Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7950925Z ##[group]Disabling automatic garbage collection
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7954706Z [command]/usr/bin/git config --local gc.auto 0
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7984915Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7985945Z ##[group]Setting up auth
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.7992449Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8024142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8365408Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8397049Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8654919Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8689731Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8945310Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8985464Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8986479Z ##[group]Fetching the repository
+validate	Run actions/checkout@v4	2026-02-09T02:00:34.8997717Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8df7ad14c8602c81e90c1b494cee818b4bee985a:refs/remotes/pull/3/merge
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.0981834Z From https://github.com/massmola/venvi
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.0982799Z  * [new ref]         8df7ad14c8602c81e90c1b494cee818b4bee985a -> pull/3/merge
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1015479Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1016493Z ##[group]Determining the checkout info
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1018309Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1024037Z [command]/usr/bin/git sparse-checkout disable
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1066768Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1094119Z ##[group]Checking out the ref
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1097496Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/3/merge
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1196961Z Note: switching to 'refs/remotes/pull/3/merge'.
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1197685Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1198401Z You are in 'detached HEAD' state. You can look around, make experimental
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1199716Z changes and commit them, and you can discard any commits you make in this
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1201013Z state without impacting any branches by switching back to a branch.
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1201768Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1202186Z If you want to create a new branch to retain commits you create, you may
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1202998Z do so (now or later) by using -c with the switch command. Example:
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1203465Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1203671Z   git switch -c <new-branch-name>
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1203987Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1204173Z Or undo this operation with:
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1204461Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1204661Z   git switch -
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1205109Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1205687Z Turn off this advice by setting config variable advice.detachedHead to false
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1206516Z 
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1207166Z HEAD is now at 8df7ad1 Merge b1905dbb0e495c33ec7ccb59d559c4270529d0cc into aa26865b139eb565f46621e7b1a56ac8f6794ffc
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1209169Z ##[endgroup]
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1242195Z [command]/usr/bin/git log -1 --format=%H
+validate	Run actions/checkout@v4	2026-02-09T02:00:35.1265375Z 8df7ad14c8602c81e90c1b494cee818b4bee985a
+validate	Install Nix	﻿2026-02-09T02:00:35.1499629Z ##[group]Run cachix/install-nix-action@v30
+validate	Install Nix	2026-02-09T02:00:35.1500179Z with:
+validate	Install Nix	2026-02-09T02:00:35.1500572Z   nix_path: nixpkgs=channel:nixos-unstable
+validate	Install Nix	2026-02-09T02:00:35.1501063Z   enable_kvm: true
+validate	Install Nix	2026-02-09T02:00:35.1501436Z ##[endgroup]
+validate	Install Nix	2026-02-09T02:00:35.1595962Z ##[group]Run ${GITHUB_ACTION_PATH}/install-nix.sh
+validate	Install Nix	2026-02-09T02:00:35.1596693Z [36;1m${GITHUB_ACTION_PATH}/install-nix.sh[0m
+validate	Install Nix	2026-02-09T02:00:35.1635133Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+validate	Install Nix	2026-02-09T02:00:35.1635769Z env:
+validate	Install Nix	2026-02-09T02:00:35.1636150Z   INPUT_EXTRA_NIX_CONFIG: 
+validate	Install Nix	2026-02-09T02:00:35.1636591Z   INPUT_GITHUB_ACCESS_TOKEN: 
+validate	Install Nix	2026-02-09T02:00:35.1637035Z   INPUT_INSTALL_OPTIONS: 
+validate	Install Nix	2026-02-09T02:00:35.1637459Z   INPUT_INSTALL_URL: 
+validate	Install Nix	2026-02-09T02:00:35.1637907Z   INPUT_NIX_PATH: nixpkgs=channel:nixos-unstable
+validate	Install Nix	2026-02-09T02:00:35.1638634Z   INPUT_ENABLE_KVM: true
+validate	Install Nix	2026-02-09T02:00:35.1639300Z   GITHUB_TOKEN: ***
+validate	Install Nix	2026-02-09T02:00:35.1639688Z ##[endgroup]
+validate	Install Nix	2026-02-09T02:00:35.1744311Z ##[group]Enabling KVM support
+validate	Install Nix	2026-02-09T02:00:35.1815865Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+validate	Install Nix	2026-02-09T02:00:35.2142963Z Enabled KVM
+validate	Install Nix	2026-02-09T02:00:35.2144204Z ##[endgroup]
+validate	Install Nix	2026-02-09T02:00:35.2145182Z ##[group]Installing Nix
+validate	Install Nix	2026-02-09T02:00:35.2444019Z installer options: --no-channel-add --darwin-use-unencrypted-nix-store-volume --nix-extra-conf-file /tmp/tmp.JkdREAPuNn/nix.conf --daemon --daemon-user-count 8
+validate	Install Nix	2026-02-09T02:00:35.2737768Z * Host releases.nixos.org:443 was resolved.
+validate	Install Nix	2026-02-09T02:00:35.2743641Z * IPv6: 2a04:4e42:77::347
+validate	Install Nix	2026-02-09T02:00:35.2744193Z * IPv4: 146.75.29.91
+validate	Install Nix	2026-02-09T02:00:35.2744605Z *   Trying 146.75.29.91:443...
+validate	Install Nix	2026-02-09T02:00:35.2792839Z * Connected to releases.nixos.org (146.75.29.91) port 443
+validate	Install Nix	2026-02-09T02:00:35.2807640Z * ALPN: curl offers h2,http/1.1
+validate	Install Nix	2026-02-09T02:00:35.2809641Z } [5 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.2810110Z * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+validate	Install Nix	2026-02-09T02:00:35.2810654Z } [512 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3008490Z *  CAfile: /etc/ssl/certs/ca-certificates.crt
+validate	Install Nix	2026-02-09T02:00:35.3009145Z *  CApath: /etc/ssl/certs
+validate	Install Nix	2026-02-09T02:00:35.3009562Z { [5 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3010002Z * TLSv1.3 (IN), TLS handshake, Server hello (2):
+validate	Install Nix	2026-02-09T02:00:35.3010713Z { [122 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3011238Z * TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+validate	Install Nix	2026-02-09T02:00:35.3011816Z { [19 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3012234Z * TLSv1.3 (IN), TLS handshake, Certificate (11):
+validate	Install Nix	2026-02-09T02:00:35.3012747Z { [2602 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3017491Z * TLSv1.3 (IN), TLS handshake, CERT verify (15):
+validate	Install Nix	2026-02-09T02:00:35.3018336Z { [264 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3018958Z * TLSv1.3 (IN), TLS handshake, Finished (20):
+validate	Install Nix	2026-02-09T02:00:35.3019766Z { [36 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3020458Z * TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+validate	Install Nix	2026-02-09T02:00:35.3021265Z } [1 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3021711Z * TLSv1.3 (OUT), TLS handshake, Finished (20):
+validate	Install Nix	2026-02-09T02:00:35.3022469Z } [36 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3023304Z * SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519 / RSASSA-PSS
+validate	Install Nix	2026-02-09T02:00:35.3024005Z * ALPN: server accepted h2
+validate	Install Nix	2026-02-09T02:00:35.3024427Z * Server certificate:
+validate	Install Nix	2026-02-09T02:00:35.3024841Z *  subject: CN=releases.nixos.org
+validate	Install Nix	2026-02-09T02:00:35.3025300Z *  start date: Jan 13 01:58:01 2026 GMT
+validate	Install Nix	2026-02-09T02:00:35.3025798Z *  expire date: Apr 13 01:58:00 2026 GMT
+validate	Install Nix	2026-02-09T02:00:35.3026494Z *  subjectAltName: host "releases.nixos.org" matched cert's "releases.nixos.org"
+validate	Install Nix	2026-02-09T02:00:35.3027626Z *  issuer: C=US; O=Let's Encrypt; CN=R12
+validate	Install Nix	2026-02-09T02:00:35.3028277Z *  SSL certificate verify ok.
+validate	Install Nix	2026-02-09T02:00:35.3029076Z *   Certificate level 0: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+validate	Install Nix	2026-02-09T02:00:35.3030195Z *   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+validate	Install Nix	2026-02-09T02:00:35.3031283Z *   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+validate	Install Nix	2026-02-09T02:00:35.3032342Z { [5 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3032801Z * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+validate	Install Nix	2026-02-09T02:00:35.3033336Z { [201 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3033713Z * using HTTP/2
+validate	Install Nix	2026-02-09T02:00:35.3034297Z * [HTTP/2] [1] OPENED stream for https://releases.nixos.org/nix/nix-2.24.9/install
+validate	Install Nix	2026-02-09T02:00:35.3034994Z * [HTTP/2] [1] [:method: GET]
+validate	Install Nix	2026-02-09T02:00:35.3035440Z * [HTTP/2] [1] [:scheme: https]
+validate	Install Nix	2026-02-09T02:00:35.3035924Z * [HTTP/2] [1] [:authority: releases.nixos.org]
+validate	Install Nix	2026-02-09T02:00:35.3036471Z * [HTTP/2] [1] [:path: /nix/nix-2.24.9/install]
+validate	Install Nix	2026-02-09T02:00:35.3036993Z * [HTTP/2] [1] [user-agent: curl/8.5.0]
+validate	Install Nix	2026-02-09T02:00:35.3037468Z * [HTTP/2] [1] [accept: */*]
+validate	Install Nix	2026-02-09T02:00:35.3037895Z } [5 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3038418Z > GET /nix/nix-2.24.9/install HTTP/2
+validate	Install Nix	2026-02-09T02:00:35.3038898Z > Host: releases.nixos.org
+validate	Install Nix	2026-02-09T02:00:35.3039331Z > User-Agent: curl/8.5.0
+validate	Install Nix	2026-02-09T02:00:35.3039732Z > Accept: */*
+validate	Install Nix	2026-02-09T02:00:35.3040091Z > 
+validate	Install Nix	2026-02-09T02:00:35.3075237Z { [5 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3090874Z < HTTP/2 200 
+validate	Install Nix	2026-02-09T02:00:35.3091339Z < last-modified: Fri, 27 Sep 2024 22:02:35 GMT
+validate	Install Nix	2026-02-09T02:00:35.3092021Z < etag: "3b9a4f8ba852b9257c3c6d8c19f92eb6"
+validate	Install Nix	2026-02-09T02:00:35.3092549Z < x-amz-server-side-encryption: AES256
+validate	Install Nix	2026-02-09T02:00:35.3093042Z < content-type: text/plain
+validate	Install Nix	2026-02-09T02:00:35.3093465Z < server: AmazonS3
+validate	Install Nix	2026-02-09T02:00:35.3093844Z < via: 1.1 varnish, 1.1 varnish
+validate	Install Nix	2026-02-09T02:00:35.3094320Z < access-control-allow-origin: *
+validate	Install Nix	2026-02-09T02:00:35.3094775Z < accept-ranges: bytes
+validate	Install Nix	2026-02-09T02:00:35.3095191Z < date: Mon, 09 Feb 2026 02:00:35 GMT
+validate	Install Nix	2026-02-09T02:00:35.3095644Z < age: 62096
+validate	Install Nix	2026-02-09T02:00:35.3096111Z < x-served-by: cache-dub4357-DUB, cache-iad-kiad7000039-IAD
+validate	Install Nix	2026-02-09T02:00:35.3096681Z < x-cache: HIT, HIT
+validate	Install Nix	2026-02-09T02:00:35.3097066Z < x-cache-hits: 2, 3
+validate	Install Nix	2026-02-09T02:00:35.3097462Z < content-length: 4267
+validate	Install Nix	2026-02-09T02:00:35.3097840Z < 
+validate	Install Nix	2026-02-09T02:00:35.3098332Z { [4267 bytes data]
+validate	Install Nix	2026-02-09T02:00:35.3098785Z * Connection #0 to host releases.nixos.org left intact
+validate	Install Nix	2026-02-09T02:00:35.3167854Z downloading Nix 2.24.9 binary tarball for x86_64-linux from 'https://releases.nixos.org/nix/nix-2.24.9/nix-2.24.9-x86_64-linux.tar.xz' to '/tmp/nix-binary-tarball-unpack.yjY4nI76Dq'...
+validate	Install Nix	2026-02-09T02:00:35.3217972Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+validate	Install Nix	2026-02-09T02:00:35.3219300Z                                  Dload  Upload   Total   Spent    Left  Speed
+validate	Install Nix	2026-02-09T02:00:35.3219971Z 
+validate	Install Nix	2026-02-09T02:00:35.4255756Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Install Nix	2026-02-09T02:00:35.4257098Z 100 22.5M  100 22.5M    0     0   217M      0 --:--:-- --:--:-- --:--:--  218M
+validate	Install Nix	2026-02-09T02:00:36.9956334Z Note: a multi-user installation is possible. See https://nixos.org/manual/nix/stable/installation/installing-binary.html#multi-user-installation
+validate	Install Nix	2026-02-09T02:00:36.9964431Z Warning: the flag --darwin-use-unencrypted-nix-store-volume
+validate	Install Nix	2026-02-09T02:00:36.9965282Z          is no longer needed and will be removed in the future.
+validate	Install Nix	2026-02-09T02:00:36.9965601Z 
+validate	Install Nix	2026-02-09T02:00:36.9975639Z [1;31mSwitching to the Multi-user Installer[0m
+validate	Install Nix	2026-02-09T02:00:37.0081284Z [32mWelcome to the Multi-User Nix Installation
+validate	Install Nix	2026-02-09T02:00:37.0092377Z [0m
+validate	Install Nix	2026-02-09T02:00:37.0093093Z This installation tool will set up your computer with the Nix package
+validate	Install Nix	2026-02-09T02:00:37.0093961Z manager. This will happen in a few stages:
+validate	Install Nix	2026-02-09T02:00:37.0094758Z 
+validate	Install Nix	2026-02-09T02:00:37.0095111Z 1. Make sure your computer doesn't already have Nix. If it does, I
+validate	Install Nix	2026-02-09T02:00:37.0095929Z    will show you instructions on how to clean up your old install.
+validate	Install Nix	2026-02-09T02:00:37.0096443Z 
+validate	Install Nix	2026-02-09T02:00:37.0096857Z 2. Show you what I am going to install and where. Then I will ask
+validate	Install Nix	2026-02-09T02:00:37.0097533Z    if you are ready to continue.
+validate	Install Nix	2026-02-09T02:00:37.0097911Z 
+validate	Install Nix	2026-02-09T02:00:37.0098724Z 3. Create the system users [34m(uids [30001..30008])[0m and groups [34m(gid 30000)[0m
+validate	Install Nix	2026-02-09T02:00:37.0099883Z    that the Nix daemon uses to run builds. To create system users
+validate	Install Nix	2026-02-09T02:00:37.0100426Z    in a different range, exit and run this tool again with
+validate	Install Nix	2026-02-09T02:00:37.0100838Z    NIX_FIRST_BUILD_UID set.
+validate	Install Nix	2026-02-09T02:00:37.0101035Z 
+validate	Install Nix	2026-02-09T02:00:37.0101246Z 4. Perform the basic installation of the Nix files daemon.
+validate	Install Nix	2026-02-09T02:00:37.0101554Z 
+validate	Install Nix	2026-02-09T02:00:37.0101784Z 5. Configure your shell to import special Nix Profile files, so you
+validate	Install Nix	2026-02-09T02:00:37.0102235Z    can use Nix.
+validate	Install Nix	2026-02-09T02:00:37.0102412Z 
+validate	Install Nix	2026-02-09T02:00:37.0102541Z 6. Start the Nix daemon.
+validate	Install Nix	2026-02-09T02:00:37.0102730Z 
+validate	Install Nix	2026-02-09T02:00:37.0103106Z [32m[4;32mWould you like to see a more detailed list of what I will do?
+validate	Install Nix	2026-02-09T02:00:37.0103710Z [0mNo TTY, assuming you would say yes :)
+validate	Install Nix	2026-02-09T02:00:37.0106282Z 
+validate	Install Nix	2026-02-09T02:00:37.0106482Z I will:
+validate	Install Nix	2026-02-09T02:00:37.0106715Z 
+validate	Install Nix	2026-02-09T02:00:37.0107009Z  - make sure your computer doesn't already have Nix files
+validate	Install Nix	2026-02-09T02:00:37.0107653Z    (if it does, I will tell you how to clean them up.)
+validate	Install Nix	2026-02-09T02:00:37.0179737Z  - create local users (see the list above for the users I'll make)
+validate	Install Nix	2026-02-09T02:00:37.0180701Z  - create a local group (nixbld)
+validate	Install Nix	2026-02-09T02:00:37.0181493Z  - install Nix in /nix
+validate	Install Nix	2026-02-09T02:00:37.0182249Z  - create a configuration file in /etc/nix
+validate	Install Nix	2026-02-09T02:00:37.0183129Z  - set up the "default profile" by creating some Nix-related files in
+validate	Install Nix	2026-02-09T02:00:37.0184024Z    /root
+validate	Install Nix	2026-02-09T02:00:37.0184794Z  - back up /etc/bash.bashrc to /etc/bash.bashrc.backup-before-nix
+validate	Install Nix	2026-02-09T02:00:37.0185752Z  - update /etc/bash.bashrc to include some Nix configuration
+validate	Install Nix	2026-02-09T02:00:37.0186739Z  - load and start a service (at /etc/systemd/system/nix-daemon.service
+validate	Install Nix	2026-02-09T02:00:37.0187698Z    and /etc/systemd/system/nix-daemon.socket) for nix-daemon
+validate	Install Nix	2026-02-09T02:00:37.0188747Z 
+validate	Install Nix	2026-02-09T02:00:37.0189230Z [32m[4;32mReady to continue?
+validate	Install Nix	2026-02-09T02:00:37.0190076Z [0mNo TTY, assuming you would say yes :)
+validate	Install Nix	2026-02-09T02:00:37.0190571Z 
+validate	Install Nix	2026-02-09T02:00:37.0191183Z [34m---- let's talk about sudo -----------------------------------------------------
+validate	Install Nix	2026-02-09T02:00:37.0192442Z [0mThis script is going to call sudo a lot. Normally, it would show you
+validate	Install Nix	2026-02-09T02:00:37.0193569Z exactly what commands it is running and why. However, the script is
+validate	Install Nix	2026-02-09T02:00:37.0194505Z run in a headless fashion, like this:
+validate	Install Nix	2026-02-09T02:00:37.0194978Z 
+validate	Install Nix	2026-02-09T02:00:37.0195335Z   $ curl -L https://nixos.org/nix/install | sh
+validate	Install Nix	2026-02-09T02:00:37.0195875Z 
+validate	Install Nix	2026-02-09T02:00:37.0196300Z or maybe in a CI pipeline. Because of that, I'm going to skip the
+validate	Install Nix	2026-02-09T02:00:37.0197247Z verbose output in the interest of brevity.
+validate	Install Nix	2026-02-09T02:00:37.0197737Z 
+validate	Install Nix	2026-02-09T02:00:37.0198383Z If you would like to
+validate	Install Nix	2026-02-09T02:00:37.0199001Z see the output, try like this:
+validate	Install Nix	2026-02-09T02:00:37.0199281Z 
+validate	Install Nix	2026-02-09T02:00:37.0199578Z   $ curl -L -o install-nix https://nixos.org/nix/install
+validate	Install Nix	2026-02-09T02:00:37.0200174Z   $ sh ./install-nix
+validate	Install Nix	2026-02-09T02:00:37.0200422Z 
+validate	Install Nix	2026-02-09T02:00:37.0200428Z 
+validate	Install Nix	2026-02-09T02:00:37.0200771Z [32m~~> Checking for artifacts of previous installs
+validate	Install Nix	2026-02-09T02:00:37.0201480Z [0mBefore I try to install, I'll check for signs Nix already is or has
+validate	Install Nix	2026-02-09T02:00:37.0202157Z been installed on this system.
+validate	Install Nix	2026-02-09T02:00:37.0216478Z 
+validate	Install Nix	2026-02-09T02:00:37.0217483Z [34m---- Nix config report ---------------------------------------------------------
+validate	Install Nix	2026-02-09T02:00:37.0218770Z [0m[1m        Temp Dir[0m:	/tmp/tmp.V8ZZuvihRH
+validate	Install Nix	2026-02-09T02:00:37.0219827Z [1m        Nix Root[0m:	/nix
+validate	Install Nix	2026-02-09T02:00:37.0220291Z [1m     Build Users[0m:	8
+validate	Install Nix	2026-02-09T02:00:37.0220743Z [1m  Build Group ID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.0221213Z [1mBuild Group Name[0m:	nixbld
+validate	Install Nix	2026-02-09T02:00:37.0221478Z 
+validate	Install Nix	2026-02-09T02:00:37.0221679Z [4;34mbuild users:
+validate	Install Nix	2026-02-09T02:00:37.0222089Z [0m[1m    Username[0m:	UID
+validate	Install Nix	2026-02-09T02:00:37.0248262Z [1m     nixbld1[0m:	30001
+validate	Install Nix	2026-02-09T02:00:37.0259064Z [1m     nixbld2[0m:	30002
+validate	Install Nix	2026-02-09T02:00:37.0269694Z [1m     nixbld3[0m:	30003
+validate	Install Nix	2026-02-09T02:00:37.0280771Z [1m     nixbld4[0m:	30004
+validate	Install Nix	2026-02-09T02:00:37.0291448Z [1m     nixbld5[0m:	30005
+validate	Install Nix	2026-02-09T02:00:37.0302151Z [1m     nixbld6[0m:	30006
+validate	Install Nix	2026-02-09T02:00:37.0312660Z [1m     nixbld7[0m:	30007
+validate	Install Nix	2026-02-09T02:00:37.0323235Z [1m     nixbld8[0m:	30008
+validate	Install Nix	2026-02-09T02:00:37.0323680Z 
+validate	Install Nix	2026-02-09T02:00:37.0323983Z [32m[4;32mReady to continue?
+validate	Install Nix	2026-02-09T02:00:37.0324709Z [0mNo TTY, assuming you would say yes :)
+validate	Install Nix	2026-02-09T02:00:37.0325183Z 
+validate	Install Nix	2026-02-09T02:00:37.0325519Z [32m~~> Setting up the build group nixbld
+validate	Install Nix	2026-02-09T02:00:37.0536464Z [0m[1m            Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.0562116Z 
+validate	Install Nix	2026-02-09T02:00:37.0562612Z [32m~~> Setting up the build user nixbld1
+validate	Install Nix	2026-02-09T02:00:37.0715890Z useradd warning: nixbld1's uid 30001 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.0802153Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.0807653Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.0827570Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.0847883Z [1m              Note[0m:	Nix build user 1
+validate	Install Nix	2026-02-09T02:00:37.0867200Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.0891263Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.0910720Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.0922576Z 
+validate	Install Nix	2026-02-09T02:00:37.0923111Z [32m~~> Setting up the build user nixbld2
+validate	Install Nix	2026-02-09T02:00:37.1052511Z useradd warning: nixbld2's uid 30002 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.1135493Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1141237Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1161261Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.1182100Z [1m              Note[0m:	Nix build user 2
+validate	Install Nix	2026-02-09T02:00:37.1202169Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1222678Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1242333Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.1253688Z 
+validate	Install Nix	2026-02-09T02:00:37.1254290Z [32m~~> Setting up the build user nixbld3
+validate	Install Nix	2026-02-09T02:00:37.1385187Z useradd warning: nixbld3's uid 30003 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.1470297Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1475631Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1495334Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.1515770Z [1m              Note[0m:	Nix build user 3
+validate	Install Nix	2026-02-09T02:00:37.1534947Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1554669Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1573758Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.1585778Z 
+validate	Install Nix	2026-02-09T02:00:37.1586719Z [32m~~> Setting up the build user nixbld4
+validate	Install Nix	2026-02-09T02:00:37.1714563Z useradd warning: nixbld4's uid 30004 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.1797253Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1803209Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1823160Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.1844473Z [1m              Note[0m:	Nix build user 4
+validate	Install Nix	2026-02-09T02:00:37.1864324Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1884875Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.1904883Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.1916482Z 
+validate	Install Nix	2026-02-09T02:00:37.2053909Z useradd warning: nixbld5's uid 30005 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.2054970Z [32m~~> Setting up the build user nixbld5
+validate	Install Nix	2026-02-09T02:00:37.2141366Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2147720Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2168624Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.2189461Z [1m              Note[0m:	Nix build user 5
+validate	Install Nix	2026-02-09T02:00:37.2209309Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2229211Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2248595Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.2260452Z 
+validate	Install Nix	2026-02-09T02:00:37.2389839Z useradd warning: nixbld6's uid 30006 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.2391032Z [32m~~> Setting up the build user nixbld6
+validate	Install Nix	2026-02-09T02:00:37.2473804Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2479379Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2499459Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.2520102Z [1m              Note[0m:	Nix build user 6
+validate	Install Nix	2026-02-09T02:00:37.2539772Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2560078Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2579820Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.2591192Z 
+validate	Install Nix	2026-02-09T02:00:37.2591774Z [32m~~> Setting up the build user nixbld7
+validate	Install Nix	2026-02-09T02:00:37.2720907Z useradd warning: nixbld7's uid 30007 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.2805548Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2811279Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2831418Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.2852332Z [1m              Note[0m:	Nix build user 7
+validate	Install Nix	2026-02-09T02:00:37.2871867Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2892435Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.2911749Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.2923534Z 
+validate	Install Nix	2026-02-09T02:00:37.2923940Z [32m~~> Setting up the build user nixbld8
+validate	Install Nix	2026-02-09T02:00:37.3052047Z useradd warning: nixbld8's uid 30008 is greater than SYS_UID_MAX 999
+validate	Install Nix	2026-02-09T02:00:37.3136003Z [0m[1m           Created[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.3141915Z [1m            Hidden[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.3161951Z [1m    Home Directory[0m:	/var/empty
+validate	Install Nix	2026-02-09T02:00:37.3185729Z [1m              Note[0m:	Nix build user 8
+validate	Install Nix	2026-02-09T02:00:37.3209337Z [1m   Logins Disabled[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.3235763Z [1m  Member of nixbld[0m:	Yes
+validate	Install Nix	2026-02-09T02:00:37.3258878Z [1m    PrimaryGroupID[0m:	30000
+validate	Install Nix	2026-02-09T02:00:37.3259620Z 
+validate	Install Nix	2026-02-09T02:00:37.3260058Z [32m~~> Setting up the basic directory structure
+validate	Install Nix	2026-02-09T02:00:37.3339641Z [0minstall: creating directory '/nix'
+validate	Install Nix	2026-02-09T02:00:37.3340041Z install: creating directory '/nix/var'
+validate	Install Nix	2026-02-09T02:00:37.3340407Z install: creating directory '/nix/var/log'
+validate	Install Nix	2026-02-09T02:00:37.3340868Z install: creating directory '/nix/var/log/nix'
+validate	Install Nix	2026-02-09T02:00:37.3341416Z install: creating directory '/nix/var/log/nix/drvs'
+validate	Install Nix	2026-02-09T02:00:37.3341960Z install: creating directory '/nix/var/nix'
+validate	Install Nix	2026-02-09T02:00:37.3342469Z install: creating directory '/nix/var/nix/db'
+validate	Install Nix	2026-02-09T02:00:37.3343017Z install: creating directory '/nix/var/nix/gcroots'
+validate	Install Nix	2026-02-09T02:00:37.3343596Z install: creating directory '/nix/var/nix/profiles'
+validate	Install Nix	2026-02-09T02:00:37.3344185Z install: creating directory '/nix/var/nix/temproots'
+validate	Install Nix	2026-02-09T02:00:37.3344738Z install: creating directory '/nix/var/nix/userpool'
+validate	Install Nix	2026-02-09T02:00:37.3345342Z install: creating directory '/nix/var/nix/daemon-socket'
+validate	Install Nix	2026-02-09T02:00:37.3345972Z install: creating directory '/nix/var/nix/gcroots/per-user'
+validate	Install Nix	2026-02-09T02:00:37.3346662Z install: creating directory '/nix/var/nix/profiles/per-user'
+validate	Install Nix	2026-02-09T02:00:37.3417862Z install: creating directory '/nix/store'
+validate	Install Nix	2026-02-09T02:00:37.3494093Z install: creating directory '/etc/nix'
+validate	Install Nix	2026-02-09T02:00:37.3504516Z 
+validate	Install Nix	2026-02-09T02:00:37.3504825Z [32m~~> Installing Nix
+validate	Install Nix	2026-02-09T02:00:37.5484917Z [0m      Alright! We have our first nix at /nix/store/2nhrwv91g6ycpyxvhmvc0xs8p92wp4bk-nix-2.24.9
+validate	Install Nix	2026-02-09T02:00:37.5916713Z       Just finished getting the nix database ready.
+validate	Install Nix	2026-02-09T02:00:37.5919636Z 
+validate	Install Nix	2026-02-09T02:00:37.5920861Z [32m~~> Setting up shell profiles: /etc/bashrc /etc/profile.d/nix.sh /etc/zshrc /etc/bash.bashrc /etc/zsh/zshrc
+validate	Install Nix	2026-02-09T02:00:37.6083235Z [0m
+validate	Install Nix	2026-02-09T02:00:37.6083461Z # Nix
+validate	Install Nix	2026-02-09T02:00:37.6083900Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+validate	Install Nix	2026-02-09T02:00:37.6084563Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+validate	Install Nix	2026-02-09T02:00:37.6085079Z fi
+validate	Install Nix	2026-02-09T02:00:37.6085323Z # End Nix
+validate	Install Nix	2026-02-09T02:00:37.6085494Z 
+validate	Install Nix	2026-02-09T02:00:37.6253462Z 
+validate	Install Nix	2026-02-09T02:00:37.6253672Z # Nix
+validate	Install Nix	2026-02-09T02:00:37.6254528Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+validate	Install Nix	2026-02-09T02:00:37.6255053Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+validate	Install Nix	2026-02-09T02:00:37.6255570Z fi
+validate	Install Nix	2026-02-09T02:00:37.6255819Z # End Nix
+validate	Install Nix	2026-02-09T02:00:37.6255984Z 
+validate	Install Nix	2026-02-09T02:00:37.6421637Z 
+validate	Install Nix	2026-02-09T02:00:37.6421947Z # Nix
+validate	Install Nix	2026-02-09T02:00:37.6422350Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+validate	Install Nix	2026-02-09T02:00:37.6422963Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+validate	Install Nix	2026-02-09T02:00:37.6423483Z fi
+validate	Install Nix	2026-02-09T02:00:37.6423737Z # End Nix
+validate	Install Nix	2026-02-09T02:00:37.6423893Z 
+validate	Install Nix	2026-02-09T02:00:37.6580096Z 
+validate	Install Nix	2026-02-09T02:00:37.6580313Z # Nix
+validate	Install Nix	2026-02-09T02:00:37.6580706Z if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+validate	Install Nix	2026-02-09T02:00:37.6581305Z   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+validate	Install Nix	2026-02-09T02:00:37.6581900Z fi
+validate	Install Nix	2026-02-09T02:00:37.6582185Z # End Nix
+validate	Install Nix	2026-02-09T02:00:37.6582347Z 
+validate	Install Nix	2026-02-09T02:00:37.6606613Z 
+validate	Install Nix	2026-02-09T02:00:37.6607539Z [32m~~> Setting up shell profiles for Fish with conf.d/nix.fish inside /etc/fish /usr/local/etc/fish /opt/homebrew/etc/fish /opt/local/etc/fish
+validate	Install Nix	2026-02-09T02:00:37.6678911Z [0m
+validate	Install Nix	2026-02-09T02:00:37.7026159Z installing 'nix-2.24.9'
+validate	Install Nix	2026-02-09T02:00:37.7026817Z [32m~~> Setting up the default profile
+validate	Install Nix	2026-02-09T02:00:37.7173478Z building '/nix/store/l9ab6qm37vw0g8vblfzrj387khq6qql1-user-environment.drv'...
+validate	Install Nix	2026-02-09T02:00:37.7602688Z installing 'nss-cacert-3.101'
+validate	Install Nix	2026-02-09T02:00:37.7738607Z building '/nix/store/zlycwkfk8znkrvqfsjwhlmk85q6lczv3-user-environment.drv'...
+validate	Install Nix	2026-02-09T02:00:37.7943398Z [0m
+validate	Install Nix	2026-02-09T02:00:37.7943863Z [32m~~> Setting up the nix-daemon systemd service
+validate	Install Nix	2026-02-09T02:00:37.8221425Z Created symlink /etc/systemd/system/nix-daemon.service → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.service.
+validate	Install Nix	2026-02-09T02:00:38.0936738Z Created symlink /etc/systemd/system/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+validate	Install Nix	2026-02-09T02:00:38.0938948Z Created symlink /etc/systemd/system/sockets.target.wants/nix-daemon.socket → /nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket.
+validate	Install Nix	2026-02-09T02:00:38.6773393Z [0m[32mAlright! We're done!
+validate	Install Nix	2026-02-09T02:00:38.6790231Z [0mTry it! Open a new terminal, and type:
+validate	Install Nix	2026-02-09T02:00:38.6790567Z 
+validate	Install Nix	2026-02-09T02:00:38.6790780Z   $ nix-shell -p nix-info --run "nix-info -m"
+validate	Install Nix	2026-02-09T02:00:38.6791103Z 
+validate	Install Nix	2026-02-09T02:00:38.6791364Z Thank you for using this installer. If you have any feedback or need
+validate	Install Nix	2026-02-09T02:00:38.6792006Z help, don't hesitate:
+validate	Install Nix	2026-02-09T02:00:38.6792200Z 
+validate	Install Nix	2026-02-09T02:00:38.6792319Z You can open an issue at
+validate	Install Nix	2026-02-09T02:00:38.6792928Z https://github.com/NixOS/nix/issues/new?labels=installer&template=installer.md
+validate	Install Nix	2026-02-09T02:00:38.6793427Z 
+validate	Install Nix	2026-02-09T02:00:38.6793672Z Or get in touch with the community: https://nixos.org/community
+validate	Install Nix	2026-02-09T02:00:38.6814178Z 
+validate	Install Nix	2026-02-09T02:00:38.6816098Z [34m---- Reminders -----------------------------------------------------------------
+validate	Install Nix	2026-02-09T02:00:38.6817022Z [0m[34m[ 1 ][0m
+validate	Install Nix	2026-02-09T02:00:38.6817682Z Nix won't work in active shell sessions until you restart them.
+validate	Install Nix	2026-02-09T02:00:38.6819066Z 
+validate	Install Nix	2026-02-09T02:00:38.7561340Z ##[endgroup]
+validate	Run Validation	﻿2026-02-09T02:00:38.7634895Z ##[group]Run nix develop --command ./scripts/validate.sh
+validate	Run Validation	2026-02-09T02:00:38.7635302Z [36;1mnix develop --command ./scripts/validate.sh[0m
+validate	Run Validation	2026-02-09T02:00:38.7674930Z shell: /usr/bin/bash -e {0}
+validate	Run Validation	2026-02-09T02:00:38.7675184Z env:
+validate	Run Validation	2026-02-09T02:00:38.7675582Z   NIX_PATH: nixpkgs=channel:nixos-unstable
+validate	Run Validation	2026-02-09T02:00:38.7675864Z   TMPDIR: /home/runner/work/_temp
+validate	Run Validation	2026-02-09T02:00:38.7676092Z ##[endgroup]
+validate	Run Validation	2026-02-09T02:00:38.9223172Z unpacking 'github:numtide/flake-utils/11707dc2f618dd54ca8739b309ec4fc024de578b?narHash=sha256-l0KFg5HjrsfsO/JpG%2Br7fRrqm12kzFHyUHqHCVpMMbI%3D' into the Git cache...
+validate	Run Validation	2026-02-09T02:00:39.1003232Z unpacking 'github:nix-systems/default/da67096a3b9bf56a91d16901293e51ba5b49a27e?narHash=sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768%3D' into the Git cache...
+validate	Run Validation	2026-02-09T02:00:39.2854795Z copying path '/nix/store/gnf2ayqhb31qvgh1s9mg3aqaj9378cg7-source' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:00:49.8379746Z unpacking 'github:cachix/pre-commit-hooks.nix/a8ca480175326551d6c4121498316261cbb5b260?narHash=sha256-Fok2AmefgVA0%2Beprw2NDwqKkPGEI5wvR%2BtwiZagBvrg%3D' into the Git cache...
+validate	Run Validation	2026-02-09T02:00:50.1553594Z copying path '/nix/store/9rf7z9hhnxqvbf5i04labfsxill2zhyl-source' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.6988944Z copying path '/nix/store/dm16iwd2p8abxly30iy0idkvzpp0w5zy-iana-etc-20250505' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.6998849Z copying path '/nix/store/3n5kqpahwmk8va5mkygqjj0mn9hqd72n-mailcap-2.1.54' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7016614Z copying path '/nix/store/r29gp232igs3m47s7lfcaalfashd82bf-tzdata-2025c' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7037939Z copying path '/nix/store/shs2lyjm5yv7fmg4pwyvrlv9zr4macmv-gcc-14.3.0-libgcc' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7040594Z copying path '/nix/store/yjmjazfwljzajwq54xlr7vfz77spzr9y-gcc-15.2.0-libgcc' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7042323Z copying path '/nix/store/bjgsr6vjn2zvp6xp28zf73ny8fnyy74b-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7052018Z copying path '/nix/store/3h3vbisciry5r5rvwbmn4ij8fvy1zx4b-linux-headers-6.18' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7054494Z copying path '/nix/store/g4z9m2pl1wcv35yzgjg1934gmj83gx9m-mailcap-2.1.54' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7065183Z copying path '/nix/store/xaa75rd44q62nc9mrbvym9d1m6gy0fj8-tzdata-2025b' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7069016Z copying path '/nix/store/2a3izq4hffdd9r9gb2w6q2ibdc86kss6-xgcc-14.3.0-libgcc' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7070611Z copying path '/nix/store/kbijm6lc9va8xann3cfyam0vczzmwkxj-xgcc-15.2.0-libgcc' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7110650Z copying path '/nix/store/3rkccxj7vi0p2a0d48c4a4z2vv2cni88-libunistring-1.4.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7112464Z copying path '/nix/store/pkphs076yz5ajnqczzj0588n6miph269-libunistring-1.4.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7116230Z copying path '/nix/store/1rd1dikwmy9gnlk5911gf2wf5r8k9wdg-publicsuffix-list-0-unstable-2025-10-08' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7154202Z copying path '/nix/store/1kzclixw4c13wxin0b6cij1zykvwp0wb-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7164573Z copying path '/nix/store/148w3ssbgc4wf6xcp6j0s5vy5mz41i8y-iana-etc-20250505' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7447891Z copying path '/nix/store/y03z7y8cgdck7vk8qpim30vps4d22gzv-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7469030Z copying path '/nix/store/l2xk4ac1wx9c95kpp8vymv9r9yn57fvh-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7855269Z copying path '/nix/store/hxcmad417fd8ql9ylx96xpak7da06yiv-libidn2-2.3.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.7857052Z copying path '/nix/store/d0d9wqmw5saaynfvmszsda3dmh5q82z8-libidn2-2.3.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.8087699Z copying path '/nix/store/wb6rhpznjfczwlwx23zmdrrw74bayxw4-glibc-2.42-47' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:02.8165832Z copying path '/nix/store/xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4103280Z copying path '/nix/store/12qcfbv6bgmxi1jd2dcddy25ijpcgj60-attr-2.5.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4105309Z copying path '/nix/store/rlq03x4cwf8zn73hxaxnx0zn5q9kifls-bash-5.3p3' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4108396Z copying path '/nix/store/v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4109724Z copying path '/nix/store/27r2vkndmz7q6gni64l84j46igsz7km4-c-ares-1.34.5' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4112925Z copying path '/nix/store/xgavznqg1ay2hycpp7yy9ia1n751jcla-bzip2-1.0.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4118369Z copying path '/nix/store/0sf11lcbcbsqbj18sx26rg352m08rk7y-ed-1.22.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4119848Z copying path '/nix/store/y2wdhdcrffp9hnkzk06d178hq3g98jay-gawk-5.3.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4120997Z copying path '/nix/store/xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4122192Z copying path '/nix/store/cky5dqng037hhbd41arkza29cv0hqab6-gdbm-1.26-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4123347Z copying path '/nix/store/jnjcxanszfrp8ln69wp0n9s237xbh7bz-expat-2.7.3' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4124488Z copying path '/nix/store/3fmzbq9y4m9nk235il7scmvwn8j9zy3p-gnumake-4.4.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4125721Z copying path '/nix/store/d3fj7k3aya8slkgm72gn5izyvnlkgx73-libpsl-0.21.5' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4126927Z copying path '/nix/store/drc7kang929jaza6cy9zdx10s4gw1z5p-gnused-4.9' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4129938Z copying path '/nix/store/b9p0zpa93hwvh4d0r1rmgc2500yx2ldn-libffi-3.5.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4134442Z copying path '/nix/store/h7rm00s43k24p73qw7wv1dw8iziqc054-keyutils-1.6.3-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4234763Z copying path '/nix/store/vg0afp6lmdrs4li4q4viry8blf5pbjrr-libyaml-0.2.5' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4290094Z copying path '/nix/store/fwfpzqrvzhpjp91rbnq64z07diyicbwh-acl-2.3.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4361661Z copying path '/nix/store/lcwnhmdd6fqf84y35ll4i6ivi2x8vvd5-mpdecimal-4.0.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4397310Z copying path '/nix/store/yijhn548p2589pkybgvbhll09bqsxy0q-ncurses-6.5' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4482714Z copying path '/nix/store/cn8ppsx5dns0n4naa4k5sc0siymg41vw-nghttp2-1.67.1-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4666806Z copying path '/nix/store/y6n0g6yj0hzdq31q1258jn372kflb4dg-attr-2.5.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4684124Z copying path '/nix/store/f15k3dpilmiyv6zgpib289rnjykgr1r4-bash-5.3p9' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4710240Z copying path '/nix/store/dkvxkb5cb4zl792gz2msbgxhhk2mh43i-c-ares-1.34.6' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4715312Z copying path '/nix/store/q5hdxy658850yynggmkjblbqfgs1w4nq-brotli-1.2.0-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4722292Z copying path '/nix/store/bhz2i66mwm3vdyslixazss6a46h48ib5-bzip2-1.0.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4738683Z copying path '/nix/store/qm9rxn2sc1vrz91i443rr6f0vxm0zd82-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4745437Z copying path '/nix/store/j02bpb9f7w3kh0rbbpmbhv6svcc8p3n3-c-ares-1.34.6' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.4909279Z copying path '/nix/store/g043h47ws2x7icy7qmy7ggqhybbcfk9k-ed-1.22.4' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5178829Z copying path '/nix/store/9v1irc5cj2644cf3j5r3z7x833cablh5-expand-response-params' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5184047Z copying path '/nix/store/2xq9rayckw8zq26k274xxlikn77jn60j-gawk-5.3.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5188799Z copying path '/nix/store/j2kgllgds4w7na8zqv1msi0mpvpjxda8-gcc-15.2.0-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5190750Z copying path '/nix/store/xf3rb2kmk19092b1pf50ag0fsj2f6hpa-gh-2.86.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5195080Z copying path '/nix/store/37v6wknb3fdlgxpgwilffaxipfy8f1fx-gitleaks-8.30.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5222987Z copying path '/nix/store/0bdqq2z98kg2hfn3k60if6pb5fd5p10h-glibc-2.42-47-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5351188Z copying path '/nix/store/6gz4kzl3i8x44pssbnyiahvl5vyc9vcq-acl-2.3.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5354792Z copying path '/nix/store/90yw24gqmwph4xjp4mqhpx1y1gcrvqla-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5361675Z copying path '/nix/store/1gzg2vdnhdbmbspyvw5gygn9hjjmlff0-gmp-6.3.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5410258Z copying path '/nix/store/ryz8kcrm2bxpccllfqlb7qldsfnqp5c2-gnused-4.9' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5420980Z copying path '/nix/store/vbah5c4rzy1q1hbqhginyxjhj8d4dj8j-gnumake-4.4.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5735648Z copying path '/nix/store/yi3c5karhx764ham5rfwk7iynr8mjf6q-gnutar-1.35' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.5850277Z copying path '/nix/store/xjqicsm7q0pb1hr271cki2f6k18d4sc2-c-ares-1.34.6-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.6168169Z copying path '/nix/store/494flzsx9j86bshnds5sy6f4iy4g7gxi-brotli-1.2.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.6375865Z copying path '/nix/store/0a3dyfq09dnkw28ap2i450wjimvdmv6s-go-1.25.4' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.6461948Z copying path '/nix/store/kj9ibnlg1p3macpcw8lm4rhpcwgfjal1-golangci-lint-2.8.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.6463751Z copying path '/nix/store/qyg62bc2xnpwz0fa9prqxvvk00zj4g9q-gnutar-1.35' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7020650Z copying path '/nix/store/zzvsjgylnphvhms3lgr2qlwdxmc68z66-go-1.25.5' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7152897Z copying path '/nix/store/m570vp4ikfx2k5r11mkr20r5cg1q9gfm-gopls-0.21.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7462186Z copying path '/nix/store/84yyzmxs7mb8nhkvcfv9n1l9irpb6mnq-gzip-1.14' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7464839Z copying path '/nix/store/d471xb7sfbah076s8rx02i68zpxc2r5n-gzip-1.14' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7500191Z copying path '/nix/store/56q5bvy8f9njwsqj723cjkfhaz70y5i7-isl-0.20' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7570207Z copying path '/nix/store/9dxykk10ci82p4rbalcj1plqm9cgc3yh-libev-4.33' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.7637090Z copying path '/nix/store/gm1v2azbnb96yi4fapfd1jx9f0jrnpzq-brotli-1.2.0-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.8533728Z copying path '/nix/store/rwalsamz4246k8f1zzxa54qx7w3fbzdg-glibc-2.42-47-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9168602Z copying path '/nix/store/y890wk5v7h4dzfs69jycv3fj0fx5y9i5-libuv-1.51.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9280117Z copying path '/nix/store/8kwysbrm9zrfcsfbix7hkjj72r5kgiwv-llhttp-9.3.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9351741Z copying path '/nix/store/z2903hglhpxv4hyczli0ncdf09wmma92-ncurses-6.6' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9359905Z copying path '/nix/store/v68a321jp4xqmbk0ly5yn1x4a3ky1y8a-mpfr-4.2.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9457936Z copying path '/nix/store/j45rf4zx05ckp2d3fj6nb7js7zhs10dx-nghttp2-1.67.1-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9461208Z copying path '/nix/store/ggxfzhsmd3m54fac5xph7kva38k44mc2-nghttp3-1.12.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:03.9535674Z copying path '/nix/store/x1avvg7xfcb6699afppcbd5qk24smg4n-nghttp3-1.13.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1042370Z copying path '/nix/store/2f7yzmvcsydw38zr369l9xpk63v1ld5q-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1053493Z copying path '/nix/store/kwr2jkqrbf6gsalagrka7gb7yrn71qpi-gettext-0.25.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1295437Z copying path '/nix/store/mfsjcsi2p23zkcd58g003binzmak18vx-llhttp-9.3.0-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1352036Z copying path '/nix/store/0pxl3sgz8igwks4rmq3gnidi3hfwdcgs-libuv-1.51.0-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1353927Z copying path '/nix/store/lf3a8jxvhrs5fd0nbq3iy4j09hi57vib-nghttp3-1.13.1-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1356197Z copying path '/nix/store/zqww03cbxf9c9nlqaliw68jcabjc98wi-nixpkgs-fmt-1.3.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1397062Z copying path '/nix/store/fg597zq78kc4dpbh0is4khy1qfd81xw4-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1730075Z copying path '/nix/store/q34rjcffjcmhbnsx8nd6w0i2xamz66i3-icu4c-76.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.1830671Z copying path '/nix/store/0jwkg5vcr4b4zi5r5xlg4nizd7h26776-libmpc-1.3.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.2750860Z copying path '/nix/store/61i74yjkj9p1qphfl7018ja4sdwkipx0-openssl-3.6.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.2870129Z copying path '/nix/store/3d8riwhf4bn18y0jsqn7vy4p25xbwi3h-oniguruma-6.9.10-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.3011885Z copying path '/nix/store/g7lir5wb7g1a31szgw6n5wa0kbsq04zd-openssl-3.6.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.3013827Z copying path '/nix/store/qrwznp1ikdf0qw05wia2haiwi32ik5n0-patch-2.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.3652863Z copying path '/nix/store/imad8dvhp77h0pjbckp6wvmnyhp8dpgg-coreutils-9.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.3780707Z copying path '/nix/store/wwij6563c6wbg4kzgjhng7vlhf7api19-patch-2.8' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.5446097Z copying path '/nix/store/i2vmgx46q9hd3z6rigaiman3wl3i2gc4-coreutils-9.9' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.5509178Z copying path '/nix/store/gs6yqc24w093xsnnz3kkhls8jz7pnffy-jq-1.8.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.5744863Z copying path '/nix/store/8q2582rd22xp8jlcg1xn1w219q5lx5xa-patchelf-0.15.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.5881750Z copying path '/nix/store/c2p7haf4zzkbrir9zs662r68c5dmylbq-patchelf-0.15.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.6084504Z copying path '/nix/store/0kgwmi3n8ml2a041a5y9y9ycga3md4dq-pcre2-10.46' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.6241381Z copying path '/nix/store/6y07blp88mrgn05wxbif8yzmd0g2ss4x-pcre2-10.46' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.7157826Z copying path '/nix/store/20axvl7mgj15m23jgmnq97hx37fgz7bk-diffutils-3.12' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.7679810Z copying path '/nix/store/av4xw9f56xlx5pgv862wabfif6m1yc0a-findutils-4.10.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.7681754Z copying path '/nix/store/qvbwz06cqra3cmlra40v0adw75j6j7wm-jq-1.8.1-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.8564395Z copying path '/nix/store/g3kc0p65g67798kkl58k3knrz5xzfqzv-pkg-config-0.29.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.8871959Z copying path '/nix/store/3p87h6dn5i87i3iq9364imzbqgwvkg2p-diffutils-3.12' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.9151637Z copying path '/nix/store/16wfacfgap3chf7mcjnd8dwi85dj4qqi-findutils-4.10.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.9614845Z copying path '/nix/store/02vv0r262agf9j5n2y1gmbjvdf12zkl0-gnugrep-3.12' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:04.9820167Z copying path '/nix/store/x3zjxxz8m4ki88axp0gn8q8m6bldybba-gnugrep-3.12' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.0931136Z copying path '/nix/store/jq07r49vk5wa10a1kk2y87nwbbl62qxz-jq-1.8.1-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.1795005Z copying path '/nix/store/41cgbkwax6pd1sgi8l81mamv6rvarryj-readline-8.3p1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.1845344Z copying path '/nix/store/rvp7qlpf5jqvdckjy1afjb6aha6j8dxg-pkg-config-wrapper-0.29.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.1961343Z copying path '/nix/store/9z2jg63df52gd4nmbggjcw41cdi4m14p-krb5-1.22.1-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.2111371Z copying path '/nix/store/50b381c1c7h4ll8a40wqh3fcknwpnnck-ngtcp2-1.17.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.2562407Z copying path '/nix/store/zi565pibhgz582kxliylqpvmq1gq9z71-ngtcp2-1.18.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.2564948Z copying path '/nix/store/1p8kvf8pyqb8h85f81vhahyj04wjzv5d-openssl-3.6.0-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.2790493Z copying path '/nix/store/8pqj80100baxyhcl9g03b7ywpj4s5mah-readline-8.3p3' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.2806992Z copying path '/nix/store/mzl19fy0j4fl395z3pbkwxcmkxi1733v-util-linux-minimal-2.41.2-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.2911266Z copying path '/nix/store/x0bq7h936cp5dz83wq0wdhnimzcy85fd-uvwasi-0.0.23' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.3470464Z copying path '/nix/store/rwj0jbi98wrrg4c4k8a5s63cp8r7s8a9-which-2.23' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.3640737Z copying path '/nix/store/q5vlz5jl6p7mv220s2vf6z5pqi1n935z-xz-5.8.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.3783601Z copying path '/nix/store/35yc81pz0q5yba14lxhn5r3jx5yg6c3l-bash-interactive-5.3p3' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.4750930Z copying path '/nix/store/59k463mhfy0i74i6w7d9jabd2rzand2v-xz-5.8.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.4856006Z copying path '/nix/store/l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.4940276Z copying path '/nix/store/99b682kgwcp3944rcq47f3whsfpij80c-ngtcp2-1.18.0-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.5116521Z copying path '/nix/store/ri9paa3mri4kqakljak8ldvbcp7lpmif-zlib-1.3.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.5173090Z copying path '/nix/store/x12lw455sq6qy2wcya85d7rb88ybc3df-bash-interactive-5.3p9' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.5282517Z copying path '/nix/store/fgm3pz8486ksh3f94629lpb7xjr2wjp7-openssl-3.6.0-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.5683767Z copying path '/nix/store/00xpncfcvafhr6vx9q05hkhazm70zw5g-zlib-ng-2.2.5' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.5740955Z copying path '/nix/store/c9fc5jv4nm5c6n60k3m38n57c66hb9i0-binutils-2.44-lib' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.5742232Z copying path '/nix/store/nyy0bvgjwd98x7ih8pl6pr79qjljgsf7-file-5.45' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.6144697Z copying path '/nix/store/paj6a1lpzp57hz1djm5bs86b7ci221r0-file-5.45' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.6161816Z copying path '/nix/store/mjf8jlq9grydcdvyw6hb063x5c34g5gf-gcc-15.2.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.6237469Z copying path '/nix/store/jrczm01vajmmh23wrzbgk51plwn7lfsi-libssh2-1.11.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.6580577Z copying path '/nix/store/xvi39ds16r6nym6n4ygnz20grmw8zjap-nghttp2-1.67.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.6914687Z copying path '/nix/store/l30c488dws7z5mazacqsmj25izb9jlp2-sqlite-3.50.4' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.7142189Z copying path '/nix/store/bn7m7qn8k7b27jy5lkq3bg4vcxnyjpq0-sqlite-3.51.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.8896857Z copying path '/nix/store/ryc68h6m05msqkf2wqm306cwrvx2fqr2-sqlite-3.51.2-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:05.9941757Z copying path '/nix/store/47mn80zqpygykqailwzw8zlag4cgl75q-binutils-2.44' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.0077453Z copying path '/nix/store/v0rfdwhg6w6i0yb6dbry4srk6pnj3xp0-xz-5.8.1-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.0314831Z copying path '/nix/store/ijrb2qkj27mzy3b5gswxnr3mqir8sv0g-nghttp2-1.67.1-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.0640539Z copying path '/nix/store/zys6d102zp171wpwcs08g632886w2qxs-xz-5.8.2-bin' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.0970306Z copying path '/nix/store/wlafyp4d5mjdfvkj88m4l2a84fzcxjfv-zlib-1.3.1-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.1092614Z copying path '/nix/store/3lll9y925zz9393sa59h653xik66srjb-python3-3.13.9' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.1561657Z copying path '/nix/store/s7vmxmhkq439cjb7ag9w198p6dk7kl0w-zstd-1.5.7' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.2010788Z copying path '/nix/store/br3nr5ymp1p8k9gn9zljmbnsksikj98l-stdenv-linux' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.2771323Z copying path '/nix/store/6k6dpcdv1bxcipcgdbi89g9fxws0vhvc-sqlite-3.51.2-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.4008564Z copying path '/nix/store/8idis3j5l13c3x74jl8xly0k4qyk9mx6-curl-8.17.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:06.5076350Z copying path '/nix/store/ky6hkcj7kxsyww2r0ika361ybrg8765g-git-minimal-2.51.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:07.0089757Z copying path '/nix/store/y3b549nnjrn2apah7mfwzz6zwnidpflq-icu4c-76.1-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:07.3917830Z copying path '/nix/store/mcy5n3l8z7dbvaic7kgh80b86xj7smkn-nodejs-20.20.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:07.5108333Z copying path '/nix/store/i6ppbrlpp6yki8qvka7nyv091xa8dchx-binutils-wrapper-2.44' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:09.3403501Z copying path '/nix/store/p6c5l3l0p5cymnzybcyil9dqbiymi6ly-nodejs-20.20.0-dev' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5198190Z copying path '/nix/store/001dga7lkn16v7wrcqsq3hdif7571sji-python3.13-cfgv-3.5.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5199687Z copying path '/nix/store/c570fz95a8hb1vcmpsj363wzjq6ladig-python3.13-nodeenv-1.9.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5209715Z copying path '/nix/store/irjfcyv1sp3fxw9gs4wcr60nxk0lhzkn-python3.13-filelock-3.20.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5212995Z copying path '/nix/store/084z0az33fpli83kchv6n42pa064708r-python3.13-packaging-25.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5214992Z copying path '/nix/store/rhxl996hrhyrwvvss6xzanbnrprw1fgy-python3.13-platformdirs-4.5.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5216538Z copying path '/nix/store/bjp0l4kpk690mi30bpfx2pjw1nhwibr9-python3.13-pluggy-1.6.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5219849Z copying path '/nix/store/by1xqmaym6mf7igppp11frfb8yhbigf1-python3.13-distlib-0.4.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5226167Z copying path '/nix/store/14crsps8ws2wb3l25lczywjydryrlzm5-python3.13-iniconfig-2.1.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5232611Z copying path '/nix/store/f365c74sg63zh3l68xk802hpbb3rf5i9-python3.13-pycparser-2.23' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5245528Z copying path '/nix/store/vkv6avhqxrnscrvvcfyssirhh6p259az-python3.13-toml-0.10.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5246979Z copying path '/nix/store/zk1kwr2cgy3fwmninbb4dahm8x8qr6w5-python3.13-pygments-2.19.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5249180Z copying path '/nix/store/yv88fk5ya2c35gbady8ssmg3l92k4vki-python3.13-pyyaml-6.0.3' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.5545548Z copying path '/nix/store/abddinrnikr85bjiq32f8pqj8p9jcf5y-python3.13-ukkonen-1.0.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.6138254Z copying path '/nix/store/d85s83yxrzf7r7rf106rrbq0kgdnf7sk-python3.13-virtualenv-20.33.1' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.6158655Z copying path '/nix/store/79i958sq2mwjkn9w5214mab3b1yx637f-python3.13-cffi-2.0.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:10.9955513Z copying path '/nix/store/1amh23481gd0d8604d5mlxj3fiba3sg3-python3.13-pytest-8.4.2' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:11.1310257Z copying path '/nix/store/53hhz0y5jzlg353n0dxsjx73iyi644xp-pytest-check-hook' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:11.1464560Z copying path '/nix/store/w75zlj8m28wfg8rd708fgpsy33dh3r53-python3.13-identify-2.6.15' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:11.1716891Z copying path '/nix/store/hhzpwcr2r29603ygc147wr58vlkf4qv5-pre-commit-4.5.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:11.9662718Z building '/nix/store/ri852m05r3fx9mif821d9g78hzbqvfnm-precommit-gofmt.drv'...
+validate	Run Validation	2026-02-09T02:01:12.4698291Z building '/nix/store/qz5ipbmikf0qd0a8k3ln45sgm0bds5rp-pre-commit-config.json.drv'...
+validate	Run Validation	2026-02-09T02:01:13.1328427Z copying path '/nix/store/a245z3cvf9x9sn0xlk6k8j9xhxbhda1z-gcc-wrapper-15.2.0' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:13.1428288Z copying path '/nix/store/gidygr7l2i5kckd3zv9kfjcymxcycw6y-stdenv-linux' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:13.5603581Z building '/nix/store/syzgfirxa5d17w4xh0mvzplf55cqx2jx-nix-shell-env.drv'...
+validate	Run Validation	2026-02-09T02:01:14.1980259Z this path will be fetched (0.10 MiB download, 0.10 MiB unpacked):
+validate	Run Validation	2026-02-09T02:01:14.1981128Z   /nix/store/1yg24id0csjk4nq1a3apimwf8dqisr9d-bash-interactive-5.3p9-man
+validate	Run Validation	2026-02-09T02:01:14.1988731Z copying path '/nix/store/1yg24id0csjk4nq1a3apimwf8dqisr9d-bash-interactive-5.3p9-man' from 'https://cache.nixos.org'...
+validate	Run Validation	2026-02-09T02:01:14.2559529Z Venvi PocketBase development environment loaded
+validate	Run Validation	2026-02-09T02:01:14.2648845Z git-hooks.nix: updating /home/runner/work/venvi/venvi repo
+validate	Run Validation	2026-02-09T02:01:14.2955923Z /home/runner/work/venvi/venvi/.pre-commit-config.yaml
+validate	Run Validation	2026-02-09T02:01:16.0326706Z pre-commit installed at .git/hooks/pre-commit
+validate	Run Validation	2026-02-09T02:01:16.0632492Z ==========================================
+validate	Run Validation	2026-02-09T02:01:16.0632924Z   Venvi Validation Script
+validate	Run Validation	2026-02-09T02:01:16.0633287Z ==========================================
+validate	Run Validation	2026-02-09T02:01:16.0661309Z 
+validate	Run Validation	2026-02-09T02:01:16.0661471Z [1/4] Running go fmt...
+validate	Run Validation	2026-02-09T02:01:16.0950702Z go: downloading github.com/pocketbase/pocketbase v0.36.2
+validate	Run Validation	2026-02-09T02:01:16.0968488Z go: downloading github.com/PuerkitoBio/goquery v1.11.0
+validate	Run Validation	2026-02-09T02:01:16.1982974Z go: downloading github.com/spf13/cobra v1.10.2
+validate	Run Validation	2026-02-09T02:01:16.4751998Z go: downloading github.com/andybalholm/cascadia v1.3.3
+validate	Run Validation	2026-02-09T02:01:16.4752625Z go: downloading golang.org/x/net v0.49.0
+validate	Run Validation	2026-02-09T02:01:16.4843622Z go: downloading github.com/spf13/pflag v1.0.10
+validate	Run Validation	2026-02-09T02:01:16.4962979Z go: downloading github.com/pocketbase/dbx v1.11.0
+validate	Run Validation	2026-02-09T02:01:16.5006241Z go: downloading github.com/spf13/cast v1.10.0
+validate	Run Validation	2026-02-09T02:01:16.5169512Z go: downloading golang.org/x/crypto v0.47.0
+validate	Run Validation	2026-02-09T02:01:16.5271348Z go: downloading github.com/fatih/color v1.18.0
+validate	Run Validation	2026-02-09T02:01:16.5275624Z go: downloading github.com/go-ozzo/ozzo-validation/v4 v4.3.0
+validate	Run Validation	2026-02-09T02:01:16.5519940Z go: downloading github.com/golang-jwt/jwt/v5 v5.3.1
+validate	Run Validation	2026-02-09T02:01:16.5813956Z go: downloading golang.org/x/sync v0.19.0
+validate	Run Validation	2026-02-09T02:01:16.6354352Z go: downloading modernc.org/sqlite v1.44.3
+validate	Run Validation	2026-02-09T02:01:16.7336683Z go: downloading github.com/dop251/goja v0.0.0-20260106131823-651366fbe6e3
+validate	Run Validation	2026-02-09T02:01:16.7353163Z go: downloading github.com/dop251/goja_nodejs v0.0.0-20251015164255-5e94316bedaf
+validate	Run Validation	2026-02-09T02:01:16.7722999Z go: downloading github.com/fsnotify/fsnotify v1.7.0
+validate	Run Validation	2026-02-09T02:01:16.7731994Z go: downloading golang.org/x/oauth2 v0.34.0
+validate	Run Validation	2026-02-09T02:01:16.8287976Z go: downloading github.com/mattn/go-colorable v0.1.14
+validate	Run Validation	2026-02-09T02:01:16.8294542Z go: downloading github.com/mattn/go-isatty v0.0.20
+validate	Run Validation	2026-02-09T02:01:16.8295279Z go: downloading github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
+validate	Run Validation	2026-02-09T02:01:16.8455990Z go: downloading github.com/gabriel-vasile/mimetype v1.4.13
+validate	Run Validation	2026-02-09T02:01:16.8479818Z go: downloading github.com/disintegration/imaging v1.6.2
+validate	Run Validation	2026-02-09T02:01:16.8531907Z go: downloading golang.org/x/image v0.35.0
+validate	Run Validation	2026-02-09T02:01:16.8980550Z go: downloading github.com/domodwyer/mailyak/v3 v3.6.2
+validate	Run Validation	2026-02-09T02:01:16.9029189Z go: downloading github.com/ganigeorgiev/fexpr v0.5.0
+validate	Run Validation	2026-02-09T02:01:16.9212356Z go: downloading github.com/dop251/base64dec v0.0.0-20231022112746-c6c9f9a96217
+validate	Run Validation	2026-02-09T02:01:16.9219437Z go: downloading golang.org/x/text v0.33.0
+validate	Run Validation	2026-02-09T02:01:16.9433039Z go: downloading golang.org/x/sys v0.40.0
+validate	Run Validation	2026-02-09T02:01:17.1790999Z go: downloading github.com/dlclark/regexp2 v1.11.5
+validate	Run Validation	2026-02-09T02:01:17.1920184Z go: downloading github.com/google/pprof v0.0.0-20260115054156-294ebfa9ad83
+validate	Run Validation	2026-02-09T02:01:17.6241352Z go: downloading github.com/go-sourcemap/sourcemap v2.1.4+incompatible
+validate	Run Validation	2026-02-09T02:01:19.3371970Z go: downloading modernc.org/libc v1.67.6
+validate	Run Validation	2026-02-09T02:01:20.6074716Z go: downloading modernc.org/mathutil v1.7.1
+validate	Run Validation	2026-02-09T02:01:20.6075432Z go: downloading github.com/google/uuid v1.6.0
+validate	Run Validation	2026-02-09T02:01:20.6076142Z go: downloading golang.org/x/exp v0.0.0-20260112195511-716be5621a96
+validate	Run Validation	2026-02-09T02:01:20.6076751Z go: downloading github.com/dustin/go-humanize v1.0.1
+validate	Run Validation	2026-02-09T02:01:20.6382515Z go: downloading modernc.org/memory v1.11.0
+validate	Run Validation	2026-02-09T02:01:20.6436873Z go: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+validate	Run Validation	2026-02-09T02:01:20.8228224Z ✓ Format check passed
+validate	Run Validation	2026-02-09T02:01:20.8228558Z 
+validate	Run Validation	2026-02-09T02:01:20.8228710Z [2/4] Running golangci-lint...
+validate	Run Validation	2026-02-09T02:01:20.9249272Z Error: can't load config: unsupported version of the configuration: "" See https://golangci-lint.run/docs/product/migration-guide for migration instructions
+validate	Run Validation	2026-02-09T02:01:20.9251220Z The command is terminated due to an error: can't load config: unsupported version of the configuration: "" See https://golangci-lint.run/docs/product/migration-guide for migration instructions
+validate	Run Validation	2026-02-09T02:01:20.9287666Z ##[error]Process completed with exit code 3.
+validate	Post Run actions/checkout@v4	﻿2026-02-09T02:01:20.9393069Z Post job cleanup.
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0340017Z [command]/usr/bin/git version
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0376097Z git version 2.52.0
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0417616Z Temporarily overriding HOME='/home/runner/work/_temp/36c4c684-d2d5-4e3f-8630-2ef6aed2eb11' before making global git config changes
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0419084Z Adding repository directory to the temporary git global config as a safe directory
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0431252Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/venvi/venvi
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0468176Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0502337Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0744486Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0766343Z http.https://github.com/.extraheader
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0778432Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.0809938Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.1041488Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Post Run actions/checkout@v4	2026-02-09T02:01:21.1073407Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Complete job	﻿2026-02-09T02:01:21.1425084Z Cleaning up orphan processes
