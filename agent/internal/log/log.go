@@ -80,7 +80,8 @@ func (l *Logger) StartSession(sessionID string) error {
 		return fmt.Errorf("failed to marshal session: %w", err)
 	}
 
-	// Atomically write new session file (checks for existence done above)
+	// Create and atomically write new session file.
+	// This does not overwrite because of the existence check at the start of the function.
 	tmpPath := path + ".tmp"
 	if err := os.WriteFile(tmpPath, data, 0600); err != nil {
 		return fmt.Errorf("failed to write session file: %w", err)

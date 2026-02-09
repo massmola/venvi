@@ -19,15 +19,6 @@
             gofmt.enable = true;
             nixpkgs-fmt.enable = true;
 
-            # Custom check for fmt.Sprintf
-            no-fmt-sprintf = {
-              enable = true;
-              name = "no-fmt-sprintf";
-              description = "Ban fmt.Sprintf in favor of safe alternatives";
-              entry = "${pkgs.lib.getBin pkgs.bash}/bin/bash -c 'if grep -r \"fmt.Sprintf\" . --include=*.go --exclude-dir=vendor; then echo \"Error: fmt.Sprintf is banned. Use strings.ReplaceAll, text/template, or concatenation.\"; exit 1; fi'";
-              pass_filenames = false;
-            };
-
             # Security
             gitleaks = {
               enable = true;

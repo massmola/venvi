@@ -44,7 +44,7 @@ var promptCmd = &cobra.Command{
 			// Format logs for the prompt
 			var logContent strings.Builder
 			for _, entry := range session.Entries {
-				logContent.WriteString("[" + entry.Role + "] " + entry.Timestamp.Format("15:04:05") + ": " + entry.Content + "\n")
+				_, _ = fmt.Fprintf(&logContent, "[%s] %s: %s\n", entry.Role, entry.Timestamp.Format("15:04:05"), entry.Content)
 			}
 
 			_, _ = fmt.Fprintln(os.Stdout, prompts.GetCriticPrompt(logContent.String()))

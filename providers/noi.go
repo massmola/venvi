@@ -126,7 +126,7 @@ func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 	event := buildEventFromRaw(raw, p.SourceName(), "NOI Techpark", "https://noi.bz.it/en/events")
 
 	// Ensure URL is specific to NOI if not already set by buildEventFromRaw (which uses default)
-	if event.URL == "" || event.URL == "https://opendatahub.com/events/"+event.ID {
+	if event.URL == "" {
 		event.URL = "https://noi.bz.it/en/events"
 	}
 

@@ -1,6 +1,7 @@
 package providers
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -49,29 +50,38 @@ func extractImageURL(raw RawEvent) string {
 	return ""
 }
 
-// parseDates extracts start and end dates with fallbacks.
-func parseDates(raw RawEvent) (time.Time, time.Time) {
-	parse := func(key string) time.Time {
-		if dateStr, ok := raw[key].(string); ok && dateStr != "" {
-			if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
-				return parsed
-			}
-			if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
-				return parsed
-			}
+// parseDates extracts start and end dates. Returns error if date strings present but malformed.
+func parseDates(raw RawEvent) (time.Time, time.Time, error) {
+	parse := func(key string) (time.Time, error) {
+		dateStr, ok := raw[key].(string)
+		if !ok || dateStr == "" {
+			return time.Now(), nil
 		}
-		return time.Now()
+		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
+			return parsed, nil
+		}
+		if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
+			return parsed, nil
+		}
+		return time.Now(), fmt.Errorf("malformed date %q", dateStr)
 	}
 
-	start := parse("DateBegin")
-	end := parse("DateEnd")
+	start, errStart := parse("DateBegin")
+	end, errEnd := parse("DateEnd")
+
+	var err error
+	if errStart != nil {
+		err = fmt.Errorf("parsing start date: %w", errStart)
+	} else if errEnd != nil {
+		err = fmt.Errorf("parsing end date: %w", errEnd)
+	}
 
 	// If end is before start (or equal/default), make it at least start time
 	if end.Before(start) {
 		end = start
 	}
 
-	return start, end
+	return start, end, err
 }
 
 // extractLocation extracts city name from contact info.
@@ -106,7 +116,14 @@ func extractGPS(raw RawEvent) (float64, float64) {
 func buildEventFromRaw(raw RawEvent, sourceName, defaultLocation, defaultURL string) *Event {
 	title, description := extractLocalizedDetails(raw)
 	imageURL := extractImageURL(raw)
-	dateStart, dateEnd := parseDates(raw)
+	dateStart, dateEnd, err := parseDates(raw)
+	if err != nil {
+		// Log warning but continue with fallback to time.Now()
+		// (handled by parseDates returning time.Now() alongside the error)
+		// Note: We use raw["Id"] for context if available
+		rawID, _ := raw["Id"].(string)
+		println("Warning: failed to parse dates for event " + rawID + " from " + sourceName + ": " + err.Error())
+	}
 
 	location := extractLocation(raw)
 	if location == "Unknown" && defaultLocation != "" {
