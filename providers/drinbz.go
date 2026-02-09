@@ -17,6 +17,7 @@ type DrinbzProvider struct {
 }
 
 // NewDrinbzProvider creates a new Drinbz provider.
+// NewDrinbzProvider creates a new instance of DrinbzProvider.
 func NewDrinbzProvider() *DrinbzProvider {
 	return &DrinbzProvider{
 		BaseURL: "https://drinbz.it/wp-json/wp/v2/posts",
@@ -24,6 +25,7 @@ func NewDrinbzProvider() *DrinbzProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *DrinbzProvider) SourceName() string {
 	return "drinbz"
 }
@@ -42,6 +44,7 @@ type wpPost struct {
 	Embedded map[string]any `json:"_embedded,omitempty"` // For images if needed
 }
 
+// FetchEvents retrieves raw event data from the Drinbz API.
 func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	// Fetch recent posts. Drinbz posts are often events.
 	// API: https://drinbz.it/wp-json/wp/v2/posts?per_page=20
@@ -90,6 +93,7 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 	id := fmt.Sprint(raw["id"])
 	title := fmt.Sprint(raw["title"])

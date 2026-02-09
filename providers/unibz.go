@@ -19,6 +19,7 @@ type UnibzProvider struct {
 	Client  *http.Client
 }
 
+// NewUnibzProvider creates a new instance of UnibzProvider.
 func NewUnibzProvider() *UnibzProvider {
 	return &UnibzProvider{
 		BaseURL: "https://guide.unibz.it/en/events/",
@@ -26,10 +27,12 @@ func NewUnibzProvider() *UnibzProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *UnibzProvider) SourceName() string {
 	return "unibz"
 }
 
+// FetchEvents retrieves raw event data from the unibz guide website.
 func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.BaseURL, nil)
 	if err != nil {
@@ -104,6 +107,7 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
 	title, _ := raw["title"].(string)
 	link, _ := raw["link"].(string)

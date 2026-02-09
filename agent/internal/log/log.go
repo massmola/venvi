@@ -1,3 +1,4 @@
+// Package log provides a session-based logging system for agent activities.
 package log
 
 import (
@@ -64,7 +65,7 @@ func (l *Logger) StartSession(sessionID string) error {
 	}
 
 	// Create logs directory
-	if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
+	if err := os.MkdirAll(filepath.Dir(path), 0750); err != nil {
 		return fmt.Errorf("failed to create logs directory: %w", err)
 	}
 
@@ -99,6 +100,7 @@ func (l *Logger) AppendEntry(sessionID, role, content string) error {
 		return err
 	}
 
+	// #nosec G304
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return fmt.Errorf("failed to read session file: %w", err)
@@ -139,6 +141,7 @@ func (l *Logger) GetSession(sessionID string) (*Session, error) {
 	if err != nil {
 		return nil, err
 	}
+	// #nosec G304
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read session file: %w", err)

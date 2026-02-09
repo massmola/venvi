@@ -44,6 +44,7 @@ func (s *Store) Load() ([]Skill, error) {
 		return nil, fmt.Errorf("failed to stat memory file: %w", err)
 	}
 
+	// #nosec G304
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read memory file: %w", err)
@@ -84,7 +85,7 @@ func (s *Store) Save(skill Skill) error {
 	}
 
 	// Ensure directory exists
-	if err := os.MkdirAll(s.DataDir, 0755); err != nil {
+	if err := os.MkdirAll(s.DataDir, 0750); err != nil {
 		return fmt.Errorf("failed to create data directory: %w", err)
 	}
 

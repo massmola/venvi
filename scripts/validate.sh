@@ -17,10 +17,6 @@ echo "✓ Format check passed"
 
 echo ""
 if command -v golangci-lint &> /dev/null; then
-    echo "DEBUG: golangci-lint path: $(which golangci-lint)"
-    echo "DEBUG: golangci-lint version: $(golangci-lint --version)"
-    echo "DEBUG: Available linters:"
-    golangci-lint help linters || true
     golangci-lint run ./...
     echo "✓ Lint check passed"
 else

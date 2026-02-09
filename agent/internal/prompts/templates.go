@@ -1,9 +1,11 @@
+// Package prompts contains the system prompts for different agent roles.
 package prompts
 
 import (
 	"strings"
 )
 
+// OrchestratorPrompt is the system prompt for the orchestrator agent.
 const OrchestratorPrompt = `
 You are the **Orchestrator Agent**. Your goal is to break down a complex task into small, testable steps that an autonomous agent can execute.
 
@@ -33,6 +35,7 @@ The agent is working on the project "Venvi". It has access to a CLI tool 'venvi-
 ]
 `
 
+// CriticPrompt is the system prompt for the critic/reflector agent.
 const CriticPrompt = `
 You are the **Critic/Reflector Agent**. Your goal is to review the logs of a completed or failed task session and identify lessons to learn, specifically focusing on systematic improvements.
 
@@ -69,10 +72,12 @@ Command:
 venvi-agent memory add "<Topic>" "<Content>" "<tag1>" "<tag2>"
 `
 
+// GetOrchestratorPrompt returns the formatted orchestrator prompt.
 func GetOrchestratorPrompt(goal string) string {
 	return strings.ReplaceAll(OrchestratorPrompt, "%s", goal)
 }
 
+// GetCriticPrompt returns the formatted critic prompt.
 func GetCriticPrompt(logs string) string {
 	return strings.ReplaceAll(CriticPrompt, "%s", logs)
 }

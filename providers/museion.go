@@ -19,6 +19,7 @@ type MuseionProvider struct {
 	Client  *http.Client
 }
 
+// NewMuseionProvider creates a new instance of MuseionProvider.
 func NewMuseionProvider() *MuseionProvider {
 	return &MuseionProvider{
 		BaseURL: "https://www.museion.it/en/events",
@@ -26,10 +27,12 @@ func NewMuseionProvider() *MuseionProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *MuseionProvider) SourceName() string {
 	return "museion"
 }
 
+// FetchEvents retrieves raw event data from the Museion website.
 func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.BaseURL, nil)
 	if err != nil {
@@ -88,6 +91,7 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 	title, _ := raw["title"].(string)
 	link, _ := raw["link"].(string)

@@ -16,6 +16,7 @@ type NOIProvider struct {
 	Client  *http.Client
 }
 
+// NewNOIProvider creates a new instance of NOIProvider targeted at the NOI Techpark.
 func NewNOIProvider() *NOIProvider {
 	return &NOIProvider{
 		BaseURL: "https://tourism.api.opendatahub.com/v1/Event",
@@ -23,10 +24,12 @@ func NewNOIProvider() *NOIProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *NOIProvider) SourceName() string {
 	return "noi"
 }
 
+// FetchEvents retrieves raw event data from the Open Data Hub API for NOI Techpark.
 func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.BaseURL, nil)
 	if err != nil {
@@ -117,6 +120,7 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 }
 
 // MapEvent reuses logic from helpers but sets source to "noi"
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 	// NOI events are always in NOI Techpark
 	event := buildEventFromRaw(raw, p.SourceName(), "NOI Techpark", "https://noi.bz.it/en/events")
