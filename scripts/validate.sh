@@ -15,8 +15,10 @@ echo "[1/4] Running go fmt..."
 go fmt ./...
 echo "✓ Format check passed"
 
-echo ""
+echo "[2/4] Running golangci-lint..."
 if command -v golangci-lint &> /dev/null; then
+    echo "Using golangci-lint from: $(command -v golangci-lint)"
+    golangci-lint --version
     golangci-lint run ./...
     echo "✓ Lint check passed"
 else
