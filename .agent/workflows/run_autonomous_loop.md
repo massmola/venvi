@@ -18,7 +18,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```bash
 ./venvi-agent prompt orchestrator "YOUR_GOAL_HERE"
 ```
-**Step**: Copy the prompt output and paste it into the IDE agent chat. The Orchestrator will generate a "Ralph Wiggum" task list (named after the "I'm helping" meme, implying simple, granular, and obvious steps) with **mandatory verification steps**.
+**Step**: Copy the prompt output and paste it into the IDE agent chat. The Orchestrator will generate a "Ralph Wiggum" task list (named after the "I'm helping" meme, referring to extremely granular, simple, and verifiable steps) with **mandatory verification steps**. This technique ensures the agent doesn't get ahead of itself and verifies every small change.
 
 ### 2. Session Start
 **Action**: Start a log for this task.

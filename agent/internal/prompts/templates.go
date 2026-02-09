@@ -3,6 +3,7 @@ package prompts
 
 import (
 	"fmt"
+	"strings"
 )
 
 // OrchestratorPrompt is the system prompt for the orchestrator agent.
@@ -74,10 +75,10 @@ venvi-agent memory add "<Topic>" "<Content>" "<tag1>" "<tag2>"
 
 // GetOrchestratorPrompt returns the formatted orchestrator prompt.
 func GetOrchestratorPrompt(goal string) string {
-	return fmt.Sprintf(OrchestratorPrompt, goal)
+	return fmt.Sprintf(OrchestratorPrompt, strings.ReplaceAll(goal, "%", "%%"))
 }
 
 // GetCriticPrompt returns the formatted critic prompt.
 func GetCriticPrompt(logs string) string {
-	return fmt.Sprintf(CriticPrompt, logs)
+	return fmt.Sprintf(CriticPrompt, strings.ReplaceAll(logs, "%", "%%"))
 }
