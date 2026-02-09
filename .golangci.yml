@@ -24,7 +24,7 @@ linters:
     - unparam
     - prealloc
   disable:
-    - typecheck
+
 
 linters-settings:
   forbidigo:
