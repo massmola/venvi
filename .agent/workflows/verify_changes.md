@@ -5,14 +5,9 @@ description: Verify that code changes meet the project's quality standards.
 
 // turbo-all
 
-1. **Enter Nix Development Environment**:
+1. **Run Full Validation in Nix Environment**:
    ```bash
-   nix develop
-   ```
-
-2. **Run Full Validation**:
-   ```bash
-   ./scripts/validate.sh
+   nix develop --command ./scripts/validate.sh
    ```
 
 3. **Report**:
