@@ -19,6 +19,8 @@ import (
 	"venvi/routes"
 )
 
+var Version = "dev"
+
 func main() {
 	app := pocketbase.New()
 
@@ -60,7 +62,7 @@ func main() {
 		se.Router.GET("/api/venvi/health", func(e *core.RequestEvent) error {
 			return e.JSON(http.StatusOK, map[string]string{
 				"status":  "healthy",
-				"version": "0.1.0",
+				"version": Version,
 			})
 		})
 		return se.Next()

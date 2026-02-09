@@ -15,7 +15,8 @@ COPY . .
 
 # Build the application
 # CGO_ENABLED=0 is used because we use modernc.org/sqlite (pure go)
-RUN CGO_ENABLED=0 GOOS=linux go build -o venvi main.go
+ARG VERSION=dev
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-X main.Version=${VERSION}" -o venvi main.go
 
 # Run stage
 FROM alpine:3.23
