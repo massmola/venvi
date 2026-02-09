@@ -74,6 +74,9 @@ func syncProvider(ctx context.Context, app core.App, provider EventProvider) (Sy
 	// Process each event
 	for _, raw := range rawEvents {
 		event := provider.MapEvent(raw)
+		if event == nil {
+			continue // Skip invalid/filtered events
+		}
 
 		// Find existing record by source_name and source_id
 		records, err := app.FindRecordsByFilter(
