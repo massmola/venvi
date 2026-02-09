@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"strings"
 	"venvi/agent/internal/log"
 	"venvi/agent/internal/prompts"
