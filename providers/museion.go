@@ -3,6 +3,7 @@ package providers
 import (
 	"context"
 	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"net/http"
 	"path"
@@ -55,7 +56,7 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	// Selector based on analysis: classes like preview-item__title
 	// I will iterate over the container items.
 
-	doc.Find(".preview-item").Each(func(i int, s *goquery.Selection) {
+	doc.Find(".preview-item").Each(func(_ int, s *goquery.Selection) {
 		title := strings.TrimSpace(s.Find(".preview-item__title").Text())
 		if title == "" {
 			return
@@ -102,7 +103,7 @@ func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 	// Fallback if ID is empty or invalid path
 	if id == "" || id == "." || id == "/" {
 		hash := sha256.Sum256([]byte(link))
-		id = fmt.Sprintf("%x", hash[:8])
+		id = hex.EncodeToString(hash[:8])
 	}
 	id = "museion-" + id
 

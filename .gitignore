@@ -38,3 +38,4 @@ node_modules/
 
 # Agent Interaction Data
 .agent_data/
+.pre-commit-config.yaml

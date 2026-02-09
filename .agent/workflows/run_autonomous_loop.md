@@ -8,6 +8,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 
 ## Prerequisites
 - `venvi-agent` binary must be built (`go build -o venvi-agent agent/main.go`).
+- Familiarize yourself with `coding_standards.md` for strict environment and safety rules.
 
 ## The Loop
 
@@ -17,7 +18,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```bash
 ./venvi-agent prompt orchestrator "YOUR_GOAL_HERE"
 ```
-**Step**: Copy the prompt output and paste it into the IDE agent chat. The Orchestrator will generate a "Ralph Wiggum" task list with **mandatory verification steps**.
+**Step**: Copy the prompt output and paste it into the IDE agent chat. The Orchestrator will generate a "Ralph Wiggum" task list (named after the "I'm helping" meme, implying simple, granular, and obvious steps) with **mandatory verification steps**.
 
 ### 2. Session Start
 **Action**: Start a log for this task.
@@ -76,10 +77,11 @@ This workflow describes how to run the self-improving agent loop using the `venv
 
 # 4. Checkpoint (Auto-Commit)
 ./venvi-agent commit "Fixed login bug"
-# 4. Reflect
+
+# 5. Reflect
 ./venvi-agent prompt critic "fix-login-bug"
 # Agent says: "We forgot to hash the password."
 
-# 5. Learn
+# 6. Learn
 ./venvi-agent memory add "Authentication" "Always hash passwords before saving" "security" "auth"
 ```

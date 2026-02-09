@@ -82,7 +82,7 @@ func (l *Logger) StartSession(sessionID string) error {
 	// Write (overwrite if exists)
 	// Write (overwrite if exists)
 	tmpPath := path + ".tmp"
-	if err := os.WriteFile(tmpPath, data, 0644); err != nil {
+	if err := os.WriteFile(tmpPath, data, 0600); err != nil {
 		return fmt.Errorf("failed to write session file: %w", err)
 	}
 
@@ -123,7 +123,7 @@ func (l *Logger) AppendEntry(sessionID, role, content string) error {
 	}
 
 	tmpPath := path + ".tmp"
-	if err := os.WriteFile(tmpPath, updatedData, 0644); err != nil {
+	if err := os.WriteFile(tmpPath, updatedData, 0600); err != nil {
 		return fmt.Errorf("failed to write updated session file: %w", err)
 	}
 

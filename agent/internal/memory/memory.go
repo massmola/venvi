@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -69,7 +70,7 @@ func (s *Store) Save(skill Skill) error {
 
 	// Simple ID generation if not provided
 	if skill.ID == "" {
-		skill.ID = fmt.Sprintf("%d", time.Now().UnixNano())
+		skill.ID = strconv.FormatInt(time.Now().UnixNano(), 10)
 	}
 	if skill.CreatedAt.IsZero() {
 		skill.CreatedAt = time.Now()
@@ -88,7 +89,7 @@ func (s *Store) Save(skill Skill) error {
 	}
 
 	tmpPath := s.getFilePath() + ".tmp"
-	if err := os.WriteFile(tmpPath, data, 0644); err != nil {
+	if err := os.WriteFile(tmpPath, data, 0600); err != nil {
 		return fmt.Errorf("failed to write temp memory file: %w", err)
 	}
 
@@ -112,11 +113,12 @@ func (s *Store) Search(query string) ([]Skill, error) {
 
 	for _, skill := range skills {
 		match := false
-		if strings.Contains(strings.ToLower(skill.Topic), query) {
+		switch {
+		case strings.Contains(strings.ToLower(skill.Topic), query):
 			match = true
-		} else if strings.Contains(strings.ToLower(skill.Content), query) {
+		case strings.Contains(strings.ToLower(skill.Content), query):
 			match = true
-		} else {
+		default:
 			for _, tag := range skill.Tags {
 				if strings.Contains(strings.ToLower(tag), query) {
 					match = true

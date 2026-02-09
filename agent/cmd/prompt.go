@@ -15,7 +15,7 @@ var promptCmd = &cobra.Command{
 	Long:      `Generates a prompt for the Orchestrator or Critic role.`,
 	ValidArgs: []string{"orchestrator", "critic"},
 	Args:      cobra.MinimumNArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	Run: func(_ *cobra.Command, args []string) {
 		role := strings.ToLower(args[0])
 
 		switch role {
@@ -43,7 +43,7 @@ var promptCmd = &cobra.Command{
 			// Format logs for the prompt
 			var logContent strings.Builder
 			for _, entry := range session.Entries {
-				logContent.WriteString(fmt.Sprintf("[%s] %s: %s\n", entry.Role, entry.Timestamp.Format("15:04:05"), entry.Content))
+				logContent.WriteString("[" + entry.Role + "] " + entry.Timestamp.Format("15:04:05") + ": " + entry.Content + "\n")
 			}
 
 			fmt.Println(prompts.GetCriticPrompt(logContent.String()))

@@ -39,7 +39,7 @@ func TestUnibzProvider_FetchEvents(t *testing.T) {
 }
 
 func TestUnibzProvider_FetchEvents_Empty(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		_, _ = w.Write([]byte("<html><body></body></html>"))
 	}))

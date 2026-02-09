@@ -35,7 +35,7 @@ var mockODHResponse = map[string]any{
 
 func TestODHProvider_FetchEvents(t *testing.T) {
 	// Create mock server
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		err := json.NewEncoder(w).Encode(mockODHResponse)
 		require.NoError(t, err)
@@ -115,7 +115,7 @@ var mockHackathonsResponse = map[string]any{
 }
 
 func TestEuroHackathonsProvider_FetchEvents(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		err := json.NewEncoder(w).Encode(mockHackathonsResponse)
 		require.NoError(t, err)

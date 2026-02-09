@@ -1,6 +1,8 @@
 package prompts
 
-import "fmt"
+import (
+	"strings"
+)
 
 const OrchestratorPrompt = `
 You are the **Orchestrator Agent**. Your goal is to break down a complex task into small, testable steps that an autonomous agent can execute.
@@ -68,9 +70,9 @@ venvi-agent memory add "<Topic>" "<Content>" "<tag1>" "<tag2>"
 `
 
 func GetOrchestratorPrompt(goal string) string {
-	return fmt.Sprintf(OrchestratorPrompt, goal)
+	return strings.ReplaceAll(OrchestratorPrompt, "%s", goal)
 }
 
 func GetCriticPrompt(logs string) string {
-	return fmt.Sprintf(CriticPrompt, logs)
+	return strings.ReplaceAll(CriticPrompt, "%s", logs)
 }

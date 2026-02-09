@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"path"
+	"strconv"
 	"strings"
 	"time"
 
@@ -52,7 +53,7 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 
 	var events []RawEvent
 
-	doc.Find(".mediaItem").Each(func(i int, s *goquery.Selection) {
+	doc.Find(".mediaItem").Each(func(_ int, s *goquery.Selection) {
 		title := strings.TrimSpace(s.Find(".mediaItem_title a").Text())
 		if title == "" {
 			return
@@ -109,7 +110,7 @@ func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
 	description, _ := raw["description"].(string)
 
 	// Generate ID from link hash or title
-	idBase := fmt.Sprintf("%d", time.Now().UnixNano())
+	idBase := strconv.FormatInt(time.Now().UnixNano(), 10)
 	if link != "" {
 		normalizedLink := strings.TrimRight(link, "/")
 		base := path.Base(normalizedLink)

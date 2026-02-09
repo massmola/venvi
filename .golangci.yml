@@ -1,0 +1,28 @@
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - forbidigo
+    - gofmt
+    - goimports
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gocritic
+    - revive
+    - errcheck
+    - gosec
+    - misspell
+    - unparam
+    - prealloc
+  disable:
+    - typecheck
+
+linters-settings:
+  forbidigo:
+    forbid:
+      - p: ^fmt\.Sprintf$
+        msg: "Use strings.ReplaceAll for simple substitutions or text/template for complex ones to avoid % injection attacks."

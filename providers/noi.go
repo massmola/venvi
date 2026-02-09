@@ -2,7 +2,6 @@ package providers
 
 import (
 	"context"
-	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -117,75 +116,15 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
-// MapEvent reuses logic similar to ODH but sets source to "noi"
+// MapEvent reuses logic from helpers but sets source to "noi"
 func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
-	// We can instantiate an ODHProvider to reuse its MapEvent logic
-	// IF we change ODHProvider methods to be usable or copy logic.
-	// Since ODHProvider.MapEvent is bound to *ODHProvider struct, we can't easily reuse it
-	// without making helper functions.
-	// For now, copying the logic is safer and faster than refactoring odh.go.
+	// NOI events are always in NOI Techpark
+	event := buildEventFromRaw(raw, p.SourceName(), "NOI Techpark", "https://noi.bz.it/en/events")
 
-	// Copy-paste of ODH mapping logic for now, ensuring SourceName is "noi"
-
-	details, _ := raw["Detail"].(map[string]any)
-	if details == nil {
-		details = map[string]any{}
+	// Ensure URL is specific to NOI if not already set by buildEventFromRaw (which uses default)
+	if event.URL == "" || event.URL == "https://opendatahub.com/events/"+event.ID {
+		event.URL = "https://noi.bz.it/en/events"
 	}
 
-	title := getLocalized(details, "Title")
-	description := getLocalized(details, "BaseText")
-	if description == "" {
-		description = getLocalized(details, "IntroText")
-	}
-
-	location := "NOI Techpark" // Default for this provider
-
-	// Extract image URL from gallery
-	var imageURL string
-	if gallery, ok := raw["ImageGallery"].([]any); ok && len(gallery) > 0 {
-		if firstImg, ok := gallery[0].(map[string]any); ok {
-			imageURL, _ = firstImg["ImageUrl"].(string)
-		}
-	}
-
-	rawID, _ := raw["Id"].(string)
-	if rawID == "" {
-		// Use deterministic hash of title + date if ID is missing
-		data := fmt.Sprintf("%s|%v", title, raw["DateBegin"])
-		hash := sha256.Sum256([]byte(data))
-		rawID = fmt.Sprintf("%x", hash[:16])
-	}
-
-	// Dates parsing logic...
-	dateStart := time.Now()
-	if dateStr, ok := raw["DateBegin"].(string); ok && dateStr != "" {
-		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
-			dateStart = parsed
-		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
-			dateStart = parsed
-		}
-	}
-
-	dateEnd := time.Now()
-	if dateStr, ok := raw["DateEnd"].(string); ok && dateStr != "" {
-		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
-			dateEnd = parsed
-		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
-			dateEnd = parsed
-		}
-	}
-
-	return &Event{
-		ID:          rawID,
-		Title:       title,
-		Description: description,
-		DateStart:   dateStart,
-		DateEnd:     dateEnd,
-		Location:    location,
-		URL:         "https://noi.bz.it/en/events", // Link to NOI site instead of generic ODH
-		ImageURL:    imageURL,
-		SourceName:  p.SourceName(),
-		SourceID:    rawID,
-		IsNew:       true,
-	}
+	return event
 }

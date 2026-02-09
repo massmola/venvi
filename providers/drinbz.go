@@ -76,7 +76,7 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		// In a real scenario we might just use the struct directly if the interface allowed it,
 		// but RawEvent is map[string]any.
 		raw := make(map[string]any)
-		raw["id"] = post.ID
+		raw["id"] = post.ID // int
 		raw["date"] = post.Date
 		raw["link"] = post.Link
 		raw["title"] = post.Title.Rendered
@@ -91,11 +91,11 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 }
 
 func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
-	id := fmt.Sprintf("%v", raw["id"])
-	title := fmt.Sprintf("%v", raw["title"])
-	link := fmt.Sprintf("%v", raw["link"])
-	content := fmt.Sprintf("%v", raw["content"])
-	dateStr := fmt.Sprintf("%v", raw["date"])
+	id := fmt.Sprint(raw["id"])
+	title := fmt.Sprint(raw["title"])
+	link := fmt.Sprint(raw["link"])
+	content := fmt.Sprint(raw["content"])
+	dateStr := fmt.Sprint(raw["date"])
 
 	// Parse date from WP format "2023-10-27T10:00:00"
 	dateStart, err := time.Parse("2006-01-02T15:04:05", dateStr)
