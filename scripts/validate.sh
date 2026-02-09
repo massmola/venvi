@@ -17,13 +17,7 @@ echo "✓ Format check passed"
 
 echo "[2/4] Running golangci-lint..."
 if command -v golangci-lint &> /dev/null; then
-    LINT_VERSION=$(golangci-lint --version)
-    if echo "$LINT_VERSION" | grep -q "2\.8"; then
-        echo "Detected golangci-lint v2 (CI), using .golangci-v2.yml"
-        golangci-lint run -c .golangci-v2.yml ./...
-    else
-        golangci-lint run ./...
-    fi
+    golangci-lint run ./...
     echo "✓ Lint check passed"
 else
     echo "⚠ golangci-lint not found, skipping..."
