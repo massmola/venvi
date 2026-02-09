@@ -95,11 +95,18 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 
 // MapEvent converts a RawEvent into the internal Event structure.
 func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
-	id := fmt.Sprint(raw["id"])
-	title := fmt.Sprint(raw["title"])
-	link := fmt.Sprint(raw["link"])
-	content := fmt.Sprint(raw["content"])
-	dateStr := fmt.Sprint(raw["date"])
+	sprintOrEmpty := func(v any) string {
+		if v == nil {
+			return ""
+		}
+		return fmt.Sprint(v)
+	}
+
+	id := sprintOrEmpty(raw["id"])
+	title := sprintOrEmpty(raw["title"])
+	link := sprintOrEmpty(raw["link"])
+	content := sprintOrEmpty(raw["content"])
+	dateStr := sprintOrEmpty(raw["date"])
 
 	// Parse date from WP format "2023-10-27T10:00:00"
 	dateStart, err := time.Parse("2006-01-02T15:04:05", dateStr)
