@@ -27,8 +27,11 @@ func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 - **Wrap Errors**: Use `fmt.Errorf("context: %w", err)` for error wrapping.
 - **No Panic**: Never use `panic` in library code; return errors instead.
 - **Handle Errors**: Never ignore errors with `_`.
+- **Resource Cleanup**: Always handle or explicitly ignore errors from `Close()` calls (e.g., `_ = resp.Body.Close()`) to satisfy `errcheck`.
 
 ## Testing
+- **Mandatory Validation**: Always run `./scripts/validate.sh` before submitting changes. This is REQUIRED for every commit.
+- **Write Tests**: Write unit tests for all new logic. Aim for high test coverage.
 - **Table-Driven Tests**: Prefer table-driven tests for multiple cases.
 - **Testify**: Use `github.com/stretchr/testify` for assertions.
 - **Naming**: Test functions must be named `Test<FunctionName>_<Scenario>`.

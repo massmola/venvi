@@ -15,6 +15,8 @@ This tool facilitates the Perception-Reasoning-Action-Reflection loop by providi
 local storage for agent state.`,
 }
 
+// Execute adds all child commands to the root command and sets flags appropriately.
+// This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)

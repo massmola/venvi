@@ -1,0 +1,33 @@
+run:
+  timeout: 5m
+
+# Explicitly set configuration version to avoid "unsupported version" errors
+version: 2
+
+
+
+
+linters:
+  enable:
+    - forbidigo
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gocritic
+    - revive
+    - errcheck
+    - gosec
+    - misspell
+    - unparam
+    - prealloc
+  disable:
+
+
+linters-settings:
+  forbidigo:
+    forbid:
+      - p: ^fmt\.Println$
+        msg: "Use log package or fmt.Fprint(os.Stdout, ...) for CLI output."
+      - p: ^fmt\.Printf$
+        msg: "Use log package or fmt.Fprintf(os.Stdout, ...) for CLI output."

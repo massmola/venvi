@@ -2,8 +2,11 @@ package providers
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"net/http"
+	"path"
 	"strings"
 	"time"
 
@@ -16,6 +19,7 @@ type MuseionProvider struct {
 	Client  *http.Client
 }
 
+// NewMuseionProvider creates a new instance of MuseionProvider.
 func NewMuseionProvider() *MuseionProvider {
 	return &MuseionProvider{
 		BaseURL: "https://www.museion.it/en/events",
@@ -23,10 +27,12 @@ func NewMuseionProvider() *MuseionProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *MuseionProvider) SourceName() string {
 	return "museion"
 }
 
+// FetchEvents retrieves raw event data from the Museion website.
 func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.BaseURL, nil)
 	if err != nil {
@@ -53,13 +59,16 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	// Selector based on analysis: classes like preview-item__title
 	// I will iterate over the container items.
 
-	doc.Find(".preview-item").Each(func(i int, s *goquery.Selection) {
+	doc.Find(".preview-item").Each(func(_ int, s *goquery.Selection) {
 		title := strings.TrimSpace(s.Find(".preview-item__title").Text())
 		if title == "" {
 			return
 		}
 
-		link, _ := s.Attr("href")
+		link, exists := s.Find("a").Attr("href")
+		if !exists || link == "" {
+			return
+		}
 		if !strings.HasPrefix(link, "http") {
 			link = "https://www.museion.it" + link
 		}
@@ -82,20 +91,25 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
-	title := fmt.Sprintf("%v", raw["title"])
-	link := fmt.Sprintf("%v", raw["link"])
-	image := fmt.Sprintf("%v", raw["image"])
-	meta := fmt.Sprintf("%v", raw["meta"])
+	title, _ := raw["title"].(string)
+	link, _ := raw["link"].(string)
+	image, _ := raw["image"].(string)
+	meta, _ := raw["meta"].(string)
 
 	// Generate ID
-	id := fmt.Sprintf("museion-%d", time.Now().UnixNano())
-	if link != "" {
-		parts := strings.Split(link, "/")
-		if len(parts) > 0 {
-			id = parts[len(parts)-1]
-		}
+	var id string
+	normalizedLink := strings.TrimRight(link, "/")
+	if normalizedLink != "" {
+		id = path.Base(normalizedLink)
 	}
+	// Fallback if ID is empty or invalid path
+	if id == "" || id == "." || id == "/" {
+		hash := sha256.Sum256([]byte(link))
+		id = hex.EncodeToString(hash[:8])
+	}
+	id = "museion-" + id
 
 	// Attempt to parse date from meta (e.g. "10.02.2026 | Event")
 	// Simple heuristic
@@ -122,5 +136,6 @@ func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 		SourceID:    id,
 		IsNew:       true,
 		Category:    "Art & Culture",
+		Topics:      []string{},
 	}
 }

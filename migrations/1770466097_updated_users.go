@@ -1,3 +1,4 @@
+// Package migrations contains PocketBase schema and data migrations.
 package migrations
 
 import (
