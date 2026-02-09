@@ -78,10 +78,10 @@ func RegisterWebRoutes(se *core.ServeEvent, registry *template.Registry) {
 		sortedEvents := svc.Recommend(userCtx, internalEvents)
 
 		// Reconstruct sorted records
-		sortedRecords := make([]*core.Record, len(sortedEvents))
-		for i, ev := range sortedEvents {
+		var sortedRecords []*core.Record
+		for _, ev := range sortedEvents {
 			if r, ok := recordMap[ev.ID]; ok {
-				sortedRecords[i] = r
+				sortedRecords = append(sortedRecords, r)
 			}
 		}
 		records = sortedRecords
