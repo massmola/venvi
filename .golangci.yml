@@ -9,8 +9,6 @@ version: "2"
 linters:
   enable:
     - forbidigo
-    - gofmt
-    - goimports
     - gosimple
     - govet
     - ineffassign
