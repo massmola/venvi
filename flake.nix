@@ -60,7 +60,7 @@
 
           shellHook = ''
             export GOPATH=$HOME/go
-            export PATH=$GOPATH/bin:$PATH
+            export PATH=$PATH:$GOPATH/bin
             echo "Venvi PocketBase development environment loaded"
 
             # Install pre-commit hooks
