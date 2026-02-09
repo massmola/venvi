@@ -18,6 +18,10 @@ echo "✓ Format check passed"
 echo ""
 echo "[2/4] Running golangci-lint..."
 if command -v golangci-lint &> /dev/null; then
+    echo "DEBUG: golangci-lint version:"
+    golangci-lint --version
+    echo "DEBUG: .golangci.yml content:"
+    cat .golangci.yml
     golangci-lint run ./...
     echo "✓ Lint check passed"
 else
