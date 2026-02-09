@@ -36,6 +36,6 @@ func TestDrinbzProvider_FetchEvents(t *testing.T) {
 	// Test Map
 	mapped := p.MapEvent(events[0])
 	assert.Equal(t, "12345", mapped.SourceID)
-	assert.Equal(t, "Valentine's Party - Live Music", mapped.Title)
+	assert.Equal(t, "Valentine's Party – Live Music", mapped.Title)
 	assert.Equal(t, "drinbz", mapped.SourceName)
 }

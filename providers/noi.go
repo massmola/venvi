@@ -2,6 +2,7 @@ package providers
 
 import (
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -36,11 +37,7 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	q := req.URL.Query()
 	q.Set("pagenumber", "1")
 	q.Set("pagesize", "50")
-	// Filter for Bolzano and potentially "NOI" in title or location if specific ID isn't known.
-	// ODH location filter for Bolzano is usually enough to start, then we filter in-memory.
-	// Or we can query by "NOI Techpark" string if ODH supports text search?
-	// The ODH API documentation usually supports `?searchfilter`
-	// Let's try fetching Bolzano events and filtering for "NOI" in the title/location.
+	// Filter for Bolzano events and narrowing down to NOI Techpark in-memory.
 	q.Set("locationfilter", "Bolzano")
 
 	req.URL.RawQuery = q.Encode()
@@ -55,29 +52,17 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
 	}
 
-	// odhResponse is unexported in odh.go. We should probably export it or redefine it.
-	// For now redefining to be safe.
-	type odhResponseLocal struct {
-		TotalResults int              `json:"TotalResults"`
-		Items        []map[string]any `json:"Items"`
-	}
-
-	var localResult odhResponseLocal
+	var localResult ODHResponse
 	if err := json.NewDecoder(resp.Body).Decode(&localResult); err != nil {
 		return nil, fmt.Errorf("decoding response: %w", err)
 	}
 
+	hasNOI := func(s string) bool {
+		s = strings.ToUpper(s)
+		return strings.Contains(s, "NOI") || strings.Contains(s, "VOLTA") || strings.Contains(s, "TECHPARK")
+	}
+
 	events := make([]RawEvent, 0, len(localResult.Items))
-	fmt.Printf("NOI: fetched %d items pre-filter\n", len(localResult.Items))
-	for _, item := range localResult.Items {
-		// Filter: Check if "NOI" or "Volta" appears in Title or Location
-		match := false
-
-		hasNOI := func(s string) bool {
-			s = strings.ToUpper(s)
-			return strings.Contains(s, "NOI") || strings.Contains(s, "VOLTA") || strings.Contains(s, "TECHPARK")
-		}
-
 		// Check Title (multilingual)
 		if details, ok := item["Detail"].(map[string]any); ok {
 			for _, lang := range []string{"en", "it", "de"} {
@@ -161,7 +146,10 @@ func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 
 	rawID, _ := raw["Id"].(string)
 	if rawID == "" {
-		rawID = fmt.Sprintf("%d", time.Now().UnixNano())
+		// Use deterministic hash of title + date if ID is missing
+		data := fmt.Sprintf("%s|%v", title, raw["DateBegin"])
+		hash := sha256.Sum256([]byte(data))
+		rawID = fmt.Sprintf("%x", hash[:16])
 	}
 
 	// Dates parsing logic...
@@ -169,12 +157,16 @@ func (p *NOIProvider) MapEvent(raw RawEvent) *Event {
 	if dateStr, ok := raw["DateBegin"].(string); ok && dateStr != "" {
 		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
 			dateStart = parsed
+		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
+			dateStart = parsed
 		}
 	}
 
 	dateEnd := time.Now()
 	if dateStr, ok := raw["DateEnd"].(string); ok && dateStr != "" {
 		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
+			dateEnd = parsed
+		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
 			dateEnd = parsed
 		}
 	}

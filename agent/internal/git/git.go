@@ -27,7 +27,7 @@ func StageAll() error {
 
 // Commit commits the staged changes with the given message.
 func Commit(message string) error {
-	cmd := exec.Command("git", "commit", "-m", "agent: "+message)
+	cmd := exec.Command("git", "commit", "-m", message)
 	if output, err := cmd.CombinedOutput(); err != nil {
 		return fmt.Errorf("git commit failed: %s: %w", string(output), err)
 	}

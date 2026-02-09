@@ -4,8 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"html"
+	"log"
 	"net/http"
-	"strings"
 	"time"
 )
 
@@ -69,7 +70,7 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	}
 
 	events := make([]RawEvent, 0, len(posts))
-	fmt.Printf("Drinbz: fetched %d posts\n", len(posts))
+	log.Printf("Drinbz: fetched %d posts\n", len(posts))
 	for _, post := range posts {
 		// Convert struct to map for RawEvent interface
 		// In a real scenario we might just use the struct directly if the interface allowed it,
@@ -97,11 +98,14 @@ func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 	dateStr := fmt.Sprintf("%v", raw["date"])
 
 	// Parse date from WP format "2023-10-27T10:00:00"
-	dateStart, _ := time.Parse("2006-01-02T15:04:05", dateStr)
+	dateStart, err := time.Parse("2006-01-02T15:04:05", dateStr)
+	if err != nil {
+		log.Printf("Drinbz: failed to parse date %q: %v\n", dateStr, err)
+		dateStart = time.Now()
+	}
 
 	// Clean HTML from title (simple replacement)
-	title = strings.ReplaceAll(title, "&#8211;", "-")
-	title = strings.ReplaceAll(title, "&#8217;", "'")
+	title = html.UnescapeString(title)
 
 	return &Event{
 		// Let PocketBase generate ID
@@ -115,5 +119,6 @@ func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
 		SourceName:  p.SourceName(),
 		SourceID:    id,
 		IsNew:       true,
+		Topics:      []string{},
 	}
 }

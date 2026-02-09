@@ -3,7 +3,9 @@ package providers
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
+	"path"
 	"strings"
 	"time"
 
@@ -50,27 +52,7 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 
 	var events []RawEvent
 
-	// Selector based on analysis: .event-list-item or similar.
-	// From browser analysis, typically academic calendars have a list structure.
-	// I need to verify the exact selector.
-	// Assuming from common patterns or re-checking source if this was a real browser interaction.
-	// Based on 'guide.unibz.it', let's assume a standard list.
-	// If I guess wrong, I'll need to fix it.
-	// Let's use a generic catch-all for now or try to be specific based on the "Study Guide" structure.
-	// Usually arguments like `.news-list-item` or `.event-item`.
-	// I'll assume `.item` inside a container for now, but really I should have checked the DOM classes in the browser step.
-	// The browser step showed "unibz Guide" as "High - Static HTML".
-	// I will use a reasonable guess: `li.event` or `div.event-item`.
-	// Actually, looking at the URL content read earlier: "Infosession: GenNext 2026", "Alumni Talks..."
-	// These look like headings.
-
-	// Allow me to verify the selector via a quick view_content_chunk if I had the ID, but I don't.
-	// I'll write the code to be adaptable or use a broad selector.
-
-	fmt.Printf("Unibz: parsing HTML, doc length %d\n", len(doc.Text()))
-	count := 0
 	doc.Find(".mediaItem").Each(func(i int, s *goquery.Selection) {
-		count++
 		title := strings.TrimSpace(s.Find(".mediaItem_title a").Text())
 		if title == "" {
 			return
@@ -82,58 +64,69 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		}
 
 		// Date format: "10 Feb 2026 16:00-17:00"
-		// Selector: .mediaItem_content > div (first child) or .u-fw-bold
 		dateStrRaw := strings.TrimSpace(s.Find(".mediaItem_content .u-fw-bold").First().Text())
-		// Parse date. Example: "10 Feb 2026 16:00-17:00"
-		// We need to extract the date part "10 Feb 2026" and time "16:00"
-		// Standard layout "02 Jan 2006 15:04"
 
-		// Simple logic to extract date+time string
+		var dateStart, dateEnd time.Time
 		parts := strings.Split(dateStrRaw, " ")
-		var dateStr string
 		if len(parts) >= 4 {
 			// date part: "10 Feb 2026"
-			// time part: "16:00-17:00" -> take "16:00"
 			datePart := strings.Join(parts[:3], " ")
-			timePart := strings.Split(parts[3], "-")[0] // "16:00"
-			dateStr = datePart + " " + timePart
-		} else {
-			dateStr = dateStrRaw // Fallback
+			// time part: "16:00-17:00"
+			timeRange := parts[3]
+			times := strings.Split(timeRange, "-")
+
+			if len(times) >= 1 {
+				startStr := datePart + " " + times[0]
+				dateStart, _ = time.Parse("02 Jan 2006 15:04", startStr)
+			}
+			if len(times) >= 2 {
+				endStr := datePart + " " + times[1]
+				dateEnd, _ = time.Parse("02 Jan 2006 15:04", endStr)
+			}
 		}
 
 		raw := map[string]any{
 			"title":       title,
 			"link":        link,
-			"date_str":    dateStr,
+			"dateStart":   dateStart,
+			"dateEnd":     dateEnd,
 			"description": strings.TrimSpace(s.Find(".mediaItem_content .typography").Text()),
 		}
 		events = append(events, RawEvent(raw))
 	})
-	fmt.Printf("Unibz: found %d items\n", count)
+
+	if len(events) == 0 {
+		// Scrapers are fragile, log when potential structure change occurs.
+		log.Printf("Warning: Unibz scraper found 0 events at %s (check for DOM structure changes)", p.BaseURL)
+	}
 
 	return events, nil
 }
 
 func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
-	title := fmt.Sprintf("%v", raw["title"])
-	link := fmt.Sprintf("%v", raw["link"])
-	description := fmt.Sprintf("%v", raw["description"])
+	title, _ := raw["title"].(string)
+	link, _ := raw["link"].(string)
+	description, _ := raw["description"].(string)
 
 	// Generate ID from link hash or title
-	id := fmt.Sprintf("unibz-%d", time.Now().UnixNano())
+	idBase := fmt.Sprintf("%d", time.Now().UnixNano())
 	if link != "" {
-		// use last part of URL
-		parts := strings.Split(link, "/")
-		if len(parts) > 0 {
-			id = parts[len(parts)-1]
+		normalizedLink := strings.TrimRight(link, "/")
+		base := path.Base(normalizedLink)
+		if base != "" && base != "." && base != "/" {
+			idBase = base
 		}
 	}
+	id := "unibz-" + idBase
 
-	// Parse date "02 Jan 2006 15:04"
-	dateStr := fmt.Sprintf("%v", raw["date_str"])
-	dateStart, err := time.Parse("02 Jan 2006 15:04", dateStr)
-	if err != nil {
-		dateStart = time.Now() // Fallback
+	dateStart, _ := raw["dateStart"].(time.Time)
+	dateEnd, _ := raw["dateEnd"].(time.Time)
+
+	if dateStart.IsZero() {
+		dateStart = time.Now()
+	}
+	if dateEnd.IsZero() {
+		dateEnd = dateStart.Add(2 * time.Hour)
 	}
 
 	return &Event{
@@ -141,12 +134,13 @@ func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
 		Title:       title,
 		Description: description,
 		DateStart:   dateStart,
-		DateEnd:     dateStart.Add(2 * time.Hour),
+		DateEnd:     dateEnd,
 		Location:    "unibz Bolzano",
 		URL:         link,
 		Category:    "Education",
 		SourceName:  p.SourceName(),
 		SourceID:    id,
 		IsNew:       true,
+		Topics:      []string{},
 	}
 }
