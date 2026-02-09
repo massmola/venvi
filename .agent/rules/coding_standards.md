@@ -23,6 +23,9 @@ Example:
 func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 ```
 
+## Logic & correctness
+- **Edge Cases**: Always check for edge cases (empty strings, nil slices, zero values) at the beginning of utility functions. explicitly return `false`, `nil`, or an error as appropriate.
+
 ## Error Handling
 - **Wrap Errors**: Use `fmt.Errorf("context: %w", err)` for error wrapping.
 - **No Panic**: Never use `panic` in library code; return errors instead.
@@ -34,6 +37,8 @@ func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 - **Write Tests**: Write unit tests for all new logic. Aim for high test coverage.
 - **Table-Driven Tests**: Prefer table-driven tests for multiple cases.
 - **Testify**: Use `github.com/stretchr/testify` for assertions.
+38:     - Use `require` for checks that must pass to avoid panics (e.g., `require.NotNil(t, obj)` before accessing `obj.Field`).
+39:     - Use `assert` for checks that should not stop test execution on failure.
 - **Naming**: Test functions must be named `Test<FunctionName>_<Scenario>`.
 
 ## Project-Specific
