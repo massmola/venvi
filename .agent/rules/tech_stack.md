@@ -16,6 +16,7 @@ All code changes must adhere to the following technology choices. Do not introdu
 - **Dependency Manager**: Go Modules
 - **Linter/Formatter**: golangci-lint, gofmt
 - **Testing**: go test + testify
+- **Development Env**: nix flake (use it and install tools trough it)
 
 ## Documentation
 - **Format**: Markdown

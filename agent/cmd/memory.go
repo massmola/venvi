@@ -10,6 +10,7 @@ import (
 )
 
 const defaultDataDir = ".agent_data"
+
 var memoryCmd = &cobra.Command{
 	Use:   "memory",
 	Short: "Manage agent memory (skills and lessons)",

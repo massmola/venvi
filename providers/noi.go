@@ -63,6 +63,10 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	}
 
 	events := make([]RawEvent, 0, len(localResult.Items))
+
+	for _, item := range localResult.Items {
+		match := false
+
 		// Check Title (multilingual)
 		if details, ok := item["Detail"].(map[string]any); ok {
 			for _, lang := range []string{"en", "it", "de"} {

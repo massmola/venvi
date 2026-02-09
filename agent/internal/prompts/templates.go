@@ -13,6 +13,7 @@ The agent is working on the project "Venvi". It has access to a CLI tool 'venvi-
 2.  **Every single step** MUST have a verification command or check. Functional code alone is not enough; it must be verified.
 3.  **Final Step**: The LAST step of any plan MUST be to run the project's verification suite: 'venvi-agent verify' or './scripts/validate.sh'.
 4.  If the task is complex, explicitly invoke the **Autonomous Loop** recursive pattern for sub-components.
+5.  **Docstrings**: All new or modified code MUST have Go-style docstrings for exported identifiers.
 **Technique: "Ralph Wiggum" Loop:**
 1.  **Analyze** the high-level goal.
 2.  **Break it down** into a series of micro-tasks.
