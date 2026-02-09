@@ -66,22 +66,24 @@ This workflow describes how to run the self-improving agent loop using the `venv
 
 ## Example Cycle
 ```bash
-# 1. Start
-./venvi-agent log start "fix-login-bug"
+# 1. Goal Setting
+./venvi-agent prompt orchestrator "Implement user registration"
 
-# 2. Search
-./venvi-agent memory search "login"
+# 2. Session Start
+./venvi-agent log start "user-reg-task"
 
-# 3. Work... (Agent does stuff)
-./venvi-agent log append "fix-login-bug" "Agent" "Updated user variable"
+# 3. Perception
+./venvi-agent memory search "registration"
 
-# 4. Checkpoint (Auto-Commit)
-./venvi-agent commit "Fixed login bug"
+# 4. Action (Work & Logging)
+# ... work done ...
+./venvi-agent log append "user-reg-task" "Agent" "Implemented validation logic"
 
-# 5. Reflect
-./venvi-agent prompt critic "fix-login-bug"
-# Agent says: "We forgot to hash the password."
+# 5. Checkpoint (Auto-Commit)
+./venvi-agent commit "Implemented user registration with validation"
 
-# 6. Learn
-./venvi-agent memory add "Authentication" "Always hash passwords before saving" "security" "auth"
+# 6. Reflection & Learning
+./venvi-agent prompt critic "user-reg-task"
+# Agent says: "Validation regex was too strict."
+./venvi-agent memory add "Registration" "Use loose regex for names" "regex" "ui"
 ```
