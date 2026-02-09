@@ -84,17 +84,33 @@ func TestODHProvider_MapEvent(t *testing.T) {
 func TestODHProvider_MapEvent_EdgeCases(t *testing.T) {
 	provider := NewODHProvider()
 
-	// Minimal data - no title, no dates
+	// Minimal data - no title, no dates, no description
+	// This should now be filtered out because description is too short/missing
 	raw := RawEvent{
 		"Detail": map[string]any{},
 	}
 
 	event := provider.MapEvent(raw)
 
-	assert.NotEmpty(t, event.ID)
-	assert.Equal(t, "Untitled Event", event.Title)
-	assert.Equal(t, "Unknown", event.Location)
-	assert.NotNil(t, event.DateStart)
+	assert.Nil(t, event, "Event should be filtered out due to missing description")
+}
+
+func TestODHProvider_MapEvent_Valid(t *testing.T) {
+	provider := NewODHProvider()
+
+	raw := RawEvent{
+		"Id": "test-valid",
+		"Detail": map[string]any{
+			"en": map[string]any{
+				"Title":    "Valid Title of Event",
+				"BaseText": "This is a valid description with enough length.",
+			},
+		},
+	}
+
+	event := provider.MapEvent(raw)
+	assert.NotNil(t, event)
+	assert.Equal(t, "test-valid", event.ID)
 }
 
 // mockHackathonsResponse is a sample response from Euro Hackathons API.

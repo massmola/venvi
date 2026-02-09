@@ -3,29 +3,14 @@ package routes
 
 import (
 	"log"
-	"math"
 	"net/http"
-	"sort"
+
+	"venvi/providers"
+	"venvi/recommendations"
 
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/tools/template"
 )
-
-// haversine calculates the distance between two points in kilometers.
-func haversine(lat1, lon1, lat2, lon2 float64) float64 {
-	const R = 6371 // Earth radius in km
-	dLat := (lat2 - lat1) * (math.Pi / 180.0)
-	dLon := (lon2 - lon1) * (math.Pi / 180.0)
-
-	lat1Rad := lat1 * (math.Pi / 180.0)
-	lat2Rad := lat2 * (math.Pi / 180.0)
-
-	a := math.Sin(dLat/2)*math.Sin(dLat/2) +
-		math.Sin(dLon/2)*math.Sin(dLon/2)*math.Cos(lat1Rad)*math.Cos(lat2Rad)
-	c := 2 * math.Atan2(math.Sqrt(a), math.Sqrt(1-a))
-
-	return R * c
-}
 
 // RegisterWebRoutes registers routes for serving HTMX-powered web pages.
 func RegisterWebRoutes(se *core.ServeEvent, registry *template.Registry) {
@@ -55,48 +40,51 @@ func RegisterWebRoutes(se *core.ServeEvent, registry *template.Registry) {
 
 		// Check for authenticated user location
 		var userLat, userLon float64
-		hasLocation := false
 		if e.Auth != nil {
 			userLat = e.Auth.GetFloat("latitude")
 			userLon = e.Auth.GetFloat("longitude")
-			if userLat != 0 || userLon != 0 {
-				hasLocation = true
-			}
 		}
 
-		sortExpr := "-date_start"
-		limit := 100
-		if hasLocation {
-			// Fetch more events if we need to find the closest ones
-			limit = 500
-		}
+		sortExpr := "+date_start" // Sort by date ascending (soonest first)
+		limit := 500              // Fetch more candidates for re-ranking
 
 		records, err := app.FindRecordsByFilter(
 			collection,
-			"",       // no filter
-			sortExpr, // sort by date descending initially
-			limit,    // limit
-			0,        // offset
+			"date_end >= @now", // Only future events
+			sortExpr,
+			limit,
+			0,
 		)
 		if err != nil {
 			log.Printf("Error fetching events for partial: %v", err)
 			return e.InternalServerError("Failed to fetch events", err)
 		}
 
-		// If user has location, perform in-memory sort by distance
-		if hasLocation {
-			sort.SliceStable(records, func(i, j int) bool {
-				lat1 := records[i].GetFloat("latitude")
-				lon1 := records[i].GetFloat("longitude")
-				dist1 := haversine(userLat, userLon, lat1, lon1)
+		// Apply recommendations (Always!)
+		// Map records to internal events for sorting
+		internalEvents := make([]providers.Event, len(records))
+		recordMap := make(map[string]*core.Record)
 
-				lat2 := records[j].GetFloat("latitude")
-				lon2 := records[j].GetFloat("longitude")
-				dist2 := haversine(userLat, userLon, lat2, lon2)
-
-				return dist1 < dist2
-			})
+		for i, r := range records {
+			internalEvents[i] = recordToEvent(r)
+			recordMap[r.Id] = r
 		}
+
+		svc := recommendations.NewRecommendationService()
+		userCtx := recommendations.UserContext{
+			Latitude:  userLat,
+			Longitude: userLon,
+		}
+		sortedEvents := svc.Recommend(userCtx, internalEvents)
+
+		// Reconstruct sorted records
+		sortedRecords := make([]*core.Record, len(sortedEvents))
+		for i, ev := range sortedEvents {
+			if r, ok := recordMap[ev.ID]; ok {
+				sortedRecords[i] = r
+			}
+		}
+		records = sortedRecords
 
 		html, err := registry.LoadFiles(
 			"views/partials/event_list.html",

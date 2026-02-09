@@ -46,7 +46,10 @@ func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 
 	q := req.URL.Query()
 	q.Set("pagenumber", "1")
-	q.Set("pagesize", "20")
+	q.Set("pagesize", "50") // Increased page size
+	q.Set("active", "true")
+	q.Set("odalactive", "true")
+	q.Set("datefrom", time.Now().Format("2006-01-02"))
 	req.URL.RawQuery = q.Encode()
 
 	resp, err := p.Client.Do(req)
@@ -79,9 +82,30 @@ func (p *ODHProvider) MapEvent(raw RawEvent) *Event {
 
 	// ODH-specific overrides if needed (currently none as buildEventFromRaw covers it)
 	// But we need to ensure URL is correct if ID is present
+	// ODH-specific overrides
 	if event.ID != "" && event.URL == "" {
 		event.URL = "https://opendatahub.com/events/" + event.ID
 	}
 
+	// Filter out bad quality events
+	// 1. Title looks like a UUID (32 chars, hex)
+	if len(event.Title) == 32 && isHex(event.Title) {
+		return nil
+	}
+	// 2. No description (or very short)
+	if len(event.Description) < 10 {
+		return nil
+	}
+
 	return event
+}
+
+// isHex checks if a string is hexadecimal.
+func isHex(s string) bool {
+	for _, c := range s {
+		if (c < '0' || c > '9') && (c < 'a' || c > 'f') && (c < 'A' || c > 'F') {
+			return false
+		}
+	}
+	return true
 }
