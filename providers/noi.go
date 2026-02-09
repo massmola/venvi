@@ -37,58 +37,86 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	}
 
 	q := req.URL.Query()
-	q.Set("pagenumber", "1")
-	q.Set("pagesize", "50")
-	// Filter for Bolzano events and narrowing down to NOI Techpark in-memory.
+	q.Set("pagesize", "200") // Validated safe page size for ODH
 	q.Set("locationfilter", "Bolzano")
 
-	req.URL.RawQuery = q.Encode()
+	var allEvents []RawEvent
+	page := 1
 
-	resp, err := p.Client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("fetching events: %w", err)
-	}
-	defer func() { _ = resp.Body.Close() }()
+	for {
+		q.Set("pagenumber", fmt.Sprintf("%d", page))
+		req.URL.RawQuery = q.Encode()
 
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
-	}
+		// Clone the request for each iteration to avoid reusing body/context issues if any (though here we reuse client)
+		// But wait, we can reuse the request object if we are careful, or just create a new one inside the loop.
+		// Actually, creating a new request inside the loop is safer but higher overhead.
+		// Given the `req` is created outside, we just update URL.
+		// However, `req` body is nil for GET, so it's fine.
 
-	var localResult ODHResponse
-	if err := json.NewDecoder(resp.Body).Decode(&localResult); err != nil {
-		return nil, fmt.Errorf("decoding response: %w", err)
-	}
+		resp, err := p.Client.Do(req)
+		if err != nil {
+			return nil, fmt.Errorf("fetching events page %d: %w", page, err)
+		}
 
-	hasNOI := func(s string) bool {
-		s = strings.ToUpper(s)
-		return strings.Contains(s, "NOI") || strings.Contains(s, "VOLTA") || strings.Contains(s, "TECHPARK")
-	}
+		if resp.StatusCode != http.StatusOK {
+			_ = resp.Body.Close()
+			return nil, fmt.Errorf("unexpected status page %d: %d", page, resp.StatusCode)
+		}
 
-	events := make([]RawEvent, 0, len(localResult.Items))
+		var localResult ODHResponse
+		if err := json.NewDecoder(resp.Body).Decode(&localResult); err != nil {
+			_ = resp.Body.Close()
+			return nil, fmt.Errorf("decoding response page %d: %w", page, err)
+		}
+		_ = resp.Body.Close()
 
-	for _, item := range localResult.Items {
-		match := false
+		if len(localResult.Items) == 0 {
+			break
+		}
 
-		// Check Title (multilingual)
-		if details, ok := item["Detail"].(map[string]any); ok {
-			for _, lang := range []string{"en", "it", "de"} {
-				if langData, ok := details[lang].(map[string]any); ok {
-					if title, ok := langData["Title"].(string); ok && hasNOI(title) {
-						match = true
-						break
+		hasNOI := func(s string) bool {
+			s = strings.ToUpper(s)
+			return strings.Contains(s, "NOI") || strings.Contains(s, "VOLTA") || strings.Contains(s, "TECHPARK")
+		}
+
+		for _, item := range localResult.Items {
+			match := false
+
+			// Check Title (multilingual)
+			if details, ok := item["Detail"].(map[string]any); ok {
+				for _, lang := range []string{"en", "it", "de"} {
+					if langData, ok := details[lang].(map[string]any); ok {
+						if title, ok := langData["Title"].(string); ok && hasNOI(title) {
+							match = true
+							break
+						}
 					}
 				}
 			}
-		}
 
-		// Check Location
-		if !match {
-			if locInfo, ok := item["LocationInfo"].(map[string]any); ok {
-				// Check District/Municipality names if available
-				if district, ok := locInfo["DistrictInfo"].(map[string]any); ok {
-					if nameMap, ok := district["Name"].(map[string]any); ok {
-						for _, lang := range []string{"en", "it", "de"} {
-							if name, ok := nameMap[lang].(string); ok && hasNOI(name) {
+			// Check Location
+			if !match {
+				if locInfo, ok := item["LocationInfo"].(map[string]any); ok {
+					// Check District/Municipality names if available
+					if district, ok := locInfo["DistrictInfo"].(map[string]any); ok {
+						if nameMap, ok := district["Name"].(map[string]any); ok {
+							for _, lang := range []string{"en", "it", "de"} {
+								if name, ok := nameMap[lang].(string); ok && hasNOI(name) {
+									match = true
+									break
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Also check if any ContactInfo address contains Volta/NOI
+			if !match {
+				if contacts, ok := item["ContactInfos"].(map[string]any); ok {
+					for _, lang := range []string{"en", "it", "de"} {
+						if contact, ok := contacts[lang].(map[string]any); ok {
+							if addr, ok := contact["Address"].(string); ok && hasNOI(addr) {
 								match = true
 								break
 							}
@@ -96,27 +124,20 @@ func (p *NOIProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 					}
 				}
 			}
-		}
 
-		// Also check if any ContactInfo address contains Volta/NOI
-		if !match {
-			if contacts, ok := item["ContactInfos"].(map[string]any); ok {
-				for _, lang := range []string{"en", "it", "de"} {
-					if contact, ok := contacts[lang].(map[string]any); ok {
-						if addr, ok := contact["Address"].(string); ok && hasNOI(addr) {
-							match = true
-							break
-						}
-					}
-				}
+			if match {
+				allEvents = append(allEvents, RawEvent(item))
 			}
 		}
 
-		if match {
-			events = append(events, RawEvent(item))
+		// If we got fewer items than page size, we are done
+		if len(localResult.Items) < 200 {
+			break
 		}
+		page++
 	}
-	return events, nil
+
+	return allEvents, nil
 }
 
 // MapEvent reuses logic from helpers but sets source to "noi"

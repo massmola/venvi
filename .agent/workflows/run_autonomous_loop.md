@@ -8,7 +8,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 
 ## Prerequisites
 - `venvi-agent` binary must be built (`go build -o venvi-agent agent/main.go`).
-- Familiarize yourself with `coding_standards.md` for strict environment and safety rules.
+- Familiarize yourself with `.agent/rules/coding_standards.md` for strict environment and safety rules.
 
 ## The Loop
 

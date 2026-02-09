@@ -1,9 +1,9 @@
 package providers
 
 import (
+	"crypto/sha256"
 	"fmt"
 	"log"
-	"strconv"
 	"time"
 )
 
@@ -133,15 +133,26 @@ func buildEventFromRaw(raw RawEvent, sourceName, defaultLocation, defaultURL str
 
 	lat, long := extractGPS(raw)
 
-	// Get raw ID or generate one
+	// Get raw ID or generate one deterministically
 	rawID, _ := raw["Id"].(string)
 	if rawID == "" {
-		rawID = strconv.FormatInt(time.Now().UnixNano(), 10)
+		// Create a deterministic hash based on content
+		h := sha256.New()
+		h.Write([]byte(title))
+		h.Write([]byte(dateStart.String()))
+		h.Write([]byte(dateEnd.String()))
+		h.Write([]byte(location))
+		h.Write([]byte(imageURL))
+		rawID = fmt.Sprintf("%x", h.Sum(nil))
 	}
 
 	url := defaultURL
 	if url == "" {
-		url = "https://opendatahub.com/events/" + rawID
+		// Use empty string or constructed URL if applicable, but avoid hardcoded ODH
+		// If both are empty, we leave it empty.
+		if sourceName == "odh" {
+			url = "https://opendatahub.com/events/" + rawID
+		}
 	}
 
 	return &Event{
