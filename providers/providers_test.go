@@ -109,7 +109,7 @@ func TestODHProvider_MapEvent_Valid(t *testing.T) {
 	}
 
 	event := provider.MapEvent(raw)
-	assert.NotNil(t, event)
+	require.NotNil(t, event)
 	assert.Equal(t, "test-valid", event.ID)
 }
 

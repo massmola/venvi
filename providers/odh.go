@@ -102,6 +102,9 @@ func (p *ODHProvider) MapEvent(raw RawEvent) *Event {
 
 // isHex checks if a string is hexadecimal.
 func isHex(s string) bool {
+	if len(s) == 0 {
+		return false
+	}
 	for _, c := range s {
 		if (c < '0' || c > '9') && (c < 'a' || c > 'f') && (c < 'A' || c > 'F') {
 			return false

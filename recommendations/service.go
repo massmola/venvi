@@ -41,8 +41,8 @@ const (
 
 	// DistanceDecayConstant controls how quickly score drops with distance (in km).
 	DistanceDecayConstant = 0.05
-	// TimeDecayConstant controls how quickly score drops with time (ns).
-	TimeDecayConstant = 0.00000005
+	// TimeDecayConstant controls how quickly score drops with time (hours).
+	TimeDecayConstant = 0.01
 )
 
 // Recommend sorts the given events based on the user's context.
@@ -101,7 +101,7 @@ func (s *RecommendationService) Score(userCtx UserContext, event *providers.Even
 		// e^(-0.05 * hours) -> drops to ~0.3 after 24 hours? 0.05*24 = 1.2, e^-1.2 = 0.3. Maybe too fast.
 		// e^(-0.01 * hours) -> 24h: e^-0.24 = 0.78. 48h: e^-0.48 = 0.61. 7 days (168h): e^-1.68 = 0.18.
 		// This seems reasonable for "upcoming" events.
-		timeScore := math.Exp(-0.01 * hoursUntil)
+		timeScore := math.Exp(-TimeDecayConstant * hoursUntil)
 		score += WeightTime * timeScore
 	} else if event.DateEnd.After(now) {
 		score += WeightTime * 0.5 // Ongoing events get flat medium score
