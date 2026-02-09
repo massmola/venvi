@@ -56,6 +56,13 @@ func (l *Logger) StartSession(sessionID string) error {
 		return err
 	}
 
+	// Check if session already exists
+	if _, err := os.Stat(path); err == nil {
+		return fmt.Errorf("session '%s' already exists", sessionID)
+	} else if !os.IsNotExist(err) {
+		return fmt.Errorf("failed to check session existence: %w", err)
+	}
+
 	// Create logs directory
 	if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
 		return fmt.Errorf("failed to create logs directory: %w", err)
