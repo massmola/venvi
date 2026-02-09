@@ -9,7 +9,6 @@ version: "2"
 linters:
   enable:
     - forbidigo
-    - gosimple
     - govet
     - ineffassign
     - staticcheck
