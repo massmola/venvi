@@ -1,5 +1,8 @@
 run:
   timeout: 5m
+  # version: "2" is implied by default for newer versions, but making it explicit helps with strict parsers
+  # and avoids "unsupported version of the configuration: """ errors in some environments.
+
 
 linters:
   enable:
