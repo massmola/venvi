@@ -56,6 +56,8 @@
 
             # Security tools
             gitleaks
+            govulncheck
+            syft
           ];
 
           shellHook = ''
