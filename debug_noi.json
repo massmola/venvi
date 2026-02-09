@@ -1,0 +1,1837 @@
+{"TotalResults":53903,"TotalPages":10781,"CurrentPage":1,"PreviousPage":null,"NextPage":"https://tourism.api.opendatahub.com/v1/Event?pagenumber=2&pagesize=5&locationfilter=Bolzano","Seed":null,"Items":[{
+  "Id": "63A75065B6394BC3B44012AFC9A2AE1D",
+  "Self": "https://tourism.api.opendatahub.com/v1/Event/63A75065B6394BC3B44012AFC9A2AE1D",
+  "Tags": [],
+  "_Meta": {
+    "Id": "63A75065B6394BC3B44012AFC9A2AE1D",
+    "Type": "event",
+    "Source": "lts",
+    "Reduced": true,
+    "LastUpdate": "2025-09-26T22:03:38.3733758+00:00",
+    "UpdateInfo": {
+      "UpdatedBy": "lts.events.import",
+      "UpdateSource": "http://tourism.importer.opendatahub.bz.it/LTS/event",
+      "UpdateHistory": [
+        {
+          "UpdatedBy": "lts.events.import",
+          "LastUpdate": "2025-09-26T22:03:38.3733758+00:00",
+          "UpdateSource": "http://tourism.importer.opendatahub.bz.it/LTS/event"
+        },
+        {
+          "UpdatedBy": "lts.events.import",
+          "LastUpdate": "2025-09-25T22:20:26.9198794+00:00",
+          "UpdateSource": "http://tourism.importer.opendatahub.com/LTS/Event"
+        }
+      ]
+    }
+  },
+  "Active": true,
+  "Detail": {
+    "de": {
+      "Title": "...",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "de",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "en": {
+      "Title": "...",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "en",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "it": {
+      "Title": "QUESTA E´LA NOSTRA CITTA´ -  MORAVIA 1925 -2025 cento anni indifferenti",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "it",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    }
+  },
+  "OrgRID": "",
+  "SignOn": null,
+  "Source": "lts",
+  "TagIds": [],
+  "Ticket": "0",
+  "Topics": null,
+  "DateEnd": "2025-09-26T00:00:00",
+  "GpsInfo": [
+    {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.7156982421875,
+      "Longitude": 11.657600402832031,
+      "AltitudeUnitofMeasure": "m"
+    }
+  ],
+  "Gpstype": "position",
+  "Mapping": {
+    "lts": {
+      "rid": "63A75065B6394BC3B44012AFC9A2AE1D"
+    }
+  },
+  "ODHTags": [],
+  "SmgTags": null,
+  "Altitude": null,
+  "Latitude": 46.7156982421875,
+  "DateBegin": "2025-09-26T00:00:00",
+  "Districts": [],
+  "EventDate": [
+    {
+      "To": "2025-09-26T00:00:00",
+      "End": "19:30:00",
+      "From": "2025-09-26T00:00:00",
+      "Begin": "18:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": false,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": {
+        "Day": "0001-01-01T00:00:00",
+        "Begin": "18:00:00",
+        "CDayRID": null,
+        "SoldOut": null,
+        "AvailabilityLow": null,
+        "CalculatedDayId": null,
+        "AvailabilityCalculatedValue": null,
+        "EventDateCalculatedDayVariant": null
+      },
+      "EventCalculatedDays": [
+        {
+          "Day": "0001-01-01T00:00:00",
+          "Begin": "18:00:00",
+          "CDayRID": null,
+          "SoldOut": null,
+          "AvailabilityLow": null,
+          "CalculatedDayId": null,
+          "AvailabilityCalculatedValue": null,
+          "EventDateCalculatedDayVariant": null
+        }
+      ],
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": {}
+    }
+  ],
+  "EventUrls": [],
+  "GpsPoints": {
+    "position": {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.7156982421875,
+      "Longitude": 11.657600402832031,
+      "AltitudeUnitofMeasure": "m"
+    }
+  },
+  "Longitude": 11.657600402832031,
+  "OdhActive": true,
+  "Shortname": "...",
+  "SmgActive": true,
+  "TopicRIDs": null,
+  "DistrictId": null,
+  "EventPrice": {},
+  "LastChange": "2025-09-24T14:55:00.402836+00:00",
+  "DistrictIds": null,
+  "FirstImport": "2025-09-24T14:55:00.4028357+00:00",
+  "HasLanguage": [
+    "de",
+    "en",
+    "it"
+  ],
+  "LicenseInfo": {
+    "Author": "",
+    "License": "CC0",
+    "ClosedData": false,
+    "LicenseHolder": "unknown"
+  },
+  "PublishedOn": [],
+  "ContactInfos": {
+    "de": {
+      "Tax": null,
+      "Url": null,
+      "Vat": null,
+      "Area": null,
+      "City": "...",
+      "Email": null,
+      "Region": null,
+      "Address": "...",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39042",
+      "Language": "de",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "en": {
+      "Tax": null,
+      "Url": null,
+      "Vat": null,
+      "Area": null,
+      "City": "...",
+      "Email": null,
+      "Region": null,
+      "Address": "...",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39042",
+      "Language": "en",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "it": {
+      "Tax": null,
+      "Url": null,
+      "Vat": null,
+      "Area": null,
+      "City": "Bressanone",
+      "Email": null,
+      "Region": null,
+      "Address": "Piazza Duomo 4",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39042",
+      "Language": "it",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    }
+  },
+  "DistanceInfo": {
+    "DistanceToDistrict": 291.0,
+    "DistanceToMunicipality": 39.0
+  },
+  "EventBooking": null,
+  "ImageGallery": [],
+  "LocationInfo": {
+    "TvInfo": {
+      "Id": "5228229751CA11D18F1400A02427D15E",
+      "Name": {
+        "cs": "Brixen/Bressanone",
+        "de": "Brixen",
+        "en": "Brixen/Bressanone",
+        "fr": "Brixen/Bressanone",
+        "it": "Bressanone",
+        "nl": "Brixen/Bressanone",
+        "pl": "Brixen/Bressanone",
+        "ru": "Бриксен/Bressanone"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/TourismAssociation/5228229751CA11D18F1400A02427D15E"
+    },
+    "AreaInfo": null,
+    "RegionInfo": {
+      "Id": "D2633A1DC24E11D18F1B006097B8970B",
+      "Name": {
+        "cs": "Brixen/Bressanone a okolí",
+        "de": "Brixen und Umgebung",
+        "en": "Brixen/Bressanone and environs",
+        "fr": "Brixen/Bressanone et environs",
+        "it": "Bressanone e dintorni",
+        "nl": "Brixen/Bressanone en omgeving",
+        "pl": "Brixen/Bressanone i okolice",
+        "ru": "Бриксен/Bressanone и окрестности"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Region/D2633A1DC24E11D18F1B006097B8970B"
+    },
+    "DistrictInfo": {
+      "Id": "79CBD69151C911D18F1400A02427D15E",
+      "Name": {
+        "cs": "Brixen Stadt/Bressanone città",
+        "de": "Brixen Stadt",
+        "en": "Brixen Stadt/Bressanone città",
+        "fr": "Brixen Stadt/Bressanone città",
+        "it": "Bressanone città",
+        "nl": "Brixen Stadt/Bressanone città",
+        "pl": "Brixen Stadt/Bressanone città",
+        "ru": "Брессаноне читта"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/District/79CBD69151C911D18F1400A02427D15E"
+    },
+    "MunicipalityInfo": {
+      "Id": "2B2B22E275734BB990DE4A3FC98C6A18",
+      "Name": {
+        "cs": "Brixen/Bressanone",
+        "de": "Brixen",
+        "en": "Brixen/Bressanone",
+        "fr": "Brixen/Bressanone",
+        "it": "Bressanone",
+        "nl": "Brixen/Bressanone",
+        "pl": "Brixen/Bressanone",
+        "ru": "Бриксен/Bressanone"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Municipality/2B2B22E275734BB990DE4A3FC98C6A18"
+    }
+  },
+  "EventDatesEnd": [
+    "2025-09-26T00:00:00"
+  ],
+  "EventProperty": {
+    "IsBookable": null,
+    "TicketRequired": false,
+    "EventOrganizerId": "",
+    "RegistrationRequired": null,
+    "EventClassificationId": "",
+    "IncludedInSuedtirolGuestPass": null
+  },
+  "EventVariants": null,
+  "EventPublisher": [],
+  "OrganizerInfos": {},
+  "EventDatesBegin": [
+    "2025-09-26T00:00:00"
+  ],
+  "EventDateCounter": 1,
+  "ClassificationRID": "",
+  "EventAdditionalInfos": {
+    "de": {
+      "Reg": null,
+      "Mplace": null,
+      "Language": "de",
+      "Location": null,
+      "WhatToBring": null,
+      "MeetingPoint": null,
+      "Registration": null,
+      "ServiceDescription": null,
+      "CancellationModality": null
+    },
+    "en": {
+      "Reg": null,
+      "Mplace": null,
+      "Language": "en",
+      "Location": null,
+      "WhatToBring": null,
+      "MeetingPoint": null,
+      "Registration": null,
+      "ServiceDescription": null,
+      "CancellationModality": null
+    },
+    "it": {
+      "Reg": null,
+      "Mplace": null,
+      "Language": "it",
+      "Location": null,
+      "WhatToBring": null,
+      "MeetingPoint": null,
+      "Registration": null,
+      "ServiceDescription": null,
+      "CancellationModality": null
+    }
+  },
+  "AltitudeUnitofMeasure": "m"
+},{
+  "Id": "BFEB2DDB0FD54AC9BC040053A5514A92",
+  "Self": "https://tourism.api.opendatahub.com/v1/Event/BFEB2DDB0FD54AC9BC040053A5514A92",
+  "Tags": [],
+  "_Meta": {
+    "Id": "BFEB2DDB0FD54AC9BC040053A5514A92",
+    "Type": "event",
+    "Source": "lts",
+    "Reduced": true,
+    "LastUpdate": "2024-12-20T15:08:06.4095695+00:00",
+    "UpdateInfo": {
+      "UpdatedBy": "lts.push.import",
+      "UpdateSource": "odh.importer",
+      "UpdateHistory": null
+    }
+  },
+  "Active": true,
+  "Detail": {
+    "de": {
+      "Title": "1000-Stufen-Schlucht im Vinschgau",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "de",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": "1000-Stufen-Schlucht im Vinschgau | suedtirol.info",
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "it": {
+      "Title": "Venosta: La \"valle dei 1000 gradini\"",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "it",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": "Venosta: La \"valle dei 1000 gradini\" | suedtirol.info",
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    }
+  },
+  "OrgRID": null,
+  "SignOn": null,
+  "Source": "lts",
+  "TagIds": [],
+  "Ticket": null,
+  "Topics": null,
+  "DateEnd": "2022-06-01T00:00:00",
+  "GpsInfo": [
+    {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.644273,
+      "Longitude": 11.225259,
+      "AltitudeUnitofMeasure": null
+    }
+  ],
+  "Gpstype": "position",
+  "Mapping": {},
+  "ODHTags": [],
+  "SmgTags": null,
+  "Altitude": null,
+  "Latitude": 46.644273,
+  "DateBegin": "2022-06-01T00:00:00",
+  "Districts": [],
+  "EventDate": [
+    {
+      "To": "2022-06-01T00:00:00",
+      "End": "17:30:00",
+      "From": "2022-06-01T00:00:00",
+      "Begin": "09:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": false,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    }
+  ],
+  "EventUrls": null,
+  "GpsPoints": {
+    "position": {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.644273,
+      "Longitude": 11.225259,
+      "AltitudeUnitofMeasure": null
+    }
+  },
+  "Longitude": 11.225259,
+  "OdhActive": false,
+  "Shortname": "1000-Stufen-Schlucht im Vinschgau",
+  "SmgActive": false,
+  "TopicRIDs": null,
+  "DistrictId": null,
+  "EventPrice": {},
+  "LastChange": "2024-12-20T15:08:06.4095695+00:00",
+  "DistrictIds": null,
+  "FirstImport": "2022-04-17T00:05:19.6546834",
+  "HasLanguage": [
+    "de",
+    "it"
+  ],
+  "LicenseInfo": {
+    "Author": "",
+    "License": "CC0",
+    "ClosedData": false,
+    "LicenseHolder": "https://www.lts.it"
+  },
+  "PublishedOn": [
+    "idm-marketplace"
+  ],
+  "ContactInfos": {
+    "de": {
+      "Tax": null,
+      "Url": "",
+      "Vat": null,
+      "Area": null,
+      "City": "Hafling Dorf",
+      "Email": null,
+      "Region": null,
+      "Address": "",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39010",
+      "Language": "de",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": null,
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "it": {
+      "Tax": null,
+      "Url": "",
+      "Vat": null,
+      "Area": null,
+      "City": "Avelengo paese",
+      "Email": null,
+      "Region": null,
+      "Address": "",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39010",
+      "Language": "it",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": null,
+      "CountryName": null,
+      "Phonenumber": null
+    }
+  },
+  "DistanceInfo": null,
+  "EventBooking": {
+    "BookableTo": null,
+    "BookingUrl": {
+      "de": {
+        "Url": "https://mysuedtirol.info/de/veranstaltungen?eventid=BFEB2DDB0FD54AC9BC040053A5514A92"
+      },
+      "en": {
+        "Url": "https://mysuedtirol.info/en/events?eventid=BFEB2DDB0FD54AC9BC040053A5514A92"
+      },
+      "it": {
+        "Url": "https://mysuedtirol.info/it/eventi?eventid=BFEB2DDB0FD54AC9BC040053A5514A92"
+      }
+    },
+    "BookableFrom": null,
+    "BookingActive": null
+  },
+  "ImageGallery": null,
+  "LocationInfo": {
+    "TvInfo": {
+      "Id": "5228229151CA11D18F1400A02427D15E",
+      "Name": {
+        "cs": "Hafling/Avelengo-Vöran/Verano-Meran 2000",
+        "de": "Hafling - Vöran - Meran 2000",
+        "en": "Hafling/Avelengo-Vöran/Verano-Meran 2000",
+        "fr": "Hafling/Avelengo-Vöran/Verano-Meran 2000",
+        "it": "Avelengo - Verano - Merano 2000",
+        "nl": "Hafling/Avelengo-Vöran/Verano-Meran 2000",
+        "pl": "Hafling/Avelengo-Vöran/Verano-Meran 2000",
+        "ru": "Хафлинг - Фёран - Меран/Avelengo -  Фёран-Verano - Меран 2000"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/TourismAssociation/5228229151CA11D18F1400A02427D15E"
+    },
+    "AreaInfo": null,
+    "RegionInfo": {
+      "Id": "D2633A20C24E11D18F1B006097B8970B",
+      "Name": {
+        "cs": "Meran/Merano a okolí",
+        "de": "Meran und Umgebung",
+        "en": "Meran/Merano and environs",
+        "fr": "Meran/Merano et environs",
+        "it": "Merano e dintorni",
+        "nl": "Meran/Merano en omgeving",
+        "pl": "Meran/Merano i okolice",
+        "ru": "Меран/Merano и окрестности"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Region/D2633A20C24E11D18F1B006097B8970B"
+    },
+    "DistrictInfo": {
+      "Id": "79CBD64E51C911D18F1400A02427D15E",
+      "Name": {
+        "cs": "Hafling Dorf/Avelengo Paese",
+        "de": "Hafling Dorf",
+        "en": "Hafling Dorf/Avelengo Paese",
+        "fr": "Hafling Dorf/Avelengo Paese",
+        "it": "Avelengo Paese",
+        "nl": "Hafling Dorf/Avelengo Paese",
+        "pl": "Hafling Dorf/Avelengo Paese",
+        "ru": "Авеленго Паэзе"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/District/79CBD64E51C911D18F1400A02427D15E"
+    },
+    "MunicipalityInfo": {
+      "Id": "FD746CCBD5484A84AA09A75C8ACBA35D",
+      "Name": {
+        "cs": "Hafling/Avelengo",
+        "de": "Hafling",
+        "en": "Hafling/Avelengo",
+        "fr": "Hafling/Avelengo",
+        "it": "Avelengo",
+        "nl": "Hafling/Avelengo",
+        "pl": "Hafling/Avelengo",
+        "ru": "Хафлинг/Avelengo"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Municipality/FD746CCBD5484A84AA09A75C8ACBA35D"
+    }
+  },
+  "EventDatesEnd": [
+    "2022-06-01T00:00:00"
+  ],
+  "EventProperty": {
+    "IsBookable": null,
+    "TicketRequired": null,
+    "EventOrganizerId": null,
+    "RegistrationRequired": null,
+    "EventClassificationId": null,
+    "IncludedInSuedtirolGuestPass": null
+  },
+  "EventVariants": null,
+  "EventPublisher": null,
+  "OrganizerInfos": {},
+  "EventDatesBegin": [
+    "2022-06-01T00:00:00"
+  ],
+  "EventDateCounter": 1,
+  "ClassificationRID": null,
+  "EventAdditionalInfos": {},
+  "AltitudeUnitofMeasure": null
+},{
+  "Id": "0AC159726A674D1888127978EED8A29F",
+  "Self": "https://tourism.api.opendatahub.com/v1/Event/0AC159726A674D1888127978EED8A29F",
+  "Tags": [],
+  "_Meta": {
+    "Id": "0AC159726A674D1888127978EED8A29F",
+    "Type": "event",
+    "Source": "lts",
+    "Reduced": true,
+    "LastUpdate": "2024-09-12T18:04:44.1075251+00:00",
+    "UpdateInfo": {
+      "UpdatedBy": "lts.push.import",
+      "UpdateSource": "odh.importer",
+      "UpdateHistory": null
+    }
+  },
+  "Active": true,
+  "Detail": {
+    "de": {
+      "Title": "\"100 ANNI DAL DELITTO MATTEOTTI\"",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "de",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": "\"100 ANNI DAL DELITTO MATTEOTTI\" | suedtirol.info",
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "en": {
+      "Title": "\"100 ANNI DAL DELITTO MATTEOTTI\"",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "en",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": "\"100 ANNI DAL DELITTO MATTEOTTI\" | suedtirol.info",
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "it": {
+      "Title": "\"100 ANNI DAL DELITTO MATTEOTTI\"",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "it",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": "\"100 ANNI DAL DELITTO MATTEOTTI\" | suedtirol.info",
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    }
+  },
+  "OrgRID": null,
+  "SignOn": null,
+  "Source": "lts",
+  "TagIds": [],
+  "Ticket": null,
+  "Topics": null,
+  "DateEnd": "2024-06-18T00:00:00",
+  "GpsInfo": [
+    {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.4899,
+      "Longitude": 11.3367,
+      "AltitudeUnitofMeasure": null
+    }
+  ],
+  "Gpstype": "position",
+  "Mapping": {},
+  "ODHTags": [],
+  "SmgTags": null,
+  "Altitude": null,
+  "Latitude": 46.4899,
+  "DateBegin": "2024-05-27T00:00:00",
+  "Districts": [],
+  "EventDate": [
+    {
+      "To": "2024-05-27T00:00:00",
+      "End": "22:00:00",
+      "From": "2024-05-27T00:00:00",
+      "Begin": "20:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": true,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    },
+    {
+      "To": "2024-05-28T00:00:00",
+      "End": "22:00:00",
+      "From": "2024-05-28T00:00:00",
+      "Begin": "20:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": true,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    },
+    {
+      "To": "2024-05-29T00:00:00",
+      "End": "22:00:00",
+      "From": "2024-05-29T00:00:00",
+      "Begin": "20:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": true,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    },
+    {
+      "To": "2024-06-17T00:00:00",
+      "End": "22:00:00",
+      "From": "2024-06-17T00:00:00",
+      "Begin": "20:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": true,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    },
+    {
+      "To": "2024-06-18T00:00:00",
+      "End": "22:00:00",
+      "From": "2024-06-18T00:00:00",
+      "Begin": "20:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": true,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    }
+  ],
+  "EventUrls": null,
+  "GpsPoints": {
+    "position": {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.4899,
+      "Longitude": 11.3367,
+      "AltitudeUnitofMeasure": null
+    }
+  },
+  "Longitude": 11.3367,
+  "OdhActive": false,
+  "Shortname": "\"100 ANNI DAL DELITTO MATTEOTTI\"",
+  "SmgActive": false,
+  "TopicRIDs": null,
+  "DistrictId": null,
+  "EventPrice": {},
+  "LastChange": "2024-09-12T18:04:44.1075251+00:00",
+  "DistrictIds": null,
+  "FirstImport": "2024-05-21T13:19:19.7335657",
+  "HasLanguage": [
+    "de",
+    "it",
+    "en"
+  ],
+  "LicenseInfo": {
+    "Author": "",
+    "License": "CC0",
+    "ClosedData": false,
+    "LicenseHolder": "https://www.lts.it"
+  },
+  "PublishedOn": [
+    "idm-marketplace"
+  ],
+  "ContactInfos": {
+    "de": {
+      "Tax": null,
+      "Url": "",
+      "Vat": null,
+      "Area": null,
+      "City": "Bozen",
+      "Email": null,
+      "Region": null,
+      "Address": "Matteottiplatz",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39100",
+      "Language": "de",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "en": {
+      "Tax": null,
+      "Url": "",
+      "Vat": null,
+      "Area": null,
+      "City": "Bolzano Bozen",
+      "Email": null,
+      "Region": null,
+      "Address": "Piazza Matteottiplatz",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39100",
+      "Language": "en",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "it": {
+      "Tax": null,
+      "Url": "",
+      "Vat": null,
+      "Area": null,
+      "City": "Bolzano",
+      "Email": null,
+      "Region": null,
+      "Address": "Piazza Matteotti",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39100",
+      "Language": "it",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    }
+  },
+  "DistanceInfo": null,
+  "EventBooking": null,
+  "ImageGallery": null,
+  "LocationInfo": {
+    "TvInfo": {
+      "Id": "5228229451CA11D18F1400A02427D15E",
+      "Name": {
+        "cs": "Bolzano/Bozen",
+        "de": "Bozen",
+        "en": "Bolzano/Bozen",
+        "fr": "Bolzano/Bozen",
+        "it": "Bolzano",
+        "nl": "Bolzano/Bozen",
+        "pl": "Bolzano/Bozen",
+        "ru": "Больцано/Bozen"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/TourismAssociation/5228229451CA11D18F1400A02427D15E"
+    },
+    "AreaInfo": null,
+    "RegionInfo": {
+      "Id": "D2633A1CC24E11D18F1B006097B8970B",
+      "Name": {
+        "cs": "Bolzano/Bozen a okolí",
+        "de": "Bozen und Umgebung",
+        "en": "Bolzano/Bozen and environs",
+        "fr": "Bolzano/Bozen et environs",
+        "it": "Bolzano e dintorni",
+        "nl": "Bolzano/Bozen en omgeving",
+        "pl": "Bolzano/Bozen i okolice",
+        "ru": "Больцано/Bozen и окрестности"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Region/D2633A1CC24E11D18F1B006097B8970B"
+    },
+    "DistrictInfo": {
+      "Id": "79CBD66151C911D18F1400A02427D15E",
+      "Name": {
+        "cs": "Bolzano Centro/Bozen Zentrum",
+        "de": "Bozen Zentrum",
+        "en": "Bolzano Centro/Bozen Zentrum",
+        "fr": "Bolzano Centro/Bozen Zentrum",
+        "it": "Bolzano Centro",
+        "nl": "Bolzano Centro/Bozen Zentrum",
+        "pl": "Bolzano Centro/Bozen Zentrum",
+        "ru": "Больцано Чентро"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/District/79CBD66151C911D18F1400A02427D15E"
+    },
+    "MunicipalityInfo": {
+      "Id": "50FCFD4334A04DB087C1FD10ED864018",
+      "Name": {
+        "cs": "Bolzano/Bozen",
+        "de": "Bozen",
+        "en": "Bolzano/Bozen",
+        "fr": "Bolzano/Bozen",
+        "it": "Bolzano",
+        "nl": "Bolzano/Bozen",
+        "pl": "Bolzano/Bozen",
+        "ru": "Боцен/Bolzano"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Municipality/50FCFD4334A04DB087C1FD10ED864018"
+    }
+  },
+  "EventDatesEnd": [
+    "2024-05-27T00:00:00",
+    "2024-05-28T00:00:00",
+    "2024-05-29T00:00:00",
+    "2024-06-17T00:00:00",
+    "2024-06-18T00:00:00"
+  ],
+  "EventProperty": {
+    "IsBookable": null,
+    "TicketRequired": null,
+    "EventOrganizerId": null,
+    "RegistrationRequired": null,
+    "EventClassificationId": null,
+    "IncludedInSuedtirolGuestPass": null
+  },
+  "EventVariants": null,
+  "EventPublisher": null,
+  "OrganizerInfos": {},
+  "EventDatesBegin": [
+    "2024-05-27T00:00:00",
+    "2024-05-28T00:00:00",
+    "2024-05-29T00:00:00",
+    "2024-06-17T00:00:00",
+    "2024-06-18T00:00:00"
+  ],
+  "EventDateCounter": 5,
+  "ClassificationRID": null,
+  "EventAdditionalInfos": {},
+  "AltitudeUnitofMeasure": null
+},{
+  "Id": "FD7DC58E68A9447FB987460138FB3C85",
+  "Self": "https://tourism.api.opendatahub.com/v1/Event/FD7DC58E68A9447FB987460138FB3C85",
+  "Tags": [],
+  "_Meta": {
+    "Id": "FD7DC58E68A9447FB987460138FB3C85",
+    "Type": "event",
+    "Source": "lts",
+    "Reduced": true,
+    "LastUpdate": "2024-12-20T15:26:33.827347+00:00",
+    "UpdateInfo": {
+      "UpdatedBy": "lts.push.import",
+      "UpdateSource": "odh.importer",
+      "UpdateHistory": null
+    }
+  },
+  "Active": true,
+  "Detail": {
+    "de": {
+      "Title": "100. Giro d'Italia: Start der 19. Etappe Innichen - Piancavallo",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "de",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "en": {
+      "Title": "100th Giro d'Italia: start of the 19th stage San Candido - Piancavallo",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "en",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "it": {
+      "Title": "100° Giro d'Italia: partenza della 19° tappa San Candido - Piancavallo",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "it",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    }
+  },
+  "OrgRID": null,
+  "SignOn": null,
+  "Source": "lts",
+  "TagIds": [],
+  "Ticket": null,
+  "Topics": null,
+  "DateEnd": "2017-05-26T00:00:00",
+  "GpsInfo": [
+    {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.7329,
+      "Longitude": 12.2815,
+      "AltitudeUnitofMeasure": null
+    }
+  ],
+  "Gpstype": "position",
+  "Mapping": {},
+  "ODHTags": [],
+  "SmgTags": null,
+  "Altitude": null,
+  "Latitude": 46.7329,
+  "DateBegin": "2017-05-26T00:00:00",
+  "Districts": [],
+  "EventDate": [
+    {
+      "To": "2017-05-26T00:00:00",
+      "End": "14:00:00",
+      "From": "2017-05-26T00:00:00",
+      "Begin": "11:30:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": null,
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": false,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": null,
+      "EventCalculatedDays": null,
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": null
+    }
+  ],
+  "EventUrls": null,
+  "GpsPoints": {
+    "position": {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.7329,
+      "Longitude": 12.2815,
+      "AltitudeUnitofMeasure": null
+    }
+  },
+  "Longitude": 12.2815,
+  "OdhActive": false,
+  "Shortname": "100. Giro d'Italia: Start der 19. Etappe Innichen - Piancavallo",
+  "SmgActive": false,
+  "TopicRIDs": null,
+  "DistrictId": null,
+  "EventPrice": {},
+  "LastChange": "2024-12-20T15:26:33.827347+00:00",
+  "DistrictIds": null,
+  "FirstImport": "2016-10-26T00:05:39.3145998",
+  "HasLanguage": [
+    "de",
+    "it",
+    "en"
+  ],
+  "LicenseInfo": {
+    "Author": "",
+    "License": "CC0",
+    "ClosedData": false,
+    "LicenseHolder": "https://www.lts.it"
+  },
+  "PublishedOn": [],
+  "ContactInfos": {
+    "de": {
+      "Tax": null,
+      "Url": "http://www.giroditalia.it/",
+      "Vat": null,
+      "Area": null,
+      "City": "Innichen",
+      "Email": null,
+      "Region": null,
+      "Address": "Dorfzentrum",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39038",
+      "Language": "de",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": null,
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "en": {
+      "Tax": null,
+      "Url": "http://www.giroditalia.it/",
+      "Vat": null,
+      "Area": null,
+      "City": "San Candido / Innichen",
+      "Email": null,
+      "Region": null,
+      "Address": "village center",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39038",
+      "Language": "en",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": null,
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "it": {
+      "Tax": null,
+      "Url": "http://www.giroditalia.it/",
+      "Vat": null,
+      "Area": null,
+      "City": "San Candido",
+      "Email": null,
+      "Region": null,
+      "Address": "centro paese",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39038",
+      "Language": "it",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": null,
+      "CountryName": null,
+      "Phonenumber": null
+    }
+  },
+  "DistanceInfo": null,
+  "EventBooking": null,
+  "ImageGallery": null,
+  "LocationInfo": {
+    "TvInfo": {
+      "Id": "522822DA51CA11D18F1400A02427D15E",
+      "Name": {
+        "cs": "Innichen/San Candido",
+        "de": "Innichen",
+        "en": "Innichen/San Candido",
+        "fr": "Innichen/San Candido",
+        "it": "San Candido",
+        "nl": "Innichen/San Candido",
+        "pl": "Innichen/San Candido",
+        "ru": "Иннихен/San Candido"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/TourismAssociation/522822DA51CA11D18F1400A02427D15E"
+    },
+    "AreaInfo": null,
+    "RegionInfo": {
+      "Id": "D2633A1FC24E11D18F1B006097B8970B",
+      "Name": {
+        "cs": "Oblast in regio 3 Zinnen Dolomity",
+        "de": "Dolomitenregion 3 Zinnen",
+        "en": "Dolomites Region 3 Zinnen",
+        "fr": "Région des Dolomites 3 Zinnen",
+        "it": "Regione dolomitica 3 Cime",
+        "nl": "Dolomietenregio 3 Zinnen",
+        "pl": "Region 3 Zinnen w Dolomitach",
+        "ru": "регион Драй-Циннен, Доломиты"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Region/D2633A1FC24E11D18F1B006097B8970B"
+    },
+    "DistrictInfo": {
+      "Id": "79CBD8A651C911D18F1400A02427D15E",
+      "Name": {
+        "cs": "Innichen/S. Candido",
+        "de": "Innichen",
+        "en": "Innichen/S. Candido",
+        "fr": "Innichen/S. Candido",
+        "it": "San Candido",
+        "nl": "Innichen/S. Candido",
+        "pl": "Innichen/S. Candido",
+        "ru": "Сан-Кандидо"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/District/79CBD8A651C911D18F1400A02427D15E"
+    },
+    "MunicipalityInfo": {
+      "Id": "C9F8EA73E9DC456A8DB9914F0CB29324",
+      "Name": {
+        "cs": "Innichen/San Candido",
+        "de": "Innichen",
+        "en": "Innichen/San Candido",
+        "fr": "Innichen/San Candido",
+        "it": "San Candido",
+        "nl": "Innichen/San Candido",
+        "pl": "Innichen/San Candido",
+        "ru": "Иннихен/San Candido"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Municipality/C9F8EA73E9DC456A8DB9914F0CB29324"
+    }
+  },
+  "EventDatesEnd": [
+    "2017-05-26T00:00:00"
+  ],
+  "EventProperty": {
+    "IsBookable": null,
+    "TicketRequired": null,
+    "EventOrganizerId": null,
+    "RegistrationRequired": null,
+    "EventClassificationId": null,
+    "IncludedInSuedtirolGuestPass": null
+  },
+  "EventVariants": null,
+  "EventPublisher": null,
+  "OrganizerInfos": {},
+  "EventDatesBegin": [
+    "2017-05-26T00:00:00"
+  ],
+  "EventDateCounter": 1,
+  "ClassificationRID": null,
+  "EventAdditionalInfos": {},
+  "AltitudeUnitofMeasure": null
+},{
+  "Id": "B3301E8EA4B04557A17A199475FDD8B9",
+  "Self": "https://tourism.api.opendatahub.com/v1/Event/B3301E8EA4B04557A17A199475FDD8B9",
+  "Tags": [],
+  "_Meta": {
+    "Id": "B3301E8EA4B04557A17A199475FDD8B9",
+    "Type": "event",
+    "Source": "lts",
+    "Reduced": true,
+    "LastUpdate": "2025-09-07T22:01:44.7737207+00:00",
+    "UpdateInfo": {
+      "UpdatedBy": "lts.events.import",
+      "UpdateSource": "http://tourism.importer.opendatahub.bz.it/LTS/event",
+      "UpdateHistory": [
+        {
+          "UpdatedBy": "lts.events.import",
+          "LastUpdate": "2025-09-07T22:01:44.7737207+00:00",
+          "UpdateSource": "http://tourism.importer.opendatahub.bz.it/LTS/event"
+        }
+      ]
+    }
+  },
+  "Active": true,
+  "Detail": {
+    "de": {
+      "Title": "100 Jahre Bürgerkapelle Wolkenstein – Jubiläumsfest",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "de",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "en": {
+      "Title": "100 Years of the Wolkenstein Music Band",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "en",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    },
+    "it": {
+      "Title": "100 anni della Banda Musicaledi Selva – Festa del Giubileo",
+      "Header": null,
+      "BaseText": null,
+      "Keywords": null,
+      "Language": "it",
+      "MetaDesc": null,
+      "AuthorTip": null,
+      "IntroText": null,
+      "MetaTitle": null,
+      "SubHeader": null,
+      "SafetyInfo": null,
+      "ParkingInfo": null,
+      "GetThereText": null,
+      "EquipmentInfo": null,
+      "AdditionalText": null,
+      "PublicTransportationInfo": null
+    }
+  },
+  "OrgRID": "",
+  "SignOn": null,
+  "Source": "lts",
+  "TagIds": [],
+  "Ticket": "0",
+  "Topics": null,
+  "DateEnd": "2025-09-07T00:00:00",
+  "GpsInfo": [
+    {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.55598449707031,
+      "Longitude": 11.75877571105957,
+      "AltitudeUnitofMeasure": "m"
+    }
+  ],
+  "Gpstype": "position",
+  "Mapping": {
+    "lts": {
+      "rid": "B3301E8EA4B04557A17A199475FDD8B9"
+    }
+  },
+  "ODHTags": [],
+  "SmgTags": null,
+  "Altitude": null,
+  "Latitude": 46.55598449707031,
+  "DateBegin": "2025-09-06T00:00:00",
+  "Districts": [],
+  "EventDate": [
+    {
+      "To": "2025-09-06T00:00:00",
+      "End": "23:59:00",
+      "From": "2025-09-06T00:00:00",
+      "Begin": "11:00:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": false,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": {
+        "Day": "0001-01-01T00:00:00",
+        "Begin": "11:00:00",
+        "CDayRID": null,
+        "SoldOut": null,
+        "AvailabilityLow": null,
+        "CalculatedDayId": null,
+        "AvailabilityCalculatedValue": null,
+        "EventDateCalculatedDayVariant": null
+      },
+      "EventCalculatedDays": [
+        {
+          "Day": "0001-01-01T00:00:00",
+          "Begin": "11:00:00",
+          "CDayRID": null,
+          "SoldOut": null,
+          "AvailabilityLow": null,
+          "CalculatedDayId": null,
+          "AvailabilityCalculatedValue": null,
+          "EventDateCalculatedDayVariant": null
+        }
+      ],
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": {}
+    },
+    {
+      "To": "2025-09-06T00:00:00",
+      "End": "23:59:00",
+      "From": "2025-09-06T00:00:00",
+      "Begin": "11:00:00",
+      "Active": true,
+      "DayRID": "4B20455232B042F19F0B39ABC63F3E8C",
+      "Ticket": null,
+      "Entrance": "00:00:00",
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": false,
+      "MaxPersons": 0,
+      "MinPersons": 0,
+      "SingleDays": false,
+      "EventDateId": "4B20455232B042F19F0B39ABC63F3E8C",
+      "IsCancelled": false,
+      "EventVariantIds": null,
+      "EventCalculatedDay": {
+        "Day": "2025-09-06T00:00:00",
+        "Begin": "11:00:00",
+        "CDayRID": "377A8BB960F8487B8B37412D3E36D68B",
+        "SoldOut": null,
+        "AvailabilityLow": null,
+        "CalculatedDayId": "377A8BB960F8487B8B37412D3E36D68B",
+        "AvailabilityCalculatedValue": null,
+        "EventDateCalculatedDayVariant": null
+      },
+      "EventCalculatedDays": [
+        {
+          "Day": "2025-09-06T00:00:00",
+          "Begin": "11:00:00",
+          "CDayRID": "377A8BB960F8487B8B37412D3E36D68B",
+          "SoldOut": null,
+          "AvailabilityLow": null,
+          "CalculatedDayId": "377A8BB960F8487B8B37412D3E36D68B",
+          "AvailabilityCalculatedValue": null,
+          "EventDateCalculatedDayVariant": null
+        }
+      ],
+      "EventDateTicketInfo": {
+        "Active": true,
+        "OnlineSaleUntil": null,
+        "OnlineContingent": 0
+      },
+      "EventDateAdditionalInfo": {}
+    },
+    {
+      "To": "2025-09-07T00:00:00",
+      "End": "19:00:00",
+      "From": "2025-09-07T00:00:00",
+      "Begin": "09:30:00",
+      "Active": null,
+      "DayRID": null,
+      "Ticket": null,
+      "Entrance": null,
+      "Cancelled": "0",
+      "PriceFrom": null,
+      "IsBookable": null,
+      "MaxPersons": null,
+      "MinPersons": null,
+      "SingleDays": false,
+      "EventDateId": null,
+      "IsCancelled": null,
+      "EventVariantIds": null,
+      "EventCalculatedDay": {
+        "Day": "0001-01-01T00:00:00",
+        "Begin": "09:30:00",
+        "CDayRID": null,
+        "SoldOut": null,
+        "AvailabilityLow": null,
+        "CalculatedDayId": null,
+        "AvailabilityCalculatedValue": null,
+        "EventDateCalculatedDayVariant": null
+      },
+      "EventCalculatedDays": [
+        {
+          "Day": "0001-01-01T00:00:00",
+          "Begin": "09:30:00",
+          "CDayRID": null,
+          "SoldOut": null,
+          "AvailabilityLow": null,
+          "CalculatedDayId": null,
+          "AvailabilityCalculatedValue": null,
+          "EventDateCalculatedDayVariant": null
+        }
+      ],
+      "EventDateTicketInfo": null,
+      "EventDateAdditionalInfo": {}
+    }
+  ],
+  "EventUrls": [],
+  "GpsPoints": {
+    "position": {
+      "Gpstype": "position",
+      "Altitude": null,
+      "Latitude": 46.55598449707031,
+      "Longitude": 11.75877571105957,
+      "AltitudeUnitofMeasure": "m"
+    }
+  },
+  "Longitude": 11.75877571105957,
+  "OdhActive": true,
+  "Shortname": "100 Jahre Bürgerkapelle Wolkenstein – Jubiläumsfest",
+  "SmgActive": true,
+  "TopicRIDs": null,
+  "DistrictId": null,
+  "EventPrice": {},
+  "LastChange": "2025-09-07T22:01:44.7746322+00:00",
+  "DistrictIds": null,
+  "FirstImport": "2025-04-23T09:10:33.7784878+00:00",
+  "HasLanguage": [
+    "de",
+    "en",
+    "it"
+  ],
+  "LicenseInfo": {
+    "Author": "",
+    "License": "CC0",
+    "ClosedData": false,
+    "LicenseHolder": "unknown"
+  },
+  "PublishedOn": [],
+  "ContactInfos": {
+    "de": {
+      "Tax": null,
+      "Url": "https://www.bkwolkenstein.it",
+      "Vat": null,
+      "Area": null,
+      "City": "Wolkenstein",
+      "Email": null,
+      "Region": null,
+      "Address": "Gemeindeplatz",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39048",
+      "Language": "de",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "en": {
+      "Tax": null,
+      "Url": "https://www.bkwolkenstein.it",
+      "Vat": null,
+      "Area": null,
+      "City": "Selva di Val Gardena",
+      "Email": null,
+      "Region": null,
+      "Address": "Town Hall Square",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39048",
+      "Language": "en",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    },
+    "it": {
+      "Tax": null,
+      "Url": "https://www.bkwolkenstein.it",
+      "Vat": null,
+      "Area": null,
+      "City": "Selva di Val Gardena",
+      "Email": null,
+      "Region": null,
+      "Address": "Piazza del Municipio",
+      "LogoUrl": null,
+      "Surname": null,
+      "ZipCode": "39048",
+      "Language": "it",
+      "Faxnumber": null,
+      "Givenname": null,
+      "NamePrefix": null,
+      "RegionCode": null,
+      "CompanyName": null,
+      "CountryCode": "IT",
+      "CountryName": null,
+      "Phonenumber": null
+    }
+  },
+  "DistanceInfo": {
+    "DistanceToDistrict": 276.0,
+    "DistanceToMunicipality": 276.0
+  },
+  "EventBooking": null,
+  "ImageGallery": [],
+  "LocationInfo": {
+    "TvInfo": {
+      "Id": "522822E651CA11D18F1400A02427D15E",
+      "Name": {
+        "cs": "Sëlva/Selva di Val Gardena",
+        "de": "Wolkenstein Gröden",
+        "en": "Sëlva/Selva di Val Gardena",
+        "fr": "Sëlva/Selva di Val Gardena",
+        "it": "Selva di Val Gardena",
+        "nl": "Sëlva/Selva di Val Gardena",
+        "pl": "Sëlva/Selva di Val Gardena",
+        "ru": "Зёлва/Selva di Val Gardena"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/TourismAssociation/522822E651CA11D18F1400A02427D15E"
+    },
+    "AreaInfo": null,
+    "RegionInfo": {
+      "Id": "D2633A1EC24E11D18F1B006097B8970B",
+      "Name": {
+        "cs": "Oblast Val Gardena Dolomity",
+        "de": "Dolomitenregion Gröden",
+        "en": "Dolomites Region Val Gardena",
+        "fr": "Région des Dolomites Val Gardena",
+        "it": "Regione dolomitica Val Gardena",
+        "nl": "Dolomietenregio Val Gardena",
+        "pl": "Region Val Gardena w Dolomitach",
+        "ru": "регион Валь-Гардена, Доломиты"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Region/D2633A1EC24E11D18F1B006097B8970B"
+    },
+    "DistrictInfo": {
+      "Id": "79CBD94651C911D18F1400A02427D15E",
+      "Name": {
+        "cs": "Sëlva/Selva di Val Gardena",
+        "de": "Wolkenstein Gröden",
+        "en": "Sëlva/Selva di Val Gardena",
+        "fr": "Sëlva/Selva di Val Gardena",
+        "it": "Selva di Val Gardena",
+        "nl": "Sëlva/Selva di Val Gardena",
+        "pl": "Sëlva/Selva di Val Gardena",
+        "ru": "Зёлва/Selva di Val Gardena"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/District/79CBD94651C911D18F1400A02427D15E"
+    },
+    "MunicipalityInfo": {
+      "Id": "C8EC77F20F4D4F3884E1B3BC77D5D699",
+      "Name": {
+        "cs": "Sëlva/Selva di Val Gardena",
+        "de": "Wolkenstein Gröden",
+        "en": "Sëlva/Selva di Val Gardena",
+        "fr": "Sëlva/Selva di Val Gardena",
+        "it": "Selva di Val Gardena",
+        "nl": "Sëlva/Selva di Val Gardena",
+        "pl": "Sëlva/Selva di Val Gardena",
+        "ru": "Зёлва/Selva di Val Gardena"
+      },
+      "Self": "https://tourism.api.opendatahub.com/v1/Municipality/C8EC77F20F4D4F3884E1B3BC77D5D699"
+    }
+  },
+  "EventDatesEnd": [
+    "2025-09-06T00:00:00",
+    "2025-09-06T00:00:00",
+    "2025-09-07T00:00:00"
+  ],
+  "EventProperty": {
+    "IsBookable": null,
+    "TicketRequired": false,
+    "EventOrganizerId": "",
+    "RegistrationRequired": null,
+    "EventClassificationId": "",
+    "IncludedInSuedtirolGuestPass": null
+  },
+  "EventVariants": null,
+  "EventPublisher": [],
+  "OrganizerInfos": {},
+  "EventDatesBegin": [
+    "2025-09-06T00:00:00",
+    "2025-09-06T00:00:00",
+    "2025-09-07T00:00:00"
+  ],
+  "EventDateCounter": 3,
+  "ClassificationRID": "",
+  "EventAdditionalInfos": {
+    "de": {
+      "Reg": null,
+      "Mplace": null,
+      "Language": "de",
+      "Location": null,
+      "WhatToBring": null,
+      "MeetingPoint": null,
+      "Registration": null,
+      "ServiceDescription": null,
+      "CancellationModality": null
+    },
+    "en": {
+      "Reg": null,
+      "Mplace": null,
+      "Language": "en",
+      "Location": null,
+      "WhatToBring": null,
+      "MeetingPoint": null,
+      "Registration": null,
+      "ServiceDescription": null,
+      "CancellationModality": null
+    },
+    "it": {
+      "Reg": null,
+      "Mplace": null,
+      "Language": "it",
+      "Location": null,
+      "WhatToBring": null,
+      "MeetingPoint": null,
+      "Registration": null,
+      "ServiceDescription": null,
+      "CancellationModality": null
+    }
+  },
+  "AltitudeUnitofMeasure": "m"
+}]}

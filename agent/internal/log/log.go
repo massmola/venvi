@@ -1,3 +1,4 @@
+// Package log provides a session-based logging system for agent activities.
 package log
 
 import (
@@ -56,8 +57,15 @@ func (l *Logger) StartSession(sessionID string) error {
 		return err
 	}
 
+	// Check if session already exists
+	if _, err := os.Stat(path); err == nil {
+		return fmt.Errorf("session '%s' already exists", sessionID)
+	} else if !os.IsNotExist(err) {
+		return fmt.Errorf("failed to check session existence: %w", err)
+	}
+
 	// Create logs directory
-	if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
+	if err := os.MkdirAll(filepath.Dir(path), 0750); err != nil {
 		return fmt.Errorf("failed to create logs directory: %w", err)
 	}
 
@@ -72,17 +80,16 @@ func (l *Logger) StartSession(sessionID string) error {
 		return fmt.Errorf("failed to marshal session: %w", err)
 	}
 
-	// Write (overwrite if exists)
-	// Write (overwrite if exists)
+	// Create and atomically write new session file.
+	// This does not overwrite because of the existence check at the start of the function.
 	tmpPath := path + ".tmp"
-	if err := os.WriteFile(tmpPath, data, 0644); err != nil {
+	if err := os.WriteFile(tmpPath, data, 0600); err != nil {
 		return fmt.Errorf("failed to write session file: %w", err)
 	}
 
 	if err := os.Rename(tmpPath, path); err != nil {
 		return fmt.Errorf("failed to rename session file: %w", err)
 	}
-
 	return nil
 }
 
@@ -93,6 +100,7 @@ func (l *Logger) AppendEntry(sessionID, role, content string) error {
 		return err
 	}
 
+	// #nosec G304
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return fmt.Errorf("failed to read session file: %w", err)
@@ -117,14 +125,13 @@ func (l *Logger) AppendEntry(sessionID, role, content string) error {
 	}
 
 	tmpPath := path + ".tmp"
-	if err := os.WriteFile(tmpPath, updatedData, 0644); err != nil {
+	if err := os.WriteFile(tmpPath, updatedData, 0600); err != nil {
 		return fmt.Errorf("failed to write updated session file: %w", err)
 	}
 
 	if err := os.Rename(tmpPath, path); err != nil {
 		return fmt.Errorf("failed to rename updated session file: %w", err)
 	}
-
 	return nil
 }
 
@@ -134,6 +141,7 @@ func (l *Logger) GetSession(sessionID string) (*Session, error) {
 	if err != nil {
 		return nil, err
 	}
+	// #nosec G304
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read session file: %w", err)

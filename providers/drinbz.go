@@ -17,6 +17,7 @@ type DrinbzProvider struct {
 }
 
 // NewDrinbzProvider creates a new Drinbz provider.
+// NewDrinbzProvider creates a new instance of DrinbzProvider.
 func NewDrinbzProvider() *DrinbzProvider {
 	return &DrinbzProvider{
 		BaseURL: "https://drinbz.it/wp-json/wp/v2/posts",
@@ -24,6 +25,7 @@ func NewDrinbzProvider() *DrinbzProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *DrinbzProvider) SourceName() string {
 	return "drinbz"
 }
@@ -42,6 +44,7 @@ type wpPost struct {
 	Embedded map[string]any `json:"_embedded,omitempty"` // For images if needed
 }
 
+// FetchEvents retrieves raw event data from the Drinbz API.
 func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	// Fetch recent posts. Drinbz posts are often events.
 	// API: https://drinbz.it/wp-json/wp/v2/posts?per_page=20
@@ -76,7 +79,7 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 		// In a real scenario we might just use the struct directly if the interface allowed it,
 		// but RawEvent is map[string]any.
 		raw := make(map[string]any)
-		raw["id"] = post.ID
+		raw["id"] = post.ID // int
 		raw["date"] = post.Date
 		raw["link"] = post.Link
 		raw["title"] = post.Title.Rendered
@@ -90,12 +93,20 @@ func (p *DrinbzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *DrinbzProvider) MapEvent(raw RawEvent) *Event {
-	id := fmt.Sprintf("%v", raw["id"])
-	title := fmt.Sprintf("%v", raw["title"])
-	link := fmt.Sprintf("%v", raw["link"])
-	content := fmt.Sprintf("%v", raw["content"])
-	dateStr := fmt.Sprintf("%v", raw["date"])
+	sprintOrEmpty := func(v any) string {
+		if v == nil {
+			return ""
+		}
+		return fmt.Sprint(v)
+	}
+
+	id := sprintOrEmpty(raw["id"])
+	title := sprintOrEmpty(raw["title"])
+	link := sprintOrEmpty(raw["link"])
+	content := sprintOrEmpty(raw["content"])
+	dateStr := sprintOrEmpty(raw["date"])
 
 	// Parse date from WP format "2023-10-27T10:00:00"
 	dateStart, err := time.Parse("2006-01-02T15:04:05", dateStr)

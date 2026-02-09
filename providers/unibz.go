@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"path"
+	"strconv"
 	"strings"
 	"time"
 
@@ -18,6 +19,7 @@ type UnibzProvider struct {
 	Client  *http.Client
 }
 
+// NewUnibzProvider creates a new instance of UnibzProvider.
 func NewUnibzProvider() *UnibzProvider {
 	return &UnibzProvider{
 		BaseURL: "https://guide.unibz.it/en/events/",
@@ -25,10 +27,12 @@ func NewUnibzProvider() *UnibzProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *UnibzProvider) SourceName() string {
 	return "unibz"
 }
 
+// FetchEvents retrieves raw event data from the unibz guide website.
 func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.BaseURL, nil)
 	if err != nil {
@@ -52,7 +56,7 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 
 	var events []RawEvent
 
-	doc.Find(".mediaItem").Each(func(i int, s *goquery.Selection) {
+	doc.Find(".mediaItem").Each(func(_ int, s *goquery.Selection) {
 		title := strings.TrimSpace(s.Find(".mediaItem_title a").Text())
 		if title == "" {
 			return
@@ -103,13 +107,14 @@ func (p *UnibzProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
 	title, _ := raw["title"].(string)
 	link, _ := raw["link"].(string)
 	description, _ := raw["description"].(string)
 
 	// Generate ID from link hash or title
-	idBase := fmt.Sprintf("%d", time.Now().UnixNano())
+	idBase := strconv.FormatInt(time.Now().UnixNano(), 10)
 	if link != "" {
 		normalizedLink := strings.TrimRight(link, "/")
 		base := path.Base(normalizedLink)
@@ -141,5 +146,6 @@ func (p *UnibzProvider) MapEvent(raw RawEvent) *Event {
 		SourceName:  p.SourceName(),
 		SourceID:    id,
 		IsNew:       true,
+		Topics:      []string{},
 	}
 }

@@ -3,6 +3,7 @@ package providers
 import (
 	"context"
 	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"net/http"
 	"path"
@@ -18,6 +19,7 @@ type MuseionProvider struct {
 	Client  *http.Client
 }
 
+// NewMuseionProvider creates a new instance of MuseionProvider.
 func NewMuseionProvider() *MuseionProvider {
 	return &MuseionProvider{
 		BaseURL: "https://www.museion.it/en/events",
@@ -25,10 +27,12 @@ func NewMuseionProvider() *MuseionProvider {
 	}
 }
 
+// SourceName returns the unique identifier for this provider.
 func (p *MuseionProvider) SourceName() string {
 	return "museion"
 }
 
+// FetchEvents retrieves raw event data from the Museion website.
 func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.BaseURL, nil)
 	if err != nil {
@@ -55,7 +59,7 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	// Selector based on analysis: classes like preview-item__title
 	// I will iterate over the container items.
 
-	doc.Find(".preview-item").Each(func(i int, s *goquery.Selection) {
+	doc.Find(".preview-item").Each(func(_ int, s *goquery.Selection) {
 		title := strings.TrimSpace(s.Find(".preview-item__title").Text())
 		if title == "" {
 			return
@@ -87,6 +91,7 @@ func (p *MuseionProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
+// MapEvent converts a RawEvent into the internal Event structure.
 func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 	title, _ := raw["title"].(string)
 	link, _ := raw["link"].(string)
@@ -102,7 +107,7 @@ func (p *MuseionProvider) MapEvent(raw RawEvent) *Event {
 	// Fallback if ID is empty or invalid path
 	if id == "" || id == "." || id == "/" {
 		hash := sha256.Sum256([]byte(link))
-		id = fmt.Sprintf("%x", hash[:8])
+		id = hex.EncodeToString(hash[:8])
 	}
 	id = "museion-" + id
 

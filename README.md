@@ -14,7 +14,14 @@ A PocketBase-powered event aggregator that discovers hackathons, meetups, and cu
 
 ### Prerequisites
 
-- [Nix](https://nixos.org/download.html) (recommended) OR Go 1.24+
+- [Nix](https://nixos.org/download.html) with Flakes enabled.
+
+### Development Rules
+
+> [!IMPORTANT]
+> **Strict Nix Usage Enforced**
+> 1.  **Use Nix**: Always run `nix develop` to enter the development environment. This ensures you have the correct versions of all tools.
+> 2.  **Manage Tools**: If you need a new tool, **add it to `flake.nix`**. Do not install tools globally or manually.
 
 ### Development
 

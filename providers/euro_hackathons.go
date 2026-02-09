@@ -83,11 +83,12 @@ func (p *EuroHackathonsProvider) MapEvent(raw RawEvent) *Event {
 	city, _ := raw["city"].(string)
 	countryCode, _ := raw["country_code"].(string)
 	location := ""
-	if city != "" && countryCode != "" {
-		location = fmt.Sprintf("%s, %s", city, countryCode)
-	} else if city != "" {
+	switch {
+	case city != "" && countryCode != "":
+		location = city + ", " + countryCode
+	case city != "":
 		location = city
-	} else if countryCode != "" {
+	case countryCode != "":
 		location = countryCode
 	}
 

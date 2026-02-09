@@ -8,6 +8,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 
 ## Prerequisites
 - `venvi-agent` binary must be built (`go build -o venvi-agent agent/main.go`).
+- Familiarize yourself with `.agent/rules/coding_standards.md` for strict environment and safety rules.
 
 ## The Loop
 
@@ -17,7 +18,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```bash
 ./venvi-agent prompt orchestrator "YOUR_GOAL_HERE"
 ```
-**Step**: Copy the prompt output and paste it into the IDE agent chat to generate a "Ralph Wiggum" task list.
+**Step**: Copy the prompt output and paste it into the IDE agent chat. The Orchestrator will generate a "Ralph Wiggum" task list (named after the "I'm helping" meme, referring to extremely granular, simple, and verifiable steps) with **mandatory verification steps**. This technique ensures the agent doesn't get ahead of itself and verifies every small change.
 
 ### 2. Session Start
 **Action**: Start a log for this task.
@@ -32,17 +33,18 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```bash
 ./venvi-agent memory search "keywords"
 ```
-**Step**: Read any relevant skills/lessons found.
+**Step**: Read any relevant skills/lessons found. Specifically look for **Rules** or **Skills** that failed previously.
 
-### 4. Action (The Loop)
+### 4. Action (The Loop with Verification)
 **Action**: Execute the micro-tasks from Step 1.
+**Rule**: Perform verification after **every** significant change.
 **Logging**: After major steps, log the action.
 ```bash
 ./venvi-agent log append "session-id" "Agent" "Executed step 1: <details>"
 ```
 
 ### 5. Checkpoint (Auto-Commit)
-**Action**: Save progress after a successful task.
+**Action**: Save progress after a successful task and **passing tests**.
 **Command**:
 ```bash
 ./venvi-agent commit "Implemented login validation"
@@ -56,7 +58,7 @@ This workflow describes how to run the self-improving agent loop using the `venv
 ```
 **Step**: 
 1. Copy the output prompt (which includes the logs) to the IDE agent.
-2. The agent will analyze and suggest a "Lesson Learned".
+2. The agent will analyze errors and suggest **Systematic Improvements** to Rules, Skills, or Workflows.
 3. **Save** the lesson:
 ```bash
 ./venvi-agent memory add "Topic" "Content" "tag1" "tag2"
@@ -64,22 +66,24 @@ This workflow describes how to run the self-improving agent loop using the `venv
 
 ## Example Cycle
 ```bash
-# 1. Start
-./venvi-agent log start "fix-login-bug"
+# 1. Goal Setting
+./venvi-agent prompt orchestrator "Implement user registration"
 
-# 2. Search
-./venvi-agent memory search "login"
+# 2. Session Start
+./venvi-agent log start "user-reg-task"
 
-# 3. Work... (Agent does stuff)
-./venvi-agent log append "fix-login-bug" "Agent" "Updated user variable"
+# 3. Perception
+./venvi-agent memory search "registration"
 
-# 4. Checkpoint (Auto-Commit)
-./venvi-agent commit "Fixed login bug"
+# 4. Action (Work & Logging)
+# ... work done ...
+./venvi-agent log append "user-reg-task" "Agent" "Implemented validation logic"
 
-# 4. Reflect
-./venvi-agent prompt critic "fix-login-bug"
-# Agent says: "We forgot to hash the password."
+# 5. Checkpoint (Auto-Commit)
+./venvi-agent commit "Implemented user registration with validation"
 
-# 5. Learn
-./venvi-agent memory add "Authentication" "Always hash passwords before saving" "security" "auth"
+# 6. Reflection & Learning
+./venvi-agent prompt critic "user-reg-task"
+# Agent says: "Validation regex was too strict."
+./venvi-agent memory add "Registration" "Use loose regex for names" "regex" "ui"
 ```

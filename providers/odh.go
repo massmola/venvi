@@ -71,108 +71,17 @@ func (p *ODHProvider) FetchEvents(ctx context.Context) ([]RawEvent, error) {
 	return events, nil
 }
 
-// getLocalized extracts a localized value from ODH detail objects.
-// It tries English first, then Italian, then German.
-func getLocalized(obj map[string]any, key string) string {
-	for _, lang := range []string{"en", "it", "de"} {
-		if langData, ok := obj[lang].(map[string]any); ok {
-			if val, ok := langData[key].(string); ok && val != "" {
-				return val
-			}
-		}
-	}
-	return ""
-}
-
 // MapEvent transforms raw ODH event data into a unified Event structure.
 func (p *ODHProvider) MapEvent(raw RawEvent) *Event {
-	details, _ := raw["Detail"].(map[string]any)
-	if details == nil {
-		details = map[string]any{}
+	// ODH events might not have a city in ContactInfos, so we fallback to "Unknown"
+	// and let the helper try to find it.
+	event := buildEventFromRaw(raw, p.SourceName(), "Unknown", "")
+
+	// ODH-specific overrides if needed (currently none as buildEventFromRaw covers it)
+	// But we need to ensure URL is correct if ID is present
+	if event.ID != "" && event.URL == "" {
+		event.URL = "https://opendatahub.com/events/" + event.ID
 	}
 
-	title := getLocalized(details, "Title")
-	if title == "" {
-		title = "Untitled Event"
-	}
-
-	description := getLocalized(details, "BaseText")
-	if description == "" {
-		description = getLocalized(details, "IntroText")
-	}
-
-	// Extract location from ContactInfos
-	location := "Unknown"
-	if contactInfos, ok := raw["ContactInfos"].(map[string]any); ok {
-		if enContact, ok := contactInfos["en"].(map[string]any); ok {
-			if city, ok := enContact["City"].(string); ok && city != "" {
-				location = city
-			}
-		}
-	}
-
-	// Extract image URL from gallery
-	var imageURL string
-	if gallery, ok := raw["ImageGallery"].([]any); ok && len(gallery) > 0 {
-		if firstImg, ok := gallery[0].(map[string]any); ok {
-			imageURL, _ = firstImg["ImageUrl"].(string)
-		}
-	}
-
-	// Get raw ID or generate one
-	rawID, _ := raw["Id"].(string)
-	if rawID == "" {
-		rawID = fmt.Sprintf("%d", time.Now().UnixNano())
-	}
-
-	// Parse dates
-	dateStart := time.Now()
-	if dateStr, ok := raw["DateBegin"].(string); ok && dateStr != "" {
-		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
-			dateStart = parsed
-		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
-			dateStart = parsed
-		}
-	}
-
-	dateEnd := time.Now()
-	if dateStr, ok := raw["DateEnd"].(string); ok && dateStr != "" {
-		if parsed, err := time.Parse(time.RFC3339, dateStr); err == nil {
-			dateEnd = parsed
-		} else if parsed, err := time.Parse("2006-01-02T15:04:05", dateStr); err == nil {
-			dateEnd = parsed
-		}
-	}
-
-	// Extract GPS coordinates
-	var lat, long float64
-	if gpsInfo, ok := raw["GpsInfo"].([]any); ok && len(gpsInfo) > 0 {
-		if firstGps, ok := gpsInfo[0].(map[string]any); ok {
-			lat, _ = firstGps["Latitude"].(float64)
-			long, _ = firstGps["Longitude"].(float64)
-		}
-	}
-	// Fallback to top-level latitude/longitude if available
-	if lat == 0 && long == 0 {
-		lat, _ = raw["Latitude"].(float64)
-		long, _ = raw["Longitude"].(float64)
-	}
-
-	return &Event{
-		ID:          rawID,
-		Title:       title,
-		Description: description,
-		DateStart:   dateStart,
-		DateEnd:     dateEnd,
-		Location:    location,
-		URL:         fmt.Sprintf("https://opendatahub.com/events/%s", rawID),
-		ImageURL:    imageURL,
-		SourceName:  p.SourceName(),
-		SourceID:    rawID,
-		Topics:      []string{},
-		Category:    "general",
-		IsNew:       true,
-		Latitude:    lat,
-		Longitude:   long,
-	}
+	return event
 }

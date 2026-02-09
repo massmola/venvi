@@ -1,12 +1,13 @@
 # Go
 venvi
+venvi-agent
 bin/
 dist/
 
 # PocketBase
 pb_data/
-errors.log
-server.log
+*.log
+run_logs_*.txt
 
 # IDEs
 .vscode/
@@ -37,3 +38,5 @@ node_modules/
 
 # Agent Interaction Data
 .agent_data/
+.pre-commit-config.yaml
+run_logs_*.txt

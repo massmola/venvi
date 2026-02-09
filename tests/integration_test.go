@@ -94,7 +94,7 @@ func TestIntegration(t *testing.T) {
 				}
 				return app
 			},
-			BeforeTestFunc: func(t testing.TB, app *tests.TestApp, e *core.ServeEvent) {
+			BeforeTestFunc: func(_ testing.TB, _ *tests.TestApp, e *core.ServeEvent) {
 				// Register health route explicitly since it's in main.go
 				e.Router.GET("/api/venvi/health", func(er *core.RequestEvent) error {
 					return er.JSON(http.StatusOK, map[string]string{"status": "healthy"})
@@ -140,7 +140,7 @@ func TestIntegration(t *testing.T) {
 				}
 				return app
 			},
-			BeforeTestFunc: func(t testing.TB, app *tests.TestApp, e *core.ServeEvent) {
+			BeforeTestFunc: func(_ testing.TB, _ *tests.TestApp, e *core.ServeEvent) {
 				// Register web routes.
 				// Template registry needs views relative to test run.
 				// We'll set CWD or specify absolute paths if needed.
@@ -157,7 +157,7 @@ func TestIntegration(t *testing.T) {
 // createTestApp creates a new test app instance.
 // If "pb_data" exists in the root, it uses it (preserving data).
 // If not, it initializes a fresh app and applies the minimal "events" schema.
-func createTestApp(t testing.TB) (*tests.TestApp, error) {
+func createTestApp(_ testing.TB) (*tests.TestApp, error) {
 	// We assume CWD is the project root (set in TestIntegration)
 	dataDir := "pb_data"
 	if _, err := os.Stat(dataDir); os.IsNotExist(err) {

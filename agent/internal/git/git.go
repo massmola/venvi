@@ -1,3 +1,4 @@
+// Package git provides a simple wrapper around the git CLI for common operations.
 package git
 
 import (
