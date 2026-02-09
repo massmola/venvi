@@ -18,6 +18,9 @@ All code changes must adhere to the following technology choices. Do not introdu
 - **Testing**: go test + testify
 - **Development Env**: nix flake (use it and install tools through it)
 
+## Safety
+- **Environment**: All build, test, and validation commands MUST be run within the Nix environment (e.g., `nix develop`).
+
 ## Documentation
 - **Format**: Markdown
 - **In-Code**: Go doc comments (godoc format)

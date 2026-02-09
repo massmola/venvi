@@ -10,6 +10,13 @@ echo "=========================================="
 
 cd "$(dirname "$0")/.."
 
+# Check for required binaries
+if ! command -v go &> /dev/null; then
+    echo "❌ Error: 'go' is not found in your PATH."
+    echo "💡 Hint: This project uses Nix. Try running: nix develop --command ./scripts/validate.sh"
+    exit 1
+fi
+
 echo ""
 echo "[1/4] Running go fmt..."
 go fmt ./...
@@ -20,7 +27,8 @@ if command -v golangci-lint &> /dev/null; then
     golangci-lint run ./...
     echo "✓ Lint check passed"
 else
-    echo "⚠ golangci-lint not found, skipping..."
+    echo "⚠ Warning: 'golangci-lint' not found. Linting skipped."
+    echo "💡 Hint: Use 'nix develop' to access all required tools."
 fi
 
 echo ""
