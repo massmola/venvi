@@ -11,6 +11,7 @@ run_logs_*.txt
 
 # IDEs
 .vscode/
+!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
