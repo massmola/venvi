@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{block "title" .}}Venvi{{end}}</title>
+    <meta name="description"
+        content="Discover curated European events — hackathons, meetups, and cultural experiences.">
+
+    <!-- Design C: Paper Collage -->
+    <link rel="stylesheet" href="/static/css/design_c.css">
+
+    <!-- HTMX -->
+    <script src="/static/js/lib/htmx.min.js"></script>
+
+    <!-- PocketBase SDK -->
+    <script src="/static/js/lib/pocketbase.umd.min.js"></script>
+
+    {{block "head" .}}{{end}}
+</head>
+
+<body class="design-c">
+
+    <!-- Navbar -->
+    <nav class="collage-nav">
+        <a href="/design/c" class="logo">venvi</a>
+        <div class="nav-links">
+            <a href="/design/c">Home</a>
+            <a href="/_/">Admin</a>
+
+            <div id="auth-container">
+                <span id="user-name" class="hidden"></span>
+                <div id="login-container" style="position:relative;">
+                    <button id="login-btn" onclick="startLogin()">
+                        <span id="login-text">Login</span>
+                        <div id="login-spinner" class="hidden">
+                            <svg style="width:12px;height:12px;animation:spin 1s linear infinite;"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle style="opacity:0.25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path style="opacity:0.75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="auth-notification" class="hidden"
+                        style="position:absolute;top:100%;right:0;margin-top:8px;width:240px;padding:12px;background:var(--c-cream);border:2px solid var(--c-border);border-radius:6px;box-shadow:var(--c-shadow-md);font-size:0.8rem;z-index:200;">
+                        <p id="notification-msg"></p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="hidden" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {{block "content" .}}{{end}}
+
+    <!-- Footer -->
+    <footer class="collage-footer">
+        <p>&copy; <span id="year"></span> venvi · Powered by PocketBase</p>
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+
+    <script>
+        const pb = new PocketBase('/');
+
+        function refreshAuthUI() {
+            const isValid = pb.authStore.isValid;
+            const user = pb.authStore.model;
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const userName = document.getElementById('user-name');
+            if (isValid && user) {
+                loginBtn.classList.add('hidden');
+                logoutBtn.classList.remove('hidden');
+                userName.textContent = user.name || user.username || user.email;
+                userName.classList.remove('hidden');
+            } else {
+                loginBtn.classList.remove('hidden');
+                logoutBtn.classList.add('hidden');
+                userName.classList.add('hidden');
+            }
+        }
+
+        function showAuthNotification(msg, duration = 5000) {
+            const container = document.getElementById('auth-notification');
+            const msgEl = document.getElementById('notification-msg');
+            msgEl.textContent = msg;
+            container.classList.remove('hidden');
+            setTimeout(() => { container.classList.add('hidden'); }, duration);
+        }
+
+        async function startLogin() {
+            const loginBtn = document.getElementById('login-btn');
+            const loginText = document.getElementById('login-text');
+            const loginSpinner = document.getElementById('login-spinner');
+            try {
+                loginBtn.disabled = true;
+                loginText.textContent = 'Preparing...';
+                loginSpinner.classList.remove('hidden');
+                const methods = await pb.collection('users').listAuthMethods();
+                const provider = methods.authProviders[0];
+                if (!provider) {
+                    showAuthNotification('No OAuth2 providers configured.');
+                    loginBtn.disabled = false;
+                    loginText.textContent = 'Login';
+                    loginSpinner.classList.add('hidden');
+                    return;
+                }
+                loginText.textContent = 'Authorizing...';
+                await pb.collection('users').authWithOAuth2({ provider: provider.name });
+                if (pb.authStore.isValid) {
+                    loginText.textContent = 'Location...';
+                    navigator.geolocation.getCurrentPosition(async (pos) => {
+                        try {
+                            await pb.collection('users').update(pb.authStore.model.id, {
+                                latitude: pos.coords.latitude, longitude: pos.coords.longitude
+                            });
+                            location.reload();
+                        } catch (e) { location.reload(); }
+                    }, () => { location.reload(); });
+                }
+            } catch (err) {
+                showAuthNotification('Login failed: ' + (err.message || 'Unknown error'));
+                loginBtn.disabled = false;
+                loginText.textContent = 'Login';
+                loginSpinner.classList.add('hidden');
+            }
+        }
+
+        function logout() { pb.authStore.clear(); location.reload(); }
+        refreshAuthUI();
+
+        if (pb.authStore.isValid) {
+            navigator.geolocation.getCurrentPosition(async (pos) => {
+                try {
+                    await pb.collection('users').update(pb.authStore.model.id, {
+                        latitude: pos.coords.latitude, longitude: pos.coords.longitude
+                    });
+                    const list = document.getElementById('event-list');
+                    if (list) htmx.trigger(list, 'reload');
+                } catch (e) { }
+            }, () => { });
+        }
+    </script>
+</body>
+
+</html>

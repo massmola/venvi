@@ -1,0 +1,739 @@
+/* ═══════════════════════════════════════════════════════
+   Design C — "Paper Collage"
+   Layered cut-paper, craft textures, jewel tones
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
+/* ── Tokens ── */
+:root {
+    --c-kraft: #B8A088;
+    --c-kraft-light: #D4C4AE;
+    --c-cream: #F8F4EF;
+    --c-white: #FFFDF9;
+
+    --c-teal: #2D6A6A;
+    --c-teal-light: #3A8A8A;
+    --c-sienna: #A0522D;
+    --c-ochre: #D4A843;
+    --c-plum: #704C6C;
+    --c-ink: #2A2420;
+
+    --c-border: rgba(42, 36, 32, 0.10);
+
+    --c-shadow-sm: 0 2px 6px rgba(42, 36, 32, 0.08);
+    --c-shadow-md: 0 6px 20px rgba(42, 36, 32, 0.12);
+    --c-shadow-lg: 0 12px 36px rgba(42, 36, 32, 0.16);
+    --c-shadow-xl: 0 20px 50px rgba(42, 36, 32, 0.20);
+
+    /* Kraft texture */
+    --c-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.12'/%3E%3C/svg%3E");
+}
+
+.dark {
+    --c-kraft: #1E1E1E;
+    --c-kraft-light: #2A2A2A;
+    --c-cream: #252220;
+    --c-white: #2E2B28;
+
+    --c-teal: #4AADAD;
+    --c-teal-light: #5FC5C5;
+    --c-sienna: #D4764A;
+    --c-ochre: #E8C060;
+    --c-plum: #A87AA4;
+    --c-ink: #F0E8DC;
+
+    --c-border: rgba(240, 232, 220, 0.08);
+
+    --c-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+    --c-shadow-md: 0 6px 20px rgba(0, 0, 0, 0.4);
+    --c-shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.5);
+    --c-shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+    --c-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* ── Base ── */
+body.design-c {
+    background-color: var(--c-kraft);
+    background-image: var(--c-grain);
+    color: var(--c-ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+body.design-c h1,
+body.design-c h2,
+body.design-c h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: var(--c-ink);
+    line-height: 1.15;
+}
+
+/* ── Navbar ── */
+body.design-c .collage-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--c-kraft);
+    background-image: var(--c-grain);
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--c-teal);
+}
+
+body.design-c .collage-nav .logo {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--c-cream);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    background: var(--c-teal);
+    padding: 4px 16px;
+    border-radius: 4px;
+    transform: rotate(-2deg);
+    display: inline-block;
+    box-shadow: var(--c-shadow-sm);
+}
+
+body.design-c .collage-nav .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+body.design-c .collage-nav .nav-links a {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-cream);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+body.design-c .collage-nav .nav-links a:hover {
+    color: var(--c-ochre);
+}
+
+/* ── Hero ── */
+body.design-c .hero-collage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+}
+
+/* Layered paper blobs */
+body.design-c .hero-collage .paper-layers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+body.design-c .paper-layers .layer {
+    position: absolute;
+    border-radius: 50% 40% 60% 45% / 55% 50% 45% 50%;
+}
+
+body.design-c .paper-layers .layer:nth-child(1) {
+    width: 80vw;
+    height: 80vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: var(--c-teal);
+    opacity: 0.15;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blobFloat 12s ease-in-out infinite;
+}
+
+body.design-c .paper-layers .layer:nth-child(2) {
+    width: 60vw;
+    height: 55vw;
+    max-width: 550px;
+    max-height: 500px;
+    background: var(--c-sienna);
+    opacity: 0.12;
+    top: 45%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border-radius: 45% 55% 50% 40% / 50% 45% 55% 50%;
+    animation: blobFloat 10s ease-in-out 1s infinite reverse;
+}
+
+body.design-c .paper-layers .layer:nth-child(3) {
+    width: 50vw;
+    height: 50vw;
+    max-width: 450px;
+    max-height: 450px;
+    background: var(--c-ochre);
+    opacity: 0.10;
+    top: 55%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    border-radius: 55% 45% 40% 60% / 45% 55% 50% 45%;
+    animation: blobFloat 14s ease-in-out 2s infinite;
+}
+
+body.design-c .paper-layers .layer:nth-child(4) {
+    width: 40vw;
+    height: 40vw;
+    max-width: 380px;
+    max-height: 380px;
+    background: var(--c-plum);
+    opacity: 0.08;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40% 60% 55% 45% / 60% 40% 50% 55%;
+    animation: blobFloat 11s ease-in-out 3s infinite reverse;
+}
+
+/* Central content */
+body.design-c .hero-collage .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+body.design-c .hero-collage h1 {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--c-cream);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+    transform: rotate(-2deg);
+    opacity: 0;
+    animation: collagePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+    text-shadow: 3px 3px 0 var(--c-teal), 6px 6px 0 rgba(45, 106, 106, 0.3);
+}
+
+body.design-c .hero-collage .hero-sub {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--c-cream);
+    opacity: 0;
+    animation: collageFadeIn 0.6s ease-out 0.5s forwards;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+}
+
+/* Paper strip CTA */
+body.design-c .hero-collage .paper-strip {
+    display: inline-block;
+    background: var(--c-cream);
+    color: var(--c-ink);
+    padding: 12px 28px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transform: rotate(1deg);
+    box-shadow: var(--c-shadow-md);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: collageFadeIn 0.6s ease-out 0.7s forwards;
+    /* Torn paper edge simulation */
+    clip-path: polygon(0% 5%, 3% 0%, 7% 4%, 12% 1%, 16% 5%, 20% 0%,
+            25% 3%, 30% 0%, 35% 5%, 40% 1%, 45% 4%, 50% 0%,
+            55% 3%, 60% 0%, 65% 5%, 70% 1%, 75% 4%, 80% 0%,
+            85% 3%, 90% 0%, 95% 5%, 100% 2%,
+            100% 95%, 97% 100%, 93% 96%, 88% 100%, 83% 95%,
+            78% 100%, 73% 96%, 68% 100%, 63% 95%, 58% 100%,
+            53% 96%, 48% 100%, 43% 95%, 38% 100%, 33% 96%,
+            28% 100%, 23% 95%, 18% 100%, 13% 96%, 8% 100%,
+            3% 95%, 0% 100%);
+}
+
+body.design-c .hero-collage .cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: collageFadeIn 0.6s ease-out 0.9s forwards;
+}
+
+/* ── Buttons ── */
+body.design-c .btn-collage {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 12px 28px;
+    border: 2px solid var(--c-cream);
+    background: transparent;
+    color: var(--c-cream);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.design-c .btn-collage:hover {
+    background: var(--c-cream);
+    color: var(--c-ink);
+    transform: translateY(-2px) rotate(-1deg);
+    box-shadow: var(--c-shadow-md);
+}
+
+body.design-c .btn-collage-primary {
+    background: var(--c-cream);
+    color: var(--c-ink);
+    border-color: var(--c-cream);
+}
+
+body.design-c .btn-collage-primary:hover {
+    background: var(--c-ochre);
+    border-color: var(--c-ochre);
+    color: var(--c-ink);
+}
+
+/* ── Scroll CTA ── */
+body.design-c .scroll-cta {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: collageFadeIn 0.6s ease-out 1.2s forwards;
+}
+
+body.design-c .scroll-cta .scroll-tag {
+    background: var(--c-cream);
+    color: var(--c-ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 6px 16px;
+    transform: rotate(-1deg);
+    box-shadow: var(--c-shadow-sm);
+    /* Torn edges */
+    clip-path: polygon(0% 8%, 5% 0%, 10% 6%, 15% 0%, 20% 8%, 25% 0%,
+            30% 5%, 35% 0%, 40% 8%, 45% 0%, 50% 5%, 55% 0%,
+            60% 8%, 65% 0%, 70% 5%, 75% 0%, 80% 8%, 85% 0%,
+            90% 5%, 95% 0%, 100% 8%,
+            100% 92%, 95% 100%, 90% 94%, 85% 100%,
+            80% 92%, 75% 100%, 70% 94%, 65% 100%,
+            60% 92%, 55% 100%, 50% 94%, 45% 100%,
+            40% 92%, 35% 100%, 30% 94%, 25% 100%,
+            20% 92%, 15% 100%, 10% 94%, 5% 100%, 0% 92%);
+}
+
+body.design-c .scroll-cta .scroll-dots {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    animation: collageBounce 2s ease-in-out infinite;
+}
+
+body.design-c .scroll-dots .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--c-cream);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+body.design-c .scroll-dots .dot:nth-child(2) {
+    opacity: 0.4;
+    width: 5px;
+    height: 5px;
+}
+
+body.design-c .scroll-dots .dot:nth-child(3) {
+    opacity: 0.2;
+    width: 4px;
+    height: 4px;
+}
+
+/* ── Silhouette divider ── */
+body.design-c .skyline-divider {
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -50px;
+    z-index: 3;
+}
+
+body.design-c .skyline-divider .sky-layer {
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    right: -5%;
+    height: 100%;
+}
+
+body.design-c .skyline-divider .sky-layer:nth-child(1) {
+    background: var(--c-teal);
+    opacity: 0.3;
+    clip-path: polygon(0% 100%, 0% 60%, 3% 55%, 5% 40%, 7% 55%, 10% 50%,
+            13% 30%, 15% 45%, 18% 60%, 22% 55%, 25% 35%,
+            28% 50%, 32% 65%, 35% 55%, 38% 45%, 42% 60%,
+            45% 50%, 48% 40%, 52% 55%, 55% 45%, 58% 35%,
+            62% 50%, 65% 60%, 68% 45%, 72% 55%, 75% 65%,
+            78% 50%, 82% 40%, 85% 55%, 88% 45%, 92% 60%,
+            95% 50%, 98% 55%, 100% 60%, 100% 100%);
+}
+
+body.design-c .skyline-divider .sky-layer:nth-child(2) {
+    background: var(--c-sienna);
+    opacity: 0.2;
+    clip-path: polygon(0% 100%, 0% 70%, 5% 65%, 8% 50%, 12% 60%,
+            15% 55%, 20% 65%, 25% 60%, 28% 45%, 32% 55%,
+            36% 68%, 40% 62%, 44% 50%, 48% 58%, 52% 65%,
+            56% 55%, 60% 48%, 64% 58%, 68% 70%, 72% 60%,
+            76% 52%, 80% 62%, 84% 55%, 88% 65%, 92% 58%,
+            96% 68%, 100% 62%, 100% 100%);
+}
+
+body.design-c .skyline-divider .sky-layer:nth-child(3) {
+    background: var(--c-cream);
+    clip-path: polygon(0% 100%, 0% 75%, 4% 70%, 8% 60%, 12% 72%,
+            16% 65%, 20% 58%, 24% 68%, 28% 75%, 32% 65%,
+            36% 58%, 40% 70%, 44% 63%, 48% 55%, 52% 68%,
+            56% 72%, 60% 62%, 64% 58%, 68% 70%, 72% 75%,
+            76% 65%, 80% 58%, 84% 68%, 88% 72%, 92% 65%,
+            96% 58%, 100% 70%, 100% 100%);
+}
+
+/* ── Events Section ── */
+body.design-c .events-section {
+    background: var(--c-cream);
+    background-image: var(--c-grain);
+    padding: 3rem 2rem 6rem;
+    position: relative;
+    z-index: 2;
+}
+
+body.design-c .events-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+body.design-c .events-section .section-header h2 {
+    font-size: 2rem;
+    color: var(--c-teal);
+    margin-bottom: 0.25rem;
+    transform: rotate(-1deg);
+}
+
+body.design-c .events-section .section-header .section-sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--c-sienna);
+}
+
+body.design-c .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Event Card ── */
+body.design-c .card-collage {
+    background: var(--c-white);
+    border: 2px solid var(--c-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--c-shadow-md);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    transform: rotate(0deg);
+}
+
+body.design-c .card-collage:nth-child(odd) {
+    transform: rotate(-0.5deg);
+}
+
+body.design-c .card-collage:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+body.design-c .card-collage:hover {
+    transform: rotate(0deg) translateY(-4px) !important;
+    box-shadow: var(--c-shadow-xl);
+}
+
+body.design-c .card-collage .card-img {
+    height: 170px;
+    overflow: hidden;
+    position: relative;
+}
+
+body.design-c .card-collage .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+body.design-c .card-collage:hover .card-img img {
+    transform: scale(1.06);
+}
+
+/* Color stripe at bottom of image */
+body.design-c .card-collage .card-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--c-teal), var(--c-ochre), var(--c-sienna), var(--c-plum));
+}
+
+body.design-c .card-collage .card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+body.design-c .card-collage .card-category {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-white);
+    background: var(--c-teal);
+    padding: 3px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    width: fit-content;
+    transform: rotate(-1deg);
+}
+
+body.design-c .card-collage .card-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    color: var(--c-ink);
+}
+
+body.design-c .card-collage .card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--c-sienna);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+body.design-c .card-collage .card-desc {
+    font-size: 0.88rem;
+    color: var(--c-ink);
+    opacity: 0.7;
+    line-height: 1.55;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+}
+
+body.design-c .card-collage .card-link {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--c-cream);
+    background: var(--c-teal);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.2s;
+    display: block;
+}
+
+body.design-c .card-collage .card-link:hover {
+    background: var(--c-ochre);
+    color: var(--c-ink);
+    transform: rotate(-1deg);
+}
+
+/* ── Footer ── */
+body.design-c .collage-footer {
+    background: var(--c-kraft);
+    background-image: var(--c-grain);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--c-cream);
+    border-top: 3px solid var(--c-teal);
+}
+
+/* Empty state */
+body.design-c .empty-collage {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--c-sienna);
+    font-weight: 600;
+    border: 2px dashed var(--c-border);
+    border-radius: 8px;
+    background: var(--c-white);
+}
+
+body.design-c .loading-collage {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem;
+    color: var(--c-sienna);
+    font-weight: 600;
+}
+
+/* ── Auth ── */
+body.design-c #auth-container {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+body.design-c #user-name {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--c-ochre);
+}
+
+body.design-c #login-btn {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    background: var(--c-cream);
+    color: var(--c-ink);
+    border: 2px solid var(--c-cream);
+    padding: 6px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+body.design-c #login-btn:hover {
+    background: var(--c-ochre);
+    border-color: var(--c-ochre);
+}
+
+body.design-c #logout-btn {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--c-cream);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+body.design-c #logout-btn:hover {
+    color: var(--c-ochre);
+}
+
+/* ── Animations ── */
+@keyframes collagePop {
+    from {
+        opacity: 0;
+        transform: rotate(-2deg) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(-2deg) scale(1);
+    }
+}
+
+@keyframes collageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes collageBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
+}
+
+@keyframes blobFloat {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    body.design-c .hero-collage h1 {
+        font-size: 3rem;
+    }
+
+    body.design-c .hero-collage .hero-sub {
+        font-size: 1rem;
+    }
+
+    body.design-c .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.design-c .card-collage:nth-child(odd),
+    body.design-c .card-collage:nth-child(even) {
+        transform: none;
+    }
+}

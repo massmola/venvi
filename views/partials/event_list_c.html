@@ -1,0 +1,32 @@
+{{range .events}}
+<div class="card-collage">
+    {{if .GetString "image_url"}}
+    <div class="card-img">
+        <img src="{{.GetString " image_url"}}" alt="{{.GetString " title"}}" loading="lazy">
+    </div>
+    {{end}}
+
+    <div class="card-body">
+        <span class="card-category">{{.GetString "category"}}</span>
+
+        <h3 class="card-title">{{.GetString "title"}}</h3>
+
+        <div class="card-meta">
+            <span>📍 {{.GetString "location"}}</span>
+            <span>📅 {{.GetDateTime "date_start"}}</span>
+        </div>
+
+        {{if .GetString "description"}}
+        <p class="card-desc">{{.GetString "description"}}</p>
+        {{end}}
+
+        <a href="{{.GetString " url"}}" target="_blank" class="card-link">
+            view details →
+        </a>
+    </div>
+</div>
+{{else}}
+<div class="empty-collage">
+    <p>No events found. Click "Sync &amp; Refresh" to fetch the latest data.</p>
+</div>
+{{end}}

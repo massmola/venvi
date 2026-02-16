@@ -1,0 +1,35 @@
+{{range .events}}
+<div class="card-origami">
+    {{if .GetString "image_url"}}
+    <div class="card-img">
+        <img src="{{.GetString " image_url"}}" alt="{{.GetString " title"}}" loading="lazy">
+    </div>
+    {{end}}
+
+    <div class="card-body">
+        <div class="card-top">
+            <span class="card-category">{{.GetString "category"}}</span>
+            <span class="card-source">{{.GetString "source_name"}}</span>
+        </div>
+
+        <h3 class="card-title">{{.GetString "title"}}</h3>
+
+        <div class="card-meta">
+            <span>📍 {{.GetString "location"}}</span>
+            <span>📅 {{.GetDateTime "date_start"}}</span>
+        </div>
+
+        {{if .GetString "description"}}
+        <p class="card-desc">{{.GetString "description"}}</p>
+        {{end}}
+
+        <a href="{{.GetString " url"}}" target="_blank" class="card-link">
+            <span>View Details →</span>
+        </a>
+    </div>
+</div>
+{{else}}
+<div class="empty-origami">
+    <p>No events found. Click "Sync &amp; Refresh" to fetch the latest data.</p>
+</div>
+{{end}}

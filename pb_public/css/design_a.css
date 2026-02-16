@@ -1,0 +1,624 @@
+/* ═══════════════════════════════════════════════════════
+   Design A — "Vintage Journal"
+   Sepia tones, calligraphy, ink illustrations, torn edges
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap');
+
+/* ── Tokens ── */
+:root {
+    --j-parchment:    #F5E6D0;
+    --j-cream:        #FAF3E8;
+    --j-ink:          #2C2416;
+    --j-sepia:        #8B7355;
+    --j-terracotta:   #C4703F;
+    --j-gold:         #B8963E;
+    --j-faded:        #A89580;
+    --j-stain:        rgba(139, 115, 85, 0.08);
+    --j-border:       rgba(44, 36, 22, 0.12);
+    --j-shadow-soft:  0 2px 12px rgba(44, 36, 22, 0.10);
+    --j-shadow-med:   0 6px 24px rgba(44, 36, 22, 0.12);
+    --j-shadow-deep:  0 12px 40px rgba(44, 36, 22, 0.16);
+
+    /* Aged paper noise */
+    --j-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+
+    /* Coffee stain */
+    --j-stain-bg: radial-gradient(ellipse at 75% 20%, rgba(160, 120, 60, 0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 15% 80%, rgba(139, 115, 85, 0.05) 0%, transparent 50%);
+}
+
+.dark {
+    --j-parchment:    #1A1410;
+    --j-cream:        #221C15;
+    --j-ink:          #E8DCC8;
+    --j-sepia:        #A89070;
+    --j-terracotta:   #D4884F;
+    --j-gold:         #D4AD4E;
+    --j-faded:        #7A6E5F;
+    --j-stain:        rgba(212, 173, 78, 0.04);
+    --j-border:       rgba(232, 220, 200, 0.10);
+    --j-shadow-soft:  0 2px 12px rgba(0,0,0,0.3);
+    --j-shadow-med:   0 6px 24px rgba(0,0,0,0.4);
+    --j-shadow-deep:  0 12px 40px rgba(0,0,0,0.5);
+
+    --j-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+
+    --j-stain-bg: radial-gradient(ellipse at 75% 20%, rgba(212, 173, 78, 0.03) 0%, transparent 60%),
+                  radial-gradient(ellipse at 15% 80%, rgba(212, 136, 79, 0.02) 0%, transparent 50%);
+}
+
+/* ── Base ── */
+body.design-a {
+    background-color: var(--j-parchment);
+    background-image: var(--j-grain), var(--j-stain-bg);
+    color: var(--j-ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body.design-a h1,
+body.design-a h2,
+body.design-a h3,
+body.design-a h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--j-ink);
+    line-height: 1.15;
+}
+
+/* ── Navbar ── */
+body.design-a .journal-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, var(--j-parchment) 60%, transparent);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.design-a .journal-nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--j-sepia);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+body.design-a .journal-nav .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+body.design-a .journal-nav .nav-links a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--j-sepia);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: color 0.2s;
+}
+
+body.design-a .journal-nav .nav-links a:hover {
+    color: var(--j-terracotta);
+}
+
+/* ── Hero Section ── */
+body.design-a .hero-journal {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 6rem 2rem 4rem;
+}
+
+/* Decorative ink flourish */
+body.design-a .hero-journal::before {
+    content: '✦';
+    position: absolute;
+    top: 6rem;
+    font-size: 1.4rem;
+    color: var(--j-gold);
+    opacity: 0.6;
+    animation: fadeInDown 1.2s ease-out;
+}
+
+body.design-a .hero-journal .hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--j-sepia);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+body.design-a .hero-journal h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+body.design-a .hero-journal h1 .accent {
+    color: var(--j-terracotta);
+    position: relative;
+}
+
+/* Hand-drawn underline */
+body.design-a .hero-journal h1 .accent::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--j-terracotta);
+    opacity: 0.4;
+    border-radius: 2px;
+    transform: rotate(-0.5deg);
+}
+
+body.design-a .hero-journal .hero-desc {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--j-sepia);
+    max-width: 550px;
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.7s forwards;
+}
+
+/* Decorative divider */
+body.design-a .hero-journal .divider-ink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.9s forwards;
+}
+
+body.design-a .hero-journal .divider-ink span {
+    width: 60px;
+    height: 1px;
+    background: var(--j-sepia);
+    opacity: 0.3;
+}
+
+body.design-a .hero-journal .divider-ink .ornament {
+    width: auto;
+    height: auto;
+    background: none;
+    font-size: 0.8rem;
+    color: var(--j-gold);
+}
+
+/* Ink landmark illustrations (SVG decorations) */
+body.design-a .hero-journal .ink-illustrations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+body.design-a .ink-illustrations .landmark {
+    position: absolute;
+    opacity: 0.06;
+    font-size: 8rem;
+    color: var(--j-ink);
+}
+
+body.design-a .ink-illustrations .landmark:nth-child(1) {
+    top: 15%;
+    left: 5%;
+    transform: rotate(-8deg);
+}
+
+body.design-a .ink-illustrations .landmark:nth-child(2) {
+    top: 20%;
+    right: 5%;
+    transform: rotate(5deg);
+}
+
+body.design-a .ink-illustrations .landmark:nth-child(3) {
+    bottom: 20%;
+    left: 8%;
+    transform: rotate(-3deg);
+}
+
+body.design-a .ink-illustrations .landmark:nth-child(4) {
+    bottom: 15%;
+    right: 10%;
+    transform: rotate(7deg);
+}
+
+/* CTA Buttons */
+body.design-a .hero-journal .cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.1s forwards;
+}
+
+body.design-a .btn-journal {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 14px 32px;
+    border: 1px solid var(--j-border);
+    background: var(--j-cream);
+    color: var(--j-ink);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: var(--j-shadow-soft);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.design-a .btn-journal:hover {
+    background: var(--j-ink);
+    color: var(--j-cream);
+    box-shadow: var(--j-shadow-med);
+    transform: translateY(-1px);
+}
+
+body.design-a .btn-journal-primary {
+    background: var(--j-ink);
+    color: var(--j-cream);
+    border-color: var(--j-ink);
+}
+
+body.design-a .btn-journal-primary:hover {
+    background: var(--j-terracotta);
+    border-color: var(--j-terracotta);
+    color: #fff;
+}
+
+/* ── Scroll CTA ── */
+body.design-a .scroll-cta {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.4s forwards;
+}
+
+body.design-a .scroll-cta .scroll-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--j-faded);
+    letter-spacing: 0.05em;
+}
+
+body.design-a .scroll-cta .scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 1.5px solid var(--j-faded);
+    border-bottom: 1.5px solid var(--j-faded);
+    transform: rotate(45deg);
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ── Torn paper edge divider ── */
+body.design-a .torn-edge {
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+    margin-top: -30px;
+}
+
+body.design-a .torn-edge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5%;
+    right: -5%;
+    height: 80px;
+    background: var(--j-cream);
+    box-shadow: 0 4px 12px rgba(44, 36, 22, 0.08);
+    clip-path: polygon(
+        0% 100%, 2% 75%, 5% 90%, 8% 70%, 11% 85%, 14% 65%,
+        17% 80%, 20% 60%, 24% 78%, 27% 55%, 30% 72%, 34% 50%,
+        37% 68%, 40% 48%, 43% 65%, 46% 45%, 50% 62%, 53% 42%,
+        56% 58%, 59% 40%, 62% 56%, 66% 38%, 69% 55%, 72% 42%,
+        75% 60%, 78% 45%, 81% 65%, 84% 50%, 87% 70%, 90% 55%,
+        93% 75%, 96% 60%, 100% 80%, 100% 100%
+    );
+}
+
+/* ── Events Section ── */
+body.design-a .events-section {
+    background: var(--j-cream);
+    background-image: var(--j-grain);
+    padding: 4rem 2rem 6rem;
+    min-height: 50vh;
+}
+
+body.design-a .events-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+body.design-a .events-section .section-header h2 {
+    font-size: 2.2rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+body.design-a .events-section .section-header .section-sub {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--j-faded);
+}
+
+body.design-a .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Event Card ── */
+body.design-a .card-journal {
+    background: var(--j-parchment);
+    background-image: var(--j-grain);
+    border: 1px solid var(--j-border);
+    box-shadow: var(--j-shadow-soft);
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+body.design-a .card-journal:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--j-shadow-med);
+}
+
+/* Paper stack pseudo-element */
+body.design-a .card-journal::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 3px;
+    right: -3px;
+    height: 100%;
+    background: var(--j-parchment);
+    border: 1px solid var(--j-border);
+    z-index: -1;
+    box-shadow: var(--j-shadow-soft);
+}
+
+body.design-a .card-journal .card-img {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+body.design-a .card-journal .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(15%) contrast(1.05);
+    transition: transform 0.4s ease;
+}
+
+body.design-a .card-journal:hover .card-img img {
+    transform: scale(1.05);
+}
+
+body.design-a .card-journal .card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+body.design-a .card-journal .card-category {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--j-terracotta);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+body.design-a .card-journal .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+body.design-a .card-journal .card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--j-faded);
+    margin-bottom: 1rem;
+}
+
+body.design-a .card-journal .card-desc {
+    font-size: 0.95rem;
+    color: var(--j-sepia);
+    line-height: 1.6;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+body.design-a .card-journal .card-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--j-ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 20px;
+    border: 1px solid var(--j-border);
+    transition: all 0.2s;
+    text-align: center;
+    justify-content: center;
+}
+
+body.design-a .card-journal .card-link:hover {
+    background: var(--j-ink);
+    color: var(--j-cream);
+}
+
+/* ── Footer ── */
+body.design-a .journal-footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--j-faded);
+    letter-spacing: 0.1em;
+    background: var(--j-parchment);
+    border-top: 1px solid var(--j-border);
+}
+
+/* Empty state */
+body.design-a .empty-journal {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--j-faded);
+    font-style: italic;
+    font-size: 1.1rem;
+    border: 1px dashed var(--j-border);
+    background: var(--j-cream);
+    grid-column: 1 / -1;
+}
+
+/* ── Loading state ── */
+body.design-a .loading-journal {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem;
+    color: var(--j-faded);
+    font-style: italic;
+}
+
+/* ── Auth Elements ── */
+body.design-a #auth-container {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+body.design-a #user-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--j-terracotta);
+    font-size: 0.9rem;
+}
+
+body.design-a #login-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: var(--j-ink);
+    color: var(--j-cream);
+    border: 1px solid var(--j-ink);
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+body.design-a #login-btn:hover {
+    background: var(--j-terracotta);
+    border-color: var(--j-terracotta);
+}
+
+body.design-a #logout-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--j-faded);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+body.design-a #logout-btn:hover {
+    color: var(--j-terracotta);
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 0.6; transform: translateY(0); }
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50%      { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    body.design-a .hero-journal h1 {
+        font-size: 2.5rem;
+    }
+    body.design-a .hero-journal .hero-desc {
+        font-size: 1.1rem;
+    }
+    body.design-a .ink-illustrations .landmark {
+        font-size: 5rem;
+    }
+    body.design-a .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
