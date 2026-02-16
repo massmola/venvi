@@ -1,0 +1,64 @@
+{{define "title"}}Venvi — Discover European Events{{end}}
+
+{{define "content"}}
+<!-- Hero Section — Full Viewport -->
+<section class="hero-journal">
+    <!-- Decorative background landmarks -->
+    <div class="ink-illustrations">
+        <div class="landmark">🏛</div>
+        <div class="landmark">🗼</div>
+        <div class="landmark">⛪</div>
+        <div class="landmark">🏰</div>
+    </div>
+
+    <div class="hero-label">— Est. Europe —</div>
+
+    <h1>
+        Discover Events<br>
+        <span class="accent">Across Europe.</span>
+    </h1>
+
+    <p class="hero-desc">
+        Curated hackathons, meetups, and cultural experiences —
+        written into your personal travel journal.
+    </p>
+
+    <div class="divider-ink">
+        <span></span>
+        <span class="ornament">✦</span>
+        <span></span>
+    </div>
+
+    <div class="cta-group">
+        <button class="btn-journal btn-journal-primary" hx-post="/api/venvi/sync" hx-swap="none"
+            hx-on::after-request="htmx.trigger('#event-list', 'load')">
+            Sync &amp; Refresh
+        </button>
+        <a href="/_/" class="btn-journal">Admin Panel</a>
+    </div>
+
+    <!-- Scroll CTA -->
+    <div class="scroll-cta">
+        <span class="scroll-text">turn the page…</span>
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- Torn Paper Edge Transition -->
+<div class="torn-edge"></div>
+
+<!-- Events Section — Below the Fold -->
+<section class="events-section">
+    <div class="section-header">
+        <h2>Upcoming Experiences</h2>
+        <div class="section-sub">curated for you</div>
+    </div>
+
+    <div id="event-list" class="events-grid" hx-get="/partials/events/a" hx-trigger="load, reload from:body"
+        hx-swap="innerHTML">
+        <div class="loading-journal">
+            Loading events from across Europe…
+        </div>
+    </div>
+</section>
+{{end}}

@@ -1,0 +1,68 @@
+{{define "title"}}VENVI — Curated Events{{end}}
+
+{{define "content"}}
+<!-- Hero Section — Asymmetric Split -->
+<section class="hero-origami">
+    <div class="hero-left">
+
+        <div class="tri-accents">
+            <div class="tri"></div>
+            <div class="tri"></div>
+            <div class="tri"></div>
+        </div>
+
+        <h1>VENVI</h1>
+
+        <p class="hero-tagline">
+            curated events.<br>
+            real experiences.<br>
+            across europe.
+        </p>
+
+        <div class="hero-cta">
+            <button class="btn-origami btn-origami-primary" hx-post="/api/venvi/sync" hx-swap="none"
+                hx-on::after-request="htmx.trigger('#event-list', 'load')">
+                Sync &amp; Refresh
+            </button>
+            <a href="/_/" class="btn-origami">Admin</a>
+        </div>
+
+        <!-- Scroll CTA -->
+        <div class="scroll-cta">
+            <span class="scroll-label">Scroll to explore</span>
+            <div class="scroll-chevron">
+                <div class="chev"></div>
+                <div class="chev"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <div class="fold-shape"></div>
+        <div class="fold-inner">
+            <span class="fold-text">EVENTS</span>
+        </div>
+        <div class="fold-accent"></div>
+        <div class="fold-accent"></div>
+        <div class="fold-accent"></div>
+    </div>
+</section>
+
+<!-- Fold Divider -->
+<div class="fold-divider"></div>
+
+<!-- Events Section — Below the Fold -->
+<section class="events-section">
+    <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <span class="section-meta">curated for you</span>
+    </div>
+
+    <div id="event-list" class="events-grid" hx-get="/partials/events/b" hx-trigger="load, reload from:body"
+        hx-swap="innerHTML">
+        <div class="loading-origami">
+            Loading curated events…
+        </div>
+    </div>
+</section>
+{{end}}

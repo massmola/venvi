@@ -1,0 +1,67 @@
+{{define "title"}}venvi — explore events{{end}}
+
+{{define "content"}}
+<!-- Hero Section — Layered Paper Collage -->
+<section class="hero-collage">
+    <!-- Animated paper blob layers -->
+    <div class="paper-layers">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
+
+    <div class="hero-content">
+        <h1>venvi</h1>
+
+        <p class="hero-sub">
+            Discover curated hackathons, meetups, and cultural
+            experiences across Europe — handpicked just for you.
+        </p>
+
+        <div class="paper-strip">
+            ✨ Your next adventure starts here
+        </div>
+
+        <div class="cta-group">
+            <button class="btn-collage btn-collage-primary" hx-post="/api/venvi/sync" hx-swap="none"
+                hx-on::after-request="htmx.trigger('#event-list', 'load')">
+                Sync &amp; Refresh
+            </button>
+            <a href="/_/" class="btn-collage">Admin Panel</a>
+        </div>
+    </div>
+
+    <!-- Scroll CTA -->
+    <div class="scroll-cta">
+        <div class="scroll-tag">scroll to explore</div>
+        <div class="scroll-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Skyline Divider -->
+<div class="skyline-divider">
+    <div class="sky-layer"></div>
+    <div class="sky-layer"></div>
+    <div class="sky-layer"></div>
+</div>
+
+<!-- Events Section — Below the Fold -->
+<section class="events-section">
+    <div class="section-header">
+        <h2>upcoming events</h2>
+        <div class="section-sub">curated for you</div>
+    </div>
+
+    <div id="event-list" class="events-grid" hx-get="/partials/events/c" hx-trigger="load, reload from:body"
+        hx-swap="innerHTML">
+        <div class="loading-collage">
+            Gathering events from across Europe…
+        </div>
+    </div>
+</section>
+{{end}}
